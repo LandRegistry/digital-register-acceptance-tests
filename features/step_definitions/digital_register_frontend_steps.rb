@@ -11,8 +11,6 @@ end
 ##
 
 Given(/^I have a title$/) do
-  # empty the database
-  delete_all_titles
   # insert the property_hash data into the database
   @property_hash = {
     :title_number => "DN1000",
@@ -30,9 +28,6 @@ Given(/^I have a title$/) do
 end
 
 Given(/^I do not have a title$/) do
-  #TODO: setup delete_all_titles as a hook
-  # empty the database
-  delete_all_titles
   @property_hash = {
     :title_number => "DN1000"
   }
@@ -40,8 +35,6 @@ Given(/^I do not have a title$/) do
 end
 
 Given(/^I have a title with an owner$/) do
-  # empty the database
-  delete_all_titles
   # insert the property_hash data into the database
   @property_hash = {
     :title_number => "DN1000",
@@ -59,8 +52,6 @@ Given(/^I have a title with an owner$/) do
 end
 
 Given(/^I have a title with multiple owners$/) do
-  # empty the database
-  delete_all_titles
   # insert the property_hash data into the database
   @property_hash = {
     :title_number => "DN1000",
@@ -78,31 +69,19 @@ Given(/^I have a title with multiple owners$/) do
 end
 
 Given(/^I have a title with a non private individual owner$/) do
-  # empty the database
-  delete_all_titles
-  title = insert_property_non_private_individual_owner
-  @property_hash = title
+  @property_hash = insert_property_non_private_individual_owner
 end
 
 Given(/^I have a title with a charity with trustees that are private individuals$/) do
-  # empty the database
-  delete_all_titles
-  title = insert_property_charity_private_individual_owner
-  @property_hash = title
+  @property_hash = insert_property_charity_private_individual_owner
 end
 
 Given(/^I have a title with a charity with trustees that are non private individual owners$/) do
-  # empty the database
-  delete_all_titles
-  title = insert_property_charity_non_private_individual_owner
-  @property_hash = title
+  @property_hash = insert_property_charity_non_private_individual_owner
 end
 
 Given(/^I have a title with a private individual owner$/) do
-  # empty the database
-  delete_all_titles
-  title = insert_property_private_individual_owner
-  @property_hash = title
+  @property_hash = insert_property_private_individual_owner
 end
 
 Given(/^the title has multiple index polygons$/) do
