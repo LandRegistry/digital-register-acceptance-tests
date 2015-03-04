@@ -1,0 +1,1345 @@
+{
+  "application_reference": "N724CWW",
+  "groups": [
+    {
+      "category": "PROPERTY",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:24.613065",
+          "sub_register": "A",
+          "status": "Current",
+          "sequence_number": 1,
+          "role_code": "RDES",
+          "language": "ENG",
+          "category": "PROPERTY",
+          "infills": [
+            {
+              "address": {
+                "address_string": "21 Murhill Lane, Saltram Meadow, Plymouth, (PL9 7FN)",
+                "auto_uppercase_override": true,
+                "postcode": "PL9 7FN",
+                "town": "Plymouth",
+                "house_no": "21",
+                "street_name": "Murhill Lane"
+              },
+              "type": "Address"
+            }
+          ],
+          "full_text": "A yearly rentcharge of £200 payable yearly on 1 January created by a Conveyance dated 17 January 2009 made between (1) JP Jones and (2) Heather Poole. The registered rentcharge is charged upon and issues out of the freehold land, shown edged red on the plan of the above title filed at the Registry being 21 Murhill Lane, Saltram Meadow, Plymouth, (PL9 7FN).",
+          "template_text": "A yearly rentcharge of £200 payable yearly on 1 January created by a Conveyance dated 17 January 2009 made between (1) JP Jones and (2) Heather Poole. The registered rentcharge is charged upon and issues out of the freehold land, shown edged red on the plan of the above title filed at the Registry being *AD*"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.29.328045",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:29.304145",
+          "sub_register": "A",
+          "deeds": [
+            {
+              "date": "1995-05-01",
+              "description": "Transfer"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.29.328045",
+          "sequence_number": 2,
+          "role_code": "DAEA",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "type": "EXTENT"
+            },
+            {
+              "type": "EXTENT"
+            }
+          ],
+          "full_text": "The land has the benefit of the rights granted by but is subject to the rights reserved by the Transfer dated 1 May 1995 referred to in the Charges Register.",
+          "entry_date": "1995-11-06",
+          "template_text": "The land *E<>E* has the benefit of the rights granted by but is subject to the rights reserved by the *DT**DE* dated *DD* referred to in the Charges Register.",
+          "draft_entry_code": "AE010"
+        }
+      ]
+    },
+    {
+      "category": "OWNERSHIP",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:24.838075",
+          "sub_register": "B",
+          "status": "Current",
+          "sequence_number": 1,
+          "role_code": "RPRO",
+          "language": "ENG",
+          "category": "OWNERSHIP",
+          "infills": [
+            {
+              "proprietors": [
+                {
+                  "addresses": [
+                    {
+                      "address_string": "21 High Murhill, Plymouth PL9 7FN",
+                      "address_type": "UNKNOWN",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "name": {
+                    "name_category": "LIMITED COMPANY OR PUBLIC LIMITED COMPANY",
+                    "auto_uppercase_override": true,
+                    "non_private_individual_name": "HEATHER POOLE PLC"
+                  }
+                }
+              ],
+              "type": "Proprietor"
+            }
+          ],
+          "full_text": "PROPRIETOR: #HEATHER POOLE PLC# of 21 High Murhill, Plymouth PL9 7FN.",
+          "entry_date": "1996-07-01",
+          "template_text": "PROPRIETOR: *RP*"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.28.556965",
+      "category": "CHARGE",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:29.405155",
+          "charge_id": "2007-09-06-08.45.28.556965",
+          "sub_register": "B",
+          "status": "Current",
+          "sequence_number": 2,
+          "role_code": "CBCR",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "text": "3 July 1995",
+              "date": "1995-07-03",
+              "type": "DATE"
+            },
+            {
+              "text": "National Westminster Home Loans Limited"
+            }
+          ],
+          "full_text": "RESTRICTION: Except under an order of the registrar no disposition by the proprietor of the land is to be registered without the consent of the proprietor of the Charge dated 3 July 1995 in favour of National Westminster Home Loans Limited referred to in the Charges Register.",
+          "entry_date": "1996-07-01",
+          "template_text": "RESTRICTION: Except under an order of the registrar no disposition by the proprietor of the land is to be registered without the consent of the proprietor of the Charge dated *CD* in favour of *CP* referred to in the Charges Register.",
+          "draft_entry_code": "BX294"
+        },
+        {
+          "entry_id": "2007-09-06 08:45:28.555145",
+          "charge_id": "2007-09-06-08.45.28.556965",
+          "sub_register": "C",
+          "status": "Current",
+          "sequence_number": 7,
+          "role_code": "CCHA",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "text": "3 July 1995",
+              "date": "1995-07-03",
+              "type": "DATE"
+            }
+          ],
+          "full_text": "REGISTERED CHARGE dated 3 July 1995 to secure the moneys including the further advances therein mentioned.",
+          "entry_date": "1996-07-01",
+          "template_text": "REGISTERED CHARGE dated *CD* to secure the moneys including the further advances therein mentioned.",
+          "draft_entry_code": "CHFAD"
+        },
+        {
+          "entry_id": "2007-09-06 08:45:28.581995",
+          "charge_id": "2007-09-06-08.45.28.556965",
+          "sub_register": "C",
+          "status": "Current",
+          "sequence_number": 8,
+          "role_code": "CCHR",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "proprietors": [
+                {
+                  "addresses": [
+                    {
+                      "address_string": "P.O. Box 156, Priory House, 38 Colmore Circus, Queensway, Birmingham B4 6AL",
+                      "address_type": "UK"
+                    }
+                  ],
+                  "name": {
+                    "non_private_individual_name": "National Westminster Home Loans Limited"
+                  }
+                }
+              ],
+              "type": "Charge Proprietor"
+            }
+          ],
+          "full_text": "Proprietor: #WESTMINSTER HOME LOANS LIMITED# (Co. Regn. No. 1234123) of P.O. Box 333, Pokemon House, 38 Circus of Sun, Queenaway, Bingham B22 6AL.",
+          "entry_date": "1996-07-01",
+          "template_text": "Proprietor: #WESTMINSTER HOME LOANS LIMITED# (Co. Regn. No. 1234123) of P.O. Box 333, Pokemon House, 38 Circus of Sun, Queenaway, Bingham B22 6AL.",
+          "draft_entry_code": "CNWHO"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.25.211325",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:24.965275",
+          "sub_register": "C",
+          "deeds": [
+            {
+              "date": "1925-09-05",
+              "parties": [
+                {
+                  "names": [
+                    {
+                      "auto_uppercase_override": true,
+                      "non_private_individual_name": "JP Jones Co. Ltd"
+                    }
+                  ],
+                  "party_role_description": "the Company"
+                },
+                {
+                  "names": [
+                    {
+                      "surname": "Patterson",
+                      "forename": "Petyr",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": "the Purchaser"
+                }
+              ],
+              "description": "Conveyance"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.25.211325",
+          "sequence_number": 1,
+          "role_code": "DCOV",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "type": "EXTENT"
+            }
+          ],
+          "full_text": "A Conveyance dated 5 September 1925 made between (1) JP Jones Co. Ltd (the Company) and (2) Petyr Patterson (the Purchaser) contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+          "entry_date": "1994-07-25",
+          "template_text": "A *DT**DE* dated *DD* made between *DP* contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+          "draft_entry_code": "CR722"
+        },
+        {
+          "entry_id": "2007-09-06 08:45:26.015995",
+          "sub_register": "C",
+          "deeds": [
+            {
+              "date": "1925-09-05",
+              "parties": [
+                {
+                  "names": [
+                    {
+                      "auto_uppercase_override": true,
+                      "non_private_individual_name": "JP Jones Co. Ltd"
+                    }
+                  ],
+                  "party_role_description": "the Company"
+                },
+                {
+                  "names": [
+                    {
+                      "surname": "Paterson",
+                      "forename": "Phillip",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": "the Purchaser"
+                }
+              ],
+              "description": "Conveyance"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.25.211325",
+          "sequence_number": 2,
+          "role_code": "DCEA",
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "text": "tinted pink",
+              "type": "PLAN REF"
+            }
+          ],
+          "full_text": "The land tinted pink on the filed plan is subject to the following rights reserved by the Conveyance dated 5 September 1925 referred to above:-\r\rAND ALSO EXCEPTING AND ALWAYS RESERVING unto the Company its successors and assigns the unrestricted flow as heretofore of water along the courses of the stream shown on the said plan and also the right to remove as if they were the riparian owners any obstruction along the said courses doing no unnecessary damage in entering and exercising such right and liberty and making good all damage done to the land hereby conveyed And ALSO EXCEPT AND RESERVING unto the Company its successors and assigns the right of maintaining underground in the position shown on the said plan an electric current cable and gas supply pipe with the rights at all times hereafter of entering into and upon the land hereby conveyed for the purpose of repairing altering and newlaying any such cable and gas pipe.",
+          "entry_date": "1993-07-01",
+          "template_text": "The land *PR* on the filed plan is subject to the following rights reserved by the *DT* dated *DD* referred to above:-\r\rAND ALSO EXCEPTING AND ALWAYS RESERVING unto the Company its successors and assigns the unrestricted flow as heretofore of water along the courses of the stream shown on the said plan and also the right to remove as if they were the riparian owners any obstruction along the said courses doing no unnecessary damage in entering and exercising such right and liberty and making good all damage done to the land hereby conveyed And ALSO EXCEPT AND RESERVING unto the Company its successors and assigns the right of maintaining underground in the position shown on the said plan an electric current cable and gas supply pipe with the rights at all times hereafter of entering into and upon the land hereby conveyed for the purpose of repairing altering and newlaying any such cable and gas pipe"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.26.477995",
+      "category": "CHARGE",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:26.476365",
+          "charge_id": "2007-09-06-08.45.26.477995",
+          "sub_register": "C",
+          "status": "Current",
+          "sequence_number": 3,
+          "role_code": "CCHA",
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "text": "1 June 1990",
+              "date": "1990-06-01",
+              "type": "DATE"
+            }
+          ],
+          "full_text": "REGISTERED CHARGE dated 1 June 1990 affecting also other titles to secure the moneys including the further advances therein mentuoned.\r\r¬NOTE: Copy filed.",
+          "entry_date": "1996-07-01",
+          "notes": [
+            {
+              "text": "Copy filed",
+              "font": "I"
+            }
+          ],
+          "template_text": "REGISTERED CHARGE dated *CD* affecting also other titles to secure the moneys including the further advances therein mentuoned.\r\r<NOTE></NOTE>"
+        },
+        {
+          "entry_id": "2007-09-06 08:45:27.094935",
+          "charge_id": "2007-09-06-08.45.26.477995",
+          "sub_register": "C",
+          "status": "Current",
+          "sequence_number": 4,
+          "role_code": "CCHR",
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "proprietors": [
+
+              ],
+              "type": "Charge Proprietor"
+            }
+          ],
+          "full_text": "Proprietor: #THE BANK PLC# (Co. Regn. No. 1234) Dept. No. 2134 Tombstone Regional Securities Centre, P.O. Box 999, 21 New Road, Tombstone, Exeter EX22 0AW.",
+          "entry_date": "1996-07-01",
+          "template_text": "Proprietor: *RP*"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.28.506635",
+      "category": "CHARGE",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:28.484105",
+          "charge_id": "2007-09-06-08.45.28.506635",
+          "sub_register": "C",
+          "status": "Current",
+          "sequence_number": 5,
+          "role_code": "CCHA",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "text": "2 June 1995",
+              "date": "1995-06-02",
+              "type": "DATE"
+            }
+          ],
+          "full_text": "REGISTERED CHARGE dated 2 June 1995 to secure the moneys including the further advances therein mentioned.\r\rNOTE: The proprietor of this charge is obliged to make further advances in accordance with the mortgage terms and conditions.",
+          "entry_date": "1996-07-01",
+          "template_text": "REGISTERED CHARGE dated *CD* to secure the moneys including the further advances therein mentioned.\r\rNOTE: The proprietor of this charge is obliged to make further advances in accordance with the mortgage terms and conditions.",
+          "draft_entry_code": "CHOBL"
+        },
+        {
+          "entry_id": "2007-09-06 08:45:28.533245",
+          "charge_id": "2007-09-06-08.45.28.506635",
+          "sub_register": "C",
+          "status": "Current",
+          "sequence_number": 6,
+          "role_code": "CCHR",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "CHARGE",
+          "infills": [
+            {
+              "proprietors": [
+                {
+                  "addresses": [
+                    {
+                      "address_string": "P.O. Box 333, One Thousand Church Quay, Wales BS99 7AX",
+                      "address_type": "UK"
+                    }
+                  ],
+                  "name": {
+                    "non_private_individual_name": "Plymouth & Wales PLC"
+                  }
+                }
+              ],
+              "type": "Charge Proprietor"
+            }
+          ],
+          "full_text": "Proprietor: #PLYMOUTH & WALES PLC# (Co. Regn. No. 1234567) of P.O. Box 33, One Thousand Church Quay, Wales BS99 7AX.",
+          "entry_date": "1996-07-01",
+          "template_text": "Proprietor: #PLYMOUTH & WALES PLC# (Co. Regn. No. 1234567) of P.O. Box 33, One Thousand Church Quay, Wales BS99 7AX.",
+          "draft_entry_code": "CY990"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.29.280545",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:29.277605",
+          "sub_register": "R",
+          "schedule": {
+            "fields": [
+              {
+                "text": "£2",
+                "header": "Rentcharge sum"
+              },
+              {
+                "text": "6 June 1993",
+                "header": "Payable on"
+              },
+              {
+                "text": "7 High Street",
+                "header": "Property description"
+              },
+              {
+                "text": "AGL1000",
+                "header": "Title No under which land is registered"
+              },
+              {
+                "text": "Transfer",
+                "header": "Nature of deed"
+              },
+              {
+                "text": "1993-05-05",
+                "header": "Date of deed"
+              },
+              {
+                "parties": [
+                  {
+                    "names": [
+                      {
+                        "surname": "Jones",
+                        "forename": "JP",
+                        "auto_uppercase_override": true
+                      }
+                    ],
+                    "party_role_description": ""
+                  },
+                  {
+                    "names": [
+                      {
+                        "surname": "Jones",
+                        "forename": "Heather",
+                        "auto_uppercase_override": true
+                      }
+                    ],
+                    "party_role_description": ""
+                  }
+                ],
+                "header": "Parties"
+              },
+              {
+                "text": "1",
+                "header": "Plan Reference"
+              }
+            ],
+            "schedule_type": "R",
+            "parent_register": "A",
+            "header": "SCHEDULE OF REGISTERED RENTCHARGES"
+          },
+          "deeds": [
+            {
+              "date": "1993-05-05",
+              "parties": [
+                {
+                  "names": [
+                    {
+                      "surname": "Jones",
+                      "forename": "JP",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": ""
+                },
+                {
+                  "names": [
+                    {
+                      "surname": "Jones",
+                      "forename": "Heather",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": ""
+                }
+              ],
+              "payment_detail": "6 June 1993",
+              "description": "Transfer",
+              "rentcharge_amount": "£2"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.29.280545",
+          "sequence_number": 1,
+          "role_code": "DMRR",
+          "language": "ENG",
+          "category": "DEED",
+          "full_text": "Rentcharge sum      : £2                                                 \rPayable on          : 6 June 1993                                        \rProperty description: 7 High Street                                      \rTitle No under which                                                     \rland is registered  : BK5678                                             \rNature of deed      : Transfer                                           \rDate of deed        : 5 May 1993                                         \rParties             : (1) John Smith                                     \r                      (2) Heather Smith                                   \rPlan Reference      : 1"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.28.841065",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:28.793875",
+          "sub_register": "S",
+          "schedule": {
+            "schedule_type": "E",
+            "parent_register": "B",
+            "header": "Schedule of restrictive covenants"
+          },
+          "deeds": [
+            {
+              "date": "1925-09-05",
+              "description": "Conveyance"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.28.841065",
+          "sequence_number": 1,
+          "role_code": "SSCH",
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "text": "hatched blue",
+              "type": "PLAN REF"
+            },
+            {
+              "text": "edged brown",
+              "type": "PLAN REF"
+            },
+            {
+              "text": "hatched blue",
+              "type": "PLAN REF"
+            },
+            {
+              "text": "edged brown",
+              "type": "PLAN REF"
+            }
+          ],
+          "full_text": "The following are details of the covenants contained in the Conveyance dated 5 September 1925 referred to in the Charges Register:-\r\rThe Purchasers for themselves and the persons deriving title under them hereby jointly and severally covenant with the Company its successors and assigns and so far as possible to run with the land hereby conveyed and bind the owner or owners thereof for the time being and to ensure for the protection and benefit of the Company its successors and assigns owners and occupiers for the time being of the lands forming other parts of the Company's estate in the neighbourhood and for the protection and benefit of such other lands in manner following that is to say:-\r\r(a)  That at any time hereafter to so or permit of suffer to be done any act matter or thing whereby the water and flow of water along the courses of the stream shown on the said plan may be obstructed interfered with or diminished or polluted And also will not at any time hereafter obstruct or take any water from the said stream except as heretofore.\r\r(b)  Not at any time hereafter to carry on or permit or suffer to be carried on any trade business or calling whatsoever in or upon the land hereby conveyed coloured round with a green verge line or any part or parts thereof or in any building to be erected thereon or on any part thereof nor to use or occupy any building hereafter erected on the said land edged green otherwise than as a private dwellinghouse and also that no advertisement or placard or announcement of any kind shall be displayed in any manner howsoever on the said land or any part thereof or on any building structure wall fence or screen erected or placed thereon Provided Always that this clause shall not prevent any house erected on the said land from being used as a Private Residential Hotel or Boarding House and Provided Also that nothing herein contained shall prevent the erection on any part of the said land of a notice board or boards relating to the user of the premises hereby conveyed as a school.\r\r(c)  Not at any time hereafter to use the land hereby conveyed edged\rwith a pink verge line or any building now or hereafter erected thereon for the prupose of carrying on thereon any manufacturing business or as a Factory.\r\r(d)  Not at any time hereafter to do or permit or suffer to be done in or upon the land hereby conveyed or in or upon any building now or hereafter erected thereon any act deed matter or thing wich may be or become a nuisance damage annoyance disturbance grievance inconvenience or eyesore to the Company their successors or assigns or its tenants or the occupier or occupiers for the time being of any land of the Company in the neighbourhood or the owners or occupiers of the adjoining adjacent or neighbouring land And in particular will not set up or use or work any machine or operative machinery on the land hereby conveyed or in any building thereon.\r\rNOTE: The stream marked on the Conveyance plan is shown hatched blue on the filed plan.  The land coloured with a green verge line is edged brown on the filed plan and the land coloured with a pink verge line is edged blue.",
+          "notes": [
+            {
+              "text": "The stream marked on the Conveyance plan is shown *PR* on the filed plan.  The land coloured with a green verge line is *PR* on the filed plan and the land coloured with a pink verge line is edged blue"
+            },
+            {
+              "text": "The stream marked on the Conveyance plan is shown *PR* on the filed plan.  The land coloured with a green verge line is *PR* on the filed plan and the land coloured with a pink verge line is edged blue"
+            }
+          ],
+          "template_text": "The following are details of the covenants contained in the *DT* dated *DD* referred to in the Charges Register:-\r\rThe Purchasers for themselves and the persons deriving title under them hereby jointly and severally covenant with the Company its successors and assigns and so far as possible to run with the land hereby conveyed and bind the owner or owners thereof for the time being and to ensure for the protection and benefit of the Company its successors and assigns owners and occupiers for the time being of the lands forming other parts of the Company's estate in the neighbourhood and for the protection and benefit of such other lands in manner following that is to say:-\r\r(a)  That at any time hereafter to so or permit of suffer to be done any act matter or thing whereby the water and flow of water along the courses of the stream shown on the said plan may be obstructed interfered with or diminished or polluted And also will not at any time hereafter obstruct or take any water from the said stream except as heretofore.\r\r(b)  Not at any time hereafter to carry on or permit or suffer to be carried on any trade business or calling whatsoever in or upon the land hereby conveyed coloured round with a green verge line or any part or parts thereof or in any building to be erected thereon or on any part thereof nor to use or occupy any building hereafter erected on the said land edged green otherwise than as a private dwellinghouse and also that no advertisement or placard or announcement of any kind shall be displayed in any manner howsoever on the said land or any part thereof or on any building structure wall fence or screen erected or placed thereon Provided Always that this clause shall not prevent any house erected on the said land from being used as a Private Residential Hotel or Boarding House and Provided Also that nothing herein contained shall prevent the erection on any part of the said land of a notice board or boards relating to the user of the premises hereby conveyed as a school.\r\r(c)  Not at any time hereafter to use the land hereby conveyed edged\rwith a pink verge line or any building now or hereafter erected thereon for the prupose of carrying on thereon any manufacturing business or as a Factory.\r\r(d)  Not at any time hereafter to do or permit or suffer to be done in or upon the land hereby conveyed or in or upon any building now or hereafter erected thereon any act deed matter or thing wich may be or become a nuisance damage annoyance disturbance grievance inconvenience or eyesore to the Company their successors or assigns or its tenants or the occupier or occupiers for the time being of any land of the Company in the neighbourhood or the owners or occupiers of the adjoining adjacent or neighbouring land And in particular will not set up or use or work any machine or operative machinery on the land hereby conveyed or in any building thereon.\r\r<NOTE></NOTE>"
+        }
+      ]
+    }
+  ],
+  "geometry": {
+      "extent": {
+          "crs": {
+              "properties": {
+                  "name": "urn:ogc:def:crs:EPSG::27700"
+              },
+              "type": "name"
+          },
+          "geometry": {
+              "coordinates": [
+                  [
+                      [
+                          508263.97,
+                          221692.13
+                      ],
+                      [
+                          508266.4,
+                          221698.84
+                      ],
+                      [
+                          508266.35,
+                          221700.25
+                      ],
+                      [
+                          508270.3,
+                          221711.15
+                      ],
+                      [
+                          508273.29,
+                          221719.53
+                      ],
+                      [
+                          508271.4,
+                          221721.65
+                      ],
+                      [
+                          508270.68,
+                          221722.44
+                      ],
+                      [
+                          508269.69,
+                          221723.53
+                      ],
+                      [
+                          508263.58,
+                          221706.87
+                      ],
+                      [
+                          508261.346,
+                          221700.587
+                      ],
+                      [
+                          508258.98,
+                          221693.93
+                      ],
+                      [
+                          508258.01,
+                          221691.18
+                      ],
+                      [
+                          508262,
+                          221689.66
+                      ],
+                      [
+                          508262.95,
+                          221689.3
+                      ],
+                      [
+                          508263.97,
+                          221692.13
+                      ]
+                  ]
+              ],
+              "type": "Polygon"
+          },
+          "properties": {
+              "colour": 17,
+              "feature_id": 4013,
+              "graphic_type": "Bordered Polygon",
+              "render_attributes": {
+                  "border_colour": 17,
+                  "border_width": 1000,
+                  "exterior_edge_colour": 17,
+                  "exterior_edge_thickness": 1,
+                  "exterior_edge_thickness_units": "Pixels",
+                  "fill_colour": 28,
+                  "fill_style": 0,
+                  "render_level": "0"
+              },
+              "width": 1000
+          },
+          "type": "Feature"
+      },
+      "index": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    266053.52,
+                    192457.32
+                  ],
+                  [
+                    266050.72,
+                    192460.66
+                  ],
+                  [
+                    266047.46,
+                    192457.93
+                  ],
+                  [
+                    266049.17,
+                    192455.9
+                  ],
+                  [
+                    266050.26,
+                    192454.59
+                  ],
+                  [
+                    266053.52,
+                    192457.32
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "graphic_type": "Bordered Polygon",
+              "feature_id": 4019,
+              "colour": 27,
+              "width": 0,
+              "render_attributes": {
+                "border_colour": 27,
+                "border_width": 0,
+                "exterior_edge_colour": 1,
+                "exterior_edge_thickness": 2.0,
+                "fill_colour": 27,
+                "fill_style": 9,
+                "render_level": "0"
+              }
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    266239.06,
+                    192429.13
+                  ],
+                  [
+                    266250.037,
+                    192429.378
+                  ],
+                  [
+                    266239.027,
+                    192440.379
+                  ],
+                  [
+                    266239.06,
+                    192429.13
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "graphic_type": "Bordered Polygon",
+              "feature_id": 4019,
+              "colour": 25,
+              "width": 0,
+              "render_attributes": {
+                "border_colour": 25,
+                "border_width": 0,
+                "exterior_edge_colour": 1,
+                "exterior_edge_thickness": 2.0,
+                "fill_colour": 25,
+                "fill_style": 9,
+                "render_level": "0"
+              }
+            }
+          },
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    266361.852,
+                    192477.995
+                  ],
+                  [
+                    266381.702,
+                    192477.806
+                  ],
+                  [
+                    266361.69,
+                    192497.79
+                  ],
+                  [
+                    266361.852,
+                    192477.995
+                  ]
+                ],
+                [
+                  [
+                    266366,
+                    192482
+                  ],
+                  [
+                    266372,
+                    192482
+                  ],
+                  [
+                    266366,
+                    192488
+                  ],
+                  [
+                    266366,
+                    192482
+                  ]
+                ]
+              ]
+            },
+            "properties": {
+              "graphic_type": "Bordered Polygon",
+              "feature_id": 4019,
+              "colour": 25,
+              "width": 0,
+              "render_attributes": {
+                "border_colour": 25,
+                "border_width": 0,
+                "exterior_edge_colour": 1,
+                "exterior_edge_thickness": 2.0,
+                "fill_colour": 25,
+                "fill_style": 9,
+                "render_level": "0"
+              }
+            }
+          }
+        ],
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "urn:ogc:def:crs:EPSG::27700"
+          }
+        }
+      },
+      "map": {
+          "crs": {
+              "properties": {
+                  "name": "urn:ogc:def:crs:EPSG::27700"
+              },
+              "type": "name"
+          },
+          "features": [
+              {
+                  "geometry": {
+                      "coordinates": [
+                          [
+                              508235.35,
+                              221720.2
+                          ],
+                          [
+                              508230.9,
+                              221712.5
+                          ]
+                      ],
+                      "type": "LineString"
+                  },
+                  "properties": {
+                      "feature_id": 10018,
+                      "graphic_type": "Poly Line",
+                      "render_attributes": {
+                          "render_level": "0"
+                      }
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508296.75,
+                          221743.4
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10169,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": null,
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": null,
+                          "text_vertical_alignment": "Middle"
+                      },
+                      "rotation": -0.9705304697353966,
+                      "value": "AVONDALE ROAD",
+                      "vertical_alignment": "Middle"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508298.7,
+                          221672.85
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10169,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": null,
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": null,
+                          "text_vertical_alignment": "Middle"
+                      },
+                      "rotation": -0.2810061055808009,
+                      "value": "HAZELBURY CRESCENT",
+                      "vertical_alignment": "Middle"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508261.71,
+                          221765.2
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Left",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Left",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.1307951881723985,
+                      "value": "35",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508259.63,
+                          221763.9
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Left",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Left",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.1307951881723985,
+                      "value": "33",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508257.48,
+                          221762.54
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Left",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Left",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.1307951881723985,
+                      "value": "31",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508302.6,
+                          221662.6
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Centre",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Centre",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.9999870521081,
+                      "value": "21",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508282.3,
+                          221747.9
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Centre",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Centre",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.205960246778795,
+                      "value": "27",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508223.04,
+                          221718.34
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Left",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Left",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.6231071472844465,
+                      "value": "1 to 8",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508222.34,
+                          221738.99
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Left",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Left",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 0,
+                      "value": "Hazelbury",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508287.9,
+                          221685.45
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Centre",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Centre",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": -0.26892600687620144,
+                      "value": "6",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508266.35,
+                          221750.95
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Centre",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Centre",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": -0.9478083793148405,
+                      "value": "1 to 6",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508311.3,
+                          221738.9
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Centre",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Centre",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": -0.9829940636369674,
+                      "value": "30",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              },
+              {
+                  "geometry": {
+                      "coordinates": [
+                          508238.3,
+                          221682.4
+                      ],
+                      "type": "Point"
+                  },
+                  "properties": {
+                      "feature_id": 10026,
+                      "graphic_type": "Text",
+                      "height": 1000,
+                      "horizontal_alignment": "Centre",
+                      "render_attributes": {
+                          "render_level": "0",
+                          "text_horizontal_alignment": "Centre",
+                          "text_vertical_alignment": "Baseline"
+                      },
+                      "rotation": 2.773053769300268,
+                      "value": "47",
+                      "vertical_alignment": "Baseline"
+                  },
+                  "type": "Feature"
+              }
+          ],
+          "properties": {
+              "map_reference": "TL0821NW",
+              "orientation_code": "P",
+              "print_size": "A4",
+              "scale": "500  ",
+              "stamp_code_1": " ",
+              "stamp_code_2": " ",
+              "stamp_code_3": " ",
+              "stamp_code_4": " ",
+              "stamp_code_5": " ",
+              "stamp_text_1": " ",
+              "stamp_text_2": " ",
+              "stamp_text_3": " ",
+              "stamp_text_4": " ",
+              "stamp_text_5": " "
+          },
+          "type": "FeatureCollection"
+      },
+      "references": [
+          {
+              "crs": {
+                  "properties": {
+                      "name": "urn:ogc:def:crs:EPSG::27700"
+                  },
+                  "type": "name"
+              },
+              "features": [
+                  {
+                      "geometry": {
+                          "coordinates": [
+                              [
+                                  508264.15,
+                                  221699.65
+                              ],
+                              [
+                                  508261.346,
+                                  221700.587
+                              ]
+                          ],
+                          "type": "LineString"
+                      },
+                      "properties": {
+                          "feature_id": 4002,
+                          "graphic_type": "Poly Line",
+                          "render_attributes": {
+                              "edge_colour": 7,
+                              "edge_style": 7,
+                              "edge_thickness": 1,
+                              "render_level": "0"
+                          }
+                      },
+                      "type": "Feature"
+                  }
+              ],
+              "properties": {
+                  "colour_code": 2,
+                  "description": "black pecked line",
+                  "graphic_code": 2,
+                  "text_code": 0
+              },
+              "type": "FeatureCollection"
+          },
+          {
+              "crs": {
+                  "properties": {
+                      "name": "urn:ogc:def:crs:EPSG::27700"
+                  },
+                  "type": "name"
+              },
+              "features": [
+                  {
+                      "geometry": {
+                          "coordinates": [
+                              [
+                                  [
+                                      508264.15,
+                                      221699.65
+                                  ],
+                                  [
+                                      508266.35,
+                                      221705.9
+                                  ],
+                                  [
+                                      508263.58,
+                                      221706.87
+                                  ],
+                                  [
+                                      508261.346,
+                                      221700.587
+                                  ],
+                                  [
+                                      508264.15,
+                                      221699.65
+                                  ]
+                              ]
+                          ],
+                          "type": "Polygon"
+                      },
+                      "properties": {
+                          "colour": 0,
+                          "feature_id": 4011,
+                          "graphic_type": "Bordered Polygon",
+                          "render_attributes": {
+                              "border_colour": 0,
+                              "border_width": 0,
+                              "exterior_edge_colour": 9,
+                              "exterior_edge_thickness": 1,
+                              "exterior_edge_thickness_units": "Pixels",
+                              "fill_colour": 28,
+                              "fill_style": 9,
+                              "render_level": "0"
+                          },
+                          "width": 0
+                      },
+                      "type": "Feature"
+                  }
+              ],
+              "properties": {
+                  "colour_code": 5,
+                  "description": "tinted blue",
+                  "graphic_code": 15,
+                  "text_code": 0
+              },
+              "type": "FeatureCollection"
+          }
+      ]
+  },
+  "filed_plan_format": "UNKNOWN",
+  "edition_date": "1996-07-01",
+  "last_app_timestamp": "1996-07-02T00:59:59+01:00",
+  "class": "Absolute",
+  "tenure": "Freehold",
+  "uprns": [
+    9326307
+  ],
+  "title_number": "AGL1005",
+  "dlr": "Gloucester Office",
+  "migration_errors": [
+    {
+      "extractor": "Register Check",
+      "message_number": "RC1026",
+      "message": "Title is not synchronised"
+    },
+    {
+      "extractor": "Entry Grouper",
+      "message_number": "EG1055",
+      "entry_id": "2007-09-06 08:45:27.094935",
+      "message": "Investigation code: T - Proprietorship address incorrectly formatted"
+    },
+    {
+      "extractor": "Property Extractor",
+      "message_number": "PE1012",
+      "entry_id": "2007-09-06 08:45:24.613065",
+      "message": "Address not deconstructed in Intelligent Register for title"
+    },
+    {
+      "extractor": "Proprietor Extractor",
+      "message_number": "PR1019",
+      "entry_id": "2007-09-06 08:45:27.094935",
+      "message": "No address found for proprietor with id - 2007-09-06 08:45:27.208355"
+    },
+    {
+      "extractor": "Geometry Extractor",
+      "message_number": "GE1066",
+      "message": "File Plan not vectorised"
+    },
+    {
+      "extractor": "Geometry Extractor",
+      "message_number": "GE1053",
+      "message": "Title not on index map"
+    },
+    {
+      "extractor": "Geometry Extractor",
+      "message_number": "GE1006",
+      "message": "No Extent or Index Generated"
+    }
+  ],
+  "districts": [
+    "WOKINGHAM"
+  ]
+}

@@ -7,7 +7,14 @@ def process_titles_in_directory(data_directory)
   end
 end
 
-def insert_property_non_private_individual_owner
+def insert_title_with_multiple_index_polygons
+  process_titles_in_directory("multiple-index-polygons")
+  {
+    :title_number => "AGL1005",
+  }
+end
+
+def insert_title_non_private_individual_owner
   process_titles_in_directory("non-private-individual-owner")
   {
     :title_number => "AGL1000",
@@ -20,14 +27,14 @@ def insert_property_non_private_individual_owner
   }
 end
 
-def insert_property_private_individual_owner
+def insert_title_private_individual_owner
   process_titles_in_directory("private-individual-owner")
   {
     :title_number => "AGL1001"
   }
 end
 
-def insert_property_charity_non_private_individual_owner
+def insert_title_charity_non_private_individual_owner
   process_titles_in_directory("charity-non-private-individual-owner")
   {
     :title_number => "AGL1003",
@@ -40,7 +47,7 @@ def insert_property_charity_non_private_individual_owner
   }
 end
 
-def insert_property_charity_private_individual_owner
+def insert_title_charity_private_individual_owner
   process_titles_in_directory("charity-private-individual-owner")
   {
     :title_number => "AGL1002"

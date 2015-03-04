@@ -5,6 +5,7 @@ gem 'poltergeist'
 gem 'pg'
 gem 'rspec'
 gem 'cucumber-repeat'
+gem 'erubis'
 
 group :development do
   gem 'pry'
