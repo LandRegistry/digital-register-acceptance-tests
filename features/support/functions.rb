@@ -23,6 +23,23 @@ def delete_all_titles
   $db_connection.exec("DELETE FROM title_numbers_uprns;")
 end
 
+def create_register_tables
+  $db_connection.exec("
+DROP TABLE IF EXISTS \"title_register_data\";
+DROP TABLE IF EXISTS \"title_numbers_uprns\";
+CREATE TABLE \"title_register_data\" (
+  \"title_number\" character(10),
+  \"register_data\" json,
+  \"geometry_data\" json
+);
+CREATE TABLE \"title_numbers_uprns\" (
+  \"title_number\" character (10),
+  \"uprn\" character(10)
+);
+CREATE INDEX index_uprn ON title_numbers_uprns(uprn);
+CREATE INDEX index_title_number ON title_numbers_uprns(title_number);")
+end
+
 def create_proprietors(number_proprietors)
   proprietors = []
   number_proprietors.times do |i|
