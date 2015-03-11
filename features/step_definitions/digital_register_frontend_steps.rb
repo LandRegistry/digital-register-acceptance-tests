@@ -16,7 +16,7 @@ end
 
 Given(/^I do not have a title$/) do
   @title_hash = {
-    :title_number => "DN1000"
+    :title_number => "BAD_TITLE"
   }
   #Do not create the title in the database
 end
@@ -109,4 +109,36 @@ end
 Then(/^I can see all the polygons for that title displayed on the map$/) do
   # DOG & AJ - We tried to do 'something' to check the existance and position of the
   # index polygons but the effort became impracticable so we parked this work.
+end
+
+Given(/^I search for a property using the Title Number$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^only the information for the selected Title Number will be displayed$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I am a citizen$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I have an address with a single Title Number$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I search for a property using minimum search criteria$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I have an address with multiple Title Numbers$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I can select the Title Number I am interested in$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I only the information for the selected Title Number will be displayed$/) do
+  pending # express the regexp above with the code you wish you had
 end
