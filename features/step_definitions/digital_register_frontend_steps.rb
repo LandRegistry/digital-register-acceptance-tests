@@ -54,7 +54,7 @@ end
 ##
 
 When(/^I view the register details page$/) do
-  visit("http://landregistry.local:8003/titles/#{@title_hash[:title_number]}")
+  visit("#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}")
 end
 
 Then(/^I see the full address for the selected title$/) do
