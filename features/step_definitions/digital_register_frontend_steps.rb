@@ -112,23 +112,26 @@ Then(/^I can see all the polygons for that title displayed on the map$/) do
 end
 
 Given(/^I search for a property using the Title Number$/) do
-  pending # express the regexp above with the code you wish you had
+  visit("#{ENV["DIGITAL_REGISTER_URL"]}/title-search/")
+  fill_in 'search_term', :with => @title_hash[:title_number]
+  click_button('Search')
 end
 
 Then(/^only the information for the selected Title Number will be displayed$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).to include(@title_hash[:title_number])
 end
 
 Given(/^I am a citizen$/) do
-  pending # express the regexp above with the code you wish you had
+  #DO NOTHING
 end
 
 Given(/^I have an address with a single Title Number$/) do
-  pending # express the regexp above with the code you wish you had
+  @title_hash = insert_title_with_owners
 end
 
 Given(/^I search for a property using minimum search criteria$/) do
-  pending # express the regexp above with the code you wish you had
+  pending
 end
 
 Given(/^I have an address with multiple Title Numbers$/) do
