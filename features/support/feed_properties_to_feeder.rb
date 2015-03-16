@@ -3,7 +3,7 @@ def process_titles_in_directory(data_directory)
   result = `sh consume_register_entries.sh`
   puts result
   #TODO: better reporting here, error code is not reliable
-  if $?.to_i == 0
+  if $?.to_i != 0
     puts "Error creating title"
   end
 end
