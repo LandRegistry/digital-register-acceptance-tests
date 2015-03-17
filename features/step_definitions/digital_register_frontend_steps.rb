@@ -54,7 +54,6 @@ end
 ##
 
 When(/^I view the register details page$/) do
-  p "#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}"
   visit("#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}")
 end
 
@@ -95,7 +94,7 @@ Then(/^I can view the register details for the selected title$/) do
   expect(content).to include(@title_hash[:title_number])
   expect(content).to include(@title_hash[:last_changed])
   @title_hash[:proprietors].each do |proprietor|
-    expect(content).to include(proprietor)
+    expect(content).to include(proprietor[:name])
   end
   expect(content).to include(@title_hash[:postcode])
   expect(content).to include(@title_hash[:town])
