@@ -7,4 +7,4 @@ And I have a title
 And I have logged in
 And I search for a property using the Title Number
 When I view the register details page
-Then only the information for the selected Title Number will be displayed
+Then I can view the register details for the selected title
