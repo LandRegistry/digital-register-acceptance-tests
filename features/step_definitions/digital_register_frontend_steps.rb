@@ -94,8 +94,8 @@ Then(/^I can view the register details for the selected title$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:title_number])
   expect(content).to include(@title_hash[:last_changed])
-  @title_hash[:owners].each do |owner|
-    expect(content).to include(owner)
+  @title_hash[:proprietors].each do |proprietor|
+    expect(content).to include(proprietor)
   end
   expect(content).to include(@title_hash[:postcode])
   expect(content).to include(@title_hash[:town])
