@@ -54,6 +54,7 @@ end
 ##
 
 When(/^I view the register details page$/) do
+  p "#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}"
   visit("#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}")
 end
 
