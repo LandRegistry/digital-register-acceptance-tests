@@ -1,9 +1,21 @@
 Given(/^I am an initial private beta user$/) do
-  # do nothing
+  @new_user = Hash.new()
+  @new_user['user'] = Hash.new()
+  @new_user['user']['user_id'] = 'username'+ timestamp
+  @new_user['user']['password'] = 'dummypassword'
+  response = insert_user(@new_user)
+  puts response
 end
 
 Given(/^I have logged in$/) do
-  #TODO: will need to be addressed as part of US53
+  @username = @new_user['user']['user_id']
+  @password = @new_user['user']['password']
+  visit('http://localhost:8003/login')
+  fill_in 'username', :with => @username
+  fill_in 'password', :with => @password
+  click_button('signin')
+  content = page.body.text
+  expect(content).to include("Search for Title")
 end
 
 ##
@@ -54,7 +66,8 @@ end
 ##
 
 When(/^I view the register details page$/) do
-  visit("#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}")
+  puts("#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}")
+  page.visit("#{ENV["DIGITAL_REGISTER_URL"]}/titles/#{@title_hash[:title_number]}")
 end
 
 Then(/^I see the full address for the selected title$/) do
@@ -114,7 +127,7 @@ Then(/^I can see all the polygons for that title displayed on the map$/) do
 end
 
 Given(/^I search for a property using the Title Number$/) do
-  visit("#{ENV["DIGITAL_REGISTER_URL"]}/title-search/")
+  page.visit("#{ENV["DIGITAL_REGISTER_URL"]}/title-search/")
   fill_in 'search_term', :with => @title_hash[:title_number]
   click_button('Search')
 end
