@@ -1,1 +1,1 @@
-$DIGITAL_REGISTER_URL = 'http://172.16.42.43:8003'
+$DIGITAL_REGISTER_URL =    (ENV['DIGITAL_REGISTER_URL']    ||   'http://localhost:8003')
