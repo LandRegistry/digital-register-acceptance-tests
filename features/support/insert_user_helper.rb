@@ -6,7 +6,7 @@ def timestamp
 end
 
 def insert_user(new_user)
-  uri = URI.parse("http://localhost:8005")
+  uri = URI.parse("#{$DIGITAL_LOGIN_API}")
   #TODO: the localhost page needs to be set to an environmental variable
   http = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new('/admin/user',  initheader = {'Content-Type' =>'application/json'})
