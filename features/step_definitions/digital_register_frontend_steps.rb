@@ -145,18 +145,49 @@ Given(/^I have an address with a single Title Number$/) do
   @title_hash = insert_title_with_owners
 end
 
-Given(/^I search for a property using minimum search criteria$/) do
-  pending
+Given(/^I have a valid username and password$/) do
+  @username = @new_user['user']['user_id']
+  @password = @new_user['user']['password']
 end
 
-Given(/^I have an address with multiple Title Numbers$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I log in$/) do
+  visit('http://localhost:8003/login')
+  fill_in 'username', :with => @username
+  fill_in 'password', :with => @password
+  click_button('signin')
+  #TODO: the localhost page needs to be set to an environmental variable
 end
 
-Then(/^I can select the Title Number I am interested in$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should access the system$/) do
+  content = page.body.text
+  expect(content).to include("Search for Title")
+  #TODO: This is to be refactored, not happy with just checking the text on the page
 end
 
-Then(/^I only the information for the selected Title Number will be displayed$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I have an invalid username and a valid password$/) do
+  @username = "invalid_username"
+  @password = @new_user['user']['password']
+end
+
+Then(/^I should not access the system$/) do
+  content = page.body.text
+  expect(content).to include("There was an error with your Username/Password combination. Please try again")
+end
+
+Given(/^I have a valid username and an incorrect password$/) do
+  @username = @new_user['user']['user_id']
+  @password = "invalid_password"
+end
+
+Given(/^I haven't logged in$/) do
+  #Nothing happens here, the user doesnt log in with the information
+end
+
+When(/^I view the title search page$/) do
+  visit("http://localhost:8003/title-search")
+end
+
+Then(/^I am redirected to the login page$/) do
+  content = page.body.text
+  expect(content).to include("Digital Register Login")
 end
