@@ -151,11 +151,7 @@ Given(/^I have a valid username and password$/) do
 end
 
 When(/^I log in$/) do
-  visit('http://localhost:8003/login')
-  fill_in 'username', :with => @username
-  fill_in 'password', :with => @password
-  click_button('signin')
-  #TODO: the localhost page needs to be set to an environmental variable
+  login_user(@username, @password)
 end
 
 Then(/^I should access the system$/) do
@@ -193,16 +189,25 @@ Then(/^I am redirected to the login page$/) do
 end
 
 Given(/^I am an Admin user$/) do
-  pending # express the regexp above with the code you wish you had
+   # do nothing
 end
 
 When(/^I add a user$/) do
-  pending # express the regexp above with the code you wish you had
+  @new_user = Hash.new()
+  @new_user['user'] = Hash.new()
+  @new_user['user']['user_id'] = 'username'+ timestamp
+  @new_user['user']['password'] = 'dummypassword'
+  response = insert_user(@new_user)
+  puts response
 end
 
 Then(/^the new user is able to log in$/) do
-  pending # express the regexp above with the code you wish you had
-end
+  @username = @new_user['user']['user_id']
+  @password = @new_user['user']['password']
+  login_user(@username, @password)
+  content = page.body.text
+  expect(content).to include("Search for Title")
+  end
 
 When(/^I delete an existing user$/) do
   pending # express the regexp above with the code you wish you had
