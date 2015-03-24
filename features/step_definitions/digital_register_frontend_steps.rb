@@ -191,3 +191,35 @@ Then(/^I am redirected to the login page$/) do
   content = page.body.text
   expect(content).to include("Digital Register Login")
 end
+
+Given(/^I am an Admin user$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I add a user$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the new user is able to log in$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I delete an existing user$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the deleted user is unable to log in$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I reset a password of an existing user$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the user is able to log in using the new password$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the user is unable to log in using their old password$/) do
+  pending # express the regexp above with the code you wish you had
+end
