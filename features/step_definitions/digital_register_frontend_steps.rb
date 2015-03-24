@@ -207,24 +207,42 @@ Then(/^the new user is able to log in$/) do
   login_user(@username, @password)
   content = page.body.text
   expect(content).to include("Search for Title")
-  end
+end
 
 When(/^I delete an existing user$/) do
-  pending # express the regexp above with the code you wish you had
+  user_to_delete = @new_user['user']['user_id']
+  response = delete_user(user_to_delete)
+  puts response
 end
 
 Then(/^the deleted user is unable to log in$/) do
-  pending # express the regexp above with the code you wish you had
+  login_user(@username, @password)
+  content = page.body.text
+  expect(content).to include("Username is required")
+  expect(content).to include("Password is required")
 end
 
 When(/^I reset a password of an existing user$/) do
-  pending # express the regexp above with the code you wish you had
+  @user_password_to_update = Hash.new()
+  @user_password_to_update['user'] = Hash.new()
+  @user_password_to_update['user']['password'] = "new_password"
+  user_id_to_update = @new_user['user']['user_id']
+  response = update_user(@user_password_to_update, user_id_to_update)
+  puts response
 end
 
 Then(/^the user is able to log in using the new password$/) do
-  pending # express the regexp above with the code you wish you had
+  @username = @new_user['user']['user_id']
+  @password = @user_password_to_update['user']['password']
+  login_user(@username, @password)
+  content = page.body.text
+  expect(content).to include("Search for Title")
 end
 
 Then(/^the user is unable to log in using their old password$/) do
-  pending # express the regexp above with the code you wish you had
+  @username = @new_user['user']['user_id']
+  @password = @new_user['user']['password']
+  login_user(@username, @password)
+  content = page.body.text
+  expect(content).to include("There was an error with your Username/Password combination")
 end
