@@ -12,10 +12,11 @@ def insert_user(new_user)
   request.basic_auth $http_auth_name, $http_auth_password
   request.body = new_user.to_json
   response = http.request(request)
-  if (response.code != '200') then
-    raise "user was not created: " + response.body
+  if (response.code != '200')
+    raise "user was not created"
+  else
+    puts "User has been created"
   end
-  return response.body
 end
 
 def delete_user(user_to_delete)
@@ -25,10 +26,11 @@ def delete_user(user_to_delete)
   request.basic_auth $http_auth_name, $http_auth_password
   request.body = user_to_delete.to_json
   response = http.request(request)
-  if (response.code != '200') then
+  if (response.code != '200')
     raise "user was not deleted"
+  else
+    puts "User has been deleted"
   end
-  return response.body
 end
 
 def update_user(user_password_to_update, user_id_to_update)
@@ -38,8 +40,9 @@ def update_user(user_password_to_update, user_id_to_update)
   request.basic_auth $http_auth_name, $http_auth_password
   request.body = user_password_to_update.to_json
   response = http.request(request)
-  if (response.code != '200') then
-    raise "user was not updated: " + response.body
+  if (response.code != '200')
+    raise "user was not updated"
+  else
+    puts "User has been updated"
   end
-  return response.body
 end
