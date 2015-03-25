@@ -314,6 +314,33 @@ end
 Then(/^it can correctly logins$/) do
   content = page.body.text
   expect(content).to include('Search for Title')
+
+Given(/^I have an open title$/) do
+  closure_status = 'OPEN'
+  @title_hash = insert_title_with_closure_status(closure_status)
+end
+
+Then(/^the register details page is displayed$/) do
+  content = page.body.text
+  expect(content).to include(@title_hash[:postcode])
+  expect(content).to include(@title_hash[:town])
+  expect(content).to include("#{@title_hash[:house_no]} #{@title_hash[:street_name]}")
+  expect(content).to include(@title_hash[:title_number])
+  expect(content).to include("#{@title_hash[:proprietors][0][:name]}")
+end
+
+Given(/^I have a closed title$/) do
+  closure_status = 'TITLE CLOSED'
+  @title_hash = insert_title_with_closure_status(closure_status)
+end
+
+Then(/^an unavailable message is displayed$/) do
+  content = page.body.text
+  expect(content).to include("No result(s) found")
+end
+
+Given(/^I have a recently closed title$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Given(/^the title information is updated$/) do
