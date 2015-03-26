@@ -180,7 +180,7 @@ Given(/^I haven't logged in$/) do
 end
 
 When(/^I view the title search page$/) do
-  visit("http://localhost:8003/title-search")
+  visit("#{$DIGITAL_REGISTER_URL}/title-search")
 end
 
 Then(/^I am redirected to the login page$/) do
