@@ -339,8 +339,12 @@ Then(/^an unavailable message is displayed$/) do
   expect(content).to include("No result(s) found")
 end
 
+
 Given(/^I have a recently closed title$/) do
-  pending # express the regexp above with the code you wish you had
+  closure_status = 'OPEN'
+  @title_hash = insert_title_with_closure_status(closure_status)
+  closure_status = 'TITLE CLOSED'
+  @title_hash = insert_title_with_closure_status(closure_status)
 end
 
 Given(/^the title information is updated$/) do
