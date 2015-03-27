@@ -21,18 +21,14 @@ Capybara.javascript_driver = :poltergeist
 
 ### Set the options for poltergeist to use
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, :inspector => true, :timeout => 240, :js_errors => false)
+  Capybara::Poltergeist::Driver.new(app, inspector: true, timeout: 240, js_errors: false)
 end
 
-#This removes the referer for the map tiles to be returned
-page.driver.add_header("Referer", "", permanent: true)
-
-### Reads the basic auth username and password from env settings
-$http_auth_name = (ENV['HTTPAUTH_USERNAME'] || '')
-$http_auth_password = (ENV['HTTPAUTH_PASSWORD'] || '')
+# This removes the referer for the map tiles to be returned
+page.driver.add_header('Referer', '', permanent: true)
 
 $db_connection = PG::Connection.open(
-  :dbname => 'register_data',
-  :user => 'postgres',
-  :password => 'password'
+  dbname: 'register_data',
+  user: 'postgres',
+  password: 'password'
 )

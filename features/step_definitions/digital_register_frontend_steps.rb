@@ -1,7 +1,7 @@
 Given(/^I am an initial private beta user$/) do
-  @new_user = Hash.new()
-  @new_user['user'] = Hash.new()
-  @new_user['user']['user_id'] = 'username'+ timestamp
+  @new_user = {}
+  @new_user['user'] = {}
+  @new_user['user']['user_id'] = 'username' + timestamp
   @new_user['user']['password'] = 'dummypassword'
   response = insert_user(@new_user)
   puts response
@@ -11,11 +11,11 @@ Given(/^I have logged in$/) do
   @username = @new_user['user']['user_id']
   @password = @new_user['user']['password']
   visit("#{$DIGITAL_REGISTER_URL}/login")
-  fill_in 'username', :with => @username
-  fill_in 'password', :with => @password
+  fill_in 'username', with: @username
+  fill_in 'password', with: @password
   click_button('signin')
   content = page.body.text
-  expect(content).to include("Search for Title")
+  expect(content).to include('Search for Title')
 end
 
 ##
@@ -28,9 +28,9 @@ end
 
 Given(/^I do not have a title$/) do
   @title_hash = {
-    :title_number => "BAD_TITLE"
+    title_number: 'BAD_TITLE'
   }
-  #Do not create the title in the database
+  # Do not create the title in the database
 end
 
 Given(/^I have a title with an owner$/) do
@@ -118,7 +118,7 @@ end
 
 Then(/^I can see the map in the summary box$/) do
   # Check scale line is displayed to indicate leaflet is being displayed
-  page.has_css?("leaflet-control-scale-line")
+  page.has_css?('leaflet-control-scale-line')
 end
 
 Then(/^I can see all the polygons for that title displayed on the map$/) do
@@ -128,7 +128,7 @@ end
 
 Given(/^I search for a property using the Title Number$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search/")
-  fill_in 'search_term', :with => @title_hash[:title_number]
+  fill_in 'search_term', with: @title_hash[:title_number]
   click_button('Search')
 end
 
@@ -138,7 +138,7 @@ Then(/^only the information for the selected Title Number will be displayed$/) d
 end
 
 Given(/^I am a citizen$/) do
-  #DO NOTHING
+  # DO NOTHING
 end
 
 Given(/^I have an address with a single Title Number$/) do
@@ -156,27 +156,27 @@ end
 
 Then(/^I should access the system$/) do
   content = page.body.text
-  expect(content).to include("Search for Title")
-  #TODO: This is to be refactored, not happy with just checking the text on the page
+  expect(content).to include('Search for Title')
+  # TODO: This is to be refactored, not happy with just checking the text on the page
 end
 
 Given(/^I have an invalid username and a valid password$/) do
-  @username = "invalid_username"
+  @username = 'invalid_username'
   @password = @new_user['user']['password']
 end
 
 Then(/^I should not access the system$/) do
   content = page.body.text
-  expect(content).to include("There was an error with your Username/Password combination. Please try again")
+  expect(content).to include('There was an error with your Username/Password combination. Please try again')
 end
 
 Given(/^I have a valid username and an incorrect password$/) do
   @username = @new_user['user']['user_id']
-  @password = "invalid_password"
+  @password = 'invalid_password'
 end
 
 Given(/^I haven't logged in$/) do
-  #Nothing happens here, the user doesnt log in with the information
+  # Nothing happens here, the user doesnt log in with the information
 end
 
 When(/^I view the title search page$/) do
@@ -185,17 +185,17 @@ end
 
 Then(/^I am redirected to the login page$/) do
   content = page.body.text
-  expect(content).to include("Digital Register Login")
+  expect(content).to include('Digital Register Login')
 end
 
 Given(/^I am an Admin user$/) do
-   # do nothing
+  # do nothing
 end
 
 When(/^I add a user$/) do
-  @new_user = Hash.new()
-  @new_user['user'] = Hash.new()
-  @new_user['user']['user_id'] = 'username'+ timestamp
+  @new_user = {}
+  @new_user['user'] = {}
+  @new_user['user']['user_id'] = 'username' + timestamp
   @new_user['user']['password'] = 'dummypassword'
   response = insert_user(@new_user)
   puts response
@@ -206,7 +206,7 @@ Then(/^the new user is able to log in$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include("Search for Title")
+  expect(content).to include('Search for Title')
 end
 
 When(/^I delete an existing user$/) do
@@ -218,14 +218,14 @@ end
 Then(/^the deleted user is unable to log in$/) do
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include("Username is required")
-  expect(content).to include("Password is required")
+  expect(content).to include('Username is required')
+  expect(content).to include('Password is required')
 end
 
 When(/^I reset a password of an existing user$/) do
-  @user_password_to_update = Hash.new()
-  @user_password_to_update['user'] = Hash.new()
-  @user_password_to_update['user']['password'] = "new_password"
+  @user_password_to_update = {}
+  @user_password_to_update['user'] = {}
+  @user_password_to_update['user']['password'] = 'new_password'
   user_id_to_update = @new_user['user']['user_id']
   response = update_user(@user_password_to_update, user_id_to_update)
   puts response
@@ -236,7 +236,7 @@ Then(/^the user is able to log in using the new password$/) do
   @password = @user_password_to_update['user']['password']
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include("Search for Title")
+  expect(content).to include('Search for Title')
 end
 
 Then(/^the user is unable to log in using their old password$/) do
@@ -244,5 +244,5 @@ Then(/^the user is unable to log in using their old password$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include("There was an error with your Username/Password combination")
+  expect(content).to include('There was an error with your Username/Password combination')
 end
