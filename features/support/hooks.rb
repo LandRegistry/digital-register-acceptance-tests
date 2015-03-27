@@ -4,10 +4,6 @@ Before do
   create_register_tables
 end
 
-Before do
-  delete_all_titles
-end
-
 Before('@existing_user') do
   @new_user = {}
   @new_user['user'] = {}
