@@ -1,4 +1,6 @@
 require 'erubis'
+require 'uri'
+require 'net/http'
 
 def insert_title_with_owners(number_proprietors = 1)
   @title = {
@@ -7,7 +9,8 @@ def insert_title_with_owners(number_proprietors = 1)
     postcode: 'PL9 8TB',
     house_no: '14',
     town: 'Plymouth',
-    last_changed: '02 July 1996 at 00:59:59'
+    last_changed: '02 July 1996 at 00:59:59',
+    address_string: '14 Test Street, Plymouth, PL9 8TB'
   }
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
@@ -20,7 +23,8 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
     postcode: 'PL9 8TB',
     house_no: '14',
     town: 'Plymouth',
-    last_changed: '02 July 1996 at 00:59:59'
+    last_changed: '02 July 1996 at 00:59:59',
+    address_string: '14 Test Street, Plymouth, PL9 8TB'
   }
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
@@ -38,6 +42,25 @@ end
 def delete_all_titles
   $db_connection.exec('DROP TABLE title_register_data;')
   $db_connection.exec('DROP TABLE title_numbers_uprns;')
+end
+
+def create_elasticsearch_index
+  result = `sh set_up_elasticsearch.sh`
+  puts result
+end
+
+def delete_all_titles_from_elasticsearch
+  result  = `curl -XDELETE http://localhost:9200/landregistry/property_by_postcode`
+  puts result
+  #uri = URI.parse("#{$ELASTICSEARCH}")
+  #http = Net::HTTP.new(uri.host, uri.port)
+  #request = Net::HTTP::Delete.new("/landregistry/property_by_postcode")
+  #response = http.request(request)
+  #if (response.code != '200')
+  #  puts "Warning : elasticsearch NOT cleared"
+  #else
+  #  puts "elasticsearch was cleared"
+  #end
 end
 
 def create_register_tables

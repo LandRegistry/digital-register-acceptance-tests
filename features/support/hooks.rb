@@ -2,6 +2,8 @@ Before do
   $tables_created ||= false
   return $tables_created if $tables_created
   create_register_tables
+  create_elasticsearch_index
+  delete_all_titles_from_elasticsearch
 end
 
 Before('@existing_user') do

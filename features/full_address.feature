@@ -1,4 +1,4 @@
-Feature: US033 View full address in summary box in digital register
+Feature: View full address in summary box in digital register
 
 #Acceptance Criteria
  # Be able to display the full address - (for the show and tell)
