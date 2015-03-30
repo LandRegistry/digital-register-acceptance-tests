@@ -24,7 +24,7 @@ def create_title_hash(title_number)
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
     address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
-    uprn: rand(1000..99999)
+    uprn: rand(1000..99_999)
   }
 end
 
@@ -33,7 +33,7 @@ def process_title_template(title)
   eruby = Erubis::Eruby.new(file)
   File.write('./data/test-generated/title.json', eruby.result(binding))
   process_titles_in_directory('test-generated')
-  #Give ElasticSearch time to rerun an election
+  # Give ElasticSearch time to rerun an election
   sleep(2)
   title
 end

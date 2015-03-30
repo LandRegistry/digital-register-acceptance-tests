@@ -196,8 +196,7 @@ When(/^I add a user$/) do
   @new_user['user'] = {}
   @new_user['user']['user_id'] = 'username' + timestamp
   @new_user['user']['password'] = 'dummypassword'
-  response = insert_user(@new_user)
-  puts response
+  insert_user(@new_user)
 end
 
 Then(/^the new user is able to log in$/) do
@@ -210,8 +209,7 @@ end
 
 When(/^I delete an existing user$/) do
   user_to_delete = @new_user['user']['user_id']
-  response = delete_user(user_to_delete)
-  puts response
+  delete_user(user_to_delete)
 end
 
 Then(/^the deleted user is unable to log in$/) do
@@ -226,8 +224,7 @@ When(/^I reset a password of an existing user$/) do
   @user_password_to_update['user'] = {}
   @user_password_to_update['user']['password'] = 'new_password'
   user_id_to_update = @new_user['user']['user_id']
-  response = update_user(@user_password_to_update, user_id_to_update)
-  puts response
+  update_user(@user_password_to_update, user_id_to_update)
 end
 
 Then(/^the user is able to log in using the new password$/) do
