@@ -15,14 +15,15 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
 end
 
 def create_title_hash(title_number)
+  house_number = rand(1..500).to_s
   {
     title_number: title_number,
     street_name: 'Test Street',
     postcode: 'PL9 8TB',
-    house_no: '14',
+    house_no: house_number,
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
-    address_string: '14 Test Street, Plymouth, PL9 8TB',
+    address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
     uprn: rand(1000..99999)
   }
 end
