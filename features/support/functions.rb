@@ -49,7 +49,8 @@ def create_elasticsearch_index
 end
 
 def delete_all_titles_from_elasticsearch
-  `curl -XDELETE http://localhost:9200/landregistry/property_by_postcode`
+  host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
+  `curl -XDELETE #{host}/landregistry/property_by_postcode`
 end
 
 def create_register_tables
