@@ -8,7 +8,7 @@ Scenario: find a single property owner
   When I view the register details page
   Then I can see who owns the selected title
 
-@ignore @US024 @Multiple_Owners @DigitalRegistry
+@US024 @Multiple_Owners @DigitalRegistry
 Scenario: find multiple property owners
   Given I am an initial private beta user
   And I have logged in
