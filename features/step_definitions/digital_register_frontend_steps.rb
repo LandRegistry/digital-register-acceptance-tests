@@ -142,8 +142,8 @@ end
 
 Given(/^I have an address with a single Title Number$/) do
   @title_hash = insert_title_with_owners
-  #require 'pry'
-  #binding.pry
+  # require 'pry'
+  # binding.pry
 end
 
 Given(/^I have a valid username and password$/) do
@@ -249,7 +249,7 @@ Then(/^the user is unable to log in using their old password$/) do
 end
 
 Given(/^I search for a property using the postcode$/) do
-  fill_in 'search_term', :with => @title_hash[:postcode]
+  fill_in 'search_term', with: @title_hash[:postcode]
   click_button('Search')
 end
 

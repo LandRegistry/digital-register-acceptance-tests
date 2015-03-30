@@ -3,22 +3,20 @@ require 'uri'
 require 'net/http'
 
 def insert_title_with_owners(number_proprietors = 1)
-  @title = {
-    title_number: 'DN1000',
-    street_name: 'Test Street',
-    postcode: 'PL9 8TB',
-    house_no: '14',
-    town: 'Plymouth',
-    last_changed: '02 July 1996 at 00:59:59',
-    address_string: '14 Test Street, Plymouth, PL9 8TB'
-  }
+  @title = create_title_hash('DN1000')
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
 end
 
 def insert_title_with_owners_different_title(number_proprietors = 1)
-  @title = {
-    title_number: 'DN1001',
+  @title = create_title_hash('DN1001')
+  @title[:proprietors] = create_proprietors(number_proprietors)
+  process_title_template(@title)
+end
+
+def create_title_hash(title_number)
+  {
+    title_number: title_number,
     street_name: 'Test Street',
     postcode: 'PL9 8TB',
     house_no: '14',
@@ -26,8 +24,6 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
     last_changed: '02 July 1996 at 00:59:59',
     address_string: '14 Test Street, Plymouth, PL9 8TB'
   }
-  @title[:proprietors] = create_proprietors(number_proprietors)
-  process_title_template(@title)
 end
 
 def process_title_template(title)
@@ -52,15 +48,15 @@ end
 def delete_all_titles_from_elasticsearch
   result  = `curl -XDELETE http://localhost:9200/landregistry/property_by_postcode`
   puts result
-  #uri = URI.parse("#{$ELASTICSEARCH}")
-  #http = Net::HTTP.new(uri.host, uri.port)
-  #request = Net::HTTP::Delete.new("/landregistry/property_by_postcode")
-  #response = http.request(request)
-  #if (response.code != '200')
+  # uri = URI.parse("#{$ELASTICSEARCH}")
+  # http = Net::HTTP.new(uri.host, uri.port)
+  # request = Net::HTTP::Delete.new("/landregistry/property_by_postcode")
+  # response = http.request(request)
+  # if (response.code != '200')
   #  puts "Warning : elasticsearch NOT cleared"
-  #else
+  # else
   #  puts "elasticsearch was cleared"
-  #end
+  # end
 end
 
 def create_register_tables
