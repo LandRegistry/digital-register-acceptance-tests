@@ -1,3 +1,7 @@
+Transform /^(-?\d+)$/ do |number|
+  number.to_i
+end
+
 Given(/^I am an initial private beta user$/) do
   @new_user = {}
   @new_user['user'] = {}
@@ -166,7 +170,7 @@ end
 
 Then(/^I should not access the system$/) do
   content = page.body.text
-  expect(content).to include('There was an error with your Username/Password combination.')
+  expect(content).to include('There was an error with your Username/Password combination. If this problem persists please contact us at digital-register-feedback@digital.landregistry.gov.uk')
 end
 
 Given(/^I have a valid username and an incorrect password$/) do
@@ -274,22 +278,31 @@ Then(/^I can view one of the title registers$/) do
   click_link(@title_hash[:address_string])
 end
 
-Given(/^I have failed to login (\d+) times$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given(/^I have failed to login (\d+) times$/) do |failed_login_times|
+  @username = @new_user['user']['user_id']
+  @password = 'rubbish_password'
+  failed_login_times.to_i.times do
+    login_user(@username, @password)
+  end
 end
 
-When(/^I attempt an (\d+)th log in with the correct username and password$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I attempt an 11th log in with the correct username and password$/) do
+  @password = @new_user['user']['password']
+  login_user(@username, @password)
 end
 
 Then(/^I am locked out of the system$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).to include('There was an error with your Username/Password combination')
 end
 
 When(/^a User Admin unlocks my account$/) do
-  pending # express the regexp above with the code you wish you had
+  unlock_user_account(@username)
 end
 
 Then(/^I can login$/) do
-  pending # express the regexp above with the code you wish you had
+  @password = @new_user['user']['password']
+  login_user(@username, @password)
+  content = page.body.text
+  expect(content).to include('Search for Title')
 end
