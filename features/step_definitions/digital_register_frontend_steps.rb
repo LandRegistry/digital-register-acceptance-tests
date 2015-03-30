@@ -3,8 +3,7 @@ Given(/^I am an initial private beta user$/) do
   @new_user['user'] = {}
   @new_user['user']['user_id'] = 'username' + timestamp
   @new_user['user']['password'] = 'dummypassword'
-  response = insert_user(@new_user)
-  puts response
+  insert_user(@new_user)
 end
 
 Given(/^I have logged in$/) do
