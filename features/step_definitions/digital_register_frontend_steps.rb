@@ -273,3 +273,23 @@ end
 Then(/^I can view one of the title registers$/) do
   click_link(@title_hash[:address_string])
 end
+
+Given(/^I have failed to login (\d+) times$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I attempt an (\d+)th log in with the correct username and password$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I am locked out of the system$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^a User Admin unlocks my account$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I can login$/) do
+  pending # express the regexp above with the code you wish you had
+end
