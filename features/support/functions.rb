@@ -36,8 +36,8 @@ end
 
 # connect to the database and execute the sql (that deletes everything)
 def delete_all_titles
-  $db_connection.exec('DELETE FROM title_register_data;')
-  $db_connection.exec('DELETE FROM title_numbers_uprns;')
+  $db_connection.exec('DROP TABLE title_register_data;')
+  $db_connection.exec('DROP TABLE title_numbers_uprns;')
 end
 
 def create_register_tables
