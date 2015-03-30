@@ -142,8 +142,6 @@ end
 
 Given(/^I have an address with a single Title Number$/) do
   @title_hash = insert_title_with_owners
-  # require 'pry'
-  # binding.pry
 end
 
 Given(/^I have a valid username and password$/) do
@@ -276,5 +274,5 @@ Then(/^the address and related title numbers are displayed$/) do
 end
 
 Then(/^I can view one of the title registers$/) do
-  pending # express the regexp above with the code you wish you had
+  click_link(@title_hash[:address_string])
 end

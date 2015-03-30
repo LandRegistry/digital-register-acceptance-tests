@@ -22,7 +22,8 @@ def create_title_hash(title_number)
     house_no: '14',
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
-    address_string: '14 Test Street, Plymouth, PL9 8TB'
+    address_string: '14 Test Street, Plymouth, PL9 8TB',
+    uprn: rand(1000..99999)
   }
 end
 
@@ -31,6 +32,8 @@ def process_title_template(title)
   eruby = Erubis::Eruby.new(file)
   File.write('./data/test-generated/title.json', eruby.result(binding))
   process_titles_in_directory('test-generated')
+  #Give ElasticSearch time to rerun an election
+  sleep(2)
   title
 end
 
@@ -41,22 +44,11 @@ def delete_all_titles
 end
 
 def create_elasticsearch_index
-  result = `sh set_up_elasticsearch.sh`
-  puts result
+  `sh set_up_elasticsearch.sh`
 end
 
 def delete_all_titles_from_elasticsearch
-  result  = `curl -XDELETE http://localhost:9200/landregistry/property_by_postcode`
-  puts result
-  # uri = URI.parse("#{$ELASTICSEARCH}")
-  # http = Net::HTTP.new(uri.host, uri.port)
-  # request = Net::HTTP::Delete.new("/landregistry/property_by_postcode")
-  # response = http.request(request)
-  # if (response.code != '200')
-  #  puts "Warning : elasticsearch NOT cleared"
-  # else
-  #  puts "elasticsearch was cleared"
-  # end
+  `curl -XDELETE http://localhost:9200/landregistry/property_by_postcode`
 end
 
 def create_register_tables
