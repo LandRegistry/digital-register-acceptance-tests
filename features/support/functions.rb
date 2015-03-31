@@ -34,7 +34,7 @@ def process_title_template(title)
   File.write('./data/test-generated/title.json', eruby.result(binding))
   process_titles_in_directory('test-generated')
   # Give ElasticSearch time to rerun an election
-  sleep(2)
+  sleep($ELASTICSEARCH_SLEEP.to_i)
   title
 end
 
