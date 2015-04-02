@@ -166,7 +166,7 @@ end
 
 Then(/^I should not access the system$/) do
   content = page.body.text
-  expect(content).to include('There was an error with your Username/Password combination. Please try again')
+  expect(content).to include('There was an error with your Username/Password combination.')
 end
 
 Given(/^I have a valid username and an incorrect password$/) do
