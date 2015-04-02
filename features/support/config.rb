@@ -28,6 +28,7 @@ end
 page.driver.add_header('Referer', '', permanent: true)
 
 $db_connection = PG::Connection.open(
+  host: "#{$POSTGRES_HOST}",
   dbname: "#{$POSTGRES_DB}",
   user: "#{$POSTGRES_USER}",
   password: "#{$POSTGRES_PASSWORD}"
