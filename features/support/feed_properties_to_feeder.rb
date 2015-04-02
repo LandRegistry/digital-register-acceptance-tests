@@ -1,6 +1,7 @@
 def process_titles_in_directory(data_directory)
   ENV['REGISTER_FILES_PATH'] = "data/#{data_directory}"
-  `sh consume_register_entries.sh`
+  result = `sh consume_register_entries.sh`
+  puts result
   puts 'Error creating title' unless $CHILD_STATUS.to_i == 0
 end
 

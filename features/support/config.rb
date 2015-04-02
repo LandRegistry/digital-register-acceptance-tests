@@ -27,6 +27,8 @@ end
 # This removes the referer for the map tiles to be returned
 page.driver.add_header('Referer', '', permanent: true)
 
+`sh install_requirements.sh`
+
 $db_connection = PG::Connection.open(
   host: "#{$POSTGRES_HOST}",
   dbname: "#{$POSTGRES_DB}",
