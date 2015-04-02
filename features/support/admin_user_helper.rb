@@ -17,7 +17,7 @@ def insert_user(new_user)
 end
 
 def unlock_user_account(username)
-  `curl -XGET http://localhost:8005/admin/user/#{username}/unlock-account`
+  `curl -XGET #{$DIGITAL_LOGIN_API}/admin/user/#{username}/unlock-account`
 end
 
 def delete_user(user_to_delete)

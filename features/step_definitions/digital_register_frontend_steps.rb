@@ -1,4 +1,4 @@
-Transform /^(-?\d+)$/ do |number|
+Transform(/^-?\d+$/) do |number|
   number.to_i
 end
 
@@ -69,7 +69,6 @@ end
 ##
 
 When(/^I view the register details page$/) do
-  puts("#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}")
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}")
 end
 
@@ -303,6 +302,16 @@ end
 Then(/^I can login$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
+  content = page.body.text
+  expect(content).to include('Search for Title')
+end
+
+When(/^I attempt a 10th correct login$/) do
+  @password = @new_user['user']['password']
+  login_user(@username, @password)
+end
+
+Then(/^it can correctly logins$/) do
   content = page.body.text
   expect(content).to include('Search for Title')
 end
