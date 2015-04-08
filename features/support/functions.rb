@@ -30,7 +30,8 @@ def create_title_hash(title_number)
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
     address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
-    uprn: rand(1000..99_999)
+    uprn: rand(1000..99_999),
+    closure_status: 'OPEN'
   }
 end
 

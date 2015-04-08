@@ -21,7 +21,8 @@ def insert_title_non_private_individual_owner
     postcode: 'PL9 7FN',
     town: 'Plymouth',
     house_number: 21,
-    street_name: 'Murhill Lane'
+    street_name: 'Murhill Lane',
+    closure_status: 'OPEN'
   }
 end
 
@@ -41,7 +42,8 @@ def insert_title_charity_non_private_individual_owner
     postcode: 'PL9 7FN',
     town: 'Plymouth',
     house_number: 21,
-    street_name: 'Murhill Lane'
+    street_name: 'Murhill Lane',
+    closure_status: 'OPEN'
   }
 end
 
