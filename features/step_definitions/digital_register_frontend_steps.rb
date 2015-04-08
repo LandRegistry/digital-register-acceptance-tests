@@ -322,5 +322,6 @@ Given(/^the title information is updated$/) do
 end
 
 Then(/^I am able to view the updated information$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).to include(@title_hash[:proprietors][0][:name])
 end
