@@ -314,6 +314,7 @@ end
 Then(/^it can correctly logins$/) do
   content = page.body.text
   expect(content).to include('Search for Title')
+end
 
 Given(/^I have an open title$/) do
   closure_status = 'OPEN'
@@ -338,7 +339,6 @@ Then(/^an unavailable message is displayed$/) do
   content = page.body.text
   expect(content).to include("No result(s) found")
 end
-
 
 Given(/^I have a recently closed title$/) do
   closure_status = 'OPEN'
