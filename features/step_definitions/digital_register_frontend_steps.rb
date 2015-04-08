@@ -315,3 +315,11 @@ Then(/^it can correctly logins$/) do
   content = page.body.text
   expect(content).to include('Search for Title')
 end
+
+Given(/^the title information is updated$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I am able to view the updated information$/) do
+  pending # express the regexp above with the code you wish you had
+end
