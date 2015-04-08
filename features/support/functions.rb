@@ -8,6 +8,12 @@ def insert_title_with_owners(number_proprietors = 1)
   process_title_template(@title)
 end
 
+def update_title_with_new_owners(new_proprietor_name)
+  @title = create_title_hash('DN1000')
+  @title[:proprietors] = new_proprietor(new_proprietor_name)
+  process_title_template(@title)
+end
+
 def insert_title_with_owners_different_title(number_proprietors = 1)
   @title = create_title_hash('DN1001')
   @title[:proprietors] = create_proprietors(number_proprietors)
@@ -103,5 +109,14 @@ def create_proprietors(number_proprietors)
       address: "Proprietor address #{i + 1}"
     }
   end
+  proprietors
+end
+
+def new_proprietor(new_proprietor_name)
+  proprietors = []
+    proprietors << {
+      name: new_proprietor_name,
+      address: "Proprietor address"
+    }
   proprietors
 end

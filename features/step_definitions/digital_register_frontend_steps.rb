@@ -317,7 +317,8 @@ Then(/^it can correctly logins$/) do
 end
 
 Given(/^the title information is updated$/) do
-  pending # express the regexp above with the code you wish you had
+  new_proprietor_name = "Nigel Pain PLC"
+  @title_hash = update_title_with_new_owners(new_proprietor_name)
 end
 
 Then(/^I am able to view the updated information$/) do
