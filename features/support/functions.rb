@@ -40,8 +40,12 @@ end
 
 # connect to the database and execute the sql (that deletes everything)
 def delete_all_titles
-  $db_connection.exec('DROP TABLE title_register_data;')
-  $db_connection.exec('DROP TABLE title_numbers_uprns;')
+  $db_connection.exec('DROP TABLE IF EXISTS title_register_data;')
+  $db_connection.exec('DROP TABLE IF EXISTS title_numbers_uprns;')
+end
+
+def delete_all_users
+  $user_db_connection.exec('DROP TABLE IF EXISTS users;')
 end
 
 def create_elasticsearch_index
@@ -55,8 +59,10 @@ end
 
 def create_register_tables
   delete_all_titles
+  delete_all_users
   create_title_register_data_table
   create_title_numbers_uprns_table
+  create_users_table
 end
 
 def create_title_register_data_table
@@ -76,6 +82,17 @@ CREATE TABLE \"title_numbers_uprns\" (
 );
 CREATE INDEX index_uprn ON title_numbers_uprns(uprn);
 CREATE INDEX index_title_number ON title_numbers_uprns(title_number);")
+end
+
+def create_users_table
+  $user_db_connection.exec("
+CREATE TABLE users
+(
+  user_id character varying(100) NOT NULL,
+  password_hash character varying(64),
+  failed_logins smallint NOT NULL DEFAULT 0,
+  CONSTRAINT user_id_pkey PRIMARY KEY (user_id)
+);")
 end
 
 def create_proprietors(number_proprietors)

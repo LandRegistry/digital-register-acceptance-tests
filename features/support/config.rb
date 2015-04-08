@@ -35,3 +35,10 @@ $db_connection = PG::Connection.open(
   user: "#{$POSTGRES_USER}",
   password: "#{$POSTGRES_PASSWORD}"
 )
+
+$user_db_connection = PG::Connection.open(
+  host: "#{$POSTGRES_HOST}",
+  dbname: "#{$POSTGRES_USER_DB}",
+  user: "#{$POSTGRES_USER}",
+  password: "#{$POSTGRES_PASSWORD}"
+)

@@ -9,8 +9,7 @@ def insert_user(new_user)
   uri = URI.parse("#{$DIGITAL_LOGIN_API}")
   http = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new('/admin/user',
-                                'Content-Type' => 'application/json'
-  )
+                                'Content-Type' => 'application/json')
   request.body = new_user.to_json
   response = http.request(request)
   handle_response(response, 'created')
@@ -24,8 +23,7 @@ def delete_user(user_to_delete)
   uri = URI.parse("#{$DIGITAL_LOGIN_API}")
   http = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Delete.new("/admin/user/#{user_to_delete}",
-                                  'Content-Type' => 'application/json'
-  )
+                                  'Content-Type' => 'application/json')
   request.body = user_to_delete.to_json
   response = http.request(request)
   handle_response(response, 'deleted')
@@ -35,8 +33,7 @@ def update_user(user_password_to_update, user_id_to_update)
   uri = URI.parse("#{$DIGITAL_LOGIN_API}")
   http = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new("/admin/user/#{user_id_to_update}/update",
-                                'Content-Type' => 'application/json'
-  )
+                                'Content-Type' => 'application/json')
   request.body = user_password_to_update.to_json
   response = http.request(request)
   handle_response(response, 'updated')
