@@ -371,7 +371,7 @@ end
 
 Then(/^no information for cookies is displayed$/) do
   content = page.body.text
-  expect(content).should have_no_content('Land Registry uses cookies to make the site simpler.')
+  expect(content).to have_no_content('Land Registry uses cookies to make the site simpler.')
 end
 
 When(/^I click on the cookies link$/) do
