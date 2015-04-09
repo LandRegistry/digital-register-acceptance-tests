@@ -318,7 +318,7 @@ end
 
 Given(/^I have an open title$/) do
   closure_status = 'OPEN'
-  @title_hash = insert_title_with_closure_status(closure_status)
+  @title_hash = insert_title_with_owners(1, closure_status)
 end
 
 Then(/^the register details page is displayed$/) do
@@ -332,19 +332,19 @@ end
 
 Given(/^I have a closed title$/) do
   closure_status = 'TITLE CLOSED'
-  @title_hash = insert_title_with_closure_status(closure_status)
+  @title_hash = insert_title_with_owners(1, closure_status)
 end
 
 Then(/^an unavailable message is displayed$/) do
   content = page.body.text
-  expect(content).to include("No result(s) found")
+  expect(content).to include('No result(s) found')
 end
 
 Given(/^I have a recently closed title$/) do
   closure_status = 'OPEN'
-  @title_hash = insert_title_with_closure_status(closure_status)
+  @title_hash = insert_title_with_owners(1, closure_status)
   closure_status = 'TITLE CLOSED'
-  @title_hash = insert_title_with_closure_status(closure_status)
+  @title_hash = insert_title_with_owners(1, closure_status)
 end
 
 Given(/^the title information is updated$/) do

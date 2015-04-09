@@ -2,8 +2,8 @@ require 'erubis'
 require 'uri'
 require 'net/http'
 
-def insert_title_with_owners(number_proprietors = 1)
-  @title = create_title_hash('DN1000')
+def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
+  @title = create_title_hash('DN1000', closure_status)
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
 end
@@ -20,7 +20,7 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
   process_title_template(@title)
 end
 
-def create_title_hash(title_number)
+def create_title_hash(title_number, closure_status = 'OPEN')
   house_number = rand(1..500).to_s
   {
     title_number: title_number,
@@ -31,7 +31,7 @@ def create_title_hash(title_number)
     last_changed: '02 July 1996 at 00:59:59',
     address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
     uprn: rand(1000..99_999),
-    closure_status: 'OPEN'
+    closure_status: closure_status
   }
 end
 
