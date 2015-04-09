@@ -359,12 +359,14 @@ Then(/^I am able to view the updated information$/) do
   expect(content).to include(@title_hash[:proprietors][0][:name])
 end
 
-Then(/^I am informed that we are using cookies$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I visit the login page$/) do
+  visit("#{$DIGITAL_REGISTER_URL}/login")
 end
 
 Then(/^I am informed that we are using cookies$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).to include('Land Registry uses cookies to make the site simpler.')
+  find_link('Find out more about cookies').visible?
 end
 
 Then(/^no information for cookies is displayed$/) do
