@@ -114,9 +114,9 @@ end
 
 def new_proprietor(new_proprietor_name)
   proprietors = []
-    proprietors << {
-      name: new_proprietor_name,
-      address: "Proprietor address"
-    }
+  proprietors << {
+    name: new_proprietor_name,
+    address: 'Proprietor address'
+  }
   proprietors
 end

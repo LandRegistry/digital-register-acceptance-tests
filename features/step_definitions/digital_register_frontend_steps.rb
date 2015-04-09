@@ -317,7 +317,7 @@ Then(/^it can correctly logins$/) do
 end
 
 Given(/^the title information is updated$/) do
-  new_proprietor_name = "Nigel Pain PLC"
+  new_proprietor_name = 'Nigel Pain PLC'
   @title_hash = update_title_with_new_owners(new_proprietor_name)
 end
 
