@@ -374,11 +374,12 @@ Then(/^no information for cookies is displayed$/) do
 end
 
 When(/^I click on the cookies link$/) do
-  pending # express the regexp above with the code you wish you had
+  click_link('Cookies')
 end
 
 Then(/^information on cookies is displayed$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).to include('The digital register service puts small files (known as ‘cookies’) onto your computer.')
 end
 
 Given(/^I search for a property entering a postcode with no spaces$/) do
