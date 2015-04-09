@@ -13,6 +13,7 @@ end
 Given(/^I have logged in$/) do
   @username = @new_user['user']['user_id']
   @password = @new_user['user']['password']
+  Capybara.reset_sessions!
   visit("#{$DIGITAL_REGISTER_URL}/login")
   fill_in 'username', with: @username
   fill_in 'password', with: @password
@@ -317,7 +318,6 @@ Then(/^it can correctly logins$/) do
   expect(content).to include('Search for Title')
 end
 
-<<<<<<< HEAD
 Given(/^I have an open title$/) do
   closure_status = 'OPEN'
   @title_hash = insert_title_with_owners(1, closure_status)
@@ -357,12 +357,13 @@ end
 Then(/^I am able to view the updated information$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:proprietors][0][:name])
-=======
+end
+
 Then(/^I am informed that we are using cookies$/) do
   pending # express the regexp above with the code you wish you had
 end
 
-Given(/^I am logging in for a subsequent session$/) do
+Then(/^I am informed that we are using cookies$/) do
   pending # express the regexp above with the code you wish you had
 end
 
@@ -376,7 +377,6 @@ end
 
 Then(/^information on cookies is displayed$/) do
   pending # express the regexp above with the code you wish you had
->>>>>>> add acceptance test and snippets for cookie disclaimer
 end
 
 Given(/^I search for a property entering a postcode with no spaces$/) do
