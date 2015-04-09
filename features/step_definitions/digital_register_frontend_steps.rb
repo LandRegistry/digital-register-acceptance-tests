@@ -370,7 +370,8 @@ Then(/^I am informed that we are using cookies$/) do
 end
 
 Then(/^no information for cookies is displayed$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).should have_no_content('Land Registry uses cookies to make the site simpler.')
 end
 
 When(/^I click on the cookies link$/) do
