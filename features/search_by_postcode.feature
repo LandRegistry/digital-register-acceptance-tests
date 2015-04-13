@@ -22,7 +22,6 @@ Scenario: Search for multiple titles by postcode
   Then the address and related title numbers are displayed
   And I can view one of the title registers
 
-  @US21
 Scenario: Search Single Title By Postcode with no spaces
   Given I have an address with a single Title Number
   And I search for a property entering a postcode with no spaces

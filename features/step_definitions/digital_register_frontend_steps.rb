@@ -69,6 +69,7 @@ end
 ##
 
 When(/^I view the register details page$/) do
+  puts "#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}"
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}")
 end
 
@@ -355,4 +356,10 @@ end
 Then(/^I am able to view the updated information$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:proprietors][0][:name])
+end
+
+Given(/^I search for a property entering a postcode with no spaces$/) do
+  puts @title_hash[:postcode]
+  fill_in 'search_term', with: 'PL98TB'
+  click_button('Search')
 end
