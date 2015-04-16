@@ -1,7 +1,3 @@
-Transform(/^-?\d+$/) do |number|
-  number.to_i
-end
-
 Given(/^I am an initial private beta user$/) do
   @new_user = {}
   @new_user['user'] = {}
@@ -13,6 +9,7 @@ end
 Given(/^I have logged in$/) do
   @username = @new_user['user']['user_id']
   @password = @new_user['user']['password']
+  Capybara.reset_sessions!
   visit("#{$DIGITAL_REGISTER_URL}/login")
   fill_in 'username', with: @username
   fill_in 'password', with: @password
@@ -69,6 +66,7 @@ end
 ##
 
 When(/^I view the register details page$/) do
+  puts "#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}"
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}")
 end
 
@@ -137,10 +135,6 @@ end
 Then(/^only the information for the selected Title Number will be displayed$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:title_number])
-end
-
-Given(/^I am a citizen$/) do
-  # DO NOTHING
 end
 
 Given(/^I have an address with a single Title Number$/) do
@@ -355,4 +349,34 @@ end
 Then(/^I am able to view the updated information$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:proprietors][0][:name])
+end
+
+When(/^I visit the login page$/) do
+  visit("#{$DIGITAL_REGISTER_URL}/login")
+end
+
+Then(/^I am informed that we are using cookies$/) do
+  content = page.body.text
+  expect(content).to include('Land Registry uses cookies to make the site simpler.')
+  find_link('Find out more about cookies').visible?
+end
+
+Then(/^no information for cookies is displayed$/) do
+  content = page.body.text
+  expect(content).to have_no_content('Land Registry uses cookies to make the site simpler.')
+end
+
+When(/^I click on the cookies link$/) do
+  click_link('Cookies')
+end
+
+Then(/^information on cookies is displayed$/) do
+  content = page.body.text
+  expect(content).to include('The digital register service puts small files (known as ‘cookies’) onto your computer.')
+end
+
+Given(/^I search for a property entering a postcode with no spaces$/) do
+  puts @title_hash[:postcode]
+  fill_in 'search_term', with: 'PL98TB'
+  click_button('Search')
 end
