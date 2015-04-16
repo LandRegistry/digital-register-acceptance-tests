@@ -21,6 +21,6 @@ Background:
     Then I can view the register details for the selected title
 
   Scenario: Titles with Private Individuals are displayed
-    Give I have a title with a private individual owner
+    Given I have a title with a private individual owner
     When I view the register details page
     Then I get a page not found message
