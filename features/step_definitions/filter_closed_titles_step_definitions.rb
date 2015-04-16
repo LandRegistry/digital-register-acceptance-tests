@@ -1,7 +1,3 @@
-Transform(/^-?\d+$/) do |number|
-  number.to_i
-end
-
 Given(/^I am an initial private beta user$/) do
   @new_user = {}
   @new_user['user'] = {}
