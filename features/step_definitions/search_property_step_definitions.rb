@@ -18,6 +18,11 @@ Given(/^I search for a property using the postcode$/) do
   click_button('Search')
 end
 
+Given(/^I search for a property entering a postcode with no spaces$/) do
+ fill_in 'search_term', with: 'PL98TB'
+ click_button('Search')
+end
+
 Then(/^the address and related title number is displayed$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:postcode])
