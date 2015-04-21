@@ -48,3 +48,24 @@ end
 Then(/^I can view one of the title registers$/) do
   click_link(@title_hash[:address_string])
 end
+
+When(/^I search for a property using the whole address$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I will be displayed a list of results$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^they will include the address that has been searched for$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I search for a property using only the City part of an address$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do
+  # TODO: ARG for number_of_addresses
+  pending # express the regexp above with the code you wish you had
+end
