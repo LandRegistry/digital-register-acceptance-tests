@@ -15,7 +15,8 @@ Background:
 
   Scenario: Search by whole of property address
     When I search for a property using the whole address
-    Then only the information for that address will be displayed in the search result
+    Then I will be displayed a list of results
+    And they will include the address that has been searched for
 
 
   Scenario: Search by part of property address
