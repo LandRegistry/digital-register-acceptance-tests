@@ -77,8 +77,11 @@ def create_title_register_data_table
 CREATE TABLE \"title_register_data\" (
   \"title_number\" character(10),
   \"register_data\" json,
-  \"geometry_data\" json
-);")
+  \"geometry_data\" json,
+  \"is_deleted\" boolean,
+  \"last_modified\" timestamp with time zone
+);
+CREATE INDEX idx_title_number_and_last_modified ON title_register_data (title_number, is_deleted);")
 end
 
 def create_title_numbers_uprns_table
