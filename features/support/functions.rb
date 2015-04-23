@@ -1,6 +1,7 @@
 require 'erubis'
 require 'uri'
 require 'net/http'
+require 'w3c_validators'
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
   @title = create_title_hash('DN1000', closure_status)
