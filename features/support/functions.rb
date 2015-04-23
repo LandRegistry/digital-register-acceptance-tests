@@ -125,7 +125,7 @@ def new_proprietor(new_proprietor_name)
   proprietors
 end
 
-#Function to perform w3c compliance check against the provided page using the w3c_validators gem
+# Function to perform w3c compliance check against the provided page using the w3c_validators gem
 def validate_page(page)
   validator = MarkupValidator.new
   results = validator.validate_text(page)
