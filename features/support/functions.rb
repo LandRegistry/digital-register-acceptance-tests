@@ -129,9 +129,9 @@ end
 def validate_page(page)
   validator = MarkupValidator.new
   results = validator.validate_text(page)
-  if results.errors.length > 0
+  return unless results.errors.length > 0
     results.errors.each do |err|
-      raise("Error #{err.message} on page #{page.current_url}")
+      fail("Error #{err.message} on page #{page.current_url}")
     end
   end
 end
