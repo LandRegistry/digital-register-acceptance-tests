@@ -3,6 +3,8 @@ require 'uri'
 require 'net/http'
 require 'w3c_validators'
 
+include W3CValidators
+
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
   @title = create_title_hash('DN1000', closure_status)
   @title[:proprietors] = create_proprietors(number_proprietors)
@@ -126,7 +128,7 @@ end
 #Function to perform w3c compliance check against the provided page using the w3c_validators gem
 def validate_page(page)
   validator = MarkupValidator.new
-  results = validator.validate_text(page.body)
+  results = validator.validate_text(page)
   if results.errors.length > 0
     results.errors.each do |err|
       raise("Error #{err.message} on page #{page.current_url}")

@@ -2,6 +2,10 @@ When(/^I visit the login page$/) do
   visit("#{$DIGITAL_REGISTER_URL}/login")
 end
 
+Given(/^I visit the cookies page$/) do
+  visit("#{$DIGITAL_REGISTER_URL}/cookies")
+end
+
 Then(/^I am informed that we are using cookies$/) do
   content = page.body.text
   expect(content).to include('Land Registry uses cookies to make the site simpler.')
