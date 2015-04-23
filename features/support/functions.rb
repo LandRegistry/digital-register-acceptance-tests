@@ -130,7 +130,7 @@ def validate_page(page)
   validator = MarkupValidator.new
   results = validator.validate_text(page)
   return unless results.errors.length > 0
-    results.errors.each do |err|
-      fail("Error #{err.message} on page #{page.current_url}")
-    end
+  results.errors.each do |err|
+    fail("Error #{err.message} on page #{page.current_url}")
+  end
 end
