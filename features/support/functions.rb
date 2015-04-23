@@ -133,5 +133,4 @@ def validate_page(page)
     results.errors.each do |err|
       fail("Error #{err.message} on page #{page.current_url}")
     end
-  end
 end
