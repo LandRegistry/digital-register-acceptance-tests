@@ -81,7 +81,8 @@ CREATE TABLE \"title_register_data\" (
   \"is_deleted\" boolean,
   \"last_modified\" timestamp with time zone
 );
-CREATE INDEX idx_title_number_and_last_modified ON title_register_data (title_number, is_deleted);")
+CREATE INDEX idx_last_modified_and_title_number ON title_register_data (last_modified,
+  title_number);")
 end
 
 def create_title_numbers_uprns_table
