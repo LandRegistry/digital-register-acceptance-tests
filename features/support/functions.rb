@@ -20,6 +20,12 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
   process_title_template(@title)
 end
 
+def insert_title_with_number(title_number)
+  @title = create_title_hash(title_number, 'OPEN')
+  @title[:proprietors] = create_proprietors(1)
+  process_title_template(@title)
+end
+
 def create_title_hash(title_number, closure_status = 'OPEN')
   house_number = rand(1..500).to_s
   {

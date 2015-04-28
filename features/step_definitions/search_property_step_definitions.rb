@@ -38,6 +38,12 @@ Given(/^I have an address with multiple Title Numbers$/) do
   @title_hash2 = insert_title_with_owners_different_title
 end
 
+Given(/^I have (\d+) addresses in the same City$/) do |number_addresses|
+  number_addresses.to_i.times do |i|
+    insert_title_with_number("DN#{i}")
+  end
+end
+
 Then(/^the address and related title numbers are displayed$/) do
   content = page.body.text
   expect(content).to include(@title_hash[:postcode])
@@ -50,22 +56,28 @@ Then(/^I can view one of the title registers$/) do
 end
 
 When(/^I search for a property using the whole address$/) do
-  pending # express the regexp above with the code you wish you had
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search/")
+  fill_in 'search_term', with: @title_hash[:address_string]
+  click_button('Search')
 end
 
 Then(/^I will be displayed a list of results$/) do
-  pending # express the regexp above with the code you wish you had
+  number_results = page.all(:css, 'ol.result').count
+  expect(number_results).to be >= 1
 end
 
 Then(/^they will include the address that has been searched for$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body
+  expect(content).to include(@title_hash[:address_string])
 end
 
 When(/^I search for a property using only the City part of an address$/) do
-  pending # express the regexp above with the code you wish you had
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search/")
+  fill_in 'search_term', with: 'Plymouth'
+  click_button('Search')
 end
 
-Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do
-  # TODO: ARG for number_of_addresses
-  pending # express the regexp above with the code you wish you had
+Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
+  number_results = page.all(:css, 'ol.result').count
+  expect(number_results).to be <= n.to_i
 end
