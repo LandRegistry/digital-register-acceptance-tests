@@ -55,13 +55,9 @@ def delete_all_users
   $user_db_connection.exec('DROP TABLE IF EXISTS users;')
 end
 
-def create_elasticsearch_index
-  `sh set_up_elasticsearch.sh`
-end
-
 def delete_all_titles_from_elasticsearch
   host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
-  `curl -XDELETE #{host}/landregistry/property_by_postcode`
+  `curl -XDELETE #{host}/landregistry/property_by_postcode/_query -d '{"query": {"bool": {"must": [{"match_all": {}}]}}}'`
 end
 
 def create_register_tables
