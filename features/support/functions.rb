@@ -1,6 +1,9 @@
 require 'erubis'
 require 'uri'
 require 'net/http'
+require 'w3c_validators'
+
+include W3CValidators
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
   @title = create_title_hash('DN1000', closure_status)
@@ -124,4 +127,14 @@ def new_proprietor(new_proprietor_name)
     address: 'Proprietor address'
   }
   proprietors
+end
+
+# Function to perform w3c compliance check against the provided page using the w3c_validators gem
+def validate_page(page)
+  validator = MarkupValidator.new
+  results = validator.validate_text(page)
+  return unless results.errors.length > 0
+  results.errors.each do |err|
+    fail("Error #{err.message} on page #{page.current_url}")
+  end
 end
