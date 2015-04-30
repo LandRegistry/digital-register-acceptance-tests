@@ -14,11 +14,12 @@ Background:
 	And I have logged in
 
   Scenario: Search by whole of property address
+    Given I have an address with a single Title Number
     When I search for a property using the whole address
     Then I will be displayed a list of results
     And they will include the address that has been searched for
 
-
   Scenario: Search by part of property address
+    Given I have 51 addresses in the same City
     When I search for a property using only the City part of an address
-    Then I can see a maximum of 200 addresses included in the search result
+    Then I can see a maximum of 50 addresses included in the search result
