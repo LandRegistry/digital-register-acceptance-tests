@@ -47,59 +47,27 @@ end
 
 # connect to the database and execute the sql (that deletes everything)
 def delete_all_titles
-  $db_connection.exec('DROP TABLE IF EXISTS title_register_data;')
-  $db_connection.exec('DROP TABLE IF EXISTS title_numbers_uprns;')
+  $db_connection.exec('DELETE FROM title_register_data;')
+  $db_connection.exec('DELETE FROM title_numbers_uprns;')
 end
 
 def delete_all_users
-  $user_db_connection.exec('DROP TABLE IF EXISTS users;')
+  $user_db_connection.exec('DELETE FROM users;')
 end
 
 def delete_all_titles_from_elasticsearch
   host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
-  `curl -XDELETE #{host}/landregistry/property_by_postcode/_query -d '{"query": {"bool": {"must": [{"match_all": {}}]}}}'`
+  match_all_query = '{"query": {"bool": {"must": [{"match_all": {}}]}}}'
+
+  doc_types = %w(property_by_postcode property_by_postcode_2 property_by_address)
+  doc_types.each do |doc_type|
+    `curl -XDELETE #{host}/landregistry/#{doc_type}/_query -d '#{match_all_query}'`
+  end
 end
 
-def create_register_tables
+def clean_register_database
   delete_all_titles
   delete_all_users
-  create_title_register_data_table
-  create_title_numbers_uprns_table
-  create_users_table
-end
-
-def create_title_register_data_table
-  $db_connection.exec("
-CREATE TABLE \"title_register_data\" (
-  \"title_number\" character(10),
-  \"register_data\" json,
-  \"geometry_data\" json,
-  \"is_deleted\" boolean,
-  \"last_modified\" timestamp with time zone
-);
-CREATE INDEX idx_last_modified_and_title_number ON title_register_data (last_modified,
-  title_number);")
-end
-
-def create_title_numbers_uprns_table
-  $db_connection.exec("
-CREATE TABLE \"title_numbers_uprns\" (
-\"title_number\" character (10),
-\"uprn\" character(10)
-);
-CREATE INDEX index_uprn ON title_numbers_uprns(uprn);
-CREATE INDEX index_title_number ON title_numbers_uprns(title_number);")
-end
-
-def create_users_table
-  $user_db_connection.exec("
-CREATE TABLE users
-(
-  user_id character varying(100) NOT NULL,
-  password_hash character varying(64),
-  failed_logins smallint NOT NULL DEFAULT 0,
-  CONSTRAINT user_id_pkey PRIMARY KEY (user_id)
-);")
 end
 
 def create_proprietors(number_proprietors)

@@ -3,7 +3,7 @@ Before do
   return $tables_created if $tables_created
   delete_all_titles_from_elasticsearch # es-updater should recreate
   sleep($ELASTICSEARCH_SLEEP.to_i)
-  create_register_tables
+  clean_register_database
 end
 
 Before('@existing_user') do
@@ -19,7 +19,7 @@ at_exit do
   puts 'Recreating tables and indexes'
   unless $tables_created
     delete_all_titles_from_elasticsearch # es-updater should recreate
-    create_register_tables
+    clean_register_database
   end
   sleep($ELASTICSEARCH_SLEEP.to_i)
   puts 'Creating user landregistry with password integration'
