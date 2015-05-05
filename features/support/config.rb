@@ -21,7 +21,16 @@ Capybara.javascript_driver = :poltergeist
 
 ### Set the options for poltergeist to use
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, inspector: true, timeout: 240, js_errors: false)
+  Capybara::Poltergeist::Driver.new(
+    app,
+    inspector: true,
+    timeout: 240,
+    js_errors: false,
+    phantomjs_options: [
+      '--ignore-ssl-errors=yes',
+      '--local-to-remote-url-access=yes'
+    ]
+  )
 end
 
 # This removes the referer for the map tiles to be returned
