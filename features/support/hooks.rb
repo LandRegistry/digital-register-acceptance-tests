@@ -18,8 +18,8 @@ at_exit do
   puts 'End of Cucumber tests'
   puts 'Recreating tables and indexes'
   unless $tables_created
-    delete_all_titles_from_elasticsearch # es-updater should recreate
     clean_register_database
+    delete_all_titles_from_elasticsearch # es-updater should recreate
   end
   sleep($ELASTICSEARCH_SLEEP.to_i)
   puts 'Creating user landregistry with password integration'
