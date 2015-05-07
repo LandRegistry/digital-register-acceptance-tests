@@ -6,7 +6,7 @@ Background:
 	And I have logged in
 
 Scenario: display tenure information
-  And I have a title with a tenure of type x
+  And I have a title with a tenure of Freehold
   When I view the register details page
   Then I see the tenure information in the summary box
 
