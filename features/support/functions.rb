@@ -57,7 +57,6 @@ end
 # connect to the database and execute the sql (that deletes everything)
 def delete_all_titles
   $db_connection.exec('DELETE FROM title_register_data;')
-  $db_connection.exec('DELETE FROM title_numbers_uprns;')
 end
 
 def delete_all_users
