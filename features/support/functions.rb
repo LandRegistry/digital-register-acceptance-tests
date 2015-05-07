@@ -6,21 +6,25 @@ require 'w3c_validators'
 include W3CValidators
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
-  @title = create_title_hash('DN1000', closure_status)
+  @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
 end
 
 def update_title_with_new_owners(new_proprietor_name)
-  @title = create_title_hash('DN1000')
+  @title = create_title_hash(random_title_number)
   @title[:proprietors] = new_proprietor(new_proprietor_name)
   process_title_template(@title)
 end
 
 def insert_title_with_owners_different_title(number_proprietors = 1)
-  @title = create_title_hash('DN1001')
+  @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
+end
+
+def random_title_number
+  "DN#{rand(100..9999)}"
 end
 
 def insert_title_with_number(title_number)
