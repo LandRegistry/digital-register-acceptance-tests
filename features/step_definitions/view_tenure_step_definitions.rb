@@ -1,15 +1,9 @@
-Given(/^I have a title with a tenure of type x$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I have a title with a tenure of Freehold$/) do
+  tenure_type = 'Freehold'
+  @title_hash = insert_title_with_tenure(1, tenure_type)
 end
 
 Then(/^I see the tenure information in the summary box$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^I have a title with no tenure type$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I see a no tenure message in the summary box$/) do
-  pending # express the regexp above with the code you wish you had
+  content = page.body.text
+  expect(content).to include(@title_hash[:tenure_type])
 end
