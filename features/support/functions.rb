@@ -11,6 +11,12 @@ def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
   process_title_template(@title)
 end
 
+def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
+  @title = create_title_hash('DN1000', 'OPEN', tenure_type)
+  @title[:proprietors] = create_proprietors(number_proprietors)
+  process_title_template(@title)
+end
+
 def update_title_with_new_owners(new_proprietor_name)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = new_proprietor(new_proprietor_name)
@@ -33,7 +39,7 @@ def insert_title_with_number(title_number)
   process_title_template(@title)
 end
 
-def create_title_hash(title_number, closure_status = 'OPEN')
+def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')
   house_number = rand(1..500).to_s
   {
     title_number: title_number,
@@ -44,7 +50,8 @@ def create_title_hash(title_number, closure_status = 'OPEN')
     last_changed: '02 July 1996 at 00:59:59',
     address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
     uprn: rand(1000..99_999),
-    closure_status: closure_status
+    closure_status: closure_status,
+    tenure_type: tenure_type
   }
 end
 

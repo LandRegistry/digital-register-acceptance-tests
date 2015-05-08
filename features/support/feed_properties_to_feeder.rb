@@ -22,7 +22,8 @@ def insert_title_non_private_individual_owner
     town: 'Plymouth',
     house_number: 21,
     street_name: 'Murhill Lane',
-    closure_status: 'OPEN'
+    closure_status: 'OPEN',
+    tenure_type: 'Freehold'
   }
 end
 
