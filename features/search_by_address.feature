@@ -23,3 +23,8 @@ Background:
     Given I have 51 addresses in the same City
     When I search for a property using only the City part of an address
     Then I can see a maximum of 50 addresses included in the search result
+
+  Scenario: No search term entered
+    Given I have an address with a single Title Number
+    When I search for a property using no search term
+    Then an unavailable message is displayed
