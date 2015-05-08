@@ -10,8 +10,7 @@ Then(/^I can see all the addresses in the order they are displayed on the regist
   pending # express the regexp above with the code you wish you had
 end
 
-Given(/^I have a title with (\d+) owners$/) do ||
-  # TODO: Add the argument in for the number of owners when to be used
+Given(/^I have a title with 3 owners$/) do
   pending # express the regexp above with the code you wish you had
 end
 
