@@ -15,7 +15,7 @@ Given(/^I have logged in$/) do
   fill_in 'password', with: @password
   click_button('signin')
   content = page.body.text
-  expect(content).to include('Search for Title')
+  expect(content).to include('Find a title')
 end
 
 Given(/^I have a valid username and password$/) do
@@ -29,7 +29,7 @@ end
 
 Then(/^I should access the system$/) do
   content = page.body.text
-  expect(content).to include('Search for Title')
+  expect(content).to include('Find a title')
   # TODO: This is to be refactored, not happy with just checking the text on the page
 end
 
@@ -87,7 +87,7 @@ Then(/^I can login$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include('Search for Title')
+  expect(content).to include('Find a title')
 end
 
 When(/^I attempt a 10th correct login$/) do
@@ -97,7 +97,7 @@ end
 
 Then(/^it can correctly logins$/) do
   content = page.body.text
-  expect(content).to include('Search for Title')
+  expect(content).to include('Find a title')
 end
 
 Given(/^I am a citizen$/) do
