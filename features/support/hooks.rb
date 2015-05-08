@@ -28,6 +28,8 @@ at_exit do
   @new_user['user']['user_id'] = 'landregistry'
   @new_user['user']['password'] = 'integration'
   insert_user(@new_user)
-  puts 'Creating title DN1000 with postcode PL9 8TB'
-  insert_title_with_owners
+  puts 'Creating 51 titles with postcode PL9 8TB'
+  51.times do |i|
+    insert_title_with_number("DN100#{i}")
+  end
 end
