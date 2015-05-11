@@ -15,7 +15,7 @@ Then(/^the new user is able to log in$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include('Search for Title')
+  expect(content).to include('Find a title')
 end
 
 When(/^I delete an existing user$/) do
@@ -43,7 +43,7 @@ Then(/^the user is able to log in using the new password$/) do
   @password = @user_password_to_update['user']['password']
   login_user(@username, @password)
   content = page.body.text
-  expect(content).to include('Search for Title')
+  expect(content).to include('Find a title')
 end
 
 Then(/^the user is unable to log in using their old password$/) do
