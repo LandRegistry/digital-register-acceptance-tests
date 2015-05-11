@@ -22,7 +22,8 @@ Background:
   Scenario: Search by part of property address
     Given I have 51 addresses in the same City
     When I search for a property using only the City part of an address
-    Then I can see a maximum of 50 addresses included in the search result
+    Then I can see at least 50 addresses included in the search result
+    And I can see a maximum of 50 addresses included in the search result
 
   Scenario: No search term entered
     Given I have an address with a single Title Number

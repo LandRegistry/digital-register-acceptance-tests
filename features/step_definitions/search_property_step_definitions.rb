@@ -81,6 +81,11 @@ When(/^I search for a property using only the City part of an address$/) do
   click_button('Search')
 end
 
+Then(/^I can see at least (\d+) addresses included in the search result$/) do |n|
+  number_results = page.all(:css, 'ol.result').count
+  expect(number_results).to be >= n.to_i
+end
+
 Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
   number_results = page.all(:css, 'ol.result').count
   expect(number_results).to be <= n.to_i
