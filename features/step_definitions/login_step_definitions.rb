@@ -95,7 +95,7 @@ When(/^I attempt a 10th correct login$/) do
   login_user(@username, @password)
 end
 
-Then(/^it can correctly logins$/) do
+Then(/^I can see the search page$/) do
   content = page.body.text
   expect(content).to include('Find a title')
 end

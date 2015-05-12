@@ -17,4 +17,4 @@ Scenario: User is able to login in after User Admin unlocks account
 Scenario: User will not be locked out of their account after 9 failed logins
 	Given I have failed to login 9 times
 	When I attempt a 10th correct login
-	Then it can correctly logins
+	Then I can see the search page
