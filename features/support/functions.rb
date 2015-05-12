@@ -11,6 +11,12 @@ def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
   process_title_template(@title)
 end
 
+def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_status = 'OPEN', address_types = ["BFPO", "FOREIGN", "UNKNOWN"])
+  @title = create_title_hash(random_title_number, closure_status)
+  @title[:proprietors] = create_proprietors(number_proprietors, address_types)
+  process_title_template(@title)
+end
+
 def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
   @title = create_title_hash('DN1000', 'OPEN', tenure_type)
   @title[:proprietors] = create_proprietors(number_proprietors)
@@ -89,15 +95,27 @@ def clean_register_database
   delete_all_users
 end
 
-def create_proprietors(number_proprietors)
+def create_proprietors(number_proprietors, address_types = ['UNKNOWN'])
   proprietors = []
   number_proprietors.times do |i|
     proprietors << {
       name: "Proprietor name #{i + 1}",
-      address: "Proprietor address #{i + 1}"
+      addresses: create_proprietor_addresses(address_types)
     }
   end
   proprietors
+end
+
+def create_proprietor_addresses(address_types)
+  proprietor_addresses = []
+  address_types.each do |i|
+    proprietor_addresses << {
+      address_string: "address string #{i}",
+      address_type: "#{i}",
+      auto_uppercase_override: true
+    }
+  end
+  proprietor_addresses
 end
 
 def new_proprietor(new_proprietor_name)

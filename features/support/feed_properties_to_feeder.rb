@@ -12,6 +12,19 @@ def insert_title_with_multiple_index_polygons
   }
 end
 
+def insert_title_with_multiple_owner_contact_details
+  process_titles_in_directory('private-individual-multiple-contact-info')
+  {
+    title_number: 'AGL1006',
+    postcode: 'PL9 7FN',
+    town: 'Plymouth',
+    house_number: 21,
+    street_name: 'Murhill Lane',
+    closure_status: 'OPEN',
+    tenure_type: 'Freehold'
+  }
+end
+
 def insert_title_non_private_individual_owner
   process_titles_in_directory('non-private-individual-owner')
   {

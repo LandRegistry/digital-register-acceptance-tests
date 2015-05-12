@@ -10,8 +10,7 @@ Background:
 	And I have logged in
 
   Scenario:  one owner multiple addresses
-    And I have a title with one owner
-    And the owner has property, email and DX addresses
+    And I have a title with one owner that has property, foreign and BFPO addresses
     When I view the register details page
     Then I can see the owner for the selected title
     And I can see all the addresses in the order they are displayed on the register
