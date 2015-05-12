@@ -13,15 +13,9 @@ def insert_title_with_multiple_index_polygons
 end
 
 def insert_title_with_multiple_owner_contact_details
-  process_titles_in_directory('private-individual-multiple-contact-info')
+  process_titles_in_directory('test-generated')
   {
-    title_number: 'AGL1006',
-    postcode: 'PL9 7FN',
-    town: 'Plymouth',
-    house_number: 21,
-    street_name: 'Murhill Lane',
-    closure_status: 'OPEN',
-    tenure_type: 'Freehold'
+    title_number: 'AGL1006'
   }
 end
 
@@ -37,13 +31,6 @@ def insert_title_non_private_individual_owner
     street_name: 'Murhill Lane',
     closure_status: 'OPEN',
     tenure_type: 'Freehold'
-  }
-end
-
-def insert_title_private_individual_owner
-  process_titles_in_directory('private-individual-owner')
-  {
-    title_number: 'AGL1001'
   }
 end
 
