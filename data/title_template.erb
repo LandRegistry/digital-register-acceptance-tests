@@ -83,13 +83,7 @@
               "proprietors": [
                 <% @title[:proprietors].each_with_index do |proprietor, index| %>
                 {
-                  "addresses": [
-                    {
-                      "address_string": "<%=proprietor[:address]%>",
-                      "address_type": "UNKNOWN",
-                      "auto_uppercase_override": true
-                    }
-                  ],
+                  "addresses": <%=proprietor[:addresses].to_json%>,
                   "name": {
                     "name_category": "LIMITED COMPANY OR PUBLIC LIMITED COMPANY",
                     "auto_uppercase_override": true,
