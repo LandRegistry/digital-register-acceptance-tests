@@ -15,7 +15,6 @@ Background:
     Then I can see the owner for the selected title
     And I can see all the addresses in the order they are displayed on the register
 
-@failed
   Scenario: find multiple property owner addresses
     And I have a title with 3 owners
     And the owners have BFPO and foreign addresses

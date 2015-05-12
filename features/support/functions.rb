@@ -11,7 +11,7 @@ def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
   process_title_template(@title)
 end
 
-def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_status = 'OPEN', address_types = ["BFPO", "FOREIGN", "UNKNOWN"])
+def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_status = 'OPEN', address_types = %w(BFPO FOREIGN UNKNOWN))
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_proprietors(number_proprietors, address_types)
   process_title_template(@title)

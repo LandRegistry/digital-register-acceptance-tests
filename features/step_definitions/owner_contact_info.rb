@@ -11,21 +11,29 @@ Then(/^I can see the owner for the selected title$/) do
 end
 
 Then(/^I can see all the addresses in the order they are displayed on the register$/) do
-  @title_hash[:proprietors][0][:addresses].each_with_index do |index|
+  @title_hash[:proprietors][0][:addresses].each_with_index do |_, index|
     within('group') do
-      expect(page.find("grid grid-1-2:nth-child(#{index})")).to have_content "address string #{@title_hash[:proprietors][0][:addresses]["#{index}"]}"
+      expect(page.find("grid grid-1-2:nth-child(#{index})")).to have_content "address string #{@title_hash[:proprietors][0][:addresses][index]}"
     end
   end
 end
 
 Given(/^I have a title with 3 owners$/) do
-  @title_hash = insert_title_with_multiple_owner_addresses(number_proprietors = 3, address_types = ["BFPO", "FOREIGN"])
+  @title_hash = insert_title_with_multiple_owner_addresses(3, 'OPEN', %w(BFPO FOREIGN))
 end
 
-Given(/^the owners have DX and foreign addresses$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^the owners have BFPO and foreign addresses$/) do
+  # BFPO and Foreign are default in the previous created address
 end
 
 Then(/^I can see all the owners addresses in the order they are displayed on the register$/) do
-  pending # express the regexp above with the code you wish you had
+  address_index = 0
+  @title_hash[:proprietors].each_with_index do |proprietor, proprietor_index|
+    proprietor[:addresses].each_with_index do |_, index|
+      within('group') do
+        expect(page.find("grid grid-1-2:nth-child(#{address_index})")).to have_content "address string #{@title_hash[:proprietors][proprietor_index][:addresses][index]}"
+      end
+      address_index += 1
+    end
+  end
 end
