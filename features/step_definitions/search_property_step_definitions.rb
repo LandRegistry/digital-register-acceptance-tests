@@ -1,5 +1,5 @@
 Given(/^I search for a property using the Title Number$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search/")
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   fill_in 'search_term', with: @title_hash[:title_number]
   click_button('Search')
 end
@@ -60,7 +60,7 @@ Then(/^I can view one of the title registers$/) do
 end
 
 When(/^I search for a property using the whole address$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search/")
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   fill_in 'search_term', with: @title_hash[:address_string]
   click_button('Search')
 end
@@ -76,7 +76,7 @@ Then(/^they will include the address that has been searched for$/) do
 end
 
 When(/^I search for a property using only the City part of an address$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search/")
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   fill_in 'search_term', with: 'Plymouth'
   click_button('Search')
 end
