@@ -12,10 +12,10 @@ def insert_title_with_multiple_index_polygons
   }
 end
 
-def insert_title_with_multiple_owner_contact_details
-  process_titles_in_directory('test-generated')
+def insert_title_private_individual_owner
+  process_titles_in_directory('private-individual-owner')
   {
-    title_number: 'AGL1006'
+    title_number: 'AGL1001'
   }
 end
 
