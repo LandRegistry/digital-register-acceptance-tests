@@ -114,64 +114,19 @@
         }
       ]
     },
+    <% @title[:charges].each_with_index do |charge, index| %>
     {
       "group_id": "2007-09-06-08.45.28.556965",
       "category": "CHARGE",
       "entries": [
-        {
-          "entry_id": "2007-09-06 08:45:29.405155",
-          "charge_id": "2007-09-06-08.45.28.556965",
-          "sub_register": "B",
-          "status": "Current",
-          "sequence_number": 2,
-          "role_code": "CBCR",
-          "draft_entry_version": 1,
-          "language": "ENG",
-          "category": "CHARGE",
-          "infills": [
-            {
-              "text": "3 July 1995",
-              "date": "1995-07-03",
-              "type": "DATE"
-            },
-            {
-              "text": "National Westminster Home Loans Limited"
-            }
-          ],
-          "full_text": "RESTRICTION: Except under an order of the registrar no disposition by the proprietor of the land is to be registered without the consent of the proprietor of the Charge dated 3 July 1995 in favour of National Westminster Home Loans Limited referred to in the Charges Register.",
-          "entry_date": "1996-07-01",
-          "template_text": "RESTRICTION: Except under an order of the registrar no disposition by the proprietor of the land is to be registered without the consent of the proprietor of the Charge dated *CD* in favour of *CP* referred to in the Charges Register.",
-          "draft_entry_code": "BX294"
-        },
-        {
-          "entry_id": "2007-09-06 08:45:28.555145",
-          "charge_id": "2007-09-06-08.45.28.556965",
-          "sub_register": "C",
-          "status": "Current",
-          "sequence_number": 7,
-          "role_code": "CCHA",
-          "draft_entry_version": 1,
-          "language": "ENG",
-          "category": "CHARGE",
-          "infills": [
-            {
-              "text": "3 July 1995",
-              "date": "1995-07-03",
-              "type": "DATE"
-            }
-          ],
-          "full_text": "REGISTERED CHARGE dated 3 July 1995 to secure the moneys including the further advances therein mentioned.",
-          "entry_date": "1996-07-01",
-          "template_text": "REGISTERED CHARGE dated *CD* to secure the moneys including the further advances therein mentioned.",
-          "draft_entry_code": "CHFAD"
-        },
+      <% charge[:charge].each_with_index do |charge_entry, index| %>
         {
           "entry_id": "2007-09-06 08:45:28.581995",
           "charge_id": "2007-09-06-08.45.28.556965",
           "sub_register": "C",
           "status": "Current",
           "sequence_number": 8,
-          "role_code": "CCHR",
+          "role_code": "<%=charge_entry[:charge_entry_role_code]%>",
           "draft_entry_version": 1,
           "language": "ENG",
           "category": "CHARGE",
@@ -180,26 +135,32 @@
               "proprietors": [
                 {
                   "addresses": [
+                  <% charge_entry[:charge_company_addresses].each_with_index do |charge_address, index| %>
                     {
-                      "address_string": "P.O. Box 156, Priory House, 38 Colmore Circus, Queensway, Birmingham B4 6AL",
+                      "address_string": "<%=charge_address[:charge_company_addresses]%>",
                       "address_type": "UK"
                     }
+                    <%="," if index < (charge_entry[:charge_company_addresses].count - 1) %>
+                    <% end %>
                   ],
                   "name": {
-                    "non_private_individual_name": "National Westminster Home Loans Limited"
+                    "non_private_individual_name": "<%=charge_entry[:charge_company_name]%>"
                   }
                 }
               ],
               "type": "Charge Proprietor"
             }
           ],
-          "full_text": "Proprietor: #WESTMINSTER HOME LOANS LIMITED# (Co. Regn. No. 1234123) of P.O. Box 333, Pokemon House, 38 Circus of Sun, Queenaway, Bingham B22 6AL.",
+          "full_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
           "entry_date": "1996-07-01",
-          "template_text": "Proprietor: #WESTMINSTER HOME LOANS LIMITED# (Co. Regn. No. 1234123) of P.O. Box 333, Pokemon House, 38 Circus of Sun, Queenaway, Bingham B22 6AL.",
+          "template_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
           "draft_entry_code": "CNWHO"
         }
+        <%="," if index < (charge[:charge].count - 1) %>
+        <% end %>
       ]
     },
+    <% end %>
     {
       "group_id": "2007-09-06-08.45.25.211325",
       "category": "DEED",
@@ -341,7 +302,17 @@
           "infills": [
             {
               "proprietors": [
-
+                {
+                  "addresses": [
+                    {
+                      "address_string": "Dept. No. 1234 Tombstone Regional Securities Centre, P.O. Box 33, 22 The Road, Tombstone, Wales WA11 0AW.",
+                      "address_type": "UK"
+                    }
+                  ],
+                  "name": {
+                    "non_private_individual_name": "The Bank PLC"
+                  }
+                }
               ],
               "type": "Charge Proprietor"
             }

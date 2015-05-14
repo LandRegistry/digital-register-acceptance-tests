@@ -13,6 +13,7 @@ include W3CValidators
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
+  @title[:charges] = create_charges
   process_title_template(@title, wait_for_updater)
 end
 
@@ -20,41 +21,90 @@ def insert_title_with_private_and_non_private_owners
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:proprietors] += create_private_proprietors(1)
+  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def insert_title_with_private_individual_owner(wait_for_updater = ENV['SHOW_PRIVATE_PROPRIETORS'])
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_private_proprietors(1)
+  @title[:charges] = create_charges
   process_title_template(@title, wait_for_updater != 'false')
 end
 
 def update_closure_status_of_title(closure_status)
   @title[:closure_status] = closure_status
+  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_status = 'OPEN', address_types = %w(BFPO FOREIGN UNKNOWN))
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors, address_types)
+  @title[:charges] = create_charges
+  process_title_template(@title)
+end
+
+def insert_title_with_multiple_charges(number_of_charges)
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:charges] = create_charges(number_of_charges)
+  process_title_template(@title)
+end
+
+def insert_title_with_a_sub_charge
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:charges] = create_charges(charge_role_code: %w(CCHR CCHA))
+  process_title_template(@title)
+end
+
+def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, number_proprietors: 1)
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
+  @title[:charges] = create_charges(n_of_charge_addresses)
+  process_title_template(@title)
+end
+
+def insert_title_with_multiple_charges(number_of_charges)
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:charges] = create_charges(number_of_charges)
+  process_title_template(@title)
+end
+
+def insert_title_with_a_sub_charge
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:charges] = create_charges(charge_role_code: %w(CCHR CCHA))
+  process_title_template(@title)
+end
+
+def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, number_proprietors: 1)
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
+  @title[:charges] = create_charges(n_of_charge_addresses)
   process_title_template(@title)
 end
 
 def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
   @title = create_title_hash(random_title_number, 'OPEN', tenure_type)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
+  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def update_title_with_new_owners(new_proprietor_name)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = new_proprietor(new_proprietor_name)
+  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def insert_title_with_owners_different_title(number_proprietors = 1)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
+  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
@@ -65,6 +115,7 @@ end
 def insert_title_with_number(title_number, wait_for_updater = true)
   @title = create_title_hash(title_number, 'OPEN')
   @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:charges] = create_charges
   process_title_template(@title, wait_for_updater)
 end
 
@@ -162,6 +213,40 @@ def create_proprietor_addresses(address_types)
     }
   end
   proprietor_addresses
+end
+
+def create_charge_company_addresses(n_of_charge_addresses = 1)
+  charge_company_addresses = []
+  (n_of_charge_addresses.to_i).times do |i|
+    charge_company_addresses << {
+      address_string: "#{i} Company Address"
+    }
+  end
+  charge_company_addresses
+end
+
+def create_charge_entries(n_of_charge_addresses, charge_role_code)
+  charge_entries = []
+  charge_role_code.each do |i|
+    charge_entries << {
+      charge_entry_role_code: "#{i}",
+      charge_company_name: "#{i} Company Name",
+      charge_company_addresses: create_charge_company_addresses(n_of_charge_addresses),
+      charge_company_regnumber: '123456'
+    }
+  end
+  charge_entries
+end
+
+def create_charges(number_of_charges: 1,
+                  charge_role_code: ['CCHR'], n_of_charge_addresses: 1)
+  charges = []
+  number_of_charges.to_i.times do
+    charges << {
+      charge: create_charge_entries(n_of_charge_addresses, charge_role_code)
+    }
+  end
+  charges
 end
 
 def new_proprietor(new_proprietor_name)

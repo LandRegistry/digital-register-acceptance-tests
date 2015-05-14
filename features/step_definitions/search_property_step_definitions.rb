@@ -84,6 +84,5 @@ Then(/^I can see at least (\d+) addresses included in the search result$/) do |n
 end
 
 Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
-  number_results = page.all(:css, 'ol.result > li').count
-  expect(number_results).to be <= n.to_i
+  expect(page).to have_content("#{n} result(s) found")
 end

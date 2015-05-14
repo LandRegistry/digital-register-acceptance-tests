@@ -332,7 +332,17 @@
           "infills": [
             {
               "proprietors": [
-
+                {
+                  "addresses": [
+                    {
+                      "address_string": "Dept. No. 1234 Tombstone Regional Securities Centre, P.O. Box 33, 22 The Road, Tombstone, Wales WA11 0AW.",
+                      "address_type": "UK"
+                    }
+                  ],
+                  "name": {
+                    "non_private_individual_name": "The Bank PLC"
+                  }
+                }
               ],
               "type": "Charge Proprietor"
             }
