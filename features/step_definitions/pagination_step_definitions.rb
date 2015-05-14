@@ -4,7 +4,7 @@ Then(/^I can see (\d+) addresses per page$/) do |address_no|
 end
 
 Then(/^I can go to the next page$/) do
-  click_button('Next')
+  click_link('Next page')
 end
 
 Then(/^I see we are on page (\d+)$/) do |expected_page_num|
