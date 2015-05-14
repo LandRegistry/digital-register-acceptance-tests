@@ -43,9 +43,7 @@ Given(/^I have an address with multiple Title Numbers$/) do
 end
 
 Given(/^I have (\d+) addresses in the same City$/) do |number_addresses|
-  number_addresses.to_i.times do |i|
-    insert_title_with_number("DN#{i}")
-  end
+  insert_multiple_titles(number_addresses)
 end
 
 Then(/^the address and related title numbers are displayed$/) do

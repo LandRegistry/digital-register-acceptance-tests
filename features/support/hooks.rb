@@ -29,7 +29,5 @@ at_exit do
   @new_user['user']['password'] = 'integration'
   insert_user(@new_user)
   puts 'Creating 51 titles with postcode PL9 8TB'
-  51.times do |i|
-    insert_title_with_number("DN100#{i}")
-  end
+  insert_multiple_titles(51)
 end

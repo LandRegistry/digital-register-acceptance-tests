@@ -1,6 +1,7 @@
 require 'erubis'
 require 'uri'
 require 'net/http'
+require 'json'
 require 'w3c_validators'
 
 include W3CValidators
@@ -39,10 +40,17 @@ def random_title_number
   "DN#{rand(100..9999)}"
 end
 
-def insert_title_with_number(title_number)
+def insert_title_with_number(title_number, wait_for_updater = true)
   @title = create_title_hash(title_number, 'OPEN')
   @title[:proprietors] = create_proprietors(1)
-  process_title_template(@title)
+  process_title_template(@title, wait_for_updater)
+end
+
+def insert_multiple_titles(number_of_titles)
+  number_of_titles.to_i.times do |i|
+    insert_title_with_number("DN#{i + 1}", false)
+  end
+  wait_until_elasticsearch_updater_finished
 end
 
 def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')
@@ -61,13 +69,12 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
   }
 end
 
-def process_title_template(title)
+def process_title_template(title, wait_for_updater = true)
   file = File.read('./data/title_template.erb')
   eruby = Erubis::Eruby.new(file)
   File.write('./data/test-generated/title.json', eruby.result(binding))
   process_titles_in_directory('test-generated')
-  # Give ElasticSearch time to rerun an election
-  sleep($ELASTICSEARCH_SLEEP.to_i)
+  wait_until_elasticsearch_updater_finished if wait_for_updater
   title
 end
 
@@ -135,4 +142,33 @@ def validate_page(page)
   results.errors.each do |err|
     fail("Error #{err.message} on page #{page.current_url}")
   end
+end
+
+def wait_until_elasticsearch_updater_finished
+  sleep($ELASTICSEARCH_SLEEP.to_i) until title_numbers_all_equal_to_last
+end
+
+def title_numbers_all_equal_to_last
+  title_numbers_updated = last_title_numbers_updated
+  title_numbers_updated.map do |title|
+    title.eql?(@title[:title_number])
+  end.inject(:&)
+end
+
+def last_title_numbers_updated
+  status = elasticsearch_status
+  result = []
+  updaters = status.keys
+  updaters.each do |updater_name|
+    result << status[updater_name]['last_title_number']
+  end
+  result
+end
+
+def elasticsearch_status
+  uri = URI.parse("http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_UPDATER_PORT}/status")
+  connection = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Get.new(uri)
+  response = connection.request(request)
+  JSON.parse(response.body)['status']
 end
