@@ -10,8 +10,8 @@ Acceptance criteria:
    - maximum number of results
 
 Background:
-	Given I am an initial private beta user
-	And I have logged in
+  Given I am an initial private beta user
+  And I have logged in
 
   Scenario: Search by whole of property address
     Given I have an address with a single Title Number
