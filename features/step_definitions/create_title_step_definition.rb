@@ -36,3 +36,7 @@ end
 Given(/^I have a title with multiple index polygons$/) do
   @title_hash = insert_title_with_multiple_index_polygons
 end
+
+Given(/^I have a title with private and non private individual owners$/) do
+  pending # express the regexp above with the code you wish you had
+end
