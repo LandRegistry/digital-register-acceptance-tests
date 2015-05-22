@@ -150,7 +150,15 @@ def validate_page(page)
 end
 
 def wait_until_elasticsearch_updater_finished
-  sleep($ELASTICSEARCH_SLEEP.to_i) until title_numbers_all_equal_to_last
+  total_seconds = 0
+  seconds = $ELASTICSEARCH_SLEEP.to_i
+  until title_numbers_all_equal_to_last
+    sleep(seconds)
+    total_seconds += seconds
+    if total_seconds > 30
+      fail("Updater error: its status is #{elasticsearch_status}, expected last title is #{@title[:title_number]}") if total_seconds > 30
+    end
+  end
 end
 
 def title_numbers_all_equal_to_last
