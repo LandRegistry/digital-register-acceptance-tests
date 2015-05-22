@@ -30,7 +30,7 @@ Given(/^I have a title with a charity with trustees that are non private individ
 end
 
 Given(/^I have a title with a private individual owner$/) do
-  @title_hash = insert_title_private_individual_owner
+  @title_hash = insert_title_with_private_individual_owner
 end
 
 Given(/^I have a title with multiple index polygons$/) do

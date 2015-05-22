@@ -4,6 +4,7 @@ Before do
   delete_all_titles_from_elasticsearch # es-updater should recreate
   sleep($ELASTICSEARCH_SLEEP.to_i)
   clean_register_database
+  ENV['SHOW_PRIVATE_PROPRIETORS'] = 'true'
 end
 
 Before('@existing_user') do

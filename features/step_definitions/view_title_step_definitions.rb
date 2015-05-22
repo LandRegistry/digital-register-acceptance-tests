@@ -41,7 +41,12 @@ Then(/^I can view the register details for the selected title$/) do
   expect(content).to include(@title_hash[:last_changed])
   if @title_hash[:proprietors]
     @title_hash[:proprietors].each do |proprietor|
-      expect(content).to include(proprietor[:name])
+      if proprietor[:type] == 'private'
+        expect(content).to include(proprietor[:forename])
+        expect(content).to include(proprietor[:surname])
+      else
+        expect(content).to include(proprietor[:name])
+      end
     end
   end
   expect(content).to include(@title_hash[:postcode])

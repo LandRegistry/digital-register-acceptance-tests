@@ -19,6 +19,12 @@ def insert_title_with_private_and_non_private_owners
   process_title_template(@title)
 end
 
+def insert_title_with_private_individual_owner
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_private_proprietors(1)
+  process_title_template(@title)
+end
+
 def update_closure_status_of_title(closure_status)
   @title[:closure_status] = closure_status
   process_title_template(@title)

@@ -12,13 +12,6 @@ def insert_title_with_multiple_index_polygons
   }
 end
 
-def insert_title_private_individual_owner
-  process_titles_in_directory('private-individual-owner')
-  {
-    title_number: 'AGL1001'
-  }
-end
-
 def insert_title_non_private_individual_owner
   process_titles_in_directory('non-private-individual-owner')
   {
@@ -51,6 +44,9 @@ end
 def insert_title_charity_private_individual_owner
   process_titles_in_directory('charity-private-individual-owner')
   {
-    title_number: 'AGL1002'
+    title_number: 'AGL1002',
+    last_changed: '28 August 2003 at 14:45:50',
+    postcode: 'PL9 7FN',
+    town: 'Plymouth'
   }
 end
