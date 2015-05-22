@@ -171,7 +171,7 @@ def last_title_numbers_updated
 end
 
 def elasticsearch_status
-  uri = URI.parse("http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_UPDATER_PORT}/status")
+  uri = URI.parse("http://#{$ELASTICSEARCH_UPDATER_HOST}:#{$ELASTICSEARCH_UPDATER_PORT}/status")
   connection = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Get.new(uri)
   response = connection.request(request)
