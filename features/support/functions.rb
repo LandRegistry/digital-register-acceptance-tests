@@ -6,9 +6,14 @@ require 'w3c_validators'
 
 include W3CValidators
 
-def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN')
+def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_proprietors(number_proprietors)
+  process_title_template(@title, wait_for_updater)
+end
+
+def update_closure_status_of_title(closure_status)
+  @title[:closure_status] = closure_status
   process_title_template(@title)
 end
 
@@ -150,8 +155,8 @@ end
 
 def title_numbers_all_equal_to_last
   title_numbers_updated = last_title_numbers_updated
-  title_numbers_updated.map do |title|
-    title.eql?(@title[:title_number])
+  title_numbers_updated.map do |title_number|
+    title_number == @title[:title_number]
   end.inject(:&)
 end
 

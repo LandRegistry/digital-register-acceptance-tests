@@ -5,7 +5,15 @@ end
 
 Given(/^I have a closed title$/) do
   closure_status = 'TITLE CLOSED'
-  @title_hash = insert_title_with_owners(1, closure_status)
+  # In this case, do not wait for updater: the title is not inserted
+  # because it is closed
+  @title_hash = insert_title_with_owners(1, closure_status, false)
+  # insert open title with an elasticsearch wait
+  # this enables us to check that the elasticsearch updater has had
+  # time to run but the title is not visible
+  insert_title_with_owners
+  # reset @title to the closed title for the rest of the test
+  @title = @title_hash
 end
 
 Then(/^an unavailable message is displayed$/) do
@@ -17,7 +25,7 @@ Given(/^I have a recently closed title$/) do
   closure_status = 'OPEN'
   @title_hash = insert_title_with_owners(1, closure_status)
   closure_status = 'TITLE CLOSED'
-  @title_hash = insert_title_with_owners(1, closure_status)
+  @title_hash = update_closure_status_of_title(closure_status)
 end
 
 Given(/^the title information is updated$/) do
