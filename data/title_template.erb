@@ -82,14 +82,26 @@
             {
               "proprietors": [
                 <% @title[:proprietors].each_with_index do |proprietor, index| %>
-                {
-                  "addresses": <%=proprietor[:addresses].to_json%>,
-                  "name": {
-                    "name_category": "LIMITED COMPANY OR PUBLIC LIMITED COMPANY",
-                    "auto_uppercase_override": true,
-                    "non_private_individual_name": "<%=proprietor[:name]%>"
+                <% if proprietor[:type] == "private" %>
+                  {
+                    "addresses": <%=proprietor[:addresses].to_json%>,
+                    "name": {
+                      "name_category": "PRIVATE INDIVIDUAL",
+                      "auto_uppercase_override": true,
+                      "forename": "<%=proprietor[:forename]%>",
+                      "surname": "<%=proprietor[:surname]%>"
+                    }
                   }
-                }
+                <% else %>
+                  {
+                    "addresses": <%=proprietor[:addresses].to_json%>,
+                    "name": {
+                      "name_category": "LIMITED COMPANY OR PUBLIC LIMITED COMPANY",
+                      "auto_uppercase_override": true,
+                      "non_private_individual_name": "<%=proprietor[:name]%>"
+                    }
+                  }
+                <% end %>
                 <%="," if index < (@title[:proprietors].count - 1) %>
                 <% end %>
               ],

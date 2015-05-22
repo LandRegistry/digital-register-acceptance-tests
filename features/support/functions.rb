@@ -8,8 +8,15 @@ include W3CValidators
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
-  @title[:proprietors] = create_proprietors(number_proprietors)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title, wait_for_updater)
+end
+
+def insert_title_with_private_and_non_private_owners
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:proprietors] += create_private_proprietors(1)
+  process_title_template(@title)
 end
 
 def update_closure_status_of_title(closure_status)
@@ -19,13 +26,13 @@ end
 
 def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_status = 'OPEN', address_types = %w(BFPO FOREIGN UNKNOWN))
   @title = create_title_hash(random_title_number, closure_status)
-  @title[:proprietors] = create_proprietors(number_proprietors, address_types)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors, address_types)
   process_title_template(@title)
 end
 
 def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
   @title = create_title_hash(random_title_number, 'OPEN', tenure_type)
-  @title[:proprietors] = create_proprietors(number_proprietors)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title)
 end
 
@@ -37,7 +44,7 @@ end
 
 def insert_title_with_owners_different_title(number_proprietors = 1)
   @title = create_title_hash(random_title_number)
-  @title[:proprietors] = create_proprietors(number_proprietors)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title)
 end
 
@@ -47,7 +54,7 @@ end
 
 def insert_title_with_number(title_number, wait_for_updater = true)
   @title = create_title_hash(title_number, 'OPEN')
-  @title[:proprietors] = create_proprietors(1)
+  @title[:proprietors] = create_non_private_proprietors(1)
   process_title_template(@title, wait_for_updater)
 end
 
@@ -111,12 +118,25 @@ def clean_register_database
   delete_all_users
 end
 
-def create_proprietors(number_proprietors, address_types = ['UNKNOWN'])
+def create_non_private_proprietors(number_proprietors, address_types = ['UNKNOWN'])
   proprietors = []
   number_proprietors.times do |i|
     proprietors << {
       name: "Proprietor name #{i + 1}",
       addresses: create_proprietor_addresses(address_types)
+    }
+  end
+  proprietors
+end
+
+def create_private_proprietors(number_proprietors, address_types = ['UNKNOWN'])
+  proprietors = []
+  number_proprietors.times do |i|
+    proprietors << {
+      forename: "Proprietor forename #{i + 1}",
+      surname: "Proprietor surname #{i + 1}",
+      addresses: create_proprietor_addresses(address_types),
+      type: 'private'
     }
   end
   proprietors
