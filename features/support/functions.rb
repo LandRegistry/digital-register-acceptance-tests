@@ -19,10 +19,10 @@ def insert_title_with_private_and_non_private_owners
   process_title_template(@title)
 end
 
-def insert_title_with_private_individual_owner
+def insert_title_with_private_individual_owner(wait_for_updater = ENV['SHOW_PRIVATE_PROPRIETORS'])
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_private_proprietors(1)
-  process_title_template(@title)
+  process_title_template(@title, wait_for_updater != 'false')
 end
 
 def update_closure_status_of_title(closure_status)
@@ -115,7 +115,7 @@ def delete_all_titles_from_elasticsearch
 
   doc_types = %w(property_by_postcode property_by_postcode_2 property_by_address)
   doc_types.each do |doc_type|
-    `curl -XDELETE #{host}/landregistry/#{doc_type}/_query -d '#{match_all_query}'`
+    `curl -XDELETE #{host}/landregistry/#{doc_type}/_query -d '#{match_all_query}' &> /dev/null`
   end
 end
 
