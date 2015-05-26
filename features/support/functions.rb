@@ -175,6 +175,8 @@ def last_title_numbers_updated
   updaters.each do |updater_name|
     result << status[updater_name]['last_title_number']
   end
+  puts "Title: #{@title[:title_number]}"
+  puts result
   result
 end
 
