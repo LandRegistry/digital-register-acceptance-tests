@@ -24,7 +24,7 @@ def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_s
 end
 
 def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
-  @title = create_title_hash('DN1000', 'OPEN', tenure_type)
+  @title = create_title_hash(random_title_number, 'OPEN', tenure_type)
   @title[:proprietors] = create_proprietors(number_proprietors)
   process_title_template(@title)
 end
@@ -42,7 +42,7 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
 end
 
 def random_title_number
-  "DN#{rand(100..9999)}"
+  "DN#{rand(1..999_999)}"
 end
 
 def insert_title_with_number(title_number, wait_for_updater = true)
@@ -52,8 +52,8 @@ def insert_title_with_number(title_number, wait_for_updater = true)
 end
 
 def insert_multiple_titles(number_of_titles)
-  number_of_titles.to_i.times do |i|
-    insert_title_with_number("DN#{i + 1}", false)
+  number_of_titles.to_i.times do |_|
+    insert_title_with_number(random_title_number, false)
   end
   wait_until_elasticsearch_updater_finished
 end
@@ -175,8 +175,6 @@ def last_title_numbers_updated
   updaters.each do |updater_name|
     result << status[updater_name]['last_title_number']
   end
-  puts "Title: #{@title[:title_number]}"
-  puts result
   result
 end
 
