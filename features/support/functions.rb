@@ -56,6 +56,8 @@ def insert_multiple_titles(number_of_titles)
     insert_title_with_number(random_title_number, false)
   end
   wait_until_elasticsearch_updater_finished
+  # Very short final sleep for elasticsearch nodes to be updated
+  sleep($ELASTICSEARCH_SLEEP.to_f)
 end
 
 def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')
@@ -80,6 +82,8 @@ def process_title_template(title, wait_for_updater = true)
   File.write('./data/test-generated/title.json', eruby.result(binding))
   process_titles_in_directory('test-generated')
   wait_until_elasticsearch_updater_finished if wait_for_updater
+  # Very short final sleep for elasticsearch nodes to be updated
+  sleep($ELASTICSEARCH_SLEEP.to_f)
   title
 end
 
