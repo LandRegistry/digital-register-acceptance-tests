@@ -186,7 +186,7 @@ def wait_until_elasticsearch_updater_finished
     sleep(seconds)
     total_seconds += seconds
     if total_seconds > 30
-      fail("Updater error: its status is #{elasticsearch_status}, expected last title is #{@title[:title_number]}") if total_seconds > 30
+      fail("Updater error: its status is #{elasticsearch_status}, expected last title is #{@title[:title_number]}")
     end
   end
 end
