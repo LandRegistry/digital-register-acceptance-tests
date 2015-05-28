@@ -4,11 +4,11 @@ require 'net/http'
 require 'json'
 require 'w3c_validators'
 
+include W3CValidators
+
 def content
   page.body.text
 end
-
-include W3CValidators
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
@@ -20,46 +20,23 @@ def insert_title_with_private_and_non_private_owners
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:proprietors] += create_private_proprietors(1)
-  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def insert_title_with_private_individual_owner(wait_for_updater = ENV['SHOW_PRIVATE_PROPRIETORS'])
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_private_proprietors(1)
-  @title[:charges] = create_charges
   process_title_template(@title, wait_for_updater != 'false')
 end
 
 def update_closure_status_of_title(closure_status)
   @title[:closure_status] = closure_status
-  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_status = 'OPEN', address_types = %w(BFPO FOREIGN UNKNOWN))
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors, address_types)
-  @title[:charges] = create_charges
-  process_title_template(@title)
-end
-
-def insert_title_with_multiple_charges(number_of_charges)
-  @title = create_title_hash(random_title_number, number_of_charges)
-  @title[:proprietors] = create_non_private_proprietors(1)
-  @title[:charges] = create_charges(number_of_charges)
-  process_title_template(@title)
-end
-
-def insert_title_with_a_sub_charge
-  @title = create_title_hash(random_title_number, charge_role_code: %w(CCHR CCHA))
-  @title[:proprietors] = create_non_private_proprietors(1)
-  process_title_template(@title)
-end
-
-def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, number_proprietors: 1)
-  @title = create_title_hash(random_title_number, n_of_charge_addresses)
-  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title)
 end
 
@@ -119,13 +96,10 @@ def insert_multiple_titles(number_of_titles)
   wait_until_elasticsearch_updater_finished
   # Very short final sleep for elasticsearch nodes to be updated
   sleep($ELASTICSEARCH_SLEEP.to_f)
-<<<<<<< Updated upstream
-=======
   process_title_template(@title)
->>>>>>> Stashed changes
 end
 
-def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', n_of_charge_addresses, charge_role_code, number_of_charges)
+def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')
   house_number = rand(1..500).to_s
   {
     title_number: title_number,
@@ -137,8 +111,8 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
     uprn: rand(1000..99_999),
     closure_status: closure_status,
-    tenure_type: tenure_type
-    charges: create_charges(n_of_charge_addresses, charge_role_code, number_of_charges)
+    tenure_type: tenure_type,
+    charges: create_charges
   }
 end
 
@@ -213,7 +187,7 @@ def create_proprietor_addresses(address_types)
   proprietor_addresses
 end
 
-def create_charge_company_addresses(n_of_charge_addresses = 1)
+def create_charge_company_addresses(n_of_charge_addresses)
   charge_company_addresses = []
   (n_of_charge_addresses.to_i).times do |i|
     charge_company_addresses << {
