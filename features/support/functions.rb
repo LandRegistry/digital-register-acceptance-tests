@@ -4,6 +4,10 @@ require 'net/http'
 require 'json'
 require 'w3c_validators'
 
+def content
+  page.body.text
+end
+
 include W3CValidators
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
