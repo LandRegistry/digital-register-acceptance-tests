@@ -13,7 +13,6 @@ include W3CValidators
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
-  @title[:charges] = create_charges
   process_title_template(@title, wait_for_updater)
 end
 
@@ -46,23 +45,21 @@ def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_s
 end
 
 def insert_title_with_multiple_charges(number_of_charges)
-  @title = create_title_hash(random_title_number)
+  @title = create_title_hash(random_title_number, number_of_charges)
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:charges] = create_charges(number_of_charges)
   process_title_template(@title)
 end
 
 def insert_title_with_a_sub_charge
-  @title = create_title_hash(random_title_number)
+  @title = create_title_hash(random_title_number, charge_role_code: %w(CCHR CCHA))
   @title[:proprietors] = create_non_private_proprietors(1)
-  @title[:charges] = create_charges(charge_role_code: %w(CCHR CCHA))
   process_title_template(@title)
 end
 
 def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, number_proprietors: 1)
-  @title = create_title_hash(random_title_number)
+  @title = create_title_hash(random_title_number, n_of_charge_addresses)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
-  @title[:charges] = create_charges(n_of_charge_addresses)
   process_title_template(@title)
 end
 
@@ -90,21 +87,18 @@ end
 def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
   @title = create_title_hash(random_title_number, 'OPEN', tenure_type)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
-  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def update_title_with_new_owners(new_proprietor_name)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = new_proprietor(new_proprietor_name)
-  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
 def insert_title_with_owners_different_title(number_proprietors = 1)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
-  @title[:charges] = create_charges
   process_title_template(@title)
 end
 
@@ -115,7 +109,6 @@ end
 def insert_title_with_number(title_number, wait_for_updater = true)
   @title = create_title_hash(title_number, 'OPEN')
   @title[:proprietors] = create_non_private_proprietors(1)
-  @title[:charges] = create_charges
   process_title_template(@title, wait_for_updater)
 end
 
@@ -126,9 +119,13 @@ def insert_multiple_titles(number_of_titles)
   wait_until_elasticsearch_updater_finished
   # Very short final sleep for elasticsearch nodes to be updated
   sleep($ELASTICSEARCH_SLEEP.to_f)
+<<<<<<< Updated upstream
+=======
+  process_title_template(@title)
+>>>>>>> Stashed changes
 end
 
-def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')
+def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', n_of_charge_addresses, charge_role_code, number_of_charges)
   house_number = rand(1..500).to_s
   {
     title_number: title_number,
@@ -141,6 +138,7 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     uprn: rand(1000..99_999),
     closure_status: closure_status,
     tenure_type: tenure_type
+    charges: create_charges(n_of_charge_addresses, charge_role_code, number_of_charges)
   }
 end
 
