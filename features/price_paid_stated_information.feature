@@ -1,4 +1,4 @@
-@US36
+@US036
 Feature: View Most Recent Price Paid/Stated Information
 
   As a citizen
@@ -21,14 +21,15 @@ Feature: View Most Recent Price Paid/Stated Information
     Given I have a title with one price paid/stated entry
     When I view the register details page
     Then I can see the price paid/stated and date in the summary
+    And I can see the text description of price paid/stated information in the main part of the register
 
-  Scenario: Display most recent price paid information (free text)
+  Scenario: Display most recent price paid information (free text only)
     Given I have a title with one free text price paid/stated entry
     When I view the register details page
     Then I can see 'see below' in the price paid/stated part of the summary
-    And I can see the price paid/stated information in the main part of the register
+    And I can see the text description of price paid/stated information in the main part of the register
 
   Scenario: No price paid information to display
     Given I have a title with no price paid/stated information
     When I view the register details page
-    Then I can't see 'not available' in the price paid/stated part of the summary
+    Then I don't see 'not available' in the price paid/stated part of the summary
