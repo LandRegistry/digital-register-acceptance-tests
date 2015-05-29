@@ -9,14 +9,6 @@ Then(/^I can see the owner for the selected title$/) do
   expect(content).to include("#{@title[:proprietors][0][:name]}")
 end
 
-Then(/^I can see all the addresses in the order they are displayed on the register$/) do
-  @title[:proprietors][0][:addresses].each_with_index do |_, index|
-    within('group') do
-      expect(page.find("grid grid-1-2:nth-child(#{index})")).to have_content "address string #{@title[:proprietors][0][:addresses][index]}"
-    end
-  end
-end
-
 Given(/^I have a title with 3 owners$/) do
   insert_title_with_multiple_owner_addresses(3, 'OPEN', %w(BFPO FOREIGN))
 end
