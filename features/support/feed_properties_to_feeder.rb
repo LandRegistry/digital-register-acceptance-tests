@@ -7,14 +7,14 @@ end
 
 def insert_title_with_multiple_index_polygons
   process_titles_in_directory('multiple-index-polygons')
-  {
+  @title = {
     title_number: 'AGL1005'
   }
 end
 
 def insert_title_non_private_individual_owner
   process_titles_in_directory('non-private-individual-owner')
-  {
+  @title = {
     title_number: 'AGL1000',
     last_changed: '02 July 1996 at 00:59:59',
     owners: ['HEATHER POOLE PLC'],
@@ -29,7 +29,7 @@ end
 
 def insert_title_charity_non_private_individual_owner
   process_titles_in_directory('charity-non-private-individual-owner')
-  {
+  @title = {
     title_number: 'AGL1003',
     last_changed: '28 August 2003 at 14:45:50',
     owners: ['HEATHER JONES', 'JOHN JONES', 'HEATHER SMITH'],
@@ -43,7 +43,7 @@ end
 
 def insert_title_charity_private_individual_owner
   process_titles_in_directory('charity-private-individual-owner')
-  {
+  @title = {
     title_number: 'AGL1002',
     last_changed: '28 August 2003 at 14:45:50',
     postcode: 'PL9 7FN',
