@@ -9,27 +9,18 @@ Feature: View Most Recent Price Paid/Stated Information
 
   Acceptance Criteria
     1. If present, must display the most *recent price* paid from the system of record or price stated
-    2. If present, must display the *date* the most recent price was paid or price stated
-    3. If no price information is found, no need to display the label and "not available"
-    4. If it is free text display 'see below' will be displayed and the price paid/stated will be displayed in the main part of the register
+    2. If no price information is found, no need to display the label and "not available"
 
   Background:
     Given I am an initial private beta user
     And I have logged in
 
-  Scenario: Display most recent price paid information (structured)
-    Given I have a title with one price paid/stated entry
+  Scenario: Display most recent price paid information
+    Given I have a title with one price paid or stated entry
     When I view the register details page
-    Then I can see the price paid/stated and date in the summary
-    And I can see the text description of price paid/stated information in the main part of the register
-
-  Scenario: Display most recent price paid information (free text only)
-    Given I have a title with one free text price paid/stated entry
-    When I view the register details page
-    Then I can see 'see below' in the price paid/stated part of the summary
-    And I can see the text description of price paid/stated information in the main part of the register
+    Then I can see the price paid or stated in the summary
 
   Scenario: No price paid information to display
-    Given I have a title with no price paid/stated information
+    Given I have a title with no price paid or stated information
     When I view the register details page
-    Then I don't see 'not available' in the price paid/stated part of the summary
+    Then I don't see 'not available' in the price paid or stated part of the summary

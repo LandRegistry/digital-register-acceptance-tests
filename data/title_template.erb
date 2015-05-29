@@ -112,54 +112,88 @@
           "entry_date": "1996-07-01",
           "template_text": "PROPRIETOR: *RP*"
         }
-      ]
-    },
-    <% @title[:charges].each_with_index do |charge, index| %>
-    {
-      "group_id": "2007-09-06-08.45.28.556965",
-      "category": "CHARGE",
-      "entries": [
-      <% charge[:charge].each_with_index do |charge_entry, index| %>
-        {
-          "entry_id": "2007-09-06 08:45:28.581995",
-          "charge_id": "2007-09-06-08.45.28.556965",
-          "sub_register": "C",
-          "status": "Current",
-          "sequence_number": 8,
-          "role_code": "<%=charge_entry[:charge_entry_role_code]%>",
-          "draft_entry_version": 1,
-          "language": "ENG",
-          "category": "CHARGE",
-          "infills": [
-            {
-              "proprietors": [
+        <% if @title[:price_paid_stated] %>
+          ,{
+            "entry_id": "2014-08-28 11:34:01.345580",
+            "sub_register": "B",
+            "status": "Current",
+            "sequence_number": 2,
+            "role_code": "RPPD",
+            "draft_entry_version": 1,
+            "language": "ENG",
+            "category": "OWNERSHIP",
+            "infills": [
+              <% if @title[:price_paid_stated][:date] %>
                 {
-                  "addresses": [
-                  <% charge_entry[:charge_company_addresses].each_with_index do |charge_address, index| %>
-                    {
-                      "address_string": "<%=charge_address[:charge_company_addresses]%>",
-                      "address_type": "UK"
-                    }
-                    <%="," if index < (charge_entry[:charge_company_addresses].count - 1) %>
-                    <% end %>
-                  ],
-                  "name": {
-                    "non_private_individual_name": "<%=charge_entry[:charge_company_name]%>"
-                  }
+                  "text": "<%=@title[:price_paid_stated][:date]%>",
+                  "date": "<%=@title[:price_paid_stated][:date]%>",
+                  "type": "DATE"
                 }
-              ],
-              "type": "Charge Proprietor"
-            }
-          ],
-          "full_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
-          "entry_date": "1996-07-01",
-          "template_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
-          "draft_entry_code": "CNWHO"
-        }
-        <%="," if index < (charge[:charge].count - 1) %>
+              <% end %>
+              <%= @title[:price_paid_stated][:date] && @title[:price_paid_stated][:price] ? "," : "" %>
+              <% if @title[:price_paid_stated][:price] %>
+                {
+                  "text": "<%=@title[:price_paid_stated][:price]%>",
+                  "type": "PRICE"
+                }
+              <% end %>
+            ],
+            "full_text": "<%=@title[:price_paid_stated][:text]%>",
+            "entry_date": "2014-08-28",
+            "template_text": "The value stated as at *DA* was *AM*.",
+            "draft_entry_code": "ANON"
+          }
         <% end %>
       ]
     },
+    <% if @title[:charges] %>
+      <% @title[:charges].each_with_index do |charge, index| %>
+      {
+        "group_id": "2007-09-06-08.45.28.556965",
+        "category": "CHARGE",
+        "entries": [
+        <% charge[:charge].each_with_index do |charge_entry, index| %>
+          {
+            "entry_id": "2007-09-06 08:45:28.581995",
+            "charge_id": "2007-09-06-08.45.28.556965",
+            "sub_register": "C",
+            "status": "Current",
+            "sequence_number": 8,
+            "role_code": "<%=charge_entry[:charge_entry_role_code]%>",
+            "draft_entry_version": 1,
+            "language": "ENG",
+            "category": "CHARGE",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "addresses": [
+                    <% charge_entry[:charge_company_addresses].each_with_index do |charge_address, index| %>
+                      {
+                        "address_string": "<%=charge_address[:charge_company_addresses]%>",
+                        "address_type": "UK"
+                      }
+                      <%="," if index < (charge_entry[:charge_company_addresses].count - 1) %>
+                      <% end %>
+                    ],
+                    "name": {
+                      "non_private_individual_name": "<%=charge_entry[:charge_company_name]%>"
+                    }
+                  }
+                ],
+                "type": "Charge Proprietor"
+              }
+            ],
+            "full_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
+            "entry_date": "1996-07-01",
+            "template_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
+            "draft_entry_code": "CNWHO"
+          }
+          <%="," if index < (charge[:charge].count - 1) %>
+          <% end %>
+        ]
+      },
+      <% end %>
     <% end %>
     {
       "group_id": "2007-09-06-08.45.25.211325",
