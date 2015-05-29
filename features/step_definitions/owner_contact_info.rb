@@ -6,7 +6,6 @@ Given(/^I have a title with one owner that has property, foreign and BFPO addres
 end
 
 Then(/^I can see the owner for the selected title$/) do
-  content = page.body.text
   expect(content).to include("#{@title_hash[:proprietors][0][:name]}")
 end
 

@@ -5,7 +5,6 @@ Given(/^I search for a property using the Title Number$/) do
 end
 
 Then(/^only the information for the selected Title Number will be displayed$/) do
-  content = page.body.text
   expect(content).to include(@title_hash[:title_number])
 end
 
@@ -28,7 +27,6 @@ Given(/^I search for a property using no search term$/) do
 end
 
 Then(/^the address and related title number is displayed$/) do
-  content = page.body.text
   expect(content).to include(@title_hash[:postcode])
   expect(content).to include(@title_hash[:title_number])
 end
@@ -47,7 +45,6 @@ Given(/^I have (\d+) addresses in the same City$/) do |number_addresses|
 end
 
 Then(/^the address and related title numbers are displayed$/) do
-  content = page.body.text
   expect(content).to include(@title_hash[:postcode])
   expect(content).to include(@title_hash[:title_number])
   expect(content).to include(@title_hash2[:title_number])

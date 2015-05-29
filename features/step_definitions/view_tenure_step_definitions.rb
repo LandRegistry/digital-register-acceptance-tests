@@ -4,6 +4,5 @@ Given(/^I have a title with a tenure of Freehold$/) do
 end
 
 Then(/^I see the tenure information in the summary box$/) do
-  content = page.body.text
   expect(content).to include(@title_hash[:tenure_type])
 end

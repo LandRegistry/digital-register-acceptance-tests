@@ -14,7 +14,6 @@ Given(/^I have logged in$/) do
   fill_in 'username', with: @username
   fill_in 'password', with: @password
   click_button('signin')
-  content = page.body.text
   expect(content).to include('Find a title')
 end
 
@@ -28,7 +27,6 @@ When(/^I log in$/) do
 end
 
 Then(/^I should access the system$/) do
-  content = page.body.text
   expect(content).to include('Find a title')
   # TODO: This is to be refactored, not happy with just checking the text on the page
 end
@@ -39,7 +37,6 @@ Given(/^I have an invalid username and a valid password$/) do
 end
 
 Then(/^I should not access the system$/) do
-  content = page.body.text
   expect(content).to include('There was an error with your Username/Password combination. If this problem persists please contact us at digital-register-feedback@digital.landregistry.gov.uk')
 end
 
@@ -57,7 +54,6 @@ When(/^I view the title search page$/) do
 end
 
 Then(/^I am redirected to the login page$/) do
-  content = page.body.text
   expect(content).to include('Digital Register Login')
 end
 
@@ -75,7 +71,6 @@ When(/^I attempt an 11th log in with the correct username and password$/) do
 end
 
 Then(/^I am locked out of the system$/) do
-  content = page.body.text
   expect(content).to include('There was an error with your Username/Password combination')
 end
 
@@ -86,7 +81,6 @@ end
 Then(/^I can login$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
-  content = page.body.text
   expect(content).to include('Find a title')
 end
 
@@ -96,7 +90,6 @@ When(/^I attempt a 10th correct login$/) do
 end
 
 Then(/^I can see the search page$/) do
-  content = page.body.text
   expect(content).to include('Find a title')
 end
 

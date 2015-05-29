@@ -17,7 +17,6 @@ Given(/^I have a closed title$/) do
 end
 
 Then(/^an unavailable message is displayed$/) do
-  content = page.body.text
   expect(content).to include('No result(s) found')
 end
 
@@ -34,12 +33,10 @@ Given(/^the title information is updated$/) do
 end
 
 Then(/^I am able to view the updated information$/) do
-  content = page.body.text
   expect(content).to include(@title_hash[:proprietors][0][:name])
 end
 
 Then(/^the register details page is displayed$/) do
-  content = page.body.text
   expect(content).to include(@title_hash[:postcode])
   expect(content).to include(@title_hash[:town])
   expect(content).to include("#{@title_hash[:house_no]} #{@title_hash[:street_name]}")

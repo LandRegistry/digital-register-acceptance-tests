@@ -14,7 +14,6 @@ Then(/^the new user is able to log in$/) do
   @username = @new_user['user']['user_id']
   @password = @new_user['user']['password']
   login_user(@username, @password)
-  content = page.body.text
   expect(content).to include('Find a title')
 end
 
@@ -25,7 +24,6 @@ end
 
 Then(/^the deleted user is unable to log in$/) do
   login_user(@username, @password)
-  content = page.body.text
   expect(content).to include('Username is required')
   expect(content).to include('Password is required')
 end
@@ -42,7 +40,6 @@ Then(/^the user is able to log in using the new password$/) do
   @username = @new_user['user']['user_id']
   @password = @user_password_to_update['user']['password']
   login_user(@username, @password)
-  content = page.body.text
   expect(content).to include('Find a title')
 end
 
@@ -50,6 +47,5 @@ Then(/^the user is unable to log in using their old password$/) do
   @username = @new_user['user']['user_id']
   @password = @new_user['user']['password']
   login_user(@username, @password)
-  content = page.body.text
   expect(content).to include('There was an error with your Username/Password combination')
 end
