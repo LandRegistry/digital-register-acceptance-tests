@@ -7,25 +7,23 @@ Then(/^the Log out option is available$/) do
 end
 
 When(/^I navigate to a register title page$/) do
-  pending # express the regexp above with the code you wish you had
+  insert_title_with_owners
+  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
 end
 
 Then(/^I am able to Log out$/) do
-  pending # express the regexp above with the code you wish you had
+  click_link('logout')
 end
 
 When(/^I Log out$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I am returned to the login screen$/) do
-  pending # express the regexp above with the code you wish you had
+  click_link('logout')
 end
 
 Then(/^the Log out option is not available$/) do
-  pending # express the regexp above with the code you wish you had
+  content.should_not include('logout')
 end
 
-When(/^I try to search for a title$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I try to navigate to a title register$/) do
+  insert_title_with_owners
+  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
 end

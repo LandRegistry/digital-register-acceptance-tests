@@ -1,5 +1,4 @@
 When(/^I view the register details page$/) do
-  puts "#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}"
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
 end
 
