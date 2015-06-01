@@ -1,18 +1,16 @@
 When(/^I view the register details page$/) do
-  puts "#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}"
-  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title_hash[:title_number]}")
+  puts "#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}"
+  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
 end
 
 Then(/^I see the full address for the selected title$/) do
-  content = page.body.text
-  expect(content).to include(@title_hash[:postcode])
-  expect(content).to include(@title_hash[:town])
-  expect(content).to include("#{@title_hash[:house_no]} #{@title_hash[:street_name]}")
+  expect(content).to include(@title[:postcode])
+  expect(content).to include(@title[:town])
+  expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")
 end
 
 Then(/^I see the title number for the selected title$/) do
-  content = page.body.text
-  expect(content).to include(@title_hash[:title_number])
+  expect(content).to include(@title[:title_number])
 end
 
 Then(/^I get a page not found message$/) do
@@ -20,27 +18,23 @@ Then(/^I get a page not found message$/) do
 end
 
 Then(/^I can see who owns the selected title$/) do
-  content = page.body.text
-  expect(content).to include("#{@title_hash[:proprietors][0][:name]}")
+  expect(content).to include("#{@title[:proprietors][0][:name]}")
 end
 
 Then(/^I can see all the owners for the selected title$$/) do
-  content = page.body.text
-  expect(content).to include("#{@title_hash[:proprietors][0][:name]}")
-  expect(content).to include("#{@title_hash[:proprietors][1][:name]}")
+  expect(content).to include("#{@title[:proprietors][0][:name]}")
+  expect(content).to include("#{@title[:proprietors][1][:name]}")
 end
 
 Then(/^I see the date at which the title was last changed$/) do
-  content = page.body.text
-  expect(content).to include(@title_hash[:last_changed])
+  expect(content).to include(@title[:last_changed])
 end
 
 Then(/^I can view the register details for the selected title$/) do
-  content = page.body.text
-  expect(content).to include(@title_hash[:title_number])
-  expect(content).to include(@title_hash[:last_changed])
-  if @title_hash[:proprietors]
-    @title_hash[:proprietors].each do |proprietor|
+  expect(content).to include(@title[:title_number])
+  expect(content).to include(@title[:last_changed])
+  if @title[:proprietors]
+    @title[:proprietors].each do |proprietor|
       if proprietor[:type] == 'private'
         expect(content).to include(proprietor[:forename])
         expect(content).to include(proprietor[:surname])
@@ -49,9 +43,9 @@ Then(/^I can view the register details for the selected title$/) do
       end
     end
   end
-  expect(content).to include(@title_hash[:postcode])
-  expect(content).to include(@title_hash[:town])
-  expect(content).to include("#{@title_hash[:house_no]} #{@title_hash[:street_name]}")
+  expect(content).to include(@title[:postcode])
+  expect(content).to include(@title[:town])
+  expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")
 end
 
 Then(/^I can see the map in the summary box$/) do

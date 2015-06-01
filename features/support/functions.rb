@@ -79,14 +79,17 @@ def insert_title_with_owners_different_title(number_proprietors = 1)
   process_title_template(@title)
 end
 
-def random_title_number
-  "DN#{rand(1..999_999)}"
-end
-
 def insert_title_with_number(title_number, wait_for_updater = true)
   @title = create_title_hash(title_number, 'OPEN')
   @title[:proprietors] = create_non_private_proprietors(1)
   process_title_template(@title, wait_for_updater)
+end
+
+def insert_title_with_prices_paid(price_paid_hash)
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:price_paid_stated] = price_paid_hash
+  process_title_template(@title)
 end
 
 def insert_multiple_titles(number_of_titles)
@@ -97,6 +100,10 @@ def insert_multiple_titles(number_of_titles)
   # Very short final sleep for elasticsearch nodes to be updated
   sleep($ELASTICSEARCH_SLEEP.to_f)
   process_title_template(@title)
+end
+
+def random_title_number
+  "DN#{rand(1..999_999)}"
 end
 
 def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')

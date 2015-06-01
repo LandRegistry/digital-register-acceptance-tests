@@ -1,5 +1,5 @@
 def verify_charge_company_name_and_address
-  @title_hash[:charges].each do |charges|
+  @title[:charges].each do |charges|
     charges[:charge].each do |charge|
       check_charge_company_name(charge)
       check_charge_company_address(charge)
@@ -8,7 +8,7 @@ def verify_charge_company_name_and_address
 end
 
 def charge_company_name_and_address_not_displayed
-  @title_hash[:charges].each do |charges|
+  @title[:charges].each do |charges|
     charges[:charge].each do |charge|
       charge_company_name_not_displayed(charge)
       charge_company_address_not_displayed(charge)
@@ -17,7 +17,7 @@ def charge_company_name_and_address_not_displayed
 end
 
 def verify_charge_company_name
-  @title_hash[:charges].each do |charges|
+  @title[:charges].each do |charges|
     charges[:charge].each do |charge|
       check_charge_company_name(charge)
     end
