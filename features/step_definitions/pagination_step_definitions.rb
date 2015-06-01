@@ -4,6 +4,7 @@ Then(/^I can see (\d+) addresses per page$/) do |address_no|
 end
 
 Then(/^I can go to the next page$/) do
+  # TODO: needs verification if we actually navigated to the next page
   click_link('Next page')
 end
 
