@@ -33,9 +33,9 @@ def check_charge_company_address(charge)
 end
 
 def charge_company_name_not_displayed(charge)
-  expect(content).should_not include(charge[:charge_company_name])
+  expect(content).not_to include(charge[:charge_company_name])
 end
 
 def check_charge_company_address_not_displayed(charge)
-  expect(content).should_not include(charge[:charge_company_address])
+  expect(content).not_to include(charge[:charge_company_address])
 end
