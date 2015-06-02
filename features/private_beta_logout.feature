@@ -1,4 +1,4 @@
-@US085
+@US083
 Feature: Private Beta Log out
 
 Background:

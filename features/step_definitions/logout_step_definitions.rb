@@ -3,7 +3,7 @@ Given(/^I am on the search screen$/) do
 end
 
 Then(/^the Log out option is available$/) do
-  find_link('logout').visible?
+  find_link('signout').visible?
 end
 
 When(/^I navigate to a register title page$/) do
@@ -12,15 +12,15 @@ When(/^I navigate to a register title page$/) do
 end
 
 Then(/^I am able to Log out$/) do
-  click_link('logout')
+  click_link('signout')
 end
 
 When(/^I Log out$/) do
-  click_link('logout')
+  click_link('signout')
 end
 
 Then(/^the Log out option is not available$/) do
-  content.should_not include('logout')
+  expect(content).not_to include('signout')
 end
 
 When(/^I try to navigate to a title register$/) do
