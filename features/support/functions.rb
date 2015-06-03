@@ -40,6 +40,13 @@ def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_s
   process_title_template(@title)
 end
 
+def insert_title_with_no_charges
+  @title = create_title_hash(random_title_number)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  @title[:charges] = create_charges(number_of_charges: 0)
+  process_title_template(@title)
+end
+
 def insert_title_with_multiple_charges(number_of_charges)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(1)
@@ -50,7 +57,7 @@ end
 def insert_title_with_a_sub_charge
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(1)
-  @title[:charges] = create_charges(charge_role_code: %w(CCHR CCHA))
+  @title[:charges] = create_charges(charge_role_code: %w(CSCH))
   process_title_template(@title)
 end
 

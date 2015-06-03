@@ -8,7 +8,7 @@ require 'cucumber-repeat'
 include Capybara::DSL
 
 ### Configures Capybara to use Xpath selectors and use poltergeist driver
-Capybara.default_selector = :xpath
+Capybara.default_selector = :css
 Capybara.default_wait_time = 10
 Capybara.app_host = 'http://localhost:4567' # change url
 
