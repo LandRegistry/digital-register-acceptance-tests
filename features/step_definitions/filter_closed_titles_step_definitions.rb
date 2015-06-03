@@ -41,5 +41,5 @@ Then(/^the register details page is displayed$/) do
   expect(content).to include(@title[:town])
   expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")
   expect(content).to include(@title[:title_number])
-  expect(content).to include("#{@title[:proprietors][0][:name]}")
+  expect(content).to include(@title[:proprietors][0][:name])
 end

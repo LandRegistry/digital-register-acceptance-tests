@@ -26,11 +26,11 @@ def charges_section_verify_charge_company_name_address
 end
 
 def charges_section_verify_charge_company_name_address_not_displayed
-  expect(content).to_not have_content("Charge details")
+  expect(content).to_not have_content('Charge details')
 end
 
 def summary_box
-  find("div.callout.callout--summary")
+  find('div.callout.callout--summary')
 end
 
 def charge_company_name_not_displayed(charge)
@@ -42,7 +42,7 @@ def check_charge_company_address_not_displayed(charge)
 end
 
 def charges_section
-  find_by_id("charge-details")
+  find_by_id('charge-details')
 end
 
 def summary_check_charge_company_name(charge)
