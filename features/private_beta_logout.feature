@@ -23,5 +23,5 @@ Scenario: Log out option not available if not logged in
 
 Scenario: Unable to search for a title when logged out
   When I Log out
-  And I try to navigate to a title register
+  And I navigate to a register title page
 	Then I am redirected to the login page

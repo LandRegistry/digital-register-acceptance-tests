@@ -22,8 +22,3 @@ end
 Then(/^the Log out option is not available$/) do
   expect(content).not_to include('signout')
 end
-
-When(/^I try to navigate to a title register$/) do
-  insert_title_with_owners
-  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
-end
