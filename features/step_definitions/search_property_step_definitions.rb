@@ -66,7 +66,6 @@ Then(/^I will be displayed a list of results$/) do
 end
 
 Then(/^they will include the address that has been searched for$/) do
-  content = page.body
   expect(content).to include(@title[:address_string])
 end
 

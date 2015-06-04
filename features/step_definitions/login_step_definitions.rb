@@ -28,7 +28,6 @@ end
 
 Then(/^I should access the system$/) do
   expect(content).to include('Find a title')
-  # TODO: This is to be refactored, not happy with just checking the text on the page
 end
 
 Given(/^I have an invalid username and a valid password$/) do

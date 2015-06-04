@@ -16,14 +16,14 @@ end
 
 Then(/^I do not see the sub mortgagor’s name of the in the summary box for the selected title$/) do
   within('div callout callout--summary') do
-    content.should_not include(@title[:charges][0][:charge][0][:charge_company_name])
+    expect(content).not_to include(@title[:charges][0][:charge][0][:charge_company_name])
   end
 end
 
 Then(/^I do not see the sub mortgagor’s name and contact details as they are displayed on the register$/) do
   within('div grid-wrapper') do
-    content.should_not include(@title[:charges][0][:charge][0][:charge_company_name])
-    content.should_not include(@title[:charges][0][:charge][0][:charge_company_address])
+    expect(content).not_to include(@title[:charges][0][:charge][0][:charge_company_name])
+    expect(content).not_to include(@title[:charges][0][:charge][0][:charge_company_address])
   end
 end
 
