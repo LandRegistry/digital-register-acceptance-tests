@@ -11,10 +11,6 @@ When(/^I navigate to a register title page$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
 end
 
-Then(/^I am able to Log out$/) do
-  click_link('signout')
-end
-
 When(/^I Log out$/) do
   click_link('signout')
 end

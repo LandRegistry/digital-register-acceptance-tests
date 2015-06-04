@@ -10,8 +10,7 @@ Scenario: Log out option on all screens
   Then the Log out option is available
   When I navigate to a register title page
   Then the Log out option is available
-  And I am able to Log out
-
+  
 Scenario: Return to login screen on log out
   When I Log out
 	Then I am redirected to the login page
