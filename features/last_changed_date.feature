@@ -8,5 +8,5 @@ Acceptance Criteria:
     Given I am an initial private beta user
     And I have logged in
     And I have a title
-    When I view the register details page
+    When I view the title summary page
     Then I see the date at which the title was last changed

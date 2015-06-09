@@ -14,15 +14,15 @@ Feature: Include private individual owners
 
   Scenario: View Private Individual
     And I have a title with a private individual owner
-    When I view the register details page
+    When I view the title summary page
     Then I can view the register details for the selected title
 
   Scenario: View Charity Private Individual
     And I have a title with a charity with trustees that are private individuals
-    When I view the register details page
+    When I view the title summary page
     Then I can view the register details for the selected title
 
   Scenario: View owners Private and Non Private Individuals
     And I have a title with private and non private Individual owners
-    When I view the register details page
+    When I view the title summary page
     Then I can view the register details for the selected title

@@ -1,5 +1,5 @@
 @US034
-Feature: View Indexing Polygon In Summary Box
+Feature: View Indexing Polygon on summary page
 
   As a citizen
   I want to see the index polygon of  the property displayed on a map
@@ -8,9 +8,9 @@ Feature: View Indexing Polygon In Summary Box
   Acceptance criteria:
    - Index polygon of the property displayed
 
-  Scenario: View Map In Summary Box
+  Scenario: View Map on summary page
     Given I am an initial private beta user
     And I have logged in
     And I have a title with multiple index polygons
-    When I view the register details page
-    Then I can see the map in the summary box
+    When I view the title summary page
+    Then I can see the map

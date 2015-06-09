@@ -8,7 +8,7 @@ Background:
 Scenario: Open Title is displayed in Digital Register
 	Given I have an open title
 	When I search for a property using the Title Number
-	Then the register details page is displayed
+	Then the title summary page is displayed
 
 Scenario: Closed Title is not displayed in Digital Register
 	Given I have a closed title

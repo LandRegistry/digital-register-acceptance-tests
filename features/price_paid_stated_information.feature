@@ -17,10 +17,10 @@ Feature: View Most Recent Price Paid/Stated Information
 
   Scenario: Display most recent price paid information
     Given I have a title with one price paid or stated entry
-    When I view the register details page
-    Then I can see the price paid or stated in the summary
+    When I view the title summary page
+    Then I can see the price paid or stated
 
   Scenario: No price paid information to display
     Given I have a title with no price paid or stated information
-    When I view the register details page
-    Then I don't see 'not available' in the price paid or stated part of the summary
+    When I view the title summary page
+    Then I don't see 'not available' in the price paid or stated part of the page

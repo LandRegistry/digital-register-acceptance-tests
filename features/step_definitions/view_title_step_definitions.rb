@@ -1,4 +1,4 @@
-When(/^I view the register details page$/) do
+When(/^I view the title summary page$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
 end
 
@@ -47,7 +47,7 @@ Then(/^I can view the register details for the selected title$/) do
   expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")
 end
 
-Then(/^I can see the map in the summary box$/) do
+Then(/^I can see the map$/) do
   # Check scale line is displayed to indicate leaflet is being displayed
   page.has_css?('leaflet-control-scale-line')
 end

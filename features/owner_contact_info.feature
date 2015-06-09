@@ -11,13 +11,13 @@ Background:
 
   Scenario:  one owner multiple addresses
     And I have a title with one owner that has property, foreign and BFPO addresses
-    When I view the register details page
+    When I view the title summary page
     Then I can see the owner for the selected title
     And I can see all the owners addresses in the order they are displayed on the register
 
   Scenario: find multiple property owner addresses
     And I have a title with 3 owners
     And the owners have BFPO and foreign addresses
-    When I view the register details page
+    When I view the title summary page
     Then I can see all the owners for the selected title
     And I can see all the owners addresses in the order they are displayed on the register

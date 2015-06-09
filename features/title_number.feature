@@ -9,5 +9,5 @@ Scenario: Title number of property title is displayed correctly
   Given I am an initial private beta user
   And I have logged in
   And I have a title
-  When I view the register details page
+  When I view the title summary page
   Then I see the title number for the selected title
