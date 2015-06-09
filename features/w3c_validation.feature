@@ -5,6 +5,11 @@ Scenario: Check the login page is w3c compliant
       Given I visit the login page
       Then the page is w3c compliant
 
+Scenario: Check the login page with validation errors is compliant
+      Given I visit the login page
+      When I log in with incorrect credentials
+      Then the page is w3c compliant
+
 Scenario: Check the search page is w3c compliant
       Given I am an initial private beta user
       When I have logged in
