@@ -1,9 +1,9 @@
 @US026
-Feature: Title Number is displayed in the summary box in the digital register
+Feature: Title Number is displayed in title summary
 
 Acceptance Criteria:
-  - The title number associated with the property description is
-    displayed in the summary box
+  The title number associated with the property description is
+  displayed in the title summary
 
 Scenario: Title number of property title is displayed correctly
   Given I am an initial private beta user
