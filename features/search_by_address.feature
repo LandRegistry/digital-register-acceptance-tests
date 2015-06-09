@@ -6,8 +6,8 @@ I want to be able to search by using either part of or the whole property addres
 So that I can find the property I am interested in
 
 Acceptance criteria:
-   - Search by full address
-   - maximum number of results
+  - Search by full address
+  - maximum number of results
 
 Background:
   Given I am an initial private beta user

@@ -2,7 +2,7 @@
 Feature: Address Search Pagination
 
 Acceptance criteria
-20 results per page
+  20 results per page
 
 Background:
   Given I am an initial private beta user

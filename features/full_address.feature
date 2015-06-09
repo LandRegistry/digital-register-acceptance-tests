@@ -2,10 +2,10 @@
 Feature: View full address on title summary page
 
 Acceptance Criteria
-   - Should display the full address - (for the show and tell)
-   - The address must be in the same format as when displayed on the Gov.UK Property Pages
-   - If the information relating to the address is not available then a meaningful message must
-     be displayed
+  - Should display the full address - (for the show and tell)
+  - The address must be in the same format as when displayed on the Gov.UK Property Pages
+  - If the information relating to the address is not available then a meaningful message must
+    be displayed
 
   Scenario: Full address on property title
     Given I am an initial private beta user

@@ -1,10 +1,10 @@
 @US021
 Feature: Search for title by address
 
-  Acceptance Criteria:
-   - Search only by postcode
-   - If more than one title number is associated with the property
-        display all of them so they are associated to that address.
+Acceptance Criteria:
+  - Search only by postcode
+  - If more than one title number is associated with the property
+    display all of them so they are associated to that address.
 
 Background:
   Given I am an initial private beta user

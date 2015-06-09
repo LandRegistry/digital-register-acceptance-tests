@@ -1,16 +1,16 @@
 @US045
 Feature: Include private individual owners
 
-  Acceptance criteria
-    Also titles with private individual owners must be available for selection
-    Private individual owner details must be displayed on the Digital Register
-    If the information relating to the owner of the title is not available
-    then a meaningful message must be displayed
+Acceptance criteria
+  Also titles with private individual owners must be available for selection
+  Private individual owner details must be displayed on the Digital Register
+  If the information relating to the owner of the title is not available
+  then a meaningful message must be displayed
 
-  Background:
-    Given I am an initial private beta user
-    And the digital register is setup to also show private individual owners
-    And I have logged in
+Background:
+  Given I am an initial private beta user
+  And the digital register is setup to also show private individual owners
+  And I have logged in
 
   Scenario: View Private Individual
     And I have a title with a private individual owner

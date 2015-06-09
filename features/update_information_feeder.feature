@@ -2,9 +2,9 @@
 Feature: Update of Title Information
 
 Background:
-	Given I am an initial private beta user
-	And I have logged in
-	And I have a title
+  Given I am an initial private beta user
+  And I have logged in
+  And I have a title
 
 Scenario: User views updated title information
   Given the title information is updated
