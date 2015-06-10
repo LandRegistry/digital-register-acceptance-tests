@@ -64,6 +64,12 @@ Given(/^I have failed to login (\d+) times$/) do |failed_login_times|
   end
 end
 
+When(/^I log in with incorrect credentials$/) do
+  @username = @new_user['user']['user_id']
+  @password = 'rubbish_password'
+  login_user(@username, @password)
+end
+
 When(/^I attempt an 11th log in with the correct username and password$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)

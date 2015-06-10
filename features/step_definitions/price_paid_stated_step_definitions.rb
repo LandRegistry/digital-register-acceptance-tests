@@ -11,15 +11,13 @@ Given(/^I have a title with no price paid or stated information$/) do
   insert_title_with_prices_paid(nil)
 end
 
-Then(/^I can see the price paid or stated in the summary$/) do
+Then(/^I can see the price paid or stated$/) do
   latest_price_paid_stated = @title[:price_paid_stated]
-  label_index = page.all(:css, '#property-summary > dt').map(&:text).find_index('Price paid/stated')
-  price_stated = page.all(:css, '#property-summary > dd')[label_index].text
-  # the final dot is now removed from PPI information
-  expect(price_stated).to eq latest_price_paid_stated[:text].chomp('.')
+  expect(content).to include 'Price paid/stated'
+  expect(content).to include latest_price_paid_stated[:text].chomp('.')
 end
 
-Then(/^I don't see 'not available' in the price paid or stated part of the summary$/) do
+Then(/^I don't see 'not available' in the price paid or stated part of the page$/) do
   expect(content).to have_no_content 'Price paid/stated'
   expect(content).to have_no_content 'not available'
 end

@@ -8,4 +8,3 @@ Background:
   Scenario: Print Digital register page
     When I navigate to a register title page
     Then the print option is available
-    And I can print the page

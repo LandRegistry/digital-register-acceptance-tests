@@ -19,10 +19,9 @@ end
 
 Then(/^I can see all the owners addresses in the order they are displayed on the register$/) do
   address_index = 0
-  page_addresses = page.find_by_id('property-details').all('div.grid.grid-1-2')
   @title[:proprietors].each_with_index do |proprietor, proprietor_index|
     proprietor[:addresses].each_with_index do |_, index|
-      expect(page_addresses[index]).to have_content("#{@title[:proprietors][proprietor_index][:addresses][index][:address_string]}")
+      expect(content).to have_content("#{@title[:proprietors][proprietor_index][:addresses][index][:address_string]}")
       address_index += 1
     end
   end

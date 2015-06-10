@@ -36,7 +36,7 @@ Then(/^I am able to view the updated information$/) do
   expect(content).to include(@title[:proprietors][0][:name])
 end
 
-Then(/^the register details page is displayed$/) do
+Then(/^the title summary page is displayed$/) do
   expect(content).to include(@title[:postcode])
   expect(content).to include(@title[:town])
   expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")

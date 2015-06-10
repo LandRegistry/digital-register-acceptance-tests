@@ -18,5 +18,4 @@ Background:
   Scenario: No address search pagination
     Given I have 10 addresses in the same City
     When I search for a property using only the City part of an address
-    Then I see we are on page 1
-    And I see the number of pages is 1
+    Then I cannot see pagination details
