@@ -17,7 +17,7 @@ Given(/^I have a closed title$/) do
 end
 
 Then(/^an unavailable message is displayed$/) do
-  expect(content).to include('No result(s) found')
+  expect(content).to include('No results found')
 end
 
 Given(/^I have a recently closed title$/) do
