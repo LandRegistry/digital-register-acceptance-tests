@@ -239,7 +239,7 @@ def new_proprietor(new_proprietor_name)
   proprietors = []
   proprietors << {
     name: new_proprietor_name,
-    address: 'Proprietor address'
+    addresses: create_proprietor_addresses(['UK'])
   }
   proprietors
 end
@@ -255,8 +255,8 @@ def validate_page(page)
 end
 
 def wait_until_elasticsearch_updater_finished
-  total_seconds = 0
-  seconds = $ELASTICSEARCH_SLEEP.to_i
+  total_seconds = 0.0
+  seconds = $ELASTICSEARCH_SLEEP.to_f
   until title_numbers_all_equal_to_last
     sleep(seconds)
     total_seconds += seconds

@@ -2,7 +2,7 @@ Before do
   $tables_created ||= false
   return $tables_created if $tables_created
   delete_all_titles_from_elasticsearch # es-updater should recreate
-  sleep($ELASTICSEARCH_SLEEP.to_i)
+  sleep($ELASTICSEARCH_SLEEP.to_f)
   clean_register_database
   ENV['SHOW_PRIVATE_PROPRIETORS'] = 'true'
 end
@@ -22,7 +22,7 @@ at_exit do
     clean_register_database
     delete_all_titles_from_elasticsearch # es-updater should recreate
   end
-  sleep($ELASTICSEARCH_SLEEP.to_i)
+  sleep($ELASTICSEARCH_SLEEP.to_f)
   puts 'Creating user landregistry with password integration'
   @new_user = {}
   @new_user['user'] = {}
