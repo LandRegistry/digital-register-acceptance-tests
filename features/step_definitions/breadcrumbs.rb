@@ -7,7 +7,7 @@ Then(/^I am returned to the search results screen and position I was viewing bef
 end
 
 When(/^I select the find a title breadcrumb$/) do
-  click_link('Find a Title')
+  click_link('Find a title')
 end
 
 Then(/^I am returned to the initial search screen$/) do

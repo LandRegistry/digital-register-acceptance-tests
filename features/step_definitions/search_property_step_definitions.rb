@@ -41,7 +41,7 @@ Given(/^I have an address with multiple Title Numbers$/) do
 end
 
 Given(/^I have (\d+) addresses in the same City$/) do |number_addresses|
-  insert_multiple_titles(number_addresses)
+  (number_addresses)
 end
 
 Then(/^the address and related title numbers are displayed$/) do
@@ -61,7 +61,7 @@ When(/^I search for a property using the whole address$/) do
 end
 
 Then(/^I will be displayed a list of results$/) do
-  number_results = page.all('ol.results > li').count
+  number_results = page.all(:css, 'ol.result > li').count
   expect(number_results).to be >= 1
 end
 
@@ -76,9 +76,9 @@ When(/^I search for a property using only the City part of an address$/) do
 end
 
 Then(/^I can see at least (\d+) addresses included in the search result$/) do |n|
-  expect(page).to have_content("#{n} results found")
+  expect(page).to have_content("#{n} result(s) found")
 end
 
 Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
-  expect(page).to have_content("#{n} results found")
+  expect(page).to have_content("#{n} result(s) found")
 end
