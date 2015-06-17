@@ -40,3 +40,7 @@ end
 Given(/^I have a title with private and non private Individual owners$/) do
   insert_title_with_private_and_non_private_owners
 end
+
+Given(/^I have a caution title$/) do
+  insert_caution_title
+end

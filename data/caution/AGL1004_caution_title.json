@@ -1,0 +1,107 @@
+{
+  "data": {
+    "application_reference": "P609KYL",
+    "closure_status": "OPEN",
+    "tenure": "Freehold",
+    "dlr": "LROffice",
+    "title_number": "AGL1004",
+    "class": "Unknown",
+    "last_app_timestamp": "2013-01-25T10: 39: 25+00: 00",
+    "groups": [
+        {
+            "category": "PROPERTY",
+            "entries": [
+                {
+                    "infills": [
+                        {
+                            "type": "Address",
+                            "address": {
+                                "house_no": "29",
+                                "postcode": "N1 BLT",
+                                "street_name": "Magical Avenue",
+                                "postal_county": "Wardrobe",
+                                "town": "Narniaville",
+                                "address_string": "Magical address string"
+                            }
+                        }
+                    ],
+                    "template_text": "Caution text",
+                    "entry_id": "2013-01-2510: 26: 21.157030",
+                    "sequence_number": 1,
+                    "entry_date": "2013-01-23",
+                    "full_text": "Caution text",
+                    "category": "PROPERTY",
+                    "role_code": "RDES",
+                    "sub_register": "A",
+                    "language": "ENG",
+                    "status": "Current"
+                }
+            ]
+        },
+        {
+            "category": "REGISTER",
+            "entries": [
+                {
+                    "draft_entry_version": 1,
+                    "sub_register": "A",
+                    "entry_date": "2013-01-23",
+                    "template_text": "Certificate information",
+                    "role_code": "RCTN",
+                    "status": "Current",
+                    "draft_entry_code": "AC208",
+                    "infills": [
+                        {
+                            "text": "statementoftruth"
+                        },
+                        {
+                            "type": "VERBATIM",
+                            "text": "Holder text"
+                        }
+                    ],
+                    "sequence_number": 2,
+                    "full_text": "Full text",
+                    "category": "REGISTER",
+                    "entry_id": "2013-01-2510: 28: 55.626580",
+                    "language": "ENG"
+                }
+            ]
+        },
+        {
+            "category": "OWNERSHIP",
+            "entries": [
+                {
+                    "infills": [
+                        {
+                            "type": "Proprietor",
+                            "proprietors": [
+                                {
+                                    "addresses": [
+                                        {
+                                            "house_description": "Big Ice Castle",
+                                            "address_type": "UK",
+                                            "address_string": "Big Ice Castle in Narnia"
+                                        }
+                                    ],
+                                    "name": {
+                                        "non_private_individual_name": "Aslan"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "template_text": "CAUTIONER: *RP*",
+                    "entry_id": "2013-01-2510: 25: 52.877300",
+                    "sequence_number": 1,
+                    "entry_date": "2013-01-23",
+                    "full_text": "CAUTIONER: The cautioner",
+                    "category": "OWNERSHIP",
+                    "role_code": "RCAU",
+                    "sub_register": "B",
+                    "language": "ENG",
+                    "status": "Current"
+                }
+            ]
+        }
+    ]
+  }
+}

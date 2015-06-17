@@ -5,6 +5,13 @@ def process_titles_in_directory(data_directory)
   puts 'Error creating title' unless $CHILD_STATUS.to_i == 0
 end
 
+def insert_caution_title
+  process_titles_in_directory('caution')
+  @title = {
+    title_number: 'AGL1004'
+  }
+end
+
 def insert_title_with_multiple_index_polygons
   process_titles_in_directory('multiple-index-polygons')
   @title = {
