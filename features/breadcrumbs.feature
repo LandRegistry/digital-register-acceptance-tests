@@ -18,12 +18,12 @@ Background:
 	And I select the search results breadcrumb
 	Then I am returned to the search results screen and position I was viewing before
 
-	Scenario: Remain on  summary of Title screen
-	And I navigate to a register title page
+	Scenario: Remain on summary of Title screen
+	And I navigate directly to a register title page
 	When I select the search results breadcrumb
 	Then I remain on the Title page I was viewing
 
 	Scenario: Return to Find a title screen
-	And I navigate to a register title page
+	And I navigate directly to a register title page
 	When I select the find a title breadcrumb
 	Then I am returned to the initial search screen
