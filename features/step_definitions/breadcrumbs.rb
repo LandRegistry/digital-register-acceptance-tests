@@ -35,3 +35,7 @@ end
 Then(/^I am returned to the initial search screen$/) do
   check_title_search_page_is_displayed
 end
+
+Then(/^there is no search results breadcrumb$/) do
+  expect(content).to have_no_content 'Search results'  
+end

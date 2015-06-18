@@ -20,9 +20,8 @@ Background:
 
   Scenario: Remain on summary of Title screen
     And I navigate directly to a register title page
-    When I select the search results breadcrumb
-    Then I remain on the Title page I was viewing
-
+    Then there is no search results breadcrumb
+    
   Scenario: Return to Find a title screen
     And I navigate directly to a register title page
     When I select the find a title breadcrumb
