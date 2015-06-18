@@ -154,7 +154,7 @@ def delete_all_titles_from_elasticsearch
   host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
   match_all_query = '{"query": {"bool": {"must": [{"match_all": {}}]}}}'
 
-  doc_types = %w(property_by_postcode property_by_postcode_2 property_by_address)
+  doc_types = %w(property_by_postcode_2 property_by_postcode_3 property_by_address)
   doc_types.each do |doc_type|
     `curl -XDELETE #{host}/landregistry/#{doc_type}/_query -d '#{match_all_query}' &> /dev/null`
   end
