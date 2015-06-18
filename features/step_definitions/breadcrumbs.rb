@@ -30,7 +30,6 @@ When(/^I select the find a title breadcrumb$/) do
   click_link('Find a title')
 end
 
-
 Then(/^I am returned to the initial search screen$/) do
   check_title_search_page_is_displayed
 end

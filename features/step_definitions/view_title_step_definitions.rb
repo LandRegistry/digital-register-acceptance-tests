@@ -1,5 +1,5 @@
 When(/^I view the title summary page$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
+  visit_title_register_page(@title[:title_number])
 end
 
 Then(/^I see the full address for the selected title$/) do

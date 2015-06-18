@@ -8,7 +8,7 @@ end
 
 When(/^I navigate to a register title page$/) do
   insert_title_with_owners
-  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
+  visit_title_register_page(@title[:title_number])
 end
 
 When(/^I Log out$/) do
