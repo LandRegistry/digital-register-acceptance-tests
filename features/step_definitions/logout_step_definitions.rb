@@ -1,5 +1,5 @@
 Given(/^I am on the search screen$/) do
-  expect(content).to include('Find a title')
+  check_title_search_page_is_displayed
 end
 
 Then(/^the Log out option is available$/) do

@@ -14,7 +14,7 @@ Given(/^I have logged in$/) do
   fill_in 'username', with: @username
   fill_in 'password', with: @password
   click_button('signin')
-  expect(content).to include('Find a title')
+  check_title_search_page_is_displayed
 end
 
 Given(/^I have a valid username and password$/) do
@@ -27,7 +27,7 @@ When(/^I log in$/) do
 end
 
 Then(/^I should access the system$/) do
-  expect(content).to include('Find a title')
+  check_title_search_page_is_displayed
 end
 
 Given(/^I have an invalid username and a valid password$/) do
@@ -86,7 +86,7 @@ end
 Then(/^I can login$/) do
   @password = @new_user['user']['password']
   login_user(@username, @password)
-  expect(content).to include('Find a title')
+  check_title_search_page_is_displayed
 end
 
 When(/^I attempt a 10th correct login$/) do
@@ -95,7 +95,7 @@ When(/^I attempt a 10th correct login$/) do
 end
 
 Then(/^I can see the search page$/) do
-  expect(content).to include('Find a title')
+  check_title_search_page_is_displayed
 end
 
 Given(/^I am a citizen$/) do

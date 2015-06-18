@@ -33,5 +33,5 @@ end
 
 
 Then(/^I am returned to the initial search screen$/) do
-  expect(content).to include 'Search for the title of any property in England and Wales'
+  check_title_search_page_is_displayed
 end

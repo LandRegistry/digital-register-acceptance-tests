@@ -61,7 +61,7 @@ When(/^I search for a property using the whole address$/) do
 end
 
 Then(/^I will be displayed a list of results$/) do
-  number_results = page.all(:css, 'ol.result > li').count
+  number_results = page.all(:css, 'ol.results > li').count
   expect(number_results).to be >= 1
 end
 
@@ -76,9 +76,9 @@ When(/^I search for a property using only the City part of an address$/) do
 end
 
 Then(/^I can see at least (\d+) addresses included in the search result$/) do |n|
-  expect(page).to have_content("#{n} result(s) found")
+  expect(page).to have_content("#{n} results found")
 end
 
 Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
-  expect(page).to have_content("#{n} result(s) found")
+  expect(page).to have_content("#{n} results found")
 end
