@@ -1,6 +1,6 @@
 Given(/^I navigate directly to a register title page$/) do
   insert_title_with_owners
-  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{@title[:title_number]}")
+  visit_title_register_page(@title[:title_number])
 end
 
 When(/^I view an address on page (\d+) of the results$/) do |expected_page_num|
@@ -9,11 +9,12 @@ When(/^I view an address on page (\d+) of the results$/) do |expected_page_num|
   expect(next_page_number - 1).to eq(@expected_page_num.to_i)
   link_text = first('ol.results').first('li').first('a').text
   click_link(link_text)
-  expect(content).to include 'Summary of title'
+  check_title_summary_page_is_displayed
+  expect(content).to include(link_text.gsub(',', ''))
 end
 
 Then(/^I remain on the Title page I was viewing$/) do
-  expect(content).to include 'Summary of title'
+  check_title_summary_page_is_displayed
 end
 
 When(/^I select the search results breadcrumb$/) do
@@ -22,8 +23,6 @@ end
 
 Then(/^I am returned to the search results screen and position I was viewing before$/) do
   expect(content).to include 'Search results for'
-  page_text = page.find('.pagination-next-number').text
-  next_page_num = page_text.split(' ').first.to_i
   expect(next_page_number - 1).to eq(@expected_page_num.to_i)
 end
 
@@ -37,5 +36,5 @@ Then(/^I am returned to the initial search screen$/) do
 end
 
 Then(/^there is no search results breadcrumb$/) do
-  expect(content).to have_no_content 'Search results'  
+  expect(content).to have_no_content 'Search results'
 end

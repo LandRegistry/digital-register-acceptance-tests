@@ -5,18 +5,15 @@ end
 
 Then(/^I can go to the next page \(page (\d+)\)$/) do |expected_page_num|
   click_link('Next page')
-  page_text = page.find('.pagination-next-number').text
-  next_page_num = page_text.split(' ').first.to_i
-  expect(next_page_num).to eq(expected_page_num.to_i + 1)
+  expect(next_page_number).to eq(expected_page_num.to_i + 1)
 end
 
 Then(/^I see we are on page (\d+)$/) do |expected_page_num|
-  page_text = page.find('.pagination-next-number').text
-  next_page_num = page_text.split(' ').first.to_i
-  expect(next_page_num).to eq(expected_page_num.to_i - 1)
+  expect(next_page_number).to eq(expected_page_num.to_i - 1)
 end
 
 Then(/^I see the number of pages is (\d+)$/) do |expected_page_num|
+  # These lines strip out the last number of the pagination number text.
   page_text = page.find('.pagination-next-number').text
   actual_page_num = page_text.split(' ').last.to_i
   expect(actual_page_num).to eq expected_page_num.to_i
