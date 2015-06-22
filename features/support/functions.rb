@@ -16,6 +16,12 @@ def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wa
   process_title_template(@title, wait_for_updater)
 end
 
+def insert_title_with_address(address_hash)
+  @title = create_title_hash(random_title_number, 'OPEN', 'Freehold', address_hash)
+  @title[:proprietors] = create_non_private_proprietors(1)
+  process_title_template(@title)
+end
+
 def insert_title_with_private_and_non_private_owners
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(1)
@@ -113,8 +119,9 @@ def random_title_number
   "DN#{rand(1..999_999)}"
 end
 
-def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold')
-  house_number = rand(1..500).to_s
+def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', address_hash = {})
+  house_number = address_hash.fetch(:house_no, rand(1..500).to_s)
+  house_alpha = address_hash[:house_alpha]
   {
     title_number: title_number,
     street_name: 'Test Street',
@@ -122,12 +129,12 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     house_no: house_number,
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
-    address_string: "#{house_number} Test Street, Plymouth, PL9 8TB",
+    address_string: "#{house_number}#{house_alpha} Test Street, Plymouth, PL9 8TB",
     uprn: rand(1000..99_999),
     closure_status: closure_status,
     tenure_type: tenure_type,
     charges: create_charges
-  }
+  }.merge(address_hash)
 end
 
 def process_title_template(title, wait_for_updater = true)
@@ -154,7 +161,7 @@ def delete_all_titles_from_elasticsearch
   host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
   match_all_query = '{"query": {"bool": {"must": [{"match_all": {}}]}}}'
 
-  doc_types = %w(property_by_postcode property_by_postcode_2 property_by_address)
+  doc_types = %w(property_by_postcode_2 property_by_postcode_3 property_by_address)
   doc_types.each do |doc_type|
     `curl -XDELETE #{host}/landregistry/#{doc_type}/_query -d '#{match_all_query}' &> /dev/null`
   end

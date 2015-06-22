@@ -12,7 +12,7 @@ Given(/^I have an address with a single Title Number$/) do
   insert_title_with_owners
 end
 
-Given(/^I search for a property using the postcode$/) do
+Given(/^I search for a property using (?:the|their) postcode$/) do
   fill_in 'search_term', with: @title[:postcode]
   click_button('Search')
 end
