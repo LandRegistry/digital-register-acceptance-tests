@@ -20,11 +20,14 @@ end
 Given(/^I have the following addresses with the same postcode:$/) do |table|
   table.hashes.each do |address_hash|
     symbolised_keys_hash = address_hash.each_with_object({}) do |(key, val), m|
-      m[key.to_sym] = val
+      if val.empty?
+        m[key.to_sym] = nil
+      else
+        m[key.to_sym] = val
+      end
       m
     end
-    no_empty_values = symbolised_keys_hash.delete_if { |_, v| v.to_s.strip.empty? }
-    insert_title_with_address(no_empty_values)
+    insert_title_with_address(symbolised_keys_hash)
   end
 end
 

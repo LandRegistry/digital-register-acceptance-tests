@@ -17,13 +17,19 @@
           "infills": [
             {
               "address": {
-                "address_string": "<%=@title[:address_string]%>",
                 "auto_uppercase_override": true,
                 "postcode": "<%=@title[:postcode]%>",
                 "town": "<%=@title[:town]%>",
-                "house_no": "<%=@title[:house_no]%>",
+                <% if @title[:house_no] %>
+                  "house_no": "<%=@title[:house_no]%>",
+                <% end %>
+                <% if @title[:house_alpha] %>
                 "house_alpha": "<%=@title[:house_alpha]%>",
-                "street_name": "<%=@title[:street_name]%>"
+                <% end %>
+                <% if @title[:street_name] %>
+                "street_name": "<%=@title[:street_name]%>",
+                <% end %>
+                "address_string": "<%=@title[:address_string]%>"
               },
               "type": "Address"
             }
