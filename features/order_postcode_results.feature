@@ -5,8 +5,6 @@ As a citizen
 I want property search results to be displayed in an order that is logical when I do a post code search
 So that I can easily identify the property that I am interested in
 
-Note: 'logical' order is 1, 2, 3 etc and not 1, 11, 12 etc
-
 Acceptance criteria:
   Only applied when a user has searched a postcode
   Results must be displayed in proper numerical order
