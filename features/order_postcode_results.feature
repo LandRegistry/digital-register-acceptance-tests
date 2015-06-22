@@ -21,7 +21,7 @@ Scenario: Search by postcode properties on same street
   And I search for a property using their postcode
   Then the results are displayed in the order of the house numbers
 
-Scenario: Search by postcode properties takes house numbers, building numbers and street name into account
+Scenario: Search by postcode returns properties sorted by street, house and building details, and address_string
   Given I have the following addresses with the same postcode:
     | street_name | house_no | house_alpha | address_string | postcode |
     | | | | land to the west of Alpha Street (PL9 8TB) | |
