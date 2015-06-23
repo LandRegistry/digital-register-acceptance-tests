@@ -1,5 +1,5 @@
 Then(/^I can see (\d+) addresses per page$/) do |address_no|
-  number_results = page.all('ol.results > li').count
+  number_results = page.all('ol.search-results-listing > li').count
   expect(number_results).to eq address_no.to_i
 end
 
@@ -14,7 +14,7 @@ end
 
 Then(/^I see the number of pages is (\d+)$/) do |expected_page_num|
   # These lines strip out the last number of the pagination number text.
-  page_text = page.find('.pagination-next-number').text
+  page_text = page.find('.pagination-prev-next').text
   actual_page_num = page_text.split(' ').last.to_i
   expect(actual_page_num).to eq expected_page_num.to_i
 end

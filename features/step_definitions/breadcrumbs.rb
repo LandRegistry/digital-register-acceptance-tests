@@ -7,7 +7,7 @@ When(/^I view an address on page (\d+) of the results$/) do |expected_page_num|
   @expected_page_num = expected_page_num
   find('.next-page').click
   expect(next_page_number - 1).to eq(@expected_page_num.to_i)
-  link_text = first('ol.results').first('li').first('a').text
+  link_text = first('ol.search-results-listing').first('li').first('a').text
   click_link(link_text)
   check_title_summary_page_is_displayed
   expect(content).to include(link_text.gsub(',', ''))

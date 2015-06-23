@@ -61,7 +61,7 @@ When(/^I search for a property using the whole address$/) do
 end
 
 Then(/^I will be displayed a list of results$/) do
-  number_results = page.all('ol.results > li').count
+  number_results = page.all('ol.search-results-listing > li').count
   expect(number_results).to be >= 1
 end
 

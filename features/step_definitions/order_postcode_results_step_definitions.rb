@@ -10,7 +10,7 @@ Given(/^I have multiple addresses on the same street with different house number
 end
 
 Then(/^the results are displayed in the order of the house numbers$/) do
-  address_strings = page.all('ol.results > li').map(&:text)
+  address_strings = page.all('ol.search-results-listing > li').map(&:text)
   house_numbers = address_strings.map do |address_string|
     address_string.split(' ')[0].to_i
   end
@@ -32,7 +32,7 @@ Given(/^I have the following addresses with the same postcode:$/) do |table|
 end
 
 Then(/^the results should be displayed in the order:$/) do |table|
-  displayed_addresses = page.all('ol.results > li > h2').map(&:text)
+  displayed_addresses = page.all('ol.search-results-listing > li > h2').map(&:text)
   address_strings = table.hashes.map do |address_hash|
     address_hash[:address_string]
   end
