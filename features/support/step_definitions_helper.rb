@@ -11,6 +11,6 @@ def check_title_summary_page_is_displayed
 end
 
 def next_page_number
-  page_text = page.find('.pagination-prev-next').text
-  page_text.split(' ').first.to_i
+  page_text = page.find('.pagination-prev-next').find('.next-page').text
+  page_text.split(' ')[2].to_i
 end
