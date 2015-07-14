@@ -75,10 +75,6 @@ When(/^I search for a property using only the City part of an address$/) do
   click_button('Search')
 end
 
-Then(/^I can see at least (\d+) addresses included in the search result$/) do |n|
-  expect(page).to have_content("#{n} results found")
-end
-
 Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
   expect(page).to have_content("#{n} results found")
 end
