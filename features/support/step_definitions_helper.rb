@@ -6,6 +6,10 @@ def visit_title_register_page(title_number)
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}")
 end
 
+def visit_title_register_pdf(title_number)
+  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
+end
+
 def check_title_summary_page_is_displayed
   expect(content).to include 'Summary of title'
 end
