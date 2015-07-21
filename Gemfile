@@ -10,6 +10,7 @@ gem 'rubocop'
 gem 'w3c_validators'
 gem 'bunny'
 gem 'pdf-reader'
+gem 'curl'
 
 group :development do
   gem 'pry'

@@ -1,3 +1,4 @@
+
 @US177
 Feature: Full register content pdf
 
@@ -16,9 +17,9 @@ Background:
 
   Scenario: PDF is not accessible when feature flag is turned off
     Given the feature flag for full register content is turned off
-    And that I attempt to view the PDF for a title
-    Then the PDF is not displayed
+    Then the PDF Download button is not displayed
 
   Scenario: Content of register is displayed on pdf
-    Given that I attempt to view the PDF for a title
-    Then that titles full register is displayed on the PDF 
+    Given the feature flag for full register content is turned on
+    And that I attempt to view the PDF for a title
+    Then that titles full register is displayed on the PDF
