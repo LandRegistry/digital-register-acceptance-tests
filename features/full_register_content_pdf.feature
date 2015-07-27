@@ -1,4 +1,3 @@
-
 @US177
 Feature: Full register content pdf
 
