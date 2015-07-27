@@ -1,4 +1,5 @@
 When(/^I visit the login page$/) do
+  Capybara.reset_sessions!
   visit("#{$DIGITAL_REGISTER_URL}/login")
 end
 

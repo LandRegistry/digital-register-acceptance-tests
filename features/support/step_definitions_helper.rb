@@ -47,7 +47,7 @@ end
 
 # gets the user agent from the capybara session
 def grab_user_agent
-  user_agent = Capybara.current_session.driver.headers['User-Agent']
+  Capybara.current_session.driver.headers['User-Agent']
 end
 
 # Uses header information gathered from capybara to open the pdf
