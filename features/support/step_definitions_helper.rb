@@ -39,10 +39,15 @@ end
 def set_header_info(title_number, cookie)
   Curl.get("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf") do |http_info|
     http_info.cookies = cookie.join('; ')
-    http_info.headers['User-Agent'] = 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34'
+    http_info.headers['User-Agent'] = grab_user_agent
     # http_info.header_in_body = true
     # http_info.verbose = true
   end
+end
+
+# gets the user agent from the capybara session
+def grab_user_agent
+  user_agent = Capybara.current_session.driver.headers['User-Agent']
 end
 
 # Uses header information gathered from capybara to open the pdf
