@@ -20,7 +20,7 @@ def visit_title_register_pdf(title_number)
 
   cookie = grab_cookies
 
-  http = set_header_info(title_number, cookie)
+  http = get_register_pdf(title_number, cookie)
 
   # puts http.body_str
   open_pdf_file(http)
@@ -36,7 +36,7 @@ def grab_cookies
 end
 
 # sets the header information to pass on to further code
-def set_header_info(title_number, cookie)
+def get_register_pdf(title_number, cookie)
   Curl.get("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf") do |http_info|
     http_info.cookies = cookie.join('; ')
     http_info.headers['User-Agent'] = grab_user_agent
