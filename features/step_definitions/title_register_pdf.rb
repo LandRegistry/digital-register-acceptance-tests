@@ -1,6 +1,5 @@
-Given(/^the feature flag for full register content is turned on$/) do
+Given(/^the feature flag for full register content PDF is turned on$/) do
   ENV['SHOW_FULL_TITLE_PDF'] = 'true'
-  ENV['SHOW_FULL_TITLE_DATA'] = 'true'
 end
 
 Given(/^that I attempt to view the PDF for a title$/) do
@@ -13,9 +12,8 @@ Then(/^the PDF is displayed$/) do
   expect(@pdf_text[0]).to include(@title[:title_number])
 end
 
-Given(/^the feature flag for full register content is turned off$/) do
+Given(/^the feature flag for full register content PDF is turned off$/) do
   ENV['SHOW_FULL_TITLE_PDF'] = 'false'
-  ENV['SHOW_FULL_TITLE_DATA'] = 'false'
 end
 
 Then(/^the PDF Download button is not displayed$/) do
