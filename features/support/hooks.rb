@@ -5,6 +5,7 @@ Before do
   sleep($ELASTICSEARCH_SLEEP.to_f)
   clean_register_database
   ENV['SHOW_PRIVATE_PROPRIETORS'] = 'true'
+  set_capybara_session_headers
 end
 
 Before('@existing_user') do

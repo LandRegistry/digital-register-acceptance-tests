@@ -9,7 +9,6 @@ end
 Given(/^I have logged in$/) do
   @username = @new_user['user']['user_id']
   @password = @new_user['user']['password']
-  set_capybara_session_headers
   visit("#{$DIGITAL_REGISTER_URL}/login")
   fill_in 'username', with: @username
   fill_in 'password', with: @password
