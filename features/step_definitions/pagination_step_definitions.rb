@@ -20,5 +20,5 @@ Then(/^I see the number of pages is (\d+)$/) do |expected_page_num|
 end
 
 Then(/^I cannot see pagination details$/) do
-  page.should have_no_selector('.pagination-next-number')
+  page.assert_no_selector('.pagination-next-number')
 end
