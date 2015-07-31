@@ -40,8 +40,6 @@ def get_register_pdf(title_number, cookie)
   Curl.get("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf") do |http_info|
     http_info.cookies = cookie.join('; ')
     http_info.headers['User-Agent'] = grab_user_agent
-    # http_info.header_in_body = true
-    # http_info.verbose = true
   end
 end
 
