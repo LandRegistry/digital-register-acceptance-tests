@@ -1,8 +1,23 @@
 def process_titles_in_directory(data_directory)
-  ENV['REGISTER_FILES_PATH'] = "data/#{data_directory}"
-  result = `sh consume_register_entries.sh data/#{data_directory}`
-  puts result
-  puts 'Error creating title' unless $CHILD_STATUS.to_i == 0
+  q, ch = connect_to_rabbitmq_queue
+  Dir.foreach('data/' + data_directory) do |item|
+    next if File.extname(item) != '.json'
+    data = File.read('data/' + data_directory + '/' + item)
+    ch.default_exchange.publish(data, routing_key: q.name, content_type: 'application/json')
+  end
+end
+
+def connect_to_rabbitmq_queue
+  conn = Bunny.new(ENV['INCOMING_QUEUE_HOSTNAME'])
+  conn.start
+  ch   = conn.create_channel
+  q    = ch.queue(ENV['INCOMING_QUEUE'], durable: true)
+  [q, ch]
+end
+
+def process_titles_from_data(title_data)
+  q, ch    = connect_to_rabbitmq_queue
+  ch.default_exchange.publish(title_data, routing_key: q.name, content_type: 'application/json')
 end
 
 def insert_caution_title
@@ -32,6 +47,7 @@ def insert_title_non_private_individual_owner
     closure_status: 'OPEN',
     tenure_type: 'Freehold'
   }
+  wait_until_elasticsearch_updater_finished
 end
 
 def insert_title_charity_non_private_individual_owner
@@ -46,6 +62,7 @@ def insert_title_charity_non_private_individual_owner
     street_name: 'Murhill Lane',
     closure_status: 'OPEN'
   }
+  wait_until_elasticsearch_updater_finished
 end
 
 def insert_title_charity_private_individual_owner
@@ -56,4 +73,5 @@ def insert_title_charity_private_individual_owner
     postcode: 'PL9 7FN',
     town: 'Plymouth'
   }
+  wait_until_elasticsearch_updater_finished
 end

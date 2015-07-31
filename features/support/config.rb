@@ -3,6 +3,7 @@ require 'capybara/cucumber'
 require 'pg'
 require 'rspec/expectations'
 require 'cucumber-repeat'
+require 'bunny'
 
 ### Allows you to use the page. commands
 include Capybara::DSL
@@ -46,8 +47,8 @@ $db_connection = PG::Connection.open(
 )
 
 $user_db_connection = PG::Connection.open(
-  host: "#{$POSTGRES_HOST}",
-  dbname: "#{$POSTGRES_USER_DB}",
-  user: "#{$POSTGRES_USER}",
-  password: "#{$POSTGRES_PASSWORD}"
+  host: "#{$POSTGRES_USERDB_HOST}",
+  dbname: "#{$POSTGRES_USERDB_DB}",
+  user: "#{$POSTGRES_USERDB_USER}",
+  password: "#{$POSTGRES_USERDB_PASSWORD}"
 )

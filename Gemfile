@@ -8,6 +8,7 @@ gem 'cucumber-repeat'
 gem 'erubis'
 gem 'rubocop'
 gem 'w3c_validators'
+gem 'bunny'
 
 group :development do
   gem 'pry'
