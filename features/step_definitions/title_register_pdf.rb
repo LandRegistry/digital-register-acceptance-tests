@@ -23,3 +23,12 @@ end
 Then(/^that titles full register is displayed on the PDF$/) do
   expect(@pdf_text[0]).to include(@title[:title_number])
 end
+
+Given(/^I visit the title register summary page$/) do
+  insert_title_with_owners
+  visit_title_register_page(@title[:title_number])
+end
+
+Then(/^the PDF Download button is displayed$/) do
+  expect(page).has_link?('download-link')
+end
