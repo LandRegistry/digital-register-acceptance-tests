@@ -75,10 +75,3 @@ def insert_title_charity_private_individual_owner
   }
   wait_until_elasticsearch_updater_finished
 end
-
-def insert_invalid_title
-  process_titles_in_directory('invalid_title')
-  @title = {
-    title_number: 'AGL1013'
-  }
-end

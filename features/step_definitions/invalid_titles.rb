@@ -17,7 +17,8 @@ Given(/^I have an invalid title$/) do
 end
 
 Given(/^I have a invalid version of an existing title$/) do
-  insert_title_make_invalid
+  insert_title_non_private_individual_owner
+  insert_invalid_title(@title[:title_number])
 end
 
 Then(/^I am unable to view it$/) do
