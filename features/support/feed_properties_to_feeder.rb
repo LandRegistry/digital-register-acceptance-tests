@@ -77,11 +77,8 @@ def insert_title_charity_private_individual_owner
 end
 
 def insert_invalid_title
-  process_titles_in_directory('insert_invalid_title')
+  process_titles_in_directory('invalid_title')
   @title = {
-          title_number: "AGL1013",
-          application_reference: "J991DWW",
-          last_app_timestamp: "2003-08-28T14:45:50+01:00",
-          verified: "false"
-      }
+    title_number: 'AGL1013'
+  }
 end
