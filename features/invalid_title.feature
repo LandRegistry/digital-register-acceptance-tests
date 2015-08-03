@@ -6,8 +6,8 @@ When notified that a title has failed SOR verification I want it removed from th
 so that out of date register information cannot inadvertently be revealed to citizens
 
 Acceptance Criteria
-If this is the first time we've seen the (invalid) title, it should not be stored in the database/elasticsearch
-If this is a new version of an existing (invalid) title then the previous version/s should be removed from the database/elasticsearch
+If this is the first time we've seen the (unverified) title, it should not be stored in the database/elasticsearch
+If this is a new version of an existing (unverified) title then the previous version/s should be removed from the database/elasticsearch
 System log should get a record for each of these scenarios
 Removal from the database should happen as soon as we are informed about a SOR verification failure
 
