@@ -1,23 +1,7 @@
 def process_titles_in_directory(data_directory)
-  q, ch = connect_to_rabbitmq_queue
-  Dir.foreach('data/' + data_directory) do |item|
-    next if File.extname(item) != '.json'
-    data = File.read('data/' + data_directory + '/' + item)
-    ch.default_exchange.publish(data, routing_key: q.name, content_type: 'application/json')
-  end
-end
-
-def connect_to_rabbitmq_queue
-  conn = Bunny.new(ENV['INCOMING_QUEUE_HOSTNAME'])
-  conn.start
-  ch   = conn.create_channel
-  q    = ch.queue(ENV['INCOMING_QUEUE'], durable: true)
-  [q, ch]
-end
-
-def process_titles_from_data(title_data)
-  q, ch    = connect_to_rabbitmq_queue
-  ch.default_exchange.publish(title_data, routing_key: q.name, content_type: 'application/json')
+  result = `sh consume_register_entries.sh data/#{data_directory}`
+  puts result
+  puts 'Error creating title' unless $CHILD_STATUS.to_i == 0
 end
 
 def insert_caution_title
