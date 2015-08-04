@@ -41,7 +41,7 @@ def get_register_pdf(title_number, cookie)
   c.cookies = cookie.join('; ')
   c.headers['User-Agent'] = grab_user_agent
   c.perform
-  return c
+  c
 end
 
 # gets the user agent from the capybara session
