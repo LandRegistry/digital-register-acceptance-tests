@@ -22,7 +22,6 @@ def visit_title_register_pdf(title_number)
 
   http = get_register_pdf(title_number, cookie)
 
-  # puts http.body_str
   open_pdf_file(http)
 end
 
@@ -37,10 +36,12 @@ end
 
 # sets the header information to pass on to further code
 def get_register_pdf(title_number, cookie)
-  Curl.get("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf") do |http_info|
-    http_info.cookies = cookie.join('; ')
-    http_info.headers['User-Agent'] = grab_user_agent
-  end
+  c = Curl::Easy.new("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
+  c.ssl_verify_peer = false
+  c.cookies = cookie.join('; ')
+  c.headers['User-Agent'] = grab_user_agent
+  c.perform
+  return c
 end
 
 # gets the user agent from the capybara session
