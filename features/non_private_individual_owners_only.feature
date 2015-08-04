@@ -21,6 +21,7 @@ Background:
     When I view the title summary page
     Then I can view the register details for the selected title
 
+@wip
   Scenario: Titles with Private Individuals are not displayed
     Given I have a title with a private individual owner
     When I view the title summary page
