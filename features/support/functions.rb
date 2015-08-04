@@ -140,7 +140,9 @@ end
 def process_title_template(title, wait_for_updater = true)
   file = File.read('./data/title_template.erb')
   eruby = Erubis::Eruby.new(file)
-  process_titles_from_data(eruby.result(binding))
+  File.write('./data/test-generated/title.json', eruby.result(binding))
+  process_titles_in_directory('test-generated')
+  #process_titles_from_data(eruby.result(binding))
   wait_until_elasticsearch_updater_finished if wait_for_updater
   # Very short final sleep for elasticsearch nodes to be updated
   sleep($ELASTICSEARCH_SLEEP.to_f)
