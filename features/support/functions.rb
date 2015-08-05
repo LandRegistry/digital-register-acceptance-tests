@@ -275,32 +275,27 @@ def validate_page(page)
 end
 
 def wait_until_elasticsearch_updater_finished
+  first_modification_dates = current_elasticsearch_modification_dates
   total_seconds = 0.0
-  seconds = $ELASTICSEARCH_SLEEP.to_f
-  until title_numbers_all_equal_to_last
-    sleep(seconds)
-    total_seconds += seconds
-    if total_seconds > 30
-      fail("Updater error: its status is #{elasticsearch_status}, expected last title is #{@title[:title_number]}")
+  nof_seconds_to_sleep = $ELASTICSEARCH_SLEEP.to_f
+  loop do
+    sleep(nof_seconds_to_sleep)
+    total_seconds += nof_seconds_to_sleep
+    last_modification_dates = current_elasticsearch_modification_dates
+    if total_seconds > 60
+      fail("Updater error: its status is #{elasticsearch_status},\nfirst modification dates were #{first_modification_dates},\nlast modification dates were #{last_modification_dates}")
     end
+    break if all_dates_changed(first_modification_dates, last_modification_dates)
   end
+  sleep(0.3) # elasticsearch changes take a moment
 end
 
-def title_numbers_all_equal_to_last
-  title_numbers_updated = last_title_numbers_updated
-  title_numbers_updated.map do |title_number|
-    title_number == @title[:title_number]
-  end.inject(:&)
+def all_dates_changed(dates1, dates2)
+  dates1.to_a.zip(dates2.to_a).all? { |pair| pair[0] != pair[1] }
 end
 
-def last_title_numbers_updated
-  status = elasticsearch_status
-  result = []
-  updaters = status.keys
-  updaters.each do |updater_name|
-    result << status[updater_name]['last_title_number']
-  end
-  result
+def current_elasticsearch_modification_dates
+  Hash[elasticsearch_status.to_a.map { |pair| [pair[0], pair[1]['last_title_modification_date']] }]
 end
 
 def elasticsearch_status
