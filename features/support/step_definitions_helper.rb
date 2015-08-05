@@ -20,9 +20,9 @@ def visit_title_register_pdf(title_number)
 
   cookie = grab_cookies
 
-  http = get_register_pdf(title_number, cookie)
+  pdf_content = get_register_pdf(title_number, cookie)
 
-  open_pdf_file(http)
+  save_pdf_file(pdf_content)
 end
 
 # gets the cookies from the capybara session
@@ -41,7 +41,9 @@ def get_register_pdf(title_number, cookie)
   c.cookies = cookie.join('; ')
   c.headers['User-Agent'] = grab_user_agent
   c.perform
-  c
+  c.body_str
+ensure
+  c.close
 end
 
 # gets the user agent from the capybara session
@@ -50,6 +52,6 @@ def grab_user_agent
 end
 
 # Uses header information gathered from capybara to open the pdf
-def open_pdf_file(http)
-  File.open('test.pdf', 'wb') { |file| file.puts(http.body_str) }
+def save_pdf_file(pdf_content)
+  File.open('test.pdf', 'wb') { |file| file.puts(pdf_content) }
 end
