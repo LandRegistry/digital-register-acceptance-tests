@@ -16,7 +16,10 @@ def insert_user(new_user)
 end
 
 def unlock_user_account(username)
-  `curl -XGET #{$DIGITAL_LOGIN_API}/admin/user/#{username}/unlock-account`
+  uri = URI.parse("#{$DIGITAL_LOGIN_API}/admin/user/#{username}/unlock-account")
+  connection = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Get.new(uri)
+  response = connection.request(request)
 end
 
 def delete_user(user_to_delete)

@@ -164,7 +164,12 @@ def delete_all_titles_from_elasticsearch
 
   doc_types = %w(property_by_postcode_2 property_by_postcode_3 property_by_address)
   doc_types.each do |doc_type|
-    `curl -XDELETE #{host}/landregistry/#{doc_type}/_query -d '#{match_all_query}' &> /dev/null`
+    uri = URI.parse("#{host}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Delete.new("/landregistry/#{doc_type}/_query ",
+                                    'Content-Type' => 'application/json')
+    request.body = match_all_query
+    response = http.request(request)
   end
 end
 
