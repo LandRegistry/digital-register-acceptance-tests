@@ -10,6 +10,13 @@ def content
   page.body.text
 end
 
+def insert_invalid_title(title_number = 'AGL1013')
+  @title = {
+    title_number: title_number
+  }
+  process_title_template(@title, false, 'invalid_title_template')
+end
+
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
@@ -137,8 +144,8 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
   }.merge(address_hash)
 end
 
-def process_title_template(title, wait_for_updater = true)
-  file = File.read('./data/title_template.erb')
+def process_title_template(title, wait_for_updater = true, template_file = 'title_template')
+  file = File.read("./data/#{template_file}.erb")
   eruby = Erubis::Eruby.new(file)
   File.write('./data/test-generated/title.json', eruby.result(binding))
   process_titles_in_directory('test-generated')
