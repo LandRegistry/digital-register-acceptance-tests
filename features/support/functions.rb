@@ -169,7 +169,7 @@ def delete_all_titles_from_elasticsearch
     request = Net::HTTP::Delete.new("/landregistry/#{doc_type}/_query ",
                                     'Content-Type' => 'application/json')
     request.body = match_all_query
-    response = http.request(request)
+    http.request(request)
   end
 end
 
