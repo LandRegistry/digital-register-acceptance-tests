@@ -10,7 +10,7 @@ When(/^I view an address on page (\d+) of the results$/) do |expected_page_num|
   link_text = first('ol.search-results-listing').first('li').first('a').text
   click_link(link_text)
   check_title_summary_page_is_displayed
-  expect(content).to include(link_text.gsub(',', ''))
+  expect(content).to include(link_text.delete(','))
 end
 
 Then(/^I remain on the Title page I was viewing$/) do
