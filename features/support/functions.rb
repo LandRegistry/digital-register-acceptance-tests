@@ -10,11 +10,11 @@ def content
   page.body.text
 end
 
-def insert_invalid_title(title_number = 'AGL1013')
+def insert_unverified_title(title_number = 'AGL1013')
   @title = {
     title_number: title_number
   }
-  process_title_template(@title, false, 'invalid_title_template')
+  process_title_template(@title, false, 'unverified_title_template')
 end
 
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
