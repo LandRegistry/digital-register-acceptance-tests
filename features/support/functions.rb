@@ -291,11 +291,13 @@ def wait_until_elasticsearch_updater_finished
 end
 
 def all_times_changed(times1, times2)
-  times1.to_a.zip(times2.to_a).all? { |pair| pair[0] != pair[1] }
+  # zip the times together and check if all pairs are different
+  times1.zip(times2).all? { |pair| pair[0] != pair[1] }
 end
 
 def current_elasticsearch_sync_times
-  Hash[elasticsearch_status.to_a.map { |pair| [pair[0], pair[1]['last_successful_sync_time']] }]
+  # return a hash of updater names and last_successful_sync_time values
+  Hash[elasticsearch_status.map { |updater, info| [updater, info['last_successful_sync_time']] }]
 end
 
 def elasticsearch_status
