@@ -275,27 +275,27 @@ def validate_page(page)
 end
 
 def wait_until_elasticsearch_updater_finished
-  first_modification_dates = current_elasticsearch_modification_dates
+  first_successful_sync_times = current_elasticsearch_sync_times
   total_seconds = 0.0
   nof_seconds_to_sleep = $ELASTICSEARCH_SLEEP.to_f
   loop do
     sleep(nof_seconds_to_sleep)
     total_seconds += nof_seconds_to_sleep
-    last_modification_dates = current_elasticsearch_modification_dates
+    last_successful_sync_times = current_elasticsearch_sync_times
     if total_seconds > 60
-      fail("Updater error: its status is #{elasticsearch_status},\nfirst modification dates were #{first_modification_dates},\nlast modification dates were #{last_modification_dates}")
+      fail("Updater error: its status is #{elasticsearch_status},\nfirst successful sync times were #{first_successful_sync_times},\nlast successful sync times were #{last_successful_sync_times}")
     end
-    break if all_dates_changed(first_modification_dates, last_modification_dates)
+    break if all_times_changed(first_successful_sync_times, last_successful_sync_times)
   end
   sleep(0.3) # elasticsearch changes take a moment
 end
 
-def all_dates_changed(dates1, dates2)
-  dates1.to_a.zip(dates2.to_a).all? { |pair| pair[0] != pair[1] }
+def all_times_changed(times1, times2)
+  times1.to_a.zip(times2.to_a).all? { |pair| pair[0] != pair[1] }
 end
 
-def current_elasticsearch_modification_dates
-  Hash[elasticsearch_status.to_a.map { |pair| [pair[0], pair[1]['last_title_modification_date']] }]
+def current_elasticsearch_sync_times
+  Hash[elasticsearch_status.to_a.map { |pair| [pair[0], pair[1]['last_successful_sync_time']] }]
 end
 
 def elasticsearch_status
