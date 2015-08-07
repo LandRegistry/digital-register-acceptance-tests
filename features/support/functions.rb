@@ -127,7 +127,7 @@ def random_title_number
 end
 
 def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', address_hash = {})
-  house_number = address_hash.fetch(:house_no, rand(1..500).to_s)
+  house_number = address_hash.fetch(:house_no, rand(1..99_999).to_s)
   house_alpha = address_hash[:house_alpha]
   {
     title_number: title_number,
