@@ -17,7 +17,7 @@ Given(/^the feature flag for full register content PDF is turned off$/) do
 end
 
 Then(/^the PDF Download button is not displayed$/) do
-  expect(page).has_no_link?('download-link')
+  expect(page).not_to have_link('download-link')
 end
 
 Then(/^that titles full register is displayed on the PDF$/) do
@@ -30,5 +30,5 @@ Given(/^I visit the title register summary page$/) do
 end
 
 Then(/^the PDF Download button is displayed$/) do
-  expect(page).has_link?('download-link')
+  expect(page).to have_link('download-link')
 end
