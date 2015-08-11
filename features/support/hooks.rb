@@ -33,3 +33,7 @@ at_exit do
   puts 'Creating 51 titles with postcode PL9 8TB'
   insert_multiple_titles(51)
 end
+
+After do |scenario|
+  save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+end
