@@ -33,6 +33,8 @@ end
 
 Then(/^I can then view the title register$/) do
   click_link(@title[:address_string])
+  expect(content).to include(@title[:title_number])
+  expect(content).to include(@title[:proprietors][0][:name])
 end
 
 Given(/^I have an address with multiple Title Numbers$/) do
