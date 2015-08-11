@@ -28,7 +28,7 @@ iii) highlight that this is a caution title.
 
   Scenario: View caution register summary
     Given I have a caution title
-    When I view the title summary page
+    When I view the caution title summary page
     Then I can view the register details for the caution title
 
   Scenario: View caution pdf
