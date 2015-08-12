@@ -6,7 +6,7 @@
     "dlr": "LROffice",
     "title_number": "AGL1004",
     "class": "Unknown",
-    "last_app_timestamp": "2013-01-25T10: 39: 25+00: 00",
+    "last_app_timestamp": "1996-07-02T00:59:59+01:00",
     "groups": [
         {
             "category": "PROPERTY",
@@ -83,7 +83,8 @@
                                         }
                                     ],
                                     "name": {
-                                        "non_private_individual_name": "Aslan"
+                                        "non_private_individual_name": "Aslan",
+                                        "name_category": "LIMITED COMPANY OR PUBLIC LIMITED COMPANY"
                                     }
                                 }
                             ]
