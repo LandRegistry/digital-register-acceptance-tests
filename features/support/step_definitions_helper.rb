@@ -1,5 +1,5 @@
 def check_title_search_page_is_displayed
-  expect(content).to include('Search for the title of any property in England and Wales')
+  expect(page).to have_selector('h1', text: 'Search the land and property register')
 end
 
 def visit_title_register_page(title_number)

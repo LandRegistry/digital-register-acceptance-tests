@@ -26,8 +26,8 @@ Then(/^I am returned to the search results screen and position I was viewing bef
   expect(next_page_number - 1).to eq(@expected_page_num.to_i)
 end
 
-When(/^I select the find a title breadcrumb$/) do
-  click_link('Find a title')
+When(/^I select the initial search breadcrumb$/) do
+  click_link('Search the land and property register')
 end
 
 Then(/^I am returned to the initial search screen$/) do

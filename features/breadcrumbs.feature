@@ -22,7 +22,7 @@ Background:
     And I navigate directly to a register title page
     Then there is no search results breadcrumb
 
-  Scenario: Return to Find a title screen
+  Scenario: Return to initial search screen
     And I navigate directly to a register title page
-    When I select the find a title breadcrumb
+    When I select the initial search breadcrumb
     Then I am returned to the initial search screen
