@@ -1,4 +1,5 @@
 @US045
+@private-indiv-on
 Feature: Include private individual owners
 
 Acceptance criteria

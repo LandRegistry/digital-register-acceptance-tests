@@ -1,4 +1,5 @@
 @US044
+@private-indiv-off
 Feature: View Non Private Individuals Only
 
 Background:

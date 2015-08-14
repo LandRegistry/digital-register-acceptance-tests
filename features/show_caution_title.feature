@@ -27,6 +27,7 @@ iii) highlight that this is a caution title.
     When I view the caution title summary page
     Then I can view the register details for the caution title
 
+  @pdf-on
   Scenario: View caution pdf
     Given I have a caution title
     And the feature flag for full register content PDF is turned on

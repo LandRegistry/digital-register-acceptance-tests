@@ -1,5 +1,8 @@
 @US065
+@full-register-content-on
 Feature: Generate full register content
+
+  # TODO: create tests for the full register content flag being off
 
   Background:
     Given I am an initial private beta user
