@@ -287,7 +287,7 @@ def wait_until_elasticsearch_updater_finished
     end
     break if all_times_changed(first_successful_sync_times, last_successful_sync_times)
   end
-  sleep(0.3) # elasticsearch changes take a moment
+  sleep(0.6) # elasticsearch changes take a moment
 end
 
 def all_times_changed(times1, times2)
