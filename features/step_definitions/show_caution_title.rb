@@ -1,5 +1,5 @@
 Then(/^I can see the caution title result$/) do
-  expect(content).to include 'Caution'
+  expect(content).to include 'Caution against first registration'
 end
 
 When(/^I view the caution title summary page$/) do
@@ -7,7 +7,7 @@ When(/^I view the caution title summary page$/) do
 end
 
 Then(/^I can view the register details for the caution title$/) do
-  expect(content).to include 'CAUTION AGANIST FIRST REGISTRATION'
+  expect(content).to include "Summary of caution title #{@title[:title_number]}"
 end
 
 When(/^I attempt to view the pdf$/) do

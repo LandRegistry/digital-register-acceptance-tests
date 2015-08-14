@@ -16,7 +16,7 @@ Background:
 
 Scenario: Search by postcode properties on same street
   Given I have multiple addresses on the same street with different house numbers
-  And I search for a property using their postcode
+  And I search for the property using their postcode
   Then the results are displayed in the order of the house numbers
 
 Scenario: Search by postcode returns properties sorted by street, house and building details, and address_string
@@ -31,7 +31,7 @@ Scenario: Search by postcode returns properties sorted by street, house and buil
     | Beta Street | 2 | C | airspace above 2C Beta Street (PL9 8TB) | PL9 8TB |
     | Gamma Street | | | The Manor, 2 Gamma Street (PL9 8TB) | PL9 8TB |
     | Gamma Street | | | Flat 1, 3 Gamma Street (PL9 8TB)| PL9 8TB |
-  And I search for a property using their postcode
+  And I search for the property using their postcode
   Then the results should be displayed in the order:
     | address_string |
     | 1 Epsilon Street unstructured (PL9 8TB) |

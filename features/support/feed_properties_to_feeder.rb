@@ -7,8 +7,10 @@ end
 def insert_caution_title
   process_titles_in_directory('caution')
   @title = {
-    title_number: 'AGL1004'
+    title_number: 'AGL1004',
+    postcode: 'NR1 2LT'
   }
+  wait_until_elasticsearch_updater_finished
 end
 
 def insert_title_with_multiple_index_polygons

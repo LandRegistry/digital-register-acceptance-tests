@@ -12,13 +12,13 @@ Background:
 
 Scenario: Search for single title by postcode
   Given I have an address with a single Title Number
-  And I search for a property using the postcode
+  And I search for the property using the postcode
   Then the address and related title number is displayed
   And I can then view the title register
 
 Scenario: Search for multiple titles by postcode
   Given I have an address with multiple Title Numbers
-  And I search for a property using the postcode
+  And I search for the property using the postcode
   Then the address and related title numbers are displayed
   And I can view one of the title registers
 
