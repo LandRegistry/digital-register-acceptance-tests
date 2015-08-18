@@ -1,0 +1,524 @@
+{
+  "data": {
+  "application_reference": "N724CWW",
+  "closure_status": "<%=@title[:closure_status]%>",
+  "groups": [
+    {
+      "category": "PROPERTY",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:24.613065",
+          "sub_register": "A",
+          "status": "Current",
+          "sequence_number": 1,
+          "role_code": "RDES",
+          "language": "ENG",
+          "category": "PROPERTY",
+          "infills": [
+            {
+              "address": {
+                "auto_uppercase_override": true,
+                "postcode": "<%=@title[:postcode]%>",
+                "town": "<%=@title[:town]%>",
+                <% if @title[:house_no] %>
+                  "house_no": "<%=@title[:house_no]%>",
+                <% end %>
+                <% if @title[:house_alpha] %>
+                "house_alpha": "<%=@title[:house_alpha]%>",
+                <% end %>
+                <% if @title[:street_name] %>
+                "street_name": "<%=@title[:street_name]%>",
+                <% end %>
+                "address_string": "<%=@title[:address_string]%>"
+              },
+              "type": "Address"
+            }
+          ],
+          "full_text": "A yearly rentcharge of £200 payable yearly on 1 January created by a Conveyance dated 17 January 2009 made between (1) JP Jones and (2) Heather Poole. The registered rentcharge is charged upon and issues out of the freehold land, shown edged red on the plan of the above title filed at the Registry being 21 Murhill Lane, Saltram Meadow, Plymouth, (PL9 7FN).",
+          "template_text": "A yearly rentcharge of £200 payable yearly on 1 January created by a Conveyance dated 17 January 2009 made between (1) JP Jones and (2) Heather Poole. The registered rentcharge is charged upon and issues out of the freehold land, shown edged red on the plan of the above title filed at the Registry being *AD*"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.29.328045",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:29.304145",
+          "sub_register": "A",
+          "deeds": [
+            {
+              "date": "1995-05-01",
+              "description": "Transfer"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.29.328045",
+          "sequence_number": 2,
+          "role_code": "DAEA",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "type": "EXTENT"
+            },
+            {
+              "type": "EXTENT"
+            }
+          ],
+          "full_text": "The land has the benefit of the rights granted by but is subject to the rights reserved by the Transfer dated 1 May 1995 referred to in the Charges Register.",
+          "entry_date": "1995-11-06",
+          "template_text": "The land *E<>E* has the benefit of the rights granted by but is subject to the rights reserved by the *DT**DE* dated *DD* referred to in the Charges Register.",
+          "draft_entry_code": "AE010"
+        }
+      ]
+    },
+    {
+      "category": "OWNERSHIP",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:24.838075",
+          "sub_register": "B",
+          "status": "Current",
+          "sequence_number": 1,
+          "role_code": "RPRO",
+          "language": "ENG",
+          "category": "OWNERSHIP",
+          "infills": [
+            {
+              "proprietors": [
+                <% @title[:proprietors].each_with_index do |proprietor, index| %>
+                <% if proprietor[:type] == "private" %>
+                  {
+                    "addresses": <%=proprietor[:addresses].to_json%>,
+                    "name": {
+                      "name_category": "PRIVATE INDIVIDUAL",
+                      "auto_uppercase_override": true,
+                      "forename": "<%=proprietor[:forename]%>",
+                      "surname": "<%=proprietor[:surname]%>"
+                    }
+                  }
+                <% else %>
+                  {
+                    "addresses": <%=proprietor[:addresses].to_json%>,
+                    "name": {
+                      "name_category": "LIMITED COMPANY OR PUBLIC LIMITED COMPANY",
+                      "auto_uppercase_override": true,
+                      "non_private_individual_name": "<%=proprietor[:name]%>"
+                    }
+                  }
+                <% end %>
+                <%="," if index < (@title[:proprietors].count - 1) %>
+                <% end %>
+              ],
+              "type": "Proprietor"
+            }
+          ],
+          "full_text": "PROPRIETOR: #HEATHER POOLE PLC# of 21 High Murhill, Plymouth PL9 7FN.",
+          "entry_date": "1996-07-01",
+          "template_text": "PROPRIETOR: *RP*"
+        }
+        <% if @title[:price_paid_stated] %>
+          ,{
+            "entry_id": "2014-08-28 11:34:01.345580",
+            "sub_register": "B",
+            "status": "Current",
+            "sequence_number": 2,
+            "role_code": "RPPD",
+            "draft_entry_version": 1,
+            "language": "ENG",
+            "category": "OWNERSHIP",
+            "infills": [
+              <% if @title[:price_paid_stated][:date] %>
+                {
+                  "text": "<%=@title[:price_paid_stated][:date]%>",
+                  "date": "<%=@title[:price_paid_stated][:date]%>",
+                  "type": "DATE"
+                }
+              <% end %>
+              <%= @title[:price_paid_stated][:date] && @title[:price_paid_stated][:price] ? "," : "" %>
+              <% if @title[:price_paid_stated][:price] %>
+                {
+                  "text": "<%=@title[:price_paid_stated][:price]%>",
+                  "type": "PRICE"
+                }
+              <% end %>
+            ],
+            "full_text": "<%=@title[:price_paid_stated][:text]%>",
+            "entry_date": "2014-08-28",
+            "template_text": "The value stated as at *DA* was *AM*.",
+            "draft_entry_code": "ANON"
+          }
+        <% end %>
+      ]
+    },
+    <% if @title[:charges] %>
+      <% @title[:charges].each_with_index do |charge, index| %>
+      {
+        "group_id": "2007-09-06-08.45.28.556965",
+        "category": "CHARGE",
+        "entries": [
+        <% charge[:charge].each_with_index do |charge_entry, index| %>
+          {
+            "entry_id": "2007-09-06 08:45:28.581995",
+            "charge_id": "2007-09-06-08.45.28.556965",
+            "sub_register": "C",
+            "status": "Current",
+            "sequence_number": 8,
+            "role_code": "<%=charge_entry[:charge_entry_role_code]%>",
+            "draft_entry_version": 1,
+            "language": "ENG",
+            "category": "CHARGE",
+            "infills": [
+              {
+                "proprietors": [
+                  {
+                    "addresses": [
+                    <% charge_entry[:charge_company_addresses].each_with_index do |charge_address, index| %>
+                      {
+                        "address_string": "<%=charge_address[:charge_company_addresses]%>",
+                        "address_type": "UK"
+                      }
+                      <%="," if index < (charge_entry[:charge_company_addresses].count - 1) %>
+                      <% end %>
+                    ],
+                    "name": {
+                      "non_private_individual_name": "<%=charge_entry[:charge_company_name]%>"
+                    }
+                  }
+                ],
+                "type": "Charge Proprietor"
+              }
+            ],
+            "full_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
+            "entry_date": "1996-07-01",
+            "template_text": "Proprietor: #<%=charge_entry[:charge_company_name]%># (Co. Regn. No. <%=charge_entry[:charge_company_regnumber]%>) of <%=charge[:charge_company_address]%>.",
+            "draft_entry_code": "CNWHO"
+          }
+          <%="," if index < (charge[:charge].count - 1) %>
+          <% end %>
+        ]
+      },
+      <% end %>
+    <% end %>
+    {
+      "group_id": "2007-09-06-08.45.25.211325",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:24.965275",
+          "sub_register": "C",
+          "deeds": [
+            {
+              "date": "1925-09-05",
+              "parties": [
+                {
+                  "names": [
+                    {
+                      "auto_uppercase_override": true,
+                      "non_private_individual_name": "JP Jones Co. Ltd"
+                    }
+                  ],
+                  "party_role_description": "the Company"
+                },
+                {
+                  "names": [
+                    {
+                      "surname": "Patterson",
+                      "forename": "Petyr",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": "the Purchaser"
+                }
+              ],
+              "description": "Conveyance"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.25.211325",
+          "sequence_number": 1,
+          "role_code": "DCOV",
+          "draft_entry_version": 1,
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "type": "EXTENT"
+            }
+          ],
+          "full_text": "A Conveyance dated 5 September 1925 made between (1) JP Jones Co. Ltd (the Company) and (2) Petyr Patterson (the Purchaser) contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+          "entry_date": "1994-07-25",
+          "template_text": "A *DT**DE* dated *DD* made between *DP* contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+          "draft_entry_code": "CR722"
+        },
+        {
+          "entry_id": "2007-09-06 08:45:26.015995",
+          "sub_register": "C",
+          "deeds": [
+            {
+              "date": "1925-09-05",
+              "parties": [
+                {
+                  "names": [
+                    {
+                      "auto_uppercase_override": true,
+                      "non_private_individual_name": "JP Jones Co. Ltd"
+                    }
+                  ],
+                  "party_role_description": "the Company"
+                },
+                {
+                  "names": [
+                    {
+                      "surname": "Paterson",
+                      "forename": "Phillip",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": "the Purchaser"
+                }
+              ],
+              "description": "Conveyance"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.25.211325",
+          "sequence_number": 2,
+          "role_code": "DCEA",
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "text": "tinted pink",
+              "type": "PLAN REF"
+            }
+          ],
+          "full_text": "The land tinted pink on the filed plan is subject to the following rights reserved by the Conveyance dated 5 September 1925 referred to above:-\r\rAND ALSO EXCEPTING AND ALWAYS RESERVING unto the Company its successors and assigns the unrestricted flow as heretofore of water along the courses of the stream shown on the said plan and also the right to remove as if they were the riparian owners any obstruction along the said courses doing no unnecessary damage in entering and exercising such right and liberty and making good all damage done to the land hereby conveyed And ALSO EXCEPT AND RESERVING unto the Company its successors and assigns the right of maintaining underground in the position shown on the said plan an electric current cable and gas supply pipe with the rights at all times hereafter of entering into and upon the land hereby conveyed for the purpose of repairing altering and newlaying any such cable and gas pipe.",
+          "entry_date": "1993-07-01",
+          "template_text": "The land *PR* on the filed plan is subject to the following rights reserved by the *DT* dated *DD* referred to above:-\r\rAND ALSO EXCEPTING AND ALWAYS RESERVING unto the Company its successors and assigns the unrestricted flow as heretofore of water along the courses of the stream shown on the said plan and also the right to remove as if they were the riparian owners any obstruction along the said courses doing no unnecessary damage in entering and exercising such right and liberty and making good all damage done to the land hereby conveyed And ALSO EXCEPT AND RESERVING unto the Company its successors and assigns the right of maintaining underground in the position shown on the said plan an electric current cable and gas supply pipe with the rights at all times hereafter of entering into and upon the land hereby conveyed for the purpose of repairing altering and newlaying any such cable and gas pipe"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.29.280545",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:29.277605",
+          "sub_register": "R",
+          "schedule": {
+            "fields": [
+              {
+                "text": "£2",
+                "header": "Rentcharge sum"
+              },
+              {
+                "text": "6 June 1993",
+                "header": "Payable on"
+              },
+              {
+                "text": "7 High Street",
+                "header": "Property description"
+              },
+              {
+                "text": "AGL1000",
+                "header": "Title No under which land is registered"
+              },
+              {
+                "text": "Transfer",
+                "header": "Nature of deed"
+              },
+              {
+                "text": "1993-05-05",
+                "header": "Date of deed"
+              },
+              {
+                "parties": [
+                  {
+                    "names": [
+                      {
+                        "surname": "Jones",
+                        "forename": "JP",
+                        "auto_uppercase_override": true
+                      }
+                    ],
+                    "party_role_description": ""
+                  },
+                  {
+                    "names": [
+                      {
+                        "surname": "Jones",
+                        "forename": "Heather",
+                        "auto_uppercase_override": true
+                      }
+                    ],
+                    "party_role_description": ""
+                  }
+                ],
+                "header": "Parties"
+              },
+              {
+                "text": "1",
+                "header": "Plan Reference"
+              }
+            ],
+            "schedule_type": "R",
+            "parent_register": "A",
+            "header": "SCHEDULE OF REGISTERED RENTCHARGES"
+          },
+          "deeds": [
+            {
+              "date": "1993-05-05",
+              "parties": [
+                {
+                  "names": [
+                    {
+                      "surname": "Jones",
+                      "forename": "JP",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": ""
+                },
+                {
+                  "names": [
+                    {
+                      "surname": "Jones",
+                      "forename": "Heather",
+                      "auto_uppercase_override": true
+                    }
+                  ],
+                  "party_role_description": ""
+                }
+              ],
+              "payment_detail": "6 June 1993",
+              "description": "Transfer",
+              "rentcharge_amount": "£2"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.29.280545",
+          "sequence_number": 1,
+          "role_code": "DMRR",
+          "language": "ENG",
+          "category": "DEED",
+          "full_text": "Rentcharge sum      : £2                                                 \rPayable on          : 6 June 1993                                        \rProperty description: 7 High Street                                      \rTitle No under which                                                     \rland is registered  : BK5678                                             \rNature of deed      : Transfer                                           \rDate of deed        : 5 May 1993                                         \rParties             : (1) John Smith                                     \r                      (2) Heather Smith                                   \rPlan Reference      : 1"
+        }
+      ]
+    },
+    {
+      "group_id": "2007-09-06-08.45.28.841065",
+      "category": "DEED",
+      "entries": [
+        {
+          "entry_id": "2007-09-06 08:45:28.793875",
+          "sub_register": "S",
+          "schedule": {
+            "schedule_type": "E",
+            "parent_register": "B",
+            "header": "Schedule of restrictive covenants"
+          },
+          "deeds": [
+            {
+              "date": "1925-09-05",
+              "description": "Conveyance"
+            }
+          ],
+          "status": "Current",
+          "deed_id": "2007-09-06-08.45.28.841065",
+          "sequence_number": 1,
+          "role_code": "SSCH",
+          "language": "ENG",
+          "category": "DEED",
+          "infills": [
+            {
+              "text": "hatched blue",
+              "type": "PLAN REF"
+            },
+            {
+              "text": "edged brown",
+              "type": "PLAN REF"
+            },
+            {
+              "text": "hatched blue",
+              "type": "PLAN REF"
+            },
+            {
+              "text": "edged brown",
+              "type": "PLAN REF"
+            }
+          ],
+          "full_text": "The following are details of the covenants contained in the Conveyance dated 5 September 1925 referred to in the Charges Register:-\r\rThe Purchasers for themselves and the persons deriving title under them hereby jointly and severally covenant with the Company its successors and assigns and so far as possible to run with the land hereby conveyed and bind the owner or owners thereof for the time being and to ensure for the protection and benefit of the Company its successors and assigns owners and occupiers for the time being of the lands forming other parts of the Company's estate in the neighbourhood and for the protection and benefit of such other lands in manner following that is to say:-\r\r(a)  That at any time hereafter to so or permit of suffer to be done any act matter or thing whereby the water and flow of water along the courses of the stream shown on the said plan may be obstructed interfered with or diminished or polluted And also will not at any time hereafter obstruct or take any water from the said stream except as heretofore.\r\r(b)  Not at any time hereafter to carry on or permit or suffer to be carried on any trade business or calling whatsoever in or upon the land hereby conveyed coloured round with a green verge line or any part or parts thereof or in any building to be erected thereon or on any part thereof nor to use or occupy any building hereafter erected on the said land edged green otherwise than as a private dwellinghouse and also that no advertisement or placard or announcement of any kind shall be displayed in any manner howsoever on the said land or any part thereof or on any building structure wall fence or screen erected or placed thereon Provided Always that this clause shall not prevent any house erected on the said land from being used as a Private Residential Hotel or Boarding House and Provided Also that nothing herein contained shall prevent the erection on any part of the said land of a notice board or boards relating to the user of the premises hereby conveyed as a school.\r\r(c)  Not at any time hereafter to use the land hereby conveyed edged\rwith a pink verge line or any building now or hereafter erected thereon for the prupose of carrying on thereon any manufacturing business or as a Factory.\r\r(d)  Not at any time hereafter to do or permit or suffer to be done in or upon the land hereby conveyed or in or upon any building now or hereafter erected thereon any act deed matter or thing wich may be or become a nuisance damage annoyance disturbance grievance inconvenience or eyesore to the Company their successors or assigns or its tenants or the occupier or occupiers for the time being of any land of the Company in the neighbourhood or the owners or occupiers of the adjoining adjacent or neighbouring land And in particular will not set up or use or work any machine or operative machinery on the land hereby conveyed or in any building thereon.\r\rNOTE: The stream marked on the Conveyance plan is shown hatched blue on the filed plan.  The land coloured with a green verge line is edged brown on the filed plan and the land coloured with a pink verge line is edged blue.",
+          "notes": [
+            {
+              "text": "The stream marked on the Conveyance plan is shown *PR* on the filed plan.  The land coloured with a green verge line is *PR* on the filed plan and the land coloured with a pink verge line is edged blue"
+            },
+            {
+              "text": "The stream marked on the Conveyance plan is shown *PR* on the filed plan.  The land coloured with a green verge line is *PR* on the filed plan and the land coloured with a pink verge line is edged blue"
+            }
+          ],
+          "template_text": "The following are details of the covenants contained in the *DT* dated *DD* referred to in the Charges Register:-\r\rThe Purchasers for themselves and the persons deriving title under them hereby jointly and severally covenant with the Company its successors and assigns and so far as possible to run with the land hereby conveyed and bind the owner or owners thereof for the time being and to ensure for the protection and benefit of the Company its successors and assigns owners and occupiers for the time being of the lands forming other parts of the Company's estate in the neighbourhood and for the protection and benefit of such other lands in manner following that is to say:-\r\r(a)  That at any time hereafter to so or permit of suffer to be done any act matter or thing whereby the water and flow of water along the courses of the stream shown on the said plan may be obstructed interfered with or diminished or polluted And also will not at any time hereafter obstruct or take any water from the said stream except as heretofore.\r\r(b)  Not at any time hereafter to carry on or permit or suffer to be carried on any trade business or calling whatsoever in or upon the land hereby conveyed coloured round with a green verge line or any part or parts thereof or in any building to be erected thereon or on any part thereof nor to use or occupy any building hereafter erected on the said land edged green otherwise than as a private dwellinghouse and also that no advertisement or placard or announcement of any kind shall be displayed in any manner howsoever on the said land or any part thereof or on any building structure wall fence or screen erected or placed thereon Provided Always that this clause shall not prevent any house erected on the said land from being used as a Private Residential Hotel or Boarding House and Provided Also that nothing herein contained shall prevent the erection on any part of the said land of a notice board or boards relating to the user of the premises hereby conveyed as a school.\r\r(c)  Not at any time hereafter to use the land hereby conveyed edged\rwith a pink verge line or any building now or hereafter erected thereon for the prupose of carrying on thereon any manufacturing business or as a Factory.\r\r(d)  Not at any time hereafter to do or permit or suffer to be done in or upon the land hereby conveyed or in or upon any building now or hereafter erected thereon any act deed matter or thing wich may be or become a nuisance damage annoyance disturbance grievance inconvenience or eyesore to the Company their successors or assigns or its tenants or the occupier or occupiers for the time being of any land of the Company in the neighbourhood or the owners or occupiers of the adjoining adjacent or neighbouring land And in particular will not set up or use or work any machine or operative machinery on the land hereby conveyed or in any building thereon.\r\r<NOTE></NOTE>"
+        }
+      ]
+    }
+  ],
+  "geometry": {
+
+  },
+  "filed_plan_format": "UNKNOWN",
+  "edition_date": "1996-07-01",
+  "last_app_timestamp": "1996-07-02T00:59:59+01:00",
+  "class": "Absolute",
+  "tenure": "Freehold",
+  "uprns": [
+    <%=@title[:uprn]%>
+  ],
+  "title_number": "<%=@title[:title_number]%>",
+  "dlr": "Gloucester Office",
+  "migration_errors": [
+    {
+      "extractor": "Register Check",
+      "message_number": "RC1026",
+      "message": "Title is not synchronised"
+    },
+    {
+      "extractor": "Entry Grouper",
+      "message_number": "EG1055",
+      "entry_id": "2007-09-06 08:45:27.094935",
+      "message": "Investigation code: T - Proprietorship address incorrectly formatted"
+    },
+    {
+      "extractor": "Property Extractor",
+      "message_number": "PE1012",
+      "entry_id": "2007-09-06 08:45:24.613065",
+      "message": "Address not deconstructed in Intelligent Register for title"
+    },
+    {
+      "extractor": "Proprietor Extractor",
+      "message_number": "PR1019",
+      "entry_id": "2007-09-06 08:45:27.094935",
+      "message": "No address found for proprietor with id - 2007-09-06 08:45:27.208355"
+    },
+    {
+      "extractor": "Geometry Extractor",
+      "message_number": "GE1066",
+      "message": "File Plan not vectorised"
+    },
+    {
+      "extractor": "Geometry Extractor",
+      "message_number": "GE1053",
+      "message": "Title not on index map"
+    },
+    {
+      "extractor": "Geometry Extractor",
+      "message_number": "GE1006",
+      "message": "No Extent or Index Generated"
+    }
+  ],
+  "districts": [
+    "WOKINGHAM"
+  ]
+}
+}
