@@ -2,9 +2,11 @@
 @private-indiv-off
 Feature: View Non Private Individuals Only
 
+This set of tests should be excluded from execution (... --tags ~@private-indiv-off) when
+the system is expected to offer private individual data to users.
+
 Background:
   Given I am an initial private beta user
-  And the digital register is setup to only show non private individual owners
   And I have logged in
 
   Scenario: Titles with Non Private Individual are displayed

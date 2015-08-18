@@ -30,6 +30,5 @@ iii) highlight that this is a caution title.
   @pdf-on
   Scenario: View caution pdf
     Given I have a caution title
-    And the feature flag for full register content PDF is turned on
     When I attempt to view the pdf
     Then the pdf is displayed

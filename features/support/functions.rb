@@ -36,7 +36,7 @@ def insert_title_with_private_and_non_private_owners
   process_title_template(@title)
 end
 
-def insert_title_with_private_individual_owner(wait_for_updater = ENV['SHOW_PRIVATE_PROPRIETORS'])
+def insert_title_with_private_individual_owner(wait_for_updater = true)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_private_proprietors(1)
   process_title_template(@title, wait_for_updater != 'false')
@@ -147,9 +147,7 @@ end
 def process_title_template(title, wait_for_updater = true, template_file = 'title_template')
   file = File.read("./data/#{template_file}.erb")
   eruby = Erubis::Eruby.new(file)
-  File.write('./data/test-generated/title.json', eruby.result(binding))
-  process_titles_in_directory('test-generated')
-  # process_titles_from_data(eruby.result(binding))
+  process_titles_from_data(eruby.result(binding))
   wait_until_elasticsearch_updater_finished if wait_for_updater
   # Very short final sleep for elasticsearch nodes to be updated
   sleep($ELASTICSEARCH_SLEEP.to_f)

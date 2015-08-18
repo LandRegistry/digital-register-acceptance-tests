@@ -2,3 +2,19 @@ diff2*
 tmpimg*
 sshot*
 
+#Test-generated data
+data/test-generated/*
+!data/test-generated/screenshots
+data/test-generated/screenshots/*
+!data/test-generated/pdf
+data/test-generated/pdf/*
+
+
+# .DS_Store files
+*/.DS_Store
+.DS_Store
+.DS_Store?
+
+# PyCharm/IntelliJ IDEA
+.idea/
+*.iml

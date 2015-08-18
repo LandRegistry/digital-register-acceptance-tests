@@ -2,6 +2,9 @@
 @private-indiv-on
 Feature: Include private individual owners
 
+This set of tests should be excluded from execution (... --tags ~@private-indiv-on) when
+the system is expected not to offer private individual data to users.
+
 Acceptance criteria
   Also titles with private individual owners must be available for selection
   Private individual owner details must be displayed on the Digital Register
@@ -10,7 +13,6 @@ Acceptance criteria
 
 Background:
   Given I am an initial private beta user
-  And the digital register is setup to also show private individual owners
   And I have logged in
 
   Scenario: View Private Individual
