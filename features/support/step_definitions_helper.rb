@@ -53,5 +53,5 @@ end
 
 # Uses header information gathered from capybara to open the pdf
 def save_pdf_file(pdf_content)
-  File.open('test.pdf', 'wb') { |file| file.puts(pdf_content) }
+  File.open('data/test-generated/pdf/test.pdf', 'wb') { |file| file.puts(pdf_content) }
 end

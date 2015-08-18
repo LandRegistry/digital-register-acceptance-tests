@@ -36,7 +36,7 @@ def insert_title_with_private_and_non_private_owners
   process_title_template(@title)
 end
 
-def insert_title_with_private_individual_owner(wait_for_updater = ENV['SHOW_PRIVATE_PROPRIETORS'])
+def insert_title_with_private_individual_owner(wait_for_updater = true)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_private_proprietors(1)
   process_title_template(@title, wait_for_updater != 'false')

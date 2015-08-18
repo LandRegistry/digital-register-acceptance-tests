@@ -4,7 +4,6 @@ Before do
   delete_all_titles_from_elasticsearch # es-updater should recreate
   sleep($ELASTICSEARCH_SLEEP.to_f)
   clean_register_database
-  ENV['SHOW_PRIVATE_PROPRIETORS'] = 'true'
   set_capybara_session_headers
 end
 
@@ -35,5 +34,5 @@ at_exit do
 end
 
 After do |scenario|
-  save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+  save_screenshot("data/test-generated/screenshots/sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
 end
