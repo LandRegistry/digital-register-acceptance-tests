@@ -1,15 +1,28 @@
 def process_titles_in_directory(data_directory)
-  q, ch = connect_to_rabbitmq_queue
+  queue, channel = connect_to_rabbitmq_queue
   Dir.foreach('data/' + data_directory) do |item|
     next if File.extname(item) != '.json'
     data = File.read('data/' + data_directory + '/' + item)
-    ch.default_exchange.publish(data, routing_key: q.name, content_type: 'application/json')
+    channel.default_exchange.publish(data, routing_key: queue.name, content_type: 'application/json')
   end
+
+  wait_for_queue_to_be_consumed(channel, queue.name)
 end
 
 def process_titles_from_data(title_data)
-  q, ch = connect_to_rabbitmq_queue
-  ch.default_exchange.publish(title_data, routing_key: q.name, content_type: 'application/json')
+  queue, channel = connect_to_rabbitmq_queue
+  channel.default_exchange.publish(title_data, routing_key: queue.name, content_type: 'application/json')
+  wait_for_queue_to_be_consumed(channel, queue.name)
+end
+
+def wait_for_queue_to_be_consumed(channel, queue_name)
+  consumed = false
+
+  while not consumed
+    response = channel.queue_declare(queue=queue_name, opts={passive: true})
+    consumed = response.message_count == 0
+    sleep(0.5)
+  end
 end
 
 def connect_to_rabbitmq_queue
