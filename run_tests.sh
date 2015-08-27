@@ -9,7 +9,8 @@ rm -rf data/test-generated/pdf/*
 
 source environment.sh
 
-RAILS_ENV=test bundle install
+RAILS_ENV=test
+bundle install
 
 if [ -z "$1" ]
  then
