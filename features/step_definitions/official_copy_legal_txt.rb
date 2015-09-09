@@ -1,9 +1,11 @@
 When(/^I attempt to view the Official Copy of the Register for a title$/) do
-  pending # express the regexp above with the code you wish you had
+	insert_title_with_owners
+	visit_title_register_pdf(@title[:title_number])
+	convert_pdf_to_page
 end
 
 Then(/^I can see the edition dates in the correct format$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(@pdf_text[0]).to include(@title[:title_number])
 end
 
 Then(/^I can see the dates of the entries on the register in the correct format$/) do
