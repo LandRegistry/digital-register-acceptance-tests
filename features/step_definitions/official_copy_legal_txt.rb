@@ -24,7 +24,9 @@ Then(/^"(.*?)" is displayed on the last page of the PDF$/) do |legal_text|
 end
 
 Then(/^I can see the Title number of every page$/) do
-	expect(@pdf_text[0]).to include(@title[:title_number])
+	expect(@pdf_text[0]).to include("#{@title[:title_number]} Page 1")
+	expect(@pdf_text[1]).to include("#{@title[:title_number]} Page 2")
+	expect(@pdf_text[2]).to include("#{@title[:title_number]} Page 3")
 end
 
 Then(/^I can see "(.*?)" is displayed on the PDF$/) do |legal_text|
