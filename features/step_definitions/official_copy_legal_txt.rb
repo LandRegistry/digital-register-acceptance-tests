@@ -19,8 +19,8 @@ Then(/^I can see the class of the title in the proprietorship register$/) do
 	expect(@pdf_text[0]).to include('UNKNOWN')
 end
 
-Then(/^"(.*?)" is displayed on the last page of the PDF$/) do |legal_text|
-	expect(@pdf_text[0]).to include(legal_text)
+Then(/End of register is displayed on the last page of the PDF$/) do
+	expect(@pdf_text[3]).to match('End\s?of\s?register')
 end
 
 Then(/^I can see the Title number of every page$/) do

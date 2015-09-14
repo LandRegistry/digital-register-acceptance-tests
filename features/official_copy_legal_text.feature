@@ -18,7 +18,7 @@ Feature: Legal requirement updates made to Official Copy of the Register
 
 	@US205
 	Scenario: ‘End of register’ added to the end of the Official Copy of the Register document
-		Then "End of register" is displayed on the last page of the PDF
+		Then End of register is displayed on the last page of the PDF
 
 	@US206
 	Scenario: Title number appears on every page of Official Copy of the Register
