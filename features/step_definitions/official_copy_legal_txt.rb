@@ -49,5 +49,6 @@ Then(/^I can see that all entry dates are displayed in the UK format$/) do
 end
 
 Then(/^I can see that the explanation text "(.*?)" is displayed$/) do |explanation_text|
-	expect(@pdf_pages[0]).to match(explanation_text.gsub(" ", "\s?"))
+	text = explanation_text.gsub(" ", "\s?")
+	expect(@pdf_pages[0]).to match(text)
 end
