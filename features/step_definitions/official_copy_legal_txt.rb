@@ -16,7 +16,7 @@ Then(/^I can see the dates of the entries on the register in the correct format$
 end
 
 Then(/^I can see the class of the title in the proprietorship register$/) do
-	expect(@pdf_pages[0]).to include('Absolute')
+	expect(@pdf_pages[0]).to match('Title\s?Absolute')
 end
 
 Then(/End of register is displayed on the last page of the PDF$/) do
