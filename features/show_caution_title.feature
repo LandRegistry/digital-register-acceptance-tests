@@ -31,4 +31,4 @@ iii) highlight that this is a caution title.
   Scenario: View caution pdf
     Given I have a caution title
     When I attempt to view the pdf
-    Then the pdf is displayed
+    Then the PDF is displayed

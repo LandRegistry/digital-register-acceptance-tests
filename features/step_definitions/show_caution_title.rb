@@ -15,6 +15,6 @@ When(/^I attempt to view the pdf$/) do
   convert_pdf_to_page
 end
 
-Then(/^the pdf is displayed$/) do
-  expect(@pdf_text[0]).to include(@title[:title_number])
+Then(/^the PDF is displayed$/) do
+  expect(@pdf_pages[0]).to include(@title[:title_number])
 end
