@@ -35,7 +35,10 @@ Then(/^I can see "(.*?)" is displayed on the PDF$/) do |legal_text|
 end
 
 Then(/^I can see "(.*?)" is displayed on the top of the PDF$/) do |legal_text|
-	expect(@pdf_pages[0]).to match(legal_text.gsub(" ", "\s?"))
+	date = Date.today.strftime('%-d %B %Y')
+	current_date = date.gsub(" ", "\s?")
+	expect(@pdf_pages[0]).to match(current_date)
+	expect(@pdf_pages[0]).to match('Official\s?copy\s?of\s?register\s?of\s?title\s?Issued\s?by\s?Land\s?Registry\s?on\s?')
 end
 
 Then(/^I can see that all entry dates are displayed in the UK format$/) do
