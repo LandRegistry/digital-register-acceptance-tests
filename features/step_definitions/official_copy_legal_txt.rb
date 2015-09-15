@@ -42,10 +42,9 @@ Then(/^I can see "(.*?)" is displayed on the top of the PDF$/) do |legal_text|
 end
 
 Then(/^I can see that all entry dates are displayed in the UK format$/) do
-	expect(@pdf_pages[0]).to include('6 November 1995')
-	expect(@pdf_pages[0]).to include('28 August 2014')
-	expect(@pdf_pages[0]).to include('1 July 2996')
-	expect(@pdf_pages[0]).to include('5 September 2005')
+	expect(@pdf_pages[0]).to match('6\s?November\s?1995')
+	expect(@pdf_pages[0]).to match('1\s?July\s?1996')
+	expect(@pdf_pages[0]).to match('5\s?September\s?2015')
 end
 
 Then(/^I can see that the explanation text "(.*?)" is displayed$/) do |explanation_text|
