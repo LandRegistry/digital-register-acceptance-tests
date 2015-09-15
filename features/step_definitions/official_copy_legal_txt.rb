@@ -34,7 +34,7 @@ Then(/^I can see "(.*?)" is displayed on the PDF$/) do |legal_text|
 	expect(@pdf_pages[0]).to match(legal_text.gsub(" ", "\s?"))
 end
 
-Then(/^I can see "(.*?)" is displayed on the top of the PDF$/) do |legal_text|
+Then(/^I can see Land Registry Identification displayed on the top of the PDF$/) do
 	date = Date.today.strftime('%-d %B %Y')
 	current_date = date.gsub(" ", "\s?")
 	expect(@pdf_pages[0]).to match(current_date)

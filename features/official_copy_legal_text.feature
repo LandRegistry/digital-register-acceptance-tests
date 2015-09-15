@@ -30,7 +30,7 @@ Feature: Legal requirement updates made to Official Copy of the Register
 
 	@US198
 	Scenario: Issued by LR statement added to Official Copy of the Register
-		Then I can see "Official copy of register of title issued by Land Registry on dd/mm/yyyy" is displayed on the top of the PDF
+		Then I can see Land Registry Identification displayed on the top of the PDF
 
 	@US200
 	Scenario: All entry dates follow the UK format on the Official Copy of the Register
