@@ -57,6 +57,7 @@ def insert_title_with_multiple_index_polygons
   @title = {
     title_number: 'AGL1005'
   }
+  wait_until_elasticsearch_updater_finished
 end
 
 def insert_title_non_private_individual_owner
@@ -102,11 +103,12 @@ def insert_title_charity_private_individual_owner
 end
 
 def insert_unverified_title
-  process_titles_in_directory('insert_unverified_title')
+  process_titles_in_directory('unverified_title')
   @title = {
     title_number: 'AGL1013',
     application_reference: 'J991DWW',
     last_app_timestamp: '2003-08-28T14:45:50+01:00',
     verified: 'false'
   }
+  wait_until_elasticsearch_updater_finished
 end

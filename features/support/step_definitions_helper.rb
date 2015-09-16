@@ -10,9 +10,9 @@ def check_title_summary_page_is_displayed
   expect(content).to include 'Summary of title'
 end
 
-def next_page_number
-  page_text = page.find('.pagination-prev-next').find('.next-page').text
-  page_text.split(' ')[2].to_i
+def current_page_number
+  page_text = page.find('#pagination').text
+  page_text.split(' ')[1].to_i
 end
 
 def visit_title_register_pdf(title_number)

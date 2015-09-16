@@ -30,7 +30,8 @@ at_exit do
   @new_user['user']['password'] = 'integration'
   insert_user(@new_user)
   puts 'Creating 51 titles with postcode PL9 8TB'
-  insert_multiple_titles(51)
+  # TODO: delete the following line if there is no clear need for it - it's a side effect
+  #insert_multiple_titles(51)
 end
 
 After do |scenario|
