@@ -4,15 +4,13 @@ When(/^I attempt to view the Official Copy of the Register for a title$/) do
 	convert_pdf_to_page
 end
 
-Then(/^I can see the edition dates in the correct format$/) do
-  expect(@pdf_pages[0]).to include('20 December 2015')
+Then(/^I can see the edition date in the correct format$/) do
+  expect(@pdf_pages[0]).to match('20\s?December\s?2015')
 end
 
 Then(/^I can see the dates of the entries on the register in the correct format$/) do
-	expect(@pdf_pages[0]).to include('6 November 1995')
-	expect(@pdf_pages[0]).to include('28 August 2014')
-	expect(@pdf_pages[0]).to include('1 July 2996')
-	expect(@pdf_pages[0]).to include('5 September 2005')
+	expect(@pdf_pages[0]).to match('6\s?November\s?1995')
+	expect(@pdf_pages[0]).to match('1\s?July\s?1996')
 end
 
 Then(/^I can see the class of the title in the proprietorship register$/) do
@@ -20,7 +18,7 @@ Then(/^I can see the class of the title in the proprietorship register$/) do
 end
 
 Then(/End of register is displayed on the last page of the PDF$/) do
-	expect(@pdf_pages[3]).to match('End\s?of\s?register')
+	expect(@pdf_pages[3]).to match('End\s?of\s?Register')
 end
 
 Then(/^I can see the Title number of every page$/) do
@@ -44,7 +42,9 @@ end
 Then(/^I can see that all entry dates are displayed in the UK format$/) do
 	expect(@pdf_pages[0]).to match('6\s?November\s?1995')
 	expect(@pdf_pages[0]).to match('1\s?July\s?1996')
-	expect(@pdf_pages[0]).to match('5\s?September\s?2015')
+
+	today = Date.today.strftime('%-d %B %Y')
+	expect(@pdf_pages[0]).to match(today.gsub(' ', '\s?'))
 end
 
 Then(/^I can see that the explanation text "(.*?)" is displayed$/) do |explanation_text|

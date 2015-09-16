@@ -5,11 +5,11 @@ Feature: Legal requirement updates made to Official Copy of the Register
 		Given I am an initial private beta user
 		And I have logged in
 		When I attempt to view the Official Copy of the Register for a title
-		Then the PDF is displayed
+		And the PDF is displayed
 
 	@US215
 	Scenario: Dates are displayed in human readable format on official copy
-		Then I can see the edition dates in the correct format
+		Then I can see the edition date in the correct format
 		And I can see the dates of the entries on the register in the correct format
 
 	@US204

@@ -3,10 +3,10 @@ Given(/^I navigate directly to a register title page$/) do
   visit_title_register_page(@title[:title_number])
 end
 
-When(/^I view an address on page (\d+) of the results$/) do |expected_page_num|
-  @expected_page_num = expected_page_num
-  find('.next-page').click
-  expect(next_page_number - 1).to eq(@expected_page_num.to_i)
+When(/^I navigate to the next page of the results and view the first title$/) do
+  previous_page_number = current_page_number
+  click_link('Next page')
+  expect(current_page_number).to eq(previous_page_number + 1)
   link_text = first('ol.search-results-listing').first('li').first('a').text
   click_link(link_text)
   check_title_summary_page_is_displayed
@@ -21,9 +21,9 @@ When(/^I select the search results breadcrumb$/) do
   click_link('Search results')
 end
 
-Then(/^I am returned to the search results screen and position I was viewing before$/) do
+Then(/^I am returned to page (\d+) of the search results$/) do |expected_page_num|
   expect(content).to include 'Search results for'
-  expect(next_page_number - 1).to eq(@expected_page_num.to_i)
+  expect(current_page_number).to eq(expected_page_num.to_i)
 end
 
 When(/^I select the initial search breadcrumb$/) do
