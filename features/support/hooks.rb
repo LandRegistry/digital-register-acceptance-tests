@@ -31,7 +31,7 @@ at_exit do
   insert_user(@new_user)
   puts 'Creating 51 titles with postcode PL9 8TB'
   # TODO: delete the following line if there is no clear need for it - it's a side effect
-  #insert_multiple_titles(51)
+  insert_multiple_titles(51)
 end
 
 After do |scenario|
