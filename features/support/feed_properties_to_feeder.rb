@@ -71,8 +71,7 @@ def insert_title_non_private_individual_owner
     house_number: 21,
     street_name: 'Murhill Lane',
     closure_status: 'OPEN',
-    tenure_type: 'Freehold',
-    district: 'City of Plymouth'
+    tenure_type: 'Freehold'
   }
   wait_until_elasticsearch_updater_finished
 end

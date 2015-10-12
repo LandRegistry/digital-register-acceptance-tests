@@ -51,3 +51,16 @@ Then(/^I can see that the explanation text "(.*?)" is displayed$/) do |explanati
 	text = explanation_text.gsub(" ", "\s?")
 	expect(@pdf_pages[0]).to match(text)
 end
+
+Given(/^I have a title with the district "(.*?)"$/) do |district|
+	insert_title_with_district(district)
+end
+
+When(/^I view the Official Copy PDF$/) do
+	visit_title_register_pdf(@title[:title_number])
+	convert_pdf_to_page
+end
+
+Then(/^I can see that the district is displayed$/) do
+  expect(@pdf_pages[0]).to match(@title[:district].gsub(' ', '\s?'))
+end

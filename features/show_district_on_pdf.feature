@@ -12,6 +12,6 @@ Acceptance Criteria
 Scenario: show district on pdf
   Given I am an initial private beta user
   And I have logged in
-  When I attempt to view the Official Copy of the Register for a title
-  And the PDF is displayed
+  Given I have a title with the district "City of Plymouth"
+  When I view the Official Copy PDF
   Then I can see that the district is displayed

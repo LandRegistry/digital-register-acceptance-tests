@@ -23,6 +23,12 @@ def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wa
   process_title_template(@title, wait_for_updater)
 end
 
+def insert_title_with_district(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true, district)
+  @title = create_title_hash(random_title_number, closure_status, 'Freehold', district)
+  @title[:proprietors] = create_non_private_proprietors(number_proprietors)
+  process_title_template(@title, wait_for_updater)
+end
+
 def insert_title_with_address(address_hash)
   @title = create_title_hash(random_title_number, 'OPEN', 'Freehold', address_hash)
   @title[:proprietors] = create_non_private_proprietors(1)
@@ -126,7 +132,7 @@ def random_title_number
   "DN#{rand(1..999_999)}"
 end
 
-def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', address_hash = {})
+def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', district = 'Wokingham', address_hash = {})
   house_number = address_hash.fetch(:house_no, rand(1..99_999).to_s)
   house_alpha = address_hash[:house_alpha]
   {
@@ -140,7 +146,8 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     uprn: rand(1000..99_999),
     closure_status: closure_status,
     tenure_type: tenure_type,
-    charges: create_charges
+    charges: create_charges,
+    district: district
   }.merge(address_hash)
 end
 
