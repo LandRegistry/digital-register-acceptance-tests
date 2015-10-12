@@ -4,6 +4,7 @@
   "closure_status": "OPEN",
   "edition_date": "2015-12-20",
   "class": "UNKNOWN",
+  "districts": ["City of Plymouth"],
   "groups": [
     {
       "category": "PROPERTY",

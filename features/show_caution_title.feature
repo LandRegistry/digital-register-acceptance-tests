@@ -18,12 +18,13 @@ iii) highlight that this is a caution title.
 
   Scenario: View caution search result
     Given I have a caution title
-    When I search for the property using the postcode
+    And I search for a property using the Address
     Then I will be displayed a list of results
     And I can see the caution title result
 
   Scenario: View caution register summary
     Given I have a caution title
+    And I search for a property using the Address
     When I view the caution title summary page
     Then I can view the register details for the caution title
 

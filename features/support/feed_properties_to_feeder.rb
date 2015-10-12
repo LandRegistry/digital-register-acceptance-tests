@@ -47,7 +47,9 @@ def insert_caution_title
   process_titles_in_directory('caution')
   @title = {
     title_number: 'AGL1004',
-    postcode: 'NR1 2LT'
+    postcode: 'NR1 2LT',
+    street_name: 'Magical Avenue',
+    address_string: 'Magical address string'
   }
   wait_until_elasticsearch_updater_finished
 end
