@@ -1,9 +1,15 @@
+Given(/^I search for a property using the Address$/) do
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  fill_in 'search_term', with: @title[:street_name]
+  click_button('Search')
+end
+
 Then(/^I can see the caution title result$/) do
   expect(content).to include 'Caution against first registration'
 end
 
 When(/^I view the caution title summary page$/) do
-  visit_title_register_page(@title[:title_number])
+  click_link(@title[:address_string])
 end
 
 Then(/^I can view the register details for the caution title$/) do
