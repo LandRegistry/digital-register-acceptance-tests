@@ -2,9 +2,11 @@ Before do
   $tables_created ||= false
   return $tables_created if $tables_created
   delete_all_titles_from_elasticsearch # es-updater should recreate
-  sleep($ELASTICSEARCH_SLEEP.to_f)
   clean_register_database
   set_capybara_session_headers
+  delete_elasticsearch_addressbase_data
+  create_elasticsearch_addressbase_mapping
+  sleep($ELASTICSEARCH_SLEEP.to_f)
 end
 
 Before('@existing_user') do
@@ -21,6 +23,7 @@ at_exit do
   unless $tables_created
     clean_register_database
     delete_all_titles_from_elasticsearch # es-updater should recreate
+    delete_elasticsearch_addressbase_data
   end
   sleep($ELASTICSEARCH_SLEEP.to_f)
   puts 'Creating user landregistry with password integration'

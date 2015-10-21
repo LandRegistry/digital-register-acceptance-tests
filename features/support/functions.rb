@@ -21,6 +21,7 @@ def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wa
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title, wait_for_updater)
+  make_title_searchable
 end
 
 def insert_title_with_district(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true, district)
@@ -33,6 +34,7 @@ def insert_title_with_address(address_hash)
   @title = create_title_hash(random_title_number, 'OPEN', 'Freehold', address_hash)
   @title[:proprietors] = create_non_private_proprietors(1)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_private_and_non_private_owners
@@ -40,12 +42,14 @@ def insert_title_with_private_and_non_private_owners
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:proprietors] += create_private_proprietors(1)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_private_individual_owner(wait_for_updater = true)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_private_proprietors(1)
   process_title_template(@title, wait_for_updater != 'false')
+  make_title_searchable
 end
 
 def update_closure_status_of_title(closure_status)
@@ -57,6 +61,7 @@ def insert_title_with_multiple_owner_addresses(number_proprietors = 1, closure_s
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors, address_types)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_no_charges
@@ -64,6 +69,7 @@ def insert_title_with_no_charges
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:charges] = create_charges(number_of_charges: 0)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_multiple_charges(number_of_charges)
@@ -71,6 +77,7 @@ def insert_title_with_multiple_charges(number_of_charges)
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:charges] = create_charges(number_of_charges)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_a_sub_charge
@@ -78,6 +85,7 @@ def insert_title_with_a_sub_charge
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:charges] = create_charges(charge_role_code: %w(CSCH))
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, number_proprietors: 1)
@@ -85,30 +93,35 @@ def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, numb
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   @title[:charges] = create_charges(n_of_charge_addresses)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
   @title = create_title_hash(random_title_number, 'OPEN', tenure_type)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def update_title_with_new_owners(new_proprietor_name)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = new_proprietor(new_proprietor_name)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_owners_different_title(number_proprietors = 1)
   @title = create_title_hash(random_title_number)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_title_with_number(title_number, wait_for_updater = true)
   @title = create_title_hash(title_number, 'OPEN')
   @title[:proprietors] = create_non_private_proprietors(1)
   process_title_template(@title, wait_for_updater)
+  make_title_searchable
 end
 
 def insert_title_with_prices_paid(price_paid_hash)
@@ -116,6 +129,7 @@ def insert_title_with_prices_paid(price_paid_hash)
   @title[:proprietors] = create_non_private_proprietors(1)
   @title[:price_paid_stated] = price_paid_hash
   process_title_template(@title)
+  make_title_searchable
 end
 
 def insert_multiple_titles(number_of_titles)
@@ -134,16 +148,19 @@ end
 
 def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', district = 'Wokingham', address_hash = {})
   house_number = address_hash.fetch(:house_no, rand(1..99_999).to_s)
-  house_alpha = address_hash[:house_alpha]
+  house_alpha = address_hash.fetch(:house_alpha, 'A')
+  postcode = address_hash.fetch(:postcode, 'PL9 8TB')
+  street_name = address_hash.fetch(:street_name, 'Test Street')
   {
     title_number: title_number,
-    street_name: 'Test Street',
-    postcode: 'PL9 8TB',
+    street_name: street_name,
+    postcode: postcode,
     house_no: house_number,
+    house_alpha: house_alpha,
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
     address_string: "#{house_number}#{house_alpha} Test Street, Plymouth, PL9 8TB",
-    uprn: rand(1000..99_999),
+    lr_uprns: rand(1000..99_999),
     closure_status: closure_status,
     tenure_type: tenure_type,
     charges: create_charges,
@@ -170,6 +187,10 @@ def delete_all_users
   $user_db_connection.exec('DELETE FROM users;')
 end
 
+def delete_all_uprn_data
+  $db_connection.exec('DELETE FROM uprn_mapping;')
+end
+
 def delete_all_titles_from_elasticsearch
   host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
   match_all_query = '{"query": {"bool": {"must": [{"match_all": {}}]}}}'
@@ -185,9 +206,24 @@ def delete_all_titles_from_elasticsearch
   end
 end
 
+def create_addressbase_address_elasticsearch
+  host = "http://#{$ELASTICSEARCH_HOST}:#{$ELASTICSEARCH_PORT}"
+  match_all_query = '{"index": "address-search-api-index", "type": "address_by_postcode", "id":"1", "body": "{"uprn": "123456"}"}'
+  doc_types = %w(address-search-api-index)
+  doc_types.each do |doc_type|
+    uri = URI.parse("#{host}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Delete.new("/landregistry/#{doc_type}/_query ",
+                                    'Content-Type' => 'application/json')
+    request.body = match_all_query
+    http.request(request)
+  end
+end
+
 def clean_register_database
   delete_all_titles
   delete_all_users
+  delete_all_uprn_data
 end
 
 def create_non_private_proprietors(number_proprietors, address_types = ['UNKNOWN'])
@@ -312,4 +348,78 @@ def elasticsearch_status
   request = Net::HTTP::Get.new(uri)
   response = connection.request(request)
   JSON.parse(response.body)['status']
+end
+
+
+def create_title_addressbase_data(title)
+  entry_datetime = DateTime.now
+  addressbase_details = {
+      :postcode => "#{title[:postcode]}",
+      :post_town => "#{title[:town]}",
+      :building_number => "#{title[:house_no]}",
+      :building_name => "#{title[:house_alpha]}",
+      :thoroughfare_name => "#{title[:street_name]}",
+      :address_string => "#{title[:address_string]}",
+      :dependent_thoroughfare_name => "test",
+      :department_name => "test",
+      :dependent_locality => "test",
+      :double_dependent_locality => "test",
+      :joined_fields => "#{title[:address_string]}",
+      :organisation_name => "test",
+      :sub_building_name => "test",
+      :uprn => "#{title[:lr_uprns]}",
+      :x_coordinate => 292772.0,
+      :y_coordinate => 292772.0
+  }
+end
+
+# This inserts an addressbase address into elasticsearch - it needs to have the mapping in place.
+def create_elasticsearch_addressbase_data(title_address_data)
+  id = title_address_data[:uprn]
+  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
+  conn = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Post.new "/#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/#{id}"
+  request[ 'Content-Type' ] = 'application/json'
+  request.body = title_address_data.to_json
+  response = conn.request(request)
+end
+
+# Deletes the index and all data with it - gets called at the beginning of a test
+# to prevent brittleness.
+def delete_elasticsearch_addressbase_data
+  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
+  conn = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Delete.new "#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/"
+  request[ 'Content-Type' ] = 'application/json'
+  response = conn.request(request)
+end
+
+# Creates an index with the uprn of the addressbase and the title.
+def create_lr_urpn_mapping_data(uprn)
+  $db_connection.exec("INSERT INTO uprn_mapping(uprn, lr_uprn)VALUES (#{uprn}, #{uprn});")
+end
+
+# Overall method to make a title searchable via postcode
+def make_title_searchable
+  address = create_title_addressbase_data(@title)
+  create_elasticsearch_addressbase_data(address)
+  sleep(0.6) # elasticsearch changes take a moment
+  create_lr_urpn_mapping_data(@title[:lr_uprns])
+end
+
+# Grabs the mapping for the addressbase postcode elasticsearch index
+# needs to updated if the elasticsearch index changes
+def addressbase_es_mappings
+  es_mappings = File.read('features/support/es_mappings.json')
+end
+
+# This is the statement to recreate the index mapping
+def create_elasticsearch_addressbase_mapping
+  index_mapping = addressbase_es_mappings
+  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
+  conn = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Put.new "#{$ELASTICSEARCH_ADDRESSBASE}/_mapping/#{$ELASTICSEARCH_POSTCODE_SEARCH}/"
+  request[ 'Content-Type' ] = 'application/json'
+  request.body = index_mapping
+  response = conn.request(request)
 end

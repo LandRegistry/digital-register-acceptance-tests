@@ -1,3 +1,4 @@
+
 Given(/^I have multiple addresses on the same street with different house numbers$/) do
   @house_numbers = (1..10).to_a
   shuffled_numbers = @house_numbers.shuffle

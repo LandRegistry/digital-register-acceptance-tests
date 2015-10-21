@@ -48,18 +48,36 @@ def insert_caution_title
   @title = {
     title_number: 'AGL1004',
     postcode: 'NR1 2LT',
+<<<<<<< HEAD
     street_name: 'Magical Avenue',
     address_string: 'Magical address string'
+=======
+    town: 'Plymouth',
+    house_no: '23',
+    house_alpha: 'A',
+    street_name: 'Murhill Lane',
+    address_string: '23 Murhill Lane, Plymouth, PL9 7FN',
+    lr_uprns: "9407140"
+>>>>>>> 8689ea2... Stupidly large commit with changes to get addresses postcode searchable - bad heather
   }
   wait_until_elasticsearch_updater_finished
+  make_title_searchable
 end
 
 def insert_title_with_multiple_index_polygons
   process_titles_in_directory('multiple-index-polygons')
   @title = {
-    title_number: 'AGL1005'
+    title_number: 'AGL1005',
+    postcode: 'PL9 7FN',
+    town: 'Plymouth',
+    house_no: '23',
+    house_alpha: 'A',
+    street_name: 'Murhill Lane',
+    address_string: '23 Murhill Lane, Plymouth, PL9 7FN',
+    lr_uprns: "9407140"
   }
   wait_until_elasticsearch_updater_finished
+  make_title_searchable
 end
 
 def insert_title_non_private_individual_owner
@@ -70,12 +88,17 @@ def insert_title_non_private_individual_owner
     owners: ['HEATHER POOLE PLC'],
     postcode: 'PL9 7FN',
     town: 'Plymouth',
-    house_number: 21,
     street_name: 'Murhill Lane',
     closure_status: 'OPEN',
-    tenure_type: 'Freehold'
+    tenure_type: 'Freehold',
+    house_no: '23',
+    house_alpha: 'A',
+    street_name: 'Murhill Lane',
+    address_string: '23 Murhill Lane, Plymouth, PL9 7FN',
+    lr_uprns: "9407140"
   }
   wait_until_elasticsearch_updater_finished
+  make_title_searchable
 end
 
 def insert_title_charity_non_private_individual_owner
@@ -84,13 +107,17 @@ def insert_title_charity_non_private_individual_owner
     title_number: 'AGL1003',
     last_changed: '28 August 2003 at 14:45:50',
     owners: ['HEATHER JONES', 'JOHN JONES', 'HEATHER SMITH'],
+    street_name: 'Murhill Lane',
+    closure_status: 'OPEN',
     postcode: 'PL9 7FN',
     town: 'Plymouth',
-    house_number: 21,
-    street_name: 'Murhill Lane',
-    closure_status: 'OPEN'
+    house_no: '23',
+    house_alpha: 'A',
+    address_string: '23 Murhill Lane, Plymouth, PL9 7FN',
+    lr_uprns: "9407140"
   }
   wait_until_elasticsearch_updater_finished
+  make_title_searchable
 end
 
 def insert_title_charity_private_individual_owner
@@ -99,9 +126,15 @@ def insert_title_charity_private_individual_owner
     title_number: 'AGL1002',
     last_changed: '28 August 2003 at 14:45:50',
     postcode: 'PL9 7FN',
-    town: 'Plymouth'
+    town: 'Plymouth',
+    house_no: '23',
+    house_alpha: 'A',
+    street_name: 'Murhill Lane',
+    address_string: '23 Murhill Lane, Plymouth, PL9 7FN',
+    lr_uprns: "9407140"
   }
   wait_until_elasticsearch_updater_finished
+  make_title_searchable
 end
 
 def insert_unverified_title
@@ -113,4 +146,5 @@ def insert_unverified_title
     verified: 'false'
   }
   wait_until_elasticsearch_updater_finished
+  make_title_searchable
 end

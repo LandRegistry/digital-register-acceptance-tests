@@ -11,6 +11,8 @@ gem 'w3c_validators'
 gem 'bunny'
 gem 'pdf-reader'
 gem 'curb'
+gem 'elasticsearch'
+gem 'elasticsearch-extensions'
 
 group :development do
   gem 'pry'

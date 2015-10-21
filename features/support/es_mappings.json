@@ -1,0 +1,70 @@
+{
+	"address_by_postcode": {
+			"properties": {
+					"building_name": {
+							"type": "string",
+							"index": "not_analyzed"
+					},
+					"building_number": {
+							"type": "integer"
+					},
+					"department_name": {
+							"type": "string",
+							"index": "no"
+					},
+					"dependent_locality": {
+							"type": "string",
+							"index": "no"
+					},
+					"dependent_thoroughfare_name": {
+							"type": "string",
+							"index": "no"
+					},
+					"double_dependent_locality": {
+							"type": "string",
+							"index": "no"
+					},
+					"entry_datetime": {
+							"type": "date",
+							"index": "no",
+							"format": "date_time_no_millis"
+					},
+					"joined_fields": {
+							"type": "string",
+							"index": "no"
+					},
+					"organisation_name": {
+							"type": "string",
+							"index": "no"
+					},
+					"post_town": {
+							"type": "string",
+							"index": "no"
+					},
+					"postcode": {
+							"type": "string",
+							"index": "not_analyzed"
+					},
+					"sub_building_name": {
+							"type": "string",
+							"index": "not_analyzed"
+					},
+					"thoroughfare_name": {
+							"type": "string",
+							"index": "not_analyzed"
+					},
+					"uprn": {
+							"type": "string",
+							"index": "no"
+					},
+					"x_coordinate": {
+							"type": "float",
+							"index": "no"
+					},
+					"y_coordinate": {
+							"type": "float",
+							"index": "no"
+					}
+		}
+	}
+}

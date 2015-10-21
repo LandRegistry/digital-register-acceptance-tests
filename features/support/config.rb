@@ -6,6 +6,8 @@ require 'cucumber-repeat'
 require 'bunny'
 require 'curl'
 require 'pdf-reader'
+require 'elasticsearch'
+require 'date'
 
 ### Allows you to use the page. commands
 include Capybara::DSL
