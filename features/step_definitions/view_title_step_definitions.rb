@@ -5,7 +5,7 @@ end
 Then(/^I see the full address for the selected title$/) do
   expect(content).to include(@title[:postcode])
   expect(content).to include(@title[:town])
-  expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")
+  expect(content).to include("#{@title[:house_no]}#{@title[:house_alpha]} #{@title[:street_name]}")
 end
 
 Then(/^I see the title number for the selected title$/) do
@@ -44,7 +44,7 @@ Then(/^I can view the register details for the selected title$/) do
   end
   expect(content).to include(@title[:postcode])
   expect(content).to include(@title[:town])
-  expect(content).to include("#{@title[:house_no]} #{@title[:street_name]}")
+  expect(content).to include("#{@title[:house_no]}#{@title[:house_alpha]} #{@title[:street_name]}")
 end
 
 Then(/^I can see the map$/) do
