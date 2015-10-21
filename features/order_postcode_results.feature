@@ -29,7 +29,7 @@ Scenario: Search by postcode returns properties sorted by street, house and buil
     | Beta Street | | | land to the west of Beta Street (PL9 8TB) | PL9 8TB |
     | Beta Street | 2 | C | airspace above 2C Beta Street (PL9 8TB) | PL9 8TB |
     | Gamma Street | 2 | The Manor | The Manor, 2 Gamma Street (PL9 8TB) | PL9 8TB |
-    | Gamma Street | 3 | Flat 1 | Flat 1, 3 Gamma Street (PL9 8TB)| PL9 8TB |
+    
   And I search for the property using their postcode
   Then the results should be displayed in the order:
     | address_string |
