@@ -48,17 +48,12 @@ def insert_caution_title
   @title = {
     title_number: 'AGL1004',
     postcode: 'NR1 2LT',
-<<<<<<< HEAD
-    street_name: 'Magical Avenue',
-    address_string: 'Magical address string'
-=======
     town: 'Plymouth',
     house_no: '23',
     house_alpha: 'A',
     street_name: 'Murhill Lane',
     address_string: '23 Murhill Lane, Plymouth, PL9 7FN',
     lr_uprns: "9407140"
->>>>>>> 8689ea2... Stupidly large commit with changes to get addresses postcode searchable - bad heather
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
