@@ -160,7 +160,7 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     town: 'Plymouth',
     last_changed: '02 July 1996 at 00:59:59',
     address_string: "#{house_number}#{house_alpha} Test Street, Plymouth, PL9 8TB",
-    lr_uprns: rand(1000..99_999),
+    lr_uprns: rand(1..999_999),
     closure_status: closure_status,
     tenure_type: tenure_type,
     charges: create_charges,
