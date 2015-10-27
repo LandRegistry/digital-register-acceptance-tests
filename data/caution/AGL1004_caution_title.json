@@ -4,6 +4,9 @@
     "edition_date": "2003-08-28",
     "closure_status": "OPEN",
     "tenure": "Freehold",
+    "lr_uprns": [
+      9407140
+    ],
     "dlr": "LROffice",
     "title_number": "AGL1004",
     "last_app_timestamp": "1996-07-02T00:59:59+01:00",
@@ -20,11 +23,12 @@
                             "type": "Address",
                             "address": {
                                 "house_no": "29",
-                                "postcode": "NR1 2LT",
+                                "house_alpha": "A",
+                                "postcode": "PL9 7FN",
                                 "street_name": "Magical Avenue",
                                 "postal_county": "Wardrobe",
                                 "town": "Narniaville",
-                                "address_string": "Magical address string"
+                                "address_string": "29A Magical Avenue, Narniaville, PL9 7FN"
                             }
                         }
                     ],

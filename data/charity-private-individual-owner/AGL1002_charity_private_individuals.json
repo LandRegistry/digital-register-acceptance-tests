@@ -20,17 +20,17 @@
             "infills": [
               {
                 "address": {
-                  "address_string": "23 Murhill Lane, Plymouth",
+                  "address_string": "23A Murhill Lane, Plymouth",
                   "auto_uppercase_override": true,
                   "postcode": "PL9 7FN",
                   "town": "Plymouth",
-                  "house_no": "23",
+                  "house_no": "23A",
                   "street_name": "Murhill Lane"
                 },
                 "type": "Address"
               }
             ],
-            "full_text": "The Freehold land shown edged with red on the plan of the above title filed at the Registry and being 23 Murhill Lane, Plymouth.",
+            "full_text": "The Freehold land shown edged with red on the plan of the above title filed at the Registry and being 23A Murhill Lane, Plymouth.",
             "entry_date": "2003-07-31",
             "template_text": "The Freehold land shown edged with red on the plan of the above title filed at the Registry and being *AD*"
           }
