@@ -3,10 +3,6 @@ Given(/^I have visited the new address search URL$/) do
   visit("#{$DIGITAL_REGISTER_API}/search")
 end
 
-Then(/^the new search page is displayed$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
 Then(/^the title numbers are not available$/) do
   expect(content).to include 'Title number not available'
 end
