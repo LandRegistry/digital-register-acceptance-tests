@@ -1,16 +1,17 @@
+When(/^I navigate to a register title page pdf$/) do
+  insert_title_with_owners
+  visit_title_register_pdf(@title[:title_number])
+  convert_pdf_to_page
+end
+
 Then(/^I can see the full text of the register$/) do
-  expect(content).to include 'Register name : '
-  expect(content).to include 'A yearly rentcharge of £200 payable yearly on 1 January created by a Conveyance dated 17 January 2009 made between (1) JP Jones and (2) Heather Poole. The registered rentcharge is charged upon and issues out of the freehold land, shown edged red on the plan of the above title filed at the Registry being 21 Murhill Lane, Saltram Meadow, Plymouth, (PL9 7FN).'
+  expect(@pdf_pages[1]).to match('A\s?Conveyance\s?dated\s?5\s?September\s?1925\s?made\s?between')
 end
 
 Then(/^I can see the date of the register entry$/) do
-  expect(content).to include '1996-07-01'
+  expect(@pdf_pages[0]).to match('06\s?November\s?1995')
 end
 
 Then(/^I can see the entry number of each entry$/) do
-  expect(content).to include '1.'
-end
-
-Then(/^I can see the standard text against the register entry$/) do
-  expect(content).to include 'Not Dated'
+  expect(@pdf_pages[0]).to match('1:')
 end
