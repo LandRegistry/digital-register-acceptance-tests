@@ -31,7 +31,7 @@ def insert_title_with_district(number_proprietors = 1, closure_status = 'OPEN', 
 end
 
 def insert_title_with_address(address_hash)
-  @title = create_title_hash(random_title_number, 'OPEN', 'Freehold', address_hash)
+  @title = create_title_hash(random_title_number, 'OPEN', 'Freehold', 'Wokingham', address_hash)
   @title[:proprietors] = create_non_private_proprietors(1)
   process_title_template(@title)
   make_title_searchable
