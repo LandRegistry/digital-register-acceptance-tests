@@ -11,10 +11,6 @@ Then(/^I am informed that we are using cookies$/) do
   find_link('Find out more about cookies').visible?
 end
 
-Then(/^no information for cookies is displayed$/) do
-  expect(content).to have_no_content('Land Registry uses cookies to make the site simpler.')
-end
-
 When(/^I click on the cookies link$/) do
   click_link('Cookies')
 end
