@@ -13,8 +13,6 @@ secure environment for provision of payment details
 ·        user has confirmed that they wish to purchase;
 ·        user has confirmed that they wish to have payment authorised
 
-
-Background:
   When I attempt to view the Summary of the Register for a title
 
   Scenario: View Summary authorisation for payment
@@ -23,5 +21,6 @@ Background:
 
   Scenario: View for summary no authorisation for payment
     Given I have no payment authorisation
+
     Then I can not view the summary
     And a message is displayed
