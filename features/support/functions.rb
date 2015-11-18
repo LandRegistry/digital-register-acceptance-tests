@@ -134,7 +134,7 @@ end
 
 def insert_multiple_titles(number_of_titles)
   number_of_titles.to_i.times do |_|
-    insert_title_with_number(random_title_number, false)
+  insert_title_with_number(random_title_number, false)
   end
   wait_until_elasticsearch_updater_finished
   # Very short final sleep for elasticsearch nodes to be updated
@@ -360,13 +360,13 @@ def create_title_addressbase_data(title)
       :building_name => "#{title[:house_alpha]}",
       :thoroughfare_name => "#{title[:street_name]}",
       :address_string => "#{title[:address_string]}",
-      :dependent_thoroughfare_name => "test",
-      :department_name => "test",
-      :dependent_locality => "test",
-      :double_dependent_locality => "test",
+      :dependent_thoroughfare_name => 'test',
+      :department_name => 'test',
+      :dependent_locality => 'test',
+      :double_dependent_locality => 'test',
       :joined_fields => "#{title[:address_string]}",
-      :organisation_name => "test",
-      :sub_building_name => "test",
+      :organisation_name => 'test',
+      :sub_building_name => 'test',
       :uprn => "#{title[:lr_uprns]}",
       :x_coordinate => 292772.0,
       :y_coordinate => 292772.0
@@ -379,7 +379,7 @@ def create_elasticsearch_addressbase_data(title_address_data)
   uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new "/#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/#{id}"
-  request[ 'Content-Type' ] = 'application/json'
+  request['Content-Type'] = 'application/json'
   request.body = title_address_data.to_json
   response = conn.request(request)
 end
@@ -390,7 +390,7 @@ def delete_elasticsearch_addressbase_data
   uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Delete.new "#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/"
-  request[ 'Content-Type' ] = 'application/json'
+  request['Content-Type'] = 'application/json'
   response = conn.request(request)
 end
 
@@ -419,7 +419,7 @@ def create_elasticsearch_addressbase_mapping
   uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Put.new "#{$ELASTICSEARCH_ADDRESSBASE}/_mapping/#{$ELASTICSEARCH_POSTCODE_SEARCH}/"
-  request[ 'Content-Type' ] = 'application/json'
+  request['Content-Type'] = 'application/json'
   request.body = index_mapping
   response = conn.request(request)
 end
