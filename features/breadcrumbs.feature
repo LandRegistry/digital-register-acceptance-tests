@@ -6,7 +6,7 @@ Acceptance Criteria
 2 Use breadcrumbs.
 3 Title page breadcrumb element should be the title number you're displaying
 4. "Search result" breadcrumb element should return to the results page
-@ju
+
   Scenario: Return to list of results screen
     Given I have 51 addresses in the same City
     When I search for a property using only the City part of an address

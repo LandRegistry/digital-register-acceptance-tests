@@ -9,10 +9,6 @@ Acceptance Criteria:
   - The error page should be returned as a properly styled error page.
   - This should be displayed when a user hits a 404 error (page not found).
 
-  Background:
-    Given I am an initial private beta user
-    And I have logged in
-
   Scenario:
     When I try to view a page for a title that doesn't exist
     Then I am displayed a 'page not found' error page
