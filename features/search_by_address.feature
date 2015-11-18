@@ -9,10 +9,6 @@ Acceptance criteria:
   - Search by full address
   - maximum number of results
 
-Background:
-  Given I am an initial private beta user
-  And I have logged in
-
   Scenario: Search by whole of property address
     Given I have an address with a single Title Number
     When I search for a property using the whole address

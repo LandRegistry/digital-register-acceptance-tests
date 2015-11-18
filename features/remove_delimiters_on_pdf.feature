@@ -11,8 +11,6 @@ Acceptance Criteria
 (To be confirmed and full list of delimiters to be provided)
 
 Scenario: No delimiters are displayed
-Given I am an initial private beta user
-And I have logged in
 When I attempt to view the Official Copy of the Register for a title
 And the PDF is displayed
 Then no delimiters are displayed

@@ -11,11 +11,6 @@ i) the address,
 ii) the cautioner and
 iii) highlight that this is a caution title.
 
-
-  Background:
-	Given I am an initial private beta user
-	And I have logged in
-
   Scenario: View caution search result
     Given I have a caution title
     And I search for a property using the Address

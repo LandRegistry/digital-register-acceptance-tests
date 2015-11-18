@@ -13,16 +13,19 @@ Given(/^I have an address with a single Title Number$/) do
 end
 
 Given(/^I search for the property using (?:the|their) postcode$/) do
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   fill_in 'search_term', with: @title[:postcode]
   click_button('Search')
 end
 
 Given(/^I search for a property entering a postcode with no spaces$/) do
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   fill_in 'search_term', with: 'PL98TB'
   click_button('Search')
 end
 
-Given(/^I search for a property using no search term$/) do
+When(/^I search for a property using no search term$/) do
+  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   click_button('Search')
 end
 

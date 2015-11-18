@@ -11,10 +11,6 @@ Feature: View Most Recent Price Paid/Stated Information
     1. If present, must display the most *recent price* paid from the system of record or price stated
     2. If no price information is found, no need to display the label and "not available"
 
-  Background:
-    Given I am an initial private beta user
-    And I have logged in
-
   Scenario: Display most recent price paid information
     Given I have a title with one price paid or stated entry
     When I view the title summary page

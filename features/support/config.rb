@@ -39,6 +39,7 @@ end
 # This removes the referer for the map tiles to be returned
 page.driver.add_header('Referer', '', permanent: true)
 page.driver.add_header('User-Agent', 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', permanent: true)
+page.driver.add_header('iv-user', 'tester_user')
 
 `sh install_requirements.sh`
 
