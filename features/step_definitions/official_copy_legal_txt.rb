@@ -29,12 +29,12 @@ end
 
 # regex has been used in matching text in the pdf due to odd spacing when parsing
 Then(/^I can see "(.*?)" is displayed on the PDF$/) do |legal_text|
-  expect(@pdf_pages[0]).to match(legal_text.gsub(" ", "\s?"))
+  expect(@pdf_pages[0]).to match(legal_text.gsub(' ', '\s?'))
 end
 
 Then(/^I can see Land Registry Identification displayed on the top of the PDF$/) do
   date = Date.today.strftime('%-d %B %Y')
-  current_date = date.gsub(" ", "\s?")
+  current_date = date.gsub(' ', '\s?')
   expect(@pdf_pages[0]).to match(current_date)
   expect(@pdf_pages[0]).to match('Official\s?copy\s?of\s?register\s?of\s?title\s?Issued\s?by\s?Land\s?Registry\s?on\s?')
 end
@@ -48,7 +48,7 @@ Then(/^I can see that all entry dates are displayed in the UK format$/) do
 end
 
 Then(/^I can see that the explanation text "(.*?)" is displayed$/) do |explanation_text|
-  text = explanation_text.gsub(" ", "\s?")
+  text = explanation_text.gsub(' ', '\s?')
   expect(@pdf_pages[0]).to match(text)
 end
 

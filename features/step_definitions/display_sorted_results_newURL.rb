@@ -35,7 +35,7 @@ Then(/^the results should be displayed in the following order:$/) do |table|
   # this is pending code
   displayed_addresses = page.all('ol.search-results-listing > li > h2').map(&:text)
   address_strings = table.hashes.map do |address_hash|
-  address_hash[:address_string]
+    address_hash[:address_string]
   end
   expect(displayed_addresses).to eq address_strings
 end

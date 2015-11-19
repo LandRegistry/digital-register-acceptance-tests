@@ -134,7 +134,7 @@ end
 
 def insert_multiple_titles(number_of_titles)
   number_of_titles.to_i.times do |_|
-  insert_title_with_number(random_title_number, false)
+    insert_title_with_number(random_title_number, false)
   end
   wait_until_elasticsearch_updater_finished
   # Very short final sleep for elasticsearch nodes to be updated
@@ -350,26 +350,25 @@ def elasticsearch_status
   JSON.parse(response.body)['status']
 end
 
-
 def create_title_addressbase_data(title)
   entry_datetime = DateTime.now
   addressbase_details = {
-      :postcode => "#{title[:postcode]}",
-      :post_town => "#{title[:town]}",
-      :building_number => "#{title[:house_no]}",
-      :building_name => "#{title[:house_alpha]}",
-      :thoroughfare_name => "#{title[:street_name]}",
-      :address_string => "#{title[:address_string]}",
-      :dependent_thoroughfare_name => 'test',
-      :department_name => 'test',
-      :dependent_locality => 'test',
-      :double_dependent_locality => 'test',
-      :joined_fields => "#{title[:address_string]}",
-      :organisation_name => 'test',
-      :sub_building_name => 'test',
-      :uprn => "#{title[:lr_uprns]}",
-      :x_coordinate => 292772.0,
-      :y_coordinate => 292772.0
+    postcode: "#{title[:postcode]}",
+    post_town: "#{title[:town]}",
+    building_number: "#{title[:house_no]}",
+    building_name: "#{title[:house_alpha]}",
+    thoroughfare_name: "#{title[:street_name]}",
+    address_string: "#{title[:address_string]}",
+    dependent_thoroughfare_name: 'test',
+    department_name: 'test',
+    dependent_locality: 'test',
+    double_dependent_locality: 'test',
+    joined_fields: "#{title[:address_string]}",
+    organisation_name: 'test',
+    sub_building_name: 'test',
+    uprn: "#{title[:lr_uprns]}",
+    x_coordinate: 292_772.0,
+    y_coordinate: 292_772.0
   }
 end
 
