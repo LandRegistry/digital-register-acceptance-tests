@@ -15,14 +15,15 @@ PDFs of registers are NOT included in this story.
 Addresses and the map are NOT included in this story.
 
 Background:
-Given I search for a property using the Title Number
-When I view the title summary page
+    Given I am an initial private beta user
+    And I have logged in
+    And I have a title with a private individual owner
+    When I view the title summary page
+    And I have selected the Welsh translation
 
 Scenario: Option to see info in Welsh on Summary page
-And I have selected the Welsh translation
-Then I can view the summary information in Welsh
+    Then I can view the summary information in Welsh
 
 Scenario: Option to switch back to English from Welsh on Summary page
-And I have selected the Welsh translation
-When I select the English translation
-Then I can view the summary information in English
+    When I select the English translation
+    Then I can view the summary information in English

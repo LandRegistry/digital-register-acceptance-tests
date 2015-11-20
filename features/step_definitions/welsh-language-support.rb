@@ -1,15 +1,15 @@
 When(/^I have selected the Welsh translation$/) do
-click_link('in Welsh (Cymraeg)')
+  click_button('in Welsh (Cymraeg)')
 end
 
 Then(/^I can view the summary information in Welsh$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(content).to include 'Crynodeb o deitl'
 end
 
 When(/^I select the English translation$/) do
-  pending # express the regexp above with the code you wish you had
+  click_button('in English')
 end
 
 Then(/^I can view the summary information in English$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(content).to include 'Summary of title'
 end
