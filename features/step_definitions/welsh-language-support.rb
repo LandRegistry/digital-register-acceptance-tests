@@ -3,7 +3,8 @@ When(/^I have selected the Welsh translation$/) do
 end
 
 Then(/^I can view the summary information in Welsh$/) do
-  expect(content).to include 'Crynodeb o deitl'
+  expect(content).to include  'Math o ddaliadaeth'
+  expect(content).to include 'Perchennog'
 end
 
 When(/^I select the English translation$/) do
