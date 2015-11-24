@@ -2,8 +2,6 @@
 Feature: Legal requirement updates made to Official Copy of the Register
 
 	Background:
-		Given I am an initial private beta user
-		And I have logged in
 		When I attempt to view the Official Copy of the Register for a title
 		And the PDF is displayed
 

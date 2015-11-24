@@ -1,5 +1,5 @@
 Given(/^I have visited the new address search URL$/) do
-  #this is pending code amend URL accordingly
+  # this is pending code amend URL accordingly
   visit("#{$DIGITAL_REGISTER_API}/search")
 end
 
@@ -32,10 +32,10 @@ end
 
 Then(/^the results should be displayed in the following order:$/) do |table|
   # table is a Cucumber::Ast::Table
-  #this is pending code
+  # this is pending code
   displayed_addresses = page.all('ol.search-results-listing > li > h2').map(&:text)
   address_strings = table.hashes.map do |address_hash|
-  address_hash[:address_string]
-end
-expect(displayed_addresses).to eq address_strings
+    address_hash[:address_string]
+  end
+  expect(displayed_addresses).to eq address_strings
 end

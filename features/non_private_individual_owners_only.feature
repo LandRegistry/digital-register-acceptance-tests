@@ -5,10 +5,6 @@ Feature: View Non Private Individuals Only
 This set of tests should be excluded from execution (... --tags ~@private-indiv-off) when
 the system is expected to offer private individual data to users.
 
-Background:
-  Given I am an initial private beta user
-  And I have logged in
-
   Scenario: Titles with Non Private Individual are displayed
     Given I have a title with a non private individual owner
     When I view the title summary page

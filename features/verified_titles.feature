@@ -11,10 +11,6 @@ Acceptance Criteria
   System log should get a record for each of these scenarios
   Removal from the database should happen as soon as we are informed about a SOR verification failure
 
-Background:
-  Given I am an initial private beta user
-  And I have logged in
-
   Scenario: A non verified title is not stored in database
     Given I have a non verified title
     When I search for the title

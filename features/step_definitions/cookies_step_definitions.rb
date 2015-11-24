@@ -12,6 +12,7 @@ Then(/^I am informed that we are using cookies$/) do
 end
 
 When(/^I click on the cookies link$/) do
+  visit("#{$DIGITAL_REGISTER_URL}/cookies")
   click_link('Cookies')
 end
 

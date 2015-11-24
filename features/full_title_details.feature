@@ -5,9 +5,7 @@ Feature: Generate full register content
   # TODO: create tests for the full register content flag being off
 
   Background:
-    Given I am an initial private beta user
-    And I have logged in
-    When I navigate to a register title page pdf
+    Given I navigate to a register title page pdf
 
   Scenario: Full text of register is displayed
     Then I can see the full text of the register

@@ -17,7 +17,6 @@ end
 
 def wait_for_queue_to_be_consumed(channel, queue_name)
   consumed = false
-
   wait_start_time = Time.now
 
   def timed_out(start_time)
@@ -25,23 +24,23 @@ def wait_for_queue_to_be_consumed(channel, queue_name)
   end
 
   while not (consumed or timed_out(wait_start_time))
-    response = channel.queue_declare(queue=queue_name, opts={passive: true})
+    response = channel.queue_declare(queue = queue_name, opts = { passive: true })
     consumed = response.message_count == 0
     sleep(0.5)
   end
 
   if not consumed
-    fail("Timed out when waiting for the feeder to consume titles from the queue")
+    fail('Timed out when waiting for the feeder to consume titles from the queue')
   end
 end
 
-def connect_to_rabbitmq_queue
+  def connect_to_rabbitmq_queue
   conn = Bunny.new($INCOMING_QUEUE_HOSTNAME)
   conn.start
   ch = conn.create_channel
   q = ch.queue($INCOMING_QUEUE, durable: true)
   [q, ch]
-end
+  end
 
 def insert_caution_title
   process_titles_in_directory('caution')
@@ -53,7 +52,7 @@ def insert_caution_title
     house_alpha: 'A',
     street_name: 'Magical Avenue',
     address_string: '29A Magical Avenue, Narniaville, PL9 7FN',
-    lr_uprns: "9407140"
+    lr_uprns: '9407140'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
@@ -69,7 +68,7 @@ def insert_title_with_multiple_index_polygons
     house_alpha: 'A',
     street_name: 'Murhill Lane',
     address_string: '23A Murhill Lane, Plymouth, PL9 7FN',
-    lr_uprns: "9407140"
+    lr_uprns: '9407140'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
@@ -90,7 +89,7 @@ def insert_title_non_private_individual_owner
     house_alpha: 'A',
     street_name: 'Murhill Lane',
     address_string: '23A Murhill Lane, Plymouth, PL9 7FN',
-    lr_uprns: "9407140"
+    lr_uprns: '9407140'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
@@ -109,7 +108,7 @@ def insert_title_charity_non_private_individual_owner
     house_no: '23',
     house_alpha: 'A',
     address_string: '23A Murhill Lane, Plymouth, PL9 7FN',
-    lr_uprns: "9407140"
+    lr_uprns: '9407140'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
@@ -126,7 +125,7 @@ def insert_title_charity_private_individual_owner
     house_alpha: 'A',
     street_name: 'Murhill Lane',
     address_string: '23A Murhill Lane, Plymouth, PL9 7FN',
-    lr_uprns: "9407140"
+    lr_uprns: '9407140'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable

@@ -4,7 +4,7 @@ Given(/^I have multiple addresses on the same street with different house number
   shuffled_numbers = @house_numbers.shuffle
   shuffled_numbers.each do |house_no|
     insert_title_with_address(
-      house_no: house_no,
+      house_no: house_no
     )
   end
 end

@@ -6,10 +6,6 @@ Acceptance Criteria:
   - If more than one title number is associated with the property
     display all of them so they are associated to that address.
 
-Background:
-  Given I am an initial private beta user
-  And I have logged in
-
 Scenario: Search for single title by postcode
   Given I have an address with a single Title Number
   And I search for the property using the postcode

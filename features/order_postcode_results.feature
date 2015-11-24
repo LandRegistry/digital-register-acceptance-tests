@@ -10,10 +10,6 @@ Acceptance criteria:
   Results must be displayed in proper numerical order
   Results with leading information should be listed after numerical entries in alphabetical order
 
-Background:
-  Given I am an initial private beta user
-  And I have logged in
-
 Scenario: Search by postcode properties on same street
   Given I have multiple addresses on the same street with different house numbers
   And I search for the property using their postcode

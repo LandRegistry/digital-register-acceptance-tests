@@ -8,15 +8,11 @@ Acceptance Criteria
     be displayed
 
   Scenario: Full address on property title
-    Given I am an initial private beta user
-    And I have logged in
-    And I have a title
+    Given I have a title
     When I view the title summary page
     Then I see the full address for the selected title
 
   Scenario: No property title available
-    Given I am an initial private beta user
-    And I have logged in
-    And I do not have a title
+    Given I do not have a title
     When I view the title summary page
     Then I get a page not found message

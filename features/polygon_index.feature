@@ -9,8 +9,6 @@ Acceptance criteria:
   - Index polygon of the property displayed
 
 Scenario: View Map on summary page
-  Given I am an initial private beta user
-  And I have logged in
-  And I have a title with multiple index polygons
+  Given I have a title with multiple index polygons
   When I view the title summary page
   Then I can see the map
