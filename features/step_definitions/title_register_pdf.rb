@@ -5,7 +5,7 @@ Given(/^I attempt to view the PDF for a title$/) do
 end
 
 Then(/^the PDF Download button is not displayed$/) do
-  expect(page).not_to have_link('download-link')
+  expect(page).not_to have_link('Download')
 end
 
 Then(/^that titles full register is displayed on the PDF$/) do
