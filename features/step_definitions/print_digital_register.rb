@@ -1,3 +1,3 @@
 Then(/^the print option is available$/) do
-  find('.print-page').visible?
+  find('.button-print').visible?
 end
