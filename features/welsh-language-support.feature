@@ -15,9 +15,7 @@ PDFs of registers are NOT included in this story.
 Addresses and the map are NOT included in this story.
 
 Background:
-    Given I am an initial private beta user
-    And I have logged in
-    And I have a title with a private individual owner
+    Given I have a title with a private individual owner
     When I view the title summary page
     And I have selected the Welsh translation
 
