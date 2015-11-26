@@ -18,5 +18,5 @@ Given(/^I visit the title register summary page$/) do
 end
 
 Then(/^the PDF Download button is displayed$/) do
-  expect(page).to have_link('download-link')
+  expect(page).to have_link('Download')
 end
