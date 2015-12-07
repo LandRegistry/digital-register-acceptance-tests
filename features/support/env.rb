@@ -1,4 +1,4 @@
-$DIGITAL_REGISTER_URL = ENV.fetch('DIGITAL_REGISTER_URL', 'http://localhost:8003')
+$DIGITAL_REGISTER_URL = ENV.fetch('DIGITAL_REGISTER_URL', 'http://digital-register-frontend.landregistry.local')
 $DIGITAL_LOGIN_API = ENV.fetch('DIGITAL_LOGIN_API', 'http://localhost:8005')
 $ELASTICSEARCH_HOST = ENV.fetch('ELASTICSEARCH_HOST', 'localhost')
 $ELASTICSEARCH_PORT = ENV.fetch('ELASTICSEARCH_PORT', '9200')
