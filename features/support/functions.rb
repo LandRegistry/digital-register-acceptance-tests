@@ -222,7 +222,6 @@ end
 
 def clean_register_database
   delete_all_titles
-  delete_all_users
   delete_all_uprn_data
 end
 
