@@ -8,7 +8,7 @@ Before do
   create_elasticsearch_addressbase_mapping
   sleep($ELASTICSEARCH_SLEEP.to_f)
   # page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-  # login_if_webseal_present
+  # 
 end
 
 at_exit do
