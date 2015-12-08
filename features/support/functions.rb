@@ -8,7 +8,7 @@ include W3CValidators
 
 def login_if_webseal_present
   if $TEST_ENVIRONMENT_WEBSEAL == 'integration' then
-    if content.has_text?('You are already logged in') then
+    if content.find('You are already logged in') then
       click('Terminate existing login')
     end
     fill_in 'username', with: $WEBSEAL_LOGIN
