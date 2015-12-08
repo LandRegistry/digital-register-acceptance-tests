@@ -1,5 +1,6 @@
 When(/^I search for the title$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  login_if_webseal_present
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end
