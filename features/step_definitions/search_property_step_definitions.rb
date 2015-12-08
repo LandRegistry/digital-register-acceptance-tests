@@ -1,6 +1,6 @@
 Given(/^I search for a property using the Title Number$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-  login_if_webseal_present
+
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end
@@ -62,7 +62,7 @@ end
 
 When(/^I search for a property using the whole address$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-  login_if_webseal_present
+
   fill_in 'search_term', with: @title[:address_string]
   click_button('Search')
 end
@@ -78,7 +78,7 @@ end
 
 When(/^I search for a property using only the City part of an address$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-  login_if_webseal_present
+
   fill_in 'search_term', with: 'Plymouth'
   click_button('Search')
 end

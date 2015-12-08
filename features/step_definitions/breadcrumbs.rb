@@ -1,7 +1,7 @@
 Given(/^I navigate directly to a register title page$/) do
   insert_title_with_owners
   visit_title_register_page(@title[:title_number])
-  login_if_webseal_present
+  
 end
 
 When(/^I navigate to the next page of the results and view the first title$/) do
