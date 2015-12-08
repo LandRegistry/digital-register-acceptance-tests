@@ -1,6 +1,6 @@
 Given(/^I visit the cookies page$/) do
   visit("#{$DIGITAL_REGISTER_URL}/cookies")
-  
+  login_if_webseal_present
 end
 
 Then(/^I am informed that we are using cookies$/) do
@@ -10,7 +10,7 @@ end
 
 When(/^I click on the cookies link$/) do
   visit("#{$DIGITAL_REGISTER_URL}/cookies")
-  
+  login_if_webseal_present
   click_link('Cookies')
 end
 
