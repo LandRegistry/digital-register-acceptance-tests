@@ -1,6 +1,6 @@
 Given(/^I search for a property using the Address$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-  login_if_webseal_present
+  
   fill_in 'search_term', with: @title[:street_name]
   click_button('Search')
 end

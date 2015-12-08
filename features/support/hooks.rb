@@ -7,6 +7,8 @@ Before do
   delete_elasticsearch_addressbase_data
   create_elasticsearch_addressbase_mapping
   sleep($ELASTICSEARCH_SLEEP.to_f)
+  # page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  # 
 end
 
 at_exit do
