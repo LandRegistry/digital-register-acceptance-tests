@@ -1,7 +1,7 @@
 When(/^I navigate to a register title page pdf$/) do
   insert_title_with_owners
   visit_title_register_pdf(@title[:title_number])
-  
+  login_if_webseal_present
   convert_pdf_to_page
 end
 
