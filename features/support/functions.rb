@@ -6,6 +6,17 @@ require 'w3c_validators'
 
 include W3CValidators
 
+def login_if_webseal_present
+  if TEST_ENVIRONMENT_WEBSEAL == 'integration' do
+    if content.find('You are already logged in') do
+      click('Terminate existing login')
+    end
+    fill_in 'username', with: username
+    fill_in 'password', with: password
+    click_button('Sign In')
+  end
+end
+
 def content
   page.body.text
 end
