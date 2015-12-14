@@ -12,13 +12,13 @@ The flow: -
 3)Feeder pushes to DRV Postgres SQL
 
 
-Scenario: Unable to search a non Plymouth or Coventry title number
-  Given I have a title which is not in a Plymouth or Coventry district
+Scenario: Unable to search a restricted district
+  Given I have a title which has a restricted district of "City of London"
   When I search for the title
   Then I am unable to view it
 
-Scenario: Unable to select non Plymouth or Coventry results
-  Given I have an address which is not in a Plymouth or Coventry district
+Scenario: Unable to select restricted district results
+  Given I have an address has a restricted district of "City of London"
   When I search for the address
   Then I will be displayed a list of results
   And I am unable to select a result

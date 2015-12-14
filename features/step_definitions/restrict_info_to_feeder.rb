@@ -1,8 +1,8 @@
-Given(/^I have a title which is not in a Plymouth or Coventry district$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^I have a title which has a restricted district of "(.*?)"$/) do |district|
+  insert_title_with_district(district)
 end
 
-Given(/^I have an address which is not in a Plymouth or Coventry district$/) do
+Given(/^I have an address has a restricted district of "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
