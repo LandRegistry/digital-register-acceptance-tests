@@ -6,7 +6,7 @@ require 'w3c_validators'
 
 include W3CValidators
 
-def
+def login_if_webseal_present
   if $TEST_ENVIRONMENT_WEBSEAL == 'integration' then
     if content.has_text?('You are already logged in') then
       click('Terminate existing login')
