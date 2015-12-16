@@ -74,6 +74,10 @@ Then(/^they will include the address that has been searched for$/) do
   expect(content).to include(@title[:address_string])
 end
 
+Then(/^I am unable to see the title number$/) do
+  expect(content).not_to include(@title[:title_number])
+end
+
 When(/^I search for a property using only the City part of an address$/) do
   page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
   fill_in 'search_term', with: 'Plymouth'

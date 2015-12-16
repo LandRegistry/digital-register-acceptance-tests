@@ -12,13 +12,13 @@ The flow: -
 3)Feeder pushes to DRV Postgres SQL
 
 
-Scenario: Unable to search a restricted district
-  Given I have a title which has a restricted district of "City of London"
+Scenario: Unable to view a title with a restricted district
+  Given I have a title with the district "City of London"
   When I search for the title
   Then I am unable to view it
 
-Scenario: Unable to select restricted district results
-  Given I have an address has a restricted district of "City of London"
-  When I search for the address
+Scenario: Unable to select restricted district result
+  Given I have a title with the district "City of London"
+  And I search for the property using the postcode
   Then I will be displayed a list of results
-  And I am unable to select a result
+  And I am unable to see the title number

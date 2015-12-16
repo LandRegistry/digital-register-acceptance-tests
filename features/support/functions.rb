@@ -28,8 +28,8 @@ def insert_title_with_district(number_proprietors = 1, closure_status = 'OPEN', 
   @title = create_title_hash(random_title_number, closure_status, 'Freehold', district)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title, wait_for_updater)
+  make_title_searchable
 end
-
 
 def insert_title_with_address(address_hash)
   @title = create_title_hash(random_title_number, 'OPEN', 'Freehold', 'Wokingham', address_hash)
@@ -148,28 +148,6 @@ def random_title_number
 end
 
 def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', district = 'City of Plymouth', address_hash = {})
-  house_number = address_hash.fetch(:house_no, rand(1..99_999).to_s)
-  house_alpha = address_hash.fetch(:house_alpha, 'A')
-  postcode = address_hash.fetch(:postcode, 'PL9 8TB')
-  street_name = address_hash.fetch(:street_name, 'Test Street')
-  {
-    title_number: title_number,
-    street_name: street_name,
-    postcode: postcode,
-    house_no: house_number,
-    house_alpha: house_alpha,
-    town: 'Plymouth',
-    last_changed: '02 July 1996 at 00:59:59',
-    address_string: "#{house_number}#{house_alpha} Test Street, Plymouth, PL9 8TB",
-    lr_uprns: rand(1..999_999),
-    closure_status: closure_status,
-    tenure_type: tenure_type,
-    charges: create_charges,
-    district: district
-  }.merge(address_hash)
-end
-
-def create_title_restricted(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', district = 'Wokingham', address_hash = {})
   house_number = address_hash.fetch(:house_no, rand(1..99_999).to_s)
   house_alpha = address_hash.fetch(:house_alpha, 'A')
   postcode = address_hash.fetch(:postcode, 'PL9 8TB')
