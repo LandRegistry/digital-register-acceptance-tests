@@ -11,8 +11,11 @@ def login_if_webseal_present
     if content.has_text?('You are already logged in') then
       click('Terminate existing login')
     end
-    if fill_in 'username', with: $WEBSEAL_LOGIN then
-      print "blah"
+    if find("form-group") then
+      print "blah1"
+      if find("username") then
+        print "blah2"
+      end
     end
     fill_in 'username', with: $WEBSEAL_LOGIN
     fill_in 'password', with: $WEBSEAL_PASSWORD
