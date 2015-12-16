@@ -8,7 +8,10 @@ include W3CValidators
 
 def login_if_webseal_present
   if $TEST_ENVIRONMENT_WEBSEAL == 'integration' then
+    stuff = page.has_content?('DPWNS1056W')
+    print stuff
     if page.has_content?('DPWNS1056W') then
+      print "blah"
       click('Terminate existing login')
     end
     fill_in 'username', with: $WEBSEAL_LOGIN
