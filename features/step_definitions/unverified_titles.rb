@@ -1,6 +1,5 @@
 When(/^I search for the title$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-  
+  visit_title_search_page
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end

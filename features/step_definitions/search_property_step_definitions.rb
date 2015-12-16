@@ -1,6 +1,5 @@
 Given(/^I search for a property using the Title Number$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-
+  visit_title_search_page
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end
@@ -14,19 +13,19 @@ Given(/^I have an address with a single Title Number$/) do
 end
 
 Given(/^I search for the property using (?:the|their) postcode$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  visit_title_search_page
   fill_in 'search_term', with: @title[:postcode]
   click_button('Search')
 end
 
 Given(/^I search for a property entering a postcode with no spaces$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  visit_title_search_page
   fill_in 'search_term', with: 'PL98TB'
   click_button('Search')
 end
 
 When(/^I search for a property using no search term$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  visit_title_search_page
   click_button('Search')
 end
 
@@ -61,8 +60,7 @@ Then(/^I can view one of the title registers$/) do
 end
 
 When(/^I search for a property using the whole address$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-
+  visit_title_search_page
   fill_in 'search_term', with: @title[:address_string]
   click_button('Search')
 end
@@ -77,8 +75,7 @@ Then(/^they will include the address that has been searched for$/) do
 end
 
 When(/^I search for a property using only the City part of an address$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
-
+  visit_title_search_page
   fill_in 'search_term', with: 'Plymouth'
   click_button('Search')
 end

@@ -7,7 +7,7 @@ Then(/^I should not access the system$/) do
 end
 
 When(/^I view the title search page$/) do
-  visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  visit_title_search_page
 end
 
 Then(/^I can see the search page$/) do
