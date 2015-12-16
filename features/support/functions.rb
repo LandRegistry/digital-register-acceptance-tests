@@ -7,10 +7,10 @@ require 'w3c_validators'
 include W3CValidators
 
 def login_if_webseal_present
-  if $TEST_ENVIRONMENT_WEBSEAL == 'integration' then
-    stuff = page.has_content?('DPWNS1056W')
+  if $TEST_ENVIRONMENT_WEBSEAL == 'integration' do
+    stuff = content.has_content?('DPWNS1056W')
     print stuff
-    if page.has_content?('DPWNS1056W') then
+    if page.find('DPWNS1056W') do
       print "blah"
       click('Terminate existing login')
     end
