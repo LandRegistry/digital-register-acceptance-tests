@@ -4,6 +4,17 @@ end
 
 def visit_title_register_page(title_number)
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}")
+  login_if_webseal_present
+end
+
+def visit_cookie_page
+  visit("#{$DIGITAL_REGISTER_URL}/cookies")
+  login_if_webseal_present
+end
+
+def visit_title_search_page
+  visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  login_if_webseal_present
 end
 
 def check_title_summary_page_is_displayed
