@@ -11,7 +11,7 @@ def login_if_webseal_present
     if content.has_text?('You are already logged in') then
       click('Terminate existing login')
     end
-    if content.has_text?('Digital Register Login') then
+    if fill_in 'username', with: $WEBSEAL_LOGIN then
       print "blah"
     end
     fill_in 'username', with: $WEBSEAL_LOGIN
