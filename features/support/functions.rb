@@ -8,7 +8,7 @@ include W3CValidators
 
 def login_if_webseal_present
   if $TEST_ENVIRONMENT_WEBSEAL == 'integration' then
-    content
+    print content
     if page.find('Terminate existing login') then
       print "blah"
       click('Terminate existing login')
