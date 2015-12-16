@@ -6,20 +6,6 @@ require 'w3c_validators'
 
 include W3CValidators
 
-def login_if_webseal_present
-  if $TEST_ENVIRONMENT_WEBSEAL == 'integration'
-    print content
-    if page.has_link?('Terminate existing login') == false
-      print "blah"
-      find('Terminate existing login').click
-    end
-    fill_in 'username', with: $WEBSEAL_LOGIN
-    fill_in 'password', with: $WEBSEAL_PASSWORD
-    click_button('Sign In')
-    print content
-  end
-end
-
 def content
   page.body.text
 end
