@@ -11,7 +11,7 @@ def login_if_webseal_present
     print content
     if page.has_link?('Terminate existing login') == false
       print "blah"
-      click('Terminate existing login')
+      find('Terminate existing login').click
     end
     fill_in 'username', with: $WEBSEAL_LOGIN
     fill_in 'password', with: $WEBSEAL_PASSWORD
