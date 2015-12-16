@@ -13,10 +13,8 @@ def login_if_webseal_present
     end
     fill_in 'username', with: $WEBSEAL_LOGIN
     fill_in 'password', with: $WEBSEAL_PASSWORD
-    if find_button("Sign In") then
-      print "blah"
-    end
     click_button('Sign In')
+    print content
   end
 end
 
