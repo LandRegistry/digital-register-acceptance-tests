@@ -401,7 +401,7 @@ end
 def make_title_searchable
   address = create_title_addressbase_data(@title)
   create_elasticsearch_addressbase_data(address)
-  sleep(1) # elasticsearch changes take a moment
+  sleep($ELASTICSEARCH_SLEEP.to_f # elasticsearch changes take a moment
   create_lr_urpn_mapping_data(@title[:lr_uprns])
 end
 
