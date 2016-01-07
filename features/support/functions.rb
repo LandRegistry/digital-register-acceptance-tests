@@ -374,14 +374,11 @@ end
 # This inserts an addressbase address into elasticsearch - it needs to have the mapping in place.
 def create_elasticsearch_addressbase_data(title_address_data)
   id = title_address_data[:uprn]
-  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
+  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}")
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new "/#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/#{id}"
   request['Content-Type'] = 'application/json'
   request.body = title_address_data.to_json
-  print uri
-  print request.path
-  print request.body
   response = conn.request(request)
 end
 
