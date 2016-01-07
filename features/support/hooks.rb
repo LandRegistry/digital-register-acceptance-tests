@@ -1,10 +1,10 @@
 Before do
   $tables_created ||= false
   return $tables_created if $tables_created
-  delete_all_titles_from_elasticsearch # es-updater should recreate
+  #delete_all_titles_from_elasticsearch # es-updater should recreate
   clean_register_database
   set_capybara_session_headers
-  delete_elasticsearch_addressbase_data
+  #delete_elasticsearch_addressbase_data
   create_elasticsearch_addressbase_mapping
   sleep($ELASTICSEARCH_SLEEP.to_f)
 end
@@ -14,8 +14,8 @@ at_exit do
   puts 'Recreating tables and indexes'
   unless $tables_created
     clean_register_database
-    delete_all_titles_from_elasticsearch # es-updater should recreate
-    delete_elasticsearch_addressbase_data
+    #delete_all_titles_from_elasticsearch # es-updater should recreate
+    #delete_elasticsearch_addressbase_data
   end
   sleep($ELASTICSEARCH_SLEEP.to_f)
   puts 'Creating 51 titles with postcode PL9 8TB'
