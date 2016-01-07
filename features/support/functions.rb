@@ -379,6 +379,9 @@ def create_elasticsearch_addressbase_data(title_address_data)
   request = Net::HTTP::Post.new "/#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/#{id}"
   request['Content-Type'] = 'application/json'
   request.body = title_address_data.to_json
+  print uri
+  print request.path
+  print request.body
   response = conn.request(request)
 end
 
