@@ -6,7 +6,8 @@
 							"index": "not_analyzed"
 					},
 					"building_number": {
-							"type": "integer"
+							"type": "integer",
+							"index": "not_analyzed"
 					},
 					"department_name": {
 							"type": "string",
