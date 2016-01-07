@@ -374,14 +374,11 @@ end
 # This inserts an addressbase address into elasticsearch - it needs to have the mapping in place.
 def create_elasticsearch_addressbase_data(title_address_data)
   id = title_address_data[:uprn]
-  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
+  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}")
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Post.new "/#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/#{id}"
   request['Content-Type'] = 'application/json'
   request.body = title_address_data.to_json
-  print uri
-  print request.path
-  print request.body
   response = conn.request(request)
 end
 
@@ -390,7 +387,7 @@ end
 def delete_elasticsearch_addressbase_data
   uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
   conn = Net::HTTP.new(uri.host, uri.port)
-  request = Net::HTTP::Delete.new "#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/"
+  request = Net::HTTP::Delete.new "#{$ELASTICSEARCH_ADDRESSBASE}"
   request['Content-Type'] = 'application/json'
   response = conn.request(request)
 end
@@ -412,6 +409,14 @@ end
 # needs to updated if the elasticsearch index changes
 def addressbase_es_mappings
   es_mappings = File.read('features/support/es_mappings.json')
+end
+
+# Creates addressbase es index
+def create_elasticsearch_addressbase_index
+  uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
+  conn = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Put.new "#{$ELASTICSEARCH_ADDRESSBASE}"
+  response = conn.request(request)
 end
 
 # This is the statement to recreate the index mapping
