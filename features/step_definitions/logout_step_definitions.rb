@@ -9,6 +9,7 @@ end
 When(/^I navigate to a register title page$/) do
   insert_title_with_owners
   visit_title_register_page(@title[:title_number])
+  
 end
 
 When(/^I Log out$/) do

@@ -1,6 +1,6 @@
 Given(/^I have a title with one owner that has property, foreign and BFPO addresses$/) do
   insert_title_with_multiple_owner_addresses
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  visit_title_search_page
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end

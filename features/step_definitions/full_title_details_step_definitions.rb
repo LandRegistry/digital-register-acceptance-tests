@@ -1,6 +1,7 @@
 When(/^I navigate to a register title page pdf$/) do
   insert_title_with_owners
   visit_title_register_pdf(@title[:title_number])
+  
   convert_pdf_to_page
 end
 

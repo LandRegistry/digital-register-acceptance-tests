@@ -24,8 +24,9 @@ require 'capybara/poltergeist'
 
 ### Set the options for poltergeist to use
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(
+    Capybara::Poltergeist::Driver.new(
     app,
+    :headers => { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" },
     inspector: true,
     timeout: 240,
     js_errors: false,
@@ -36,10 +37,7 @@ Capybara.register_driver :poltergeist do |app|
   )
 end
 
-# This removes the referer for the map tiles to be returned
-page.driver.add_header('Referer', '', permanent: true)
-page.driver.add_header('User-Agent', 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', permanent: true)
-page.driver.add_header('iv-user', 'tester_user')
+page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
 
 `sh install_requirements.sh`
 
@@ -48,11 +46,4 @@ $db_connection = PG::Connection.open(
   dbname: "#{$POSTGRES_DB}",
   user: "#{$POSTGRES_USER}",
   password: "#{$POSTGRES_PASSWORD}"
-)
-
-$user_db_connection = PG::Connection.open(
-  host: "#{$POSTGRES_USERDB_HOST}",
-  dbname: "#{$POSTGRES_USERDB_DB}",
-  user: "#{$POSTGRES_USERDB_USER}",
-  password: "#{$POSTGRES_USERDB_PASSWORD}"
 )

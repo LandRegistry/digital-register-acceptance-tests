@@ -1,5 +1,5 @@
 Given(/^I search for a property using the Address$/) do
-  page.visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  visit_title_search_page
   fill_in 'search_term', with: @title[:street_name]
   click_button('Search')
 end

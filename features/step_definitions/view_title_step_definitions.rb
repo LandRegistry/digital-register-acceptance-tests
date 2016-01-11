@@ -1,5 +1,6 @@
 When(/^I view the title summary page$/) do
   visit_title_register_page(@title[:title_number])
+  
 end
 
 Then(/^I see the full address for the selected title$/) do

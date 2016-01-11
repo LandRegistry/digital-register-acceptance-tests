@@ -1,6 +1,7 @@
 Given(/^I attempt to view the PDF for a title$/) do
   insert_title_with_owners
   visit_title_register_pdf(@title[:title_number])
+  
   convert_pdf_to_page
 end
 
@@ -18,5 +19,5 @@ Given(/^I visit the title register summary page$/) do
 end
 
 Then(/^the PDF Download button is displayed$/) do
-  expect(page).to have_link('download-link')
+  expect(page).to have_link('Download')
 end
