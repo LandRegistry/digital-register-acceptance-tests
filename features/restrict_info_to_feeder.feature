@@ -8,8 +8,8 @@ So that we are not revealing more information than we should
 The flow: -
 
 1) Register publisher pushes everything to feeder queue
-2) Feeder restricts to approved regions (only Plymouth & Coventry)
-3)Feeder pushes to DRV Postgres SQL
+2) Feeder restricts to approved regions (a list updated regularly)
+3) Feeder pushes to DRV Postgres SQL
 
 
 Scenario: Unable to view a title with a restricted district

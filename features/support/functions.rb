@@ -165,7 +165,7 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     closure_status: closure_status,
     tenure_type: tenure_type,
     charges: create_charges,
-    district: district
+    district: district.upcase
   }.merge(address_hash)
 end
 
