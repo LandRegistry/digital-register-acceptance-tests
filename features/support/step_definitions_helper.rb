@@ -3,17 +3,17 @@ def check_title_search_page_is_displayed
 end
 
 def visit_title_register_page(title_number)
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}")
 end
 
 def visit_cookie_page
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
   visit("#{$DIGITAL_REGISTER_URL}/cookies")
 end
 
 def visit_title_search_page
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
   visit("#{$DIGITAL_REGISTER_URL}/title-search")
 end
 
@@ -27,7 +27,7 @@ def current_page_number
 end
 
 def visit_title_register_pdf(title_number)
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
 
   cookie = grab_cookies
@@ -51,7 +51,7 @@ def get_register_pdf(title_number, cookie)
   c = Curl::Easy.new("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
   c.ssl_verify_peer = false
   c.cookies = cookie.join('; ')
-  c.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  c.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
   c.perform
   c.body_str
 ensure
