@@ -25,19 +25,19 @@ require 'capybara/poltergeist'
 ### Set the options for poltergeist to use
 Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(
-    app,
-    :headers => { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" },
-    inspector: true,
-    timeout: 240,
-    js_errors: false,
-    phantomjs_options: [
-      '--ignore-ssl-errors=yes',
-      '--local-to-remote-url-access=yes'
-    ]
-  )
+      app,
+      :headers => { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' },
+      inspector: true,
+      timeout: 240,
+      js_errors: false,
+      phantomjs_options: [
+        '--ignore-ssl-errors=yes',
+        '--local-to-remote-url-access=yes'
+      ]
+    )
 end
 
-page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
 
 `sh install_requirements.sh`
 

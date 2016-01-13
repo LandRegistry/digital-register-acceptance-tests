@@ -1,7 +1,6 @@
 When(/^I attempt to view the Official Copy of the Register for a title$/) do
   insert_title_non_private_individual_owner
   visit_title_register_pdf(@title[:title_number])
-
   convert_pdf_to_page
 end
 
@@ -59,7 +58,6 @@ end
 
 When(/^I view the Official Copy PDF$/) do
   visit_title_register_pdf(@title[:title_number])
-  
   convert_pdf_to_page
 end
 

@@ -28,6 +28,7 @@ def insert_title_with_district(number_proprietors = 1, closure_status = 'OPEN', 
   @title = create_title_hash(random_title_number, closure_status, 'Freehold', district)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title, wait_for_updater)
+  make_title_searchable
 end
 
 def insert_title_with_address(address_hash)
@@ -146,7 +147,7 @@ def random_title_number
   "DN#{rand(1..999_999)}"
 end
 
-def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', district = 'Wokingham', address_hash = {})
+def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Freehold', district = 'City of Plymouth', address_hash = {})
   house_number = address_hash.fetch(:house_no, rand(1..99_999).to_s)
   house_alpha = address_hash.fetch(:house_alpha, 'A')
   postcode = address_hash.fetch(:postcode, 'PL9 8TB')
@@ -164,7 +165,7 @@ def create_title_hash(title_number, closure_status = 'OPEN', tenure_type = 'Free
     closure_status: closure_status,
     tenure_type: tenure_type,
     charges: create_charges,
-    district: district
+    district: district.upcase
   }.merge(address_hash)
 end
 
@@ -350,8 +351,7 @@ def elasticsearch_status
 end
 
 def create_title_addressbase_data(title)
-  entry_datetime = DateTime.now
-  addressbase_details = {
+  {
     postcode: "#{title[:postcode]}",
     post_town: "#{title[:town]}",
     building_number: "#{title[:house_no]}",
@@ -379,7 +379,7 @@ def create_elasticsearch_addressbase_data(title_address_data)
   request = Net::HTTP::Post.new "/#{$ELASTICSEARCH_ADDRESSBASE}/#{$ELASTICSEARCH_POSTCODE_SEARCH}/#{id}"
   request['Content-Type'] = 'application/json'
   request.body = title_address_data.to_json
-  response = conn.request(request)
+  conn.request(request)
 end
 
 # Deletes the index and all data with it - gets called at the beginning of a test
@@ -389,7 +389,7 @@ def delete_elasticsearch_addressbase_data
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Delete.new "#{$ELASTICSEARCH_ADDRESSBASE}"
   request['Content-Type'] = 'application/json'
-  response = conn.request(request)
+  conn.request(request)
 end
 
 # Creates an index with the uprn of the addressbase and the title.
@@ -408,7 +408,7 @@ end
 # Grabs the mapping for the addressbase postcode elasticsearch index
 # needs to updated if the elasticsearch index changes
 def addressbase_es_mappings
-  es_mappings = File.read('features/support/es_mappings.json')
+  File.read('features/support/es_mappings.json')
 end
 
 # Creates addressbase es index
@@ -416,7 +416,7 @@ def create_elasticsearch_addressbase_index
   uri = URI.parse("#{$ELASTIC_SEARCH_ENDPOINT}/")
   conn = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Put.new "#{$ELASTICSEARCH_ADDRESSBASE}"
-  response = conn.request(request)
+  conn.request(request)
 end
 
 # This is the statement to recreate the index mapping
@@ -427,5 +427,5 @@ def create_elasticsearch_addressbase_mapping
   request = Net::HTTP::Put.new "#{$ELASTICSEARCH_ADDRESSBASE}/_mapping/#{$ELASTICSEARCH_POSTCODE_SEARCH}/"
   request['Content-Type'] = 'application/json'
   request.body = index_mapping
-  response = conn.request(request)
+  conn.request(request)
 end

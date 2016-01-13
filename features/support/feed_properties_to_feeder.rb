@@ -23,7 +23,7 @@ def wait_for_queue_to_be_consumed(channel, queue_name)
     return (Time.now - start_time).to_f > $QUEUE_WAIT_TIMEOUT
   end
 
-  while not (consumed or timed_out(wait_start_time))
+  while not (consumed || timed_out(wait_start_time))
     response = channel.queue_declare(queue = queue_name, opts = { passive: true })
     consumed = response.message_count == 0
     sleep(0.5)
@@ -34,13 +34,13 @@ def wait_for_queue_to_be_consumed(channel, queue_name)
   end
 end
 
-  def connect_to_rabbitmq_queue
+def connect_to_rabbitmq_queue
   conn = Bunny.new($INCOMING_QUEUE_HOSTNAME)
   conn.start
   ch = conn.create_channel
   q = ch.queue($INCOMING_QUEUE, durable: true)
   [q, ch]
-  end
+end
 
 def insert_caution_title
   process_titles_in_directory('caution')
