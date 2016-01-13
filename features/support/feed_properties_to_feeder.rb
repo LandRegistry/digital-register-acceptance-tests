@@ -23,7 +23,7 @@ def wait_for_queue_to_be_consumed(channel, queue_name)
     return (Time.now - start_time).to_f > $QUEUE_WAIT_TIMEOUT
   end
 
-  while not (consumed || timed_out(wait_start_time))
+  while not (consumed or timed_out(wait_start_time))
     response = channel.queue_declare(queue = queue_name, opts = { passive: true })
     consumed = response.message_count == 0
     sleep(0.5)
