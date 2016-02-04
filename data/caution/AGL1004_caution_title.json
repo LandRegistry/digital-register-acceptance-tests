@@ -12,7 +12,12 @@
     "last_app_timestamp": "1996-07-02T00:59:59+01:00",
     "edition_date": "2015-12-20",
     "class": "UNKNOWN",
-    "districts": ["City of Plymouth"],
+    "districts": [
+        {
+            "county": "County Name",
+            "name": "City of Plymouth"
+        }
+    ],
     "groups": [
         {
             "category": "PROPERTY",
