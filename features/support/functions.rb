@@ -134,8 +134,11 @@ def insert_title_with_prices_paid(price_paid_hash)
 end
 
 def insert_multiple_titles(number_of_titles)
+  x = 1
   number_of_titles.to_i.times do |_|
+    print x
     insert_title_with_number(random_title_number, false)
+    x = x + 1
   end
   wait_until_elasticsearch_updater_finished
   # Very short final sleep for elasticsearch nodes to be updated
