@@ -631,7 +631,10 @@
     }
   ],
   "districts": [
-    "WOKINGHAM"
+      {
+          "county": "County Name",
+          "name": "WOKINGHAM"
+      }
   ]
 }
 }
