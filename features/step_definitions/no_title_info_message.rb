@@ -1,15 +1,14 @@
 Given(/^I have a property with no title information$/) do
-  pending # express the regexp above with the code you wish you had
+  create_address_without_title
+  visit_title_search_page
+  fill_in 'search_term', with: @title[:postcode]
+  click_button('Search')
 end
 
 When(/^I click on the ‘why not’ link$/) do
-  pending # express the regexp above with the code you wish you had
+  find("summary", :text => "Why not?").click
 end
 
 Then(/^I am given an explanation of why this may have occurred$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^a link to the FaP search page is displayed$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(content).to include('There could be many reasons why we cannot provide you a title number at this time. Try the existing Land Registry service instead')
 end

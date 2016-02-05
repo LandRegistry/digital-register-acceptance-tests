@@ -17,6 +17,11 @@ def insert_unverified_title(title_number = 'AGL1013')
   process_title_template(@title, false, 'unverified_title_template')
 end
 
+def create_address_without_title(closure_status = 'OPEN')
+  @title = create_title_hash(random_title_number, closure_status)
+  make_title_searchable
+end
+
 def insert_title_with_owners(number_proprietors = 1, closure_status = 'OPEN', wait_for_updater = true)
   @title = create_title_hash(random_title_number, closure_status)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
