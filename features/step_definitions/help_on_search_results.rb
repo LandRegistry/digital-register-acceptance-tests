@@ -1,0 +1,19 @@
+Given(/^I am viewing the search results page$/) do
+  visit_title_search_page
+  fill_in 'search_term', with: 'PL3 6DR'
+  click_button('Search')
+end
+
+Then(/^I will be displayed a help message in the sidebar$/) do
+  expect(find('#content .column-third')).to have_content('Help finding the right property')
+end
+
+Then(/^I will be able to click a link to get in touch$/) do
+  link = find('#content .column-third a', :text => 'let us know')[:href]
+  expect(link).to eq('mailto:digital-register-feedback@digital.landregistry.gov.uk')
+end
+
+Then(/^I will be able to click a link to go to FaP$/) do
+  link = find('#content .column-third a', :text => 'existing Land Registry service')[:href]
+  expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
+end
