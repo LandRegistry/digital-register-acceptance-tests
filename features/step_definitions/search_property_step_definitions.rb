@@ -87,3 +87,7 @@ end
 Then(/^I can see a maximum of (\d+) addresses included in the search result$/) do |n|
   expect(page).to have_content("#{n} results found")
 end
+
+Then(/^I am informed that I have to search using the postcode$/) do
+  expect(page).to have_content("Enter a postcode")
+end
