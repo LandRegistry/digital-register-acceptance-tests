@@ -1,5 +1,5 @@
 When(/^I have selected the Welsh translation$/) do
-  click_button('in Welsh (Cymraeg)')
+  click_button('Cymraeg')
 end
 
 Then(/^I can view the summary information in Welsh$/) do
@@ -8,7 +8,7 @@ Then(/^I can view the summary information in Welsh$/) do
 end
 
 When(/^I select the English translation$/) do
-  click_button('in English')
+  click_button('English')
 end
 
 Then(/^I can view the summary information in English$/) do
