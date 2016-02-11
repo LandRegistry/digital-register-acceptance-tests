@@ -1,5 +1,5 @@
 Given(/^I am viewing the search results page$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: 'PL3 6DR'
   click_button('Search')
 end
