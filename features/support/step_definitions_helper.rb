@@ -12,7 +12,7 @@ def visit_cookie_page
   visit("#{$DIGITAL_REGISTER_URL}/cookies")
 end
 
-def visit_title_search_page
+def visit_property_search_page
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
   visit("#{$DIGITAL_REGISTER_URL}/title-search")
 end
