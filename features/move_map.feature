@@ -5,18 +5,20 @@ I want to see a map on the individual property results page (the page that ident
 So that I can determine whether I have identified the property that I'm interested in before I pay
 
 Acceptance criteria:
+Order confirmation page is created
 Map is displayed on the 'Order Title Summary' page
 Map is not displayed as part of the Summary
 
-Background:
-     Given I have a title with a private individual owner
-     And I search for the property using the postcode
+Scenario: Freehold Order confirmation page
+    Given I have a freehold title
+    And I search for the property using the postcode
+    When I am on the order confirmation page
+    Then I can see an explanation of the freehold tenure
+    And I can see the property indicated on the map
 
-
-Scenario: Map displayed on Order Title Summary page
-Then I am on the order the title summary page
-And I can see the map of the property extent displayed
-
-Scenario: Map is not displayed on Summary page
-When I view the title summary page
-Then I do not see the map displayed
+Scenario: Leasehold Order confirmation page
+    Given I have a leasehold title
+    And I search for the property using the postcode
+    When I am on the order confirmation page
+    Then I can see an explanation of the leasehold tenure
+    And I can see the property indicated on the map

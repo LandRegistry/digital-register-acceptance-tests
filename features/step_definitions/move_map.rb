@@ -1,12 +1,25 @@
-When(/^I am on the order the title summary page$/) do
-   click_link(@title[:address_string])
-   expect(content).to include('The summary is a cut-down version of the information Land Registry holds. It costs £2.00 (incl. VAT).')
+Given(/^I have a freehold title$/) do
+  insert_title_with_tenure(1, tenure_type = 'Freehold')
 end
 
-Then(/^I can see the map of the property extent displayed$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I am on the order confirmation page$/) do
+  click_link(@title[:address_string])
 end
 
-Then(/^I do not see the map displayed$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I can see an explanation of the freehold tenure$/) do
+  find("summary", :text => "Freehold").click
+  expect(content).to include ("You own a freehold building and land outright. It is yours until you sell it or give it away.")
+end
+
+Then(/^I can see the property indicated on the map$/) do
+find("#map")
+end
+
+Given(/^I have a leasehold title$/) do
+  insert_title_with_tenure(1, tenure_type = 'Leasehold')
+end
+
+Then(/^I can see an explanation of the leasehold tenure$/) do
+  find("summary", :text => "Leasehold").click
+  expect(content).to include ("You only own a leasehold property for a fixed period of time.")
 end
