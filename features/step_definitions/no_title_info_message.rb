@@ -1,6 +1,6 @@
 Given(/^I have a property with no title information$/) do
   create_address_without_title
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: @title[:postcode]
   click_button('Search')
 end
