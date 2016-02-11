@@ -1,5 +1,5 @@
-Given(/^I am on the title search page$/) do
-  visit_title_search_page
+Given(/^I am on the property search page$/) do
+  visit_property_search_page
 end
 
 Given(/^I don’t know the postcode$/) do

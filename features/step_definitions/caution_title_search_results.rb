@@ -1,4 +1,4 @@
-When(/^I click on the Whats this link$/) do
+When(/^I click on the Caution against first registration link$/) do
   find("summary", :text => "What's this?").click
 end
 

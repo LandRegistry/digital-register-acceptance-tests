@@ -1,6 +1,6 @@
 Given(/^I have a title with one owner that has property, foreign and BFPO addresses$/) do
   insert_title_with_multiple_owner_addresses
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end

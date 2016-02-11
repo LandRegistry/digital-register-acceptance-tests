@@ -12,6 +12,6 @@ Acceptance Criteria
   Scenario: Search results contain a caution title item
     Given I have a caution title
     When I search for the property using the postcode
-    And I click on the Whats this link
+    And I click on the Caution against first registration link
     Then I see an explanation of what caution title means
     And the link in the explanation goes to the gov.uk explanation page

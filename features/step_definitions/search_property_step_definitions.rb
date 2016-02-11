@@ -1,5 +1,5 @@
 Given(/^I search for a property using the Title Number$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: @title[:title_number]
   click_button('Search')
 end
@@ -13,19 +13,19 @@ Given(/^I have an address with a single Title Number$/) do
 end
 
 Given(/^I search for the property using (?:the|their) postcode$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: @title[:postcode]
   click_button('Search')
 end
 
 Given(/^I search for a property entering a postcode with no spaces$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: 'PL98TB'
   click_button('Search')
 end
 
 When(/^I search for a property using no search term$/) do
-  visit_title_search_page
+  visit_property_search_page
   click_button('Search')
 end
 
@@ -60,7 +60,7 @@ Then(/^I can view one of the title registers$/) do
 end
 
 When(/^I search for a property using the whole address$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: @title[:address_string]
   click_button('Search')
 end
@@ -79,7 +79,7 @@ Then(/^I am unable to see the title number$/) do
 end
 
 When(/^I search for a property using only the City part of an address$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: 'Plymouth'
   click_button('Search')
 end
