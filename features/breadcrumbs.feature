@@ -12,7 +12,7 @@ Acceptance Criteria
     When I search for a property using only the City part of an address
     And I navigate to the next page of the results and view the first title
     And I select the search results breadcrumb
-    Then I am returned to page 2 of the search results
+    Then I am returned to page 1 of the search results
 
   Scenario: Remain on summary of Title screen
     Given I navigate directly to a register title page
