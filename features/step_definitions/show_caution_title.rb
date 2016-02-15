@@ -1,5 +1,5 @@
 Given(/^I search for a property using the Address$/) do
-  visit_title_search_page
+  visit_property_search_page
   fill_in 'search_term', with: @title[:street_name]
   click_button('Search')
 end
@@ -10,6 +10,7 @@ end
 
 When(/^I view the caution title summary page$/) do
   click_link(@title[:address_string])
+  pay_for_title_to_view_summary
 end
 
 Then(/^I can view the register details for the caution title$/) do

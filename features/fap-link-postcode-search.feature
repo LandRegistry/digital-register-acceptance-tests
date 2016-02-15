@@ -10,7 +10,7 @@ Add 'don't know postcode' expandable explanation box and link back to FaP - http
 
 Scenario: link to FaP if user doesn’t know postcode
 
-  Given I am on the title search page
+  Given I am on the property search page
   And I don’t know the postcode
   When I click the by street address link
   Then I can access FaP

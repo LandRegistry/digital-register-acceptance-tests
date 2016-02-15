@@ -1,7 +1,7 @@
 Given(/^I navigate directly to a register title page$/) do
   insert_title_with_owners
   visit_title_register_page(@title[:title_number])
-  
+
 end
 
 When(/^I navigate to the next page of the results and view the first title$/) do
@@ -10,7 +10,7 @@ When(/^I navigate to the next page of the results and view the first title$/) do
   expect(current_page_number).to eq(previous_page_number + 1)
   link_text = first('ol.search-results-listing').first('li').first('a').text
   click_link(link_text)
-  check_title_summary_page_is_displayed
+  check_title_confirmation_page_is_displayed
   expect(content).to include(link_text.delete(','))
 end
 

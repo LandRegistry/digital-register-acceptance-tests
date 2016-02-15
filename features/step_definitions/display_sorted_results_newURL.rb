@@ -1,6 +1,6 @@
 Given(/^I have visited the new address search URL$/) do
   # this is pending code amend URL accordingly
-  visit_title_search_page
+  visit_property_search_page
 end
 
 Then(/^the title numbers are not available$/) do
