@@ -36,6 +36,7 @@ end
 
 Then(/^I can then view the title register$/) do
   click_link(@title[:address_string])
+  pay_for_title_to_view_summary
   expect(content).to include(@title[:title_number])
   expect(content).to include(@title[:proprietors][0][:name])
 end

@@ -102,7 +102,7 @@ def insert_title_with_multiple_charges_and_addresses(n_of_charge_addresses, numb
   make_title_searchable
 end
 
-def insert_title_with_tenure(number_proprietors = 1, tenure_type = 'Freehold')
+def insert_title_with_tenure(number_proprietors = 1, tenure_type)
   @title = create_title_hash(random_title_number, 'OPEN', tenure_type)
   @title[:proprietors] = create_non_private_proprietors(number_proprietors)
   process_title_template(@title)

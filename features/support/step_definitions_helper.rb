@@ -17,8 +17,22 @@ def visit_property_search_page
   visit("#{$DIGITAL_REGISTER_URL}/title-search")
 end
 
+def visit_title_confirmation_page(title_number)
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  visit("#{$DIGITAL_REGISTER_URL}/confirm-selection/#{title_number}/PLYMOUTH?display_page_number=1")
+end
+
 def check_title_summary_page_is_displayed
   expect(content).to include 'Summary of title'
+end
+
+def check_title_confirmation_page_is_displayed
+  expect(content).to include 'Confirm your order'
+end
+
+def pay_for_title_to_view_summary
+  check("right_to_cancel")
+  find(".button", :text => "Buy title summary").click
 end
 
 def current_page_number
