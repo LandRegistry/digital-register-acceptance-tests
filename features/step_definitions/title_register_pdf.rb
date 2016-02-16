@@ -1,7 +1,6 @@
 Given(/^I attempt to view the PDF for a title$/) do
   insert_title_with_owners
-  visit_title_register_pdf(@title[:title_number])
-  
+  visit_title_register_pdf(@title[:title_number])  
   convert_pdf_to_page
 end
 
