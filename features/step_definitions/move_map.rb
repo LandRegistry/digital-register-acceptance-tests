@@ -23,3 +23,8 @@ Then(/^I can see an explanation of the leasehold tenure$/) do
   find("summary", :text => "Leasehold").click
   expect(content).to include ("You only own a leasehold property for a fixed period of time.")
 end
+
+Then(/^I can see an explanation of the caution title$/) do
+  find("summary", :text => "Caution against first registration").click
+  expect(content).to include ("This property hasn’t been registered yet. You can’t find out who owns it from this service.")
+end
