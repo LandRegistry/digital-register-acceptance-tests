@@ -1,5 +1,5 @@
 When(/^I click on the Caution against first registration link$/) do
-  find("summary", :text => "What's this?").click
+  find("summary", :text => "Caution against first registration").click
 end
 
 Then(/^I see an explanation of what caution title means$/) do
