@@ -17,6 +17,8 @@ at_exit do
     clean_register_database
     delete_all_titles_from_elasticsearch # es-updater should recreate
     delete_elasticsearch_addressbase_data
+    create_elasticsearch_addressbase_index
+    create_elasticsearch_addressbase_mapping
   end
   sleep($ELASTICSEARCH_SLEEP.to_f)
   puts 'Creating 51 titles with postcode PL9 8TB'

@@ -145,7 +145,6 @@ def insert_multiple_titles(number_of_titles)
   wait_until_elasticsearch_updater_finished
   # Very short final sleep for elasticsearch nodes to be updated
   sleep($ELASTICSEARCH_SLEEP.to_f)
-  process_title_template(@title)
 end
 
 def random_title_number
