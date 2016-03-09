@@ -13,5 +13,11 @@ Acceptance Criteria
     Given I have a caution title
     When I search for the property using the postcode
     And I click on the Caution against first registration link
-    Then I see an explanation of what caution title means
-    And the link in the explanation goes to the gov.uk explanation page
+    Then I can see an explanation of the caution title
+
+  Scenario: Caution title summary contain a caution title definition
+    Given I have a caution title
+    When I search for the property using the postcode
+    And I view the caution title summary page
+    And I click on the Caution against first registration link
+    Then I can see an explanation of the caution title

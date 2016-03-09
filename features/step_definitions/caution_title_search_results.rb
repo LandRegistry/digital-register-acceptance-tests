@@ -3,7 +3,7 @@ When(/^I click on the Caution against first registration link$/) do
 end
 
 Then(/^I see an explanation of what caution title means$/) do
-  expect(content).to include('A caution against first registration protects an interest')
+  expect(content).to include('This property hasn’t been registered yet. You can’t find out who owns it from this service.')
 end
 
 Then(/^the link in the explanation goes to the gov\.uk explanation page$/) do
