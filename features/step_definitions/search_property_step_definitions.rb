@@ -30,6 +30,8 @@ When(/^I search for a property using no search term$/) do
 end
 
 Then(/^the address and related title number is displayed$/) do
+  #require 'pry'
+  #binding.pry
   expect(content).to include(@title[:postcode])
   expect(content).to include(@title[:title_number])
 end
