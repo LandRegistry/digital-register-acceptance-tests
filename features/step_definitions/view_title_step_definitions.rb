@@ -1,6 +1,5 @@
 When(/^I view the title summary page$/) do
   visit_title_register_page(@title[:title_number])
-  
 end
 
 Then(/^I see the full address for the selected title$/) do
@@ -56,4 +55,8 @@ end
 Then(/^I can see all the polygons for that title displayed on the map$/) do
   # DOG & AJ - We tried to do 'something' to check the existance and position of the
   # index polygons but the effort became impracticable so we parked this work.
+end
+
+When(/^I navigate to a register title page$/) do
+  visit_title_register_page(@title[:title_number])
 end

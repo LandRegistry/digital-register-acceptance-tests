@@ -1,3 +1,35 @@
+Given(/^I attempt to view the PDF for a title$/) do
+  insert_title_with_owners
+  visit_title_register_pdf(@title[:title_number])
+  convert_pdf_to_page
+end
+
+Then(/^the PDF Download button is not displayed$/) do
+  expect(page).not_to have_link('Download')
+end
+
+Then(/^that titles full register is displayed on the PDF$/) do
+  expect(@pdf_pages[0]).to include(@title[:title_number])
+end
+
+Given(/^I visit the title register summary page$/) do
+  insert_title_with_owners
+  visit_title_register_page(@title[:title_number])
+end
+
+Then(/^the PDF Download button is displayed$/) do
+  expect(page).to have_link('Download')
+end
+
+When(/^I attempt to view the pdf$/) do
+  visit_title_register_pdf(@title[:title_number])
+  convert_pdf_to_page
+end
+
+Then(/^the PDF is displayed$/) do
+  expect(@pdf_pages[0]).to include(@title[:title_number])
+end
+
 When(/^I attempt to view the Official Copy of the Register for a title$/) do
   insert_title_non_private_individual_owner
   visit_title_register_pdf(@title[:title_number])
@@ -63,4 +95,30 @@ end
 
 Then(/^I can see that the district is displayed$/) do
   expect(@pdf_pages[0]).to match(@title[:district].gsub(' ', '\s?'))
+end
+
+When(/^I navigate to a register title page pdf$/) do
+  insert_title_with_owners
+  visit_title_register_pdf(@title[:title_number])
+  convert_pdf_to_page
+end
+
+Then(/^I can see the full text of the register$/) do
+  expect(@pdf_pages[1]).to match('A\s?Conveyance\s?dated\s?5\s?September\s?1925\s?made\s?between')
+end
+
+Then(/^I can see the date of the register entry$/) do
+  expect(@pdf_pages[0]).to match('06\s?November\s?1995')
+end
+
+Then(/^I can see the entry number of each entry$/) do
+  expect(@pdf_pages[0]).to match('1:')
+end
+
+Then(/^no ¬ symbols are displayed$/) do
+  expect(@pdf_pages[1]).not_to include('¬')
+end
+
+Then(/^no delimiters are displayed$/) do
+  expect(@pdf_pages[0]).not_to include('#', '>', '<', '*', '%', '=')
 end
