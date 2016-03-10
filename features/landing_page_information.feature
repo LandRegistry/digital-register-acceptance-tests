@@ -33,6 +33,7 @@ Scenario: Select to use the new service I am redirected to the DRV service
     When I select to use the new service
     Then I am redirected to digital register view
 
+@javascript
 Scenario: Redirected to find a property service
     Given I have gone to the digital register view service
     When I select that I need full title documents

@@ -2,9 +2,6 @@ Given(/^I have gone to the digital register view service$/) do
   visit_landing_page
 end
 
-Then(/^I can confirm the price of the service will be £(\d+)\.(\d+)$/) do |pounds, pence|
-end
-
 Then(/^I am provided information on what the service will provide$/) do
   expect(content).to include('Available from this service',"Available from Land Registry ‘Find a Property’",'Available by post')
 end
@@ -42,21 +39,21 @@ Given(/^I click on the What is title summary link$/) do
 end
 
 Then(/^I see an explanation of what a Title summary means$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("The title summary is available to view online. It gives reduced information from the full register in a clearer, simpler format")
 end
 
 Given(/^I click on the What are title documents link$/) do
-  pending # express the regexp above with the code you wish you had
+  find("summary", :text => "What are title documents?").click
 end
 
 Then(/^I see an explanation of what Title documents are$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("Title documents are available in PDF format to download and keep")
 end
 
 When(/^I make no selection and Contiue$/) do
-  pending # express the regexp above with the code you wish you had
+  find_button('Continue').click
 end
 
 Then(/^I am informed that I need to make an option$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("Please choose an option")
 end
