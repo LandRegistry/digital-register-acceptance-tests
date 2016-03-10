@@ -39,7 +39,6 @@ Given(/^I click on the What is title summary link$/) do
 end
 
 Then(/^I see an explanation of what a Title summary means$/) do
-<<<<<<< HEAD
   expect(page).to have_content("The title summary is available to view online. It gives reduced information from the full register in a clearer, simpler format")
 end
 
@@ -57,23 +56,4 @@ end
 
 Then(/^I am informed that I need to make an option$/) do
   expect(page).to have_content("Please choose an option")
-=======
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^I click on the What are title documents link$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I see an explanation of what Title documents are$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I make no selection and Contiue$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I am informed that I need to make an option$/) do
-  pending # express the regexp above with the code you wish you had
->>>>>>> 50c48defaeec743ac7dd807a62a668d1cf8b8ff3
-end
+end  
