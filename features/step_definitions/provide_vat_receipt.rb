@@ -11,7 +11,7 @@ Then(/^it has the correct information$/) do
   expect(content).to include("Date")
   expect(content).to include(Date.today().strftime('%d %B %Y').to_s)
   expect(content).to include("Transaction ID")
-  expect(content).to include("VAT @ 20%")
+  expect(content).to include("VAT charged(20%)")
   expect(content).to include("GB 8888 181 53")
   expect(content).to include("Land Registry, Trafalgar house, 1 Bedford Park, Croydon, CR0 2AQ")
 
