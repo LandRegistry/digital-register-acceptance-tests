@@ -13,7 +13,7 @@ Then(/^it has the correct information$/) do
   expect(content).to include("Transaction ID")
   expect(content).to include("VAT charged (20%)")
   expect(content).to include("GB 8888 181 53")
-  expect(content).to include("Land Registry, Trafalgar house, 1 Bedford Park, Croydon, CR0 2AQ")
+  expect(content).to include("Land Registry Trafalgar House 1 Bedford Park Croydon CR0 2AQ")
 
 end
 
