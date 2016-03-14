@@ -31,13 +31,18 @@ When(/^I click on the ‘why not’ link$/) do
   find("summary", :text => "Why not?").click
 end
 
+When(/^I click on the ‘No title information found’ link$/) do
+  find("summary", :text => "No title information found").click
+end
+
+
 Then(/^a link to the FaP search page is displayed$/) do
-  link = find('.search-results-listing a', :text => 'existing Land Registry service')[:href]
+  link = find('.search-results-listing a', :text => "searching on the Land Registry ’Find a Property’ service")[:href]
   expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
 end
 
 Then(/^I am given an explanation of why this may have occurred$/) do
-  expect(content).to include('There could be many reasons why we cannot provide you a title number at this time. Try the existing Land Registry service instead')
+  expect(content).to include('The property isn’t registered yet. Registration has only been compulsory across England and Wales since the 1990s. If the property hasn’t changed hands since then it may not be registered.')
 end
 
 Given(/^I am viewing the search results page$/) do
