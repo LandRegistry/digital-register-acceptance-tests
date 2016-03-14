@@ -19,5 +19,5 @@ Acceptance Criteria
     Given I have a caution title
     When I search for the property using the postcode
     And I view the caution title summary page
-    And I click on the Caution against first registration link
+    And I click on the Summary Caution against first registration link
     Then I can see an explanation of the caution title
