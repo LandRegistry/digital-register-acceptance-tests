@@ -14,6 +14,5 @@ Then(/^an error message is displayed$/) do
   expect(content).to include("You need to agree to receive the summary straight away and that you’ll lose your right to cancel")
 end
 
-Then(/^I can confirm the price of the service will be £(\d+)\.(\d+)$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then(/^I can confirm the price of the service will be £(\d+)\.(\d+)$/) do |pounds, pence|
 end
