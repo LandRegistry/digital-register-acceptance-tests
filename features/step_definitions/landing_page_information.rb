@@ -12,7 +12,7 @@ When(/^I select to use the new service$/) do
  end
 
 Then(/^I am redirected to digital register view$/) do
-  expect(page).to have_content("You’ll get a summary showing who owns the property, what they paid for it and whether there’s a mortgage on it")
+  expect(page).to have_content("You can get information about registered property or land in England and Wales, even if you don’t own it.")
 end
 
 When(/^I select that I need full title documents$/) do
@@ -56,4 +56,4 @@ end
 
 Then(/^I am informed that I need to make an option$/) do
   expect(page).to have_content("Please choose an option")
-end  
+end
