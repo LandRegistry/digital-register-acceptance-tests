@@ -68,8 +68,8 @@ def pay_for_title_to_view_summary
 end
 
 def current_page_number
-  page_text = page.find('#pagination').text
-  page_text.split(' ')[1].to_i
+  page_text = page.find('.next-page .pagination-label').text
+  page_text.split(' ').first.to_i - 1
 end
 
 def visit_title_register_pdf(title_number)
