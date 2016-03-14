@@ -27,5 +27,6 @@ Scenario: Caution title Order confirmation page
     Given I have a caution title
     And I search for the property using the postcode
     When I am on the order confirmation page
-    Then I can see an explanation of the caution title
+    And I click on the Summary Caution against first registration link
+    Then I see an explanation of what caution title means
     And I can see the property indicated on the map
