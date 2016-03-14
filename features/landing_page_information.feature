@@ -33,11 +33,13 @@ Scenario: Select to use the new service I am redirected to the DRV service
     When I select to use the new service
     Then I am redirected to digital register view
 
+@ignore
 Scenario: Redirected to find a property service
     Given I have gone to the digital register view service
     When I select that I need full title documents
     Then I am redirected to the find a property service
 
+@ignore
 Scenario: Select that Official Copies are needed
     Given I have gone to the digital register view service
     When I select that I need Official Copies
