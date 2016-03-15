@@ -1,12 +1,11 @@
 def webseal_login_check
   if page.has_content?("Sign in with your Land Registry account")
-      print content
-    if page.has_content?("You are already logged in from another client")
-        click_link('Terminate existing login')
-    end
     fill_in 'username', with: $WEBSEAL_LOGIN
     fill_in 'password', with: $WEBSEAL_PASSWORD
     click_button('Sign In')
+    if page.has_content?("You are already logged in from another client")
+        click_link('Terminate existing login')
+    end
   end
 end
 
