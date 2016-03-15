@@ -8,7 +8,7 @@ Then(/^I am informed that we are using cookies$/) do
 end
 
 When(/^I click on the cookies link$/) do
-  visit_cookie_page
+  visit_property_search_page
   click_link('Cookies')
 end
 
