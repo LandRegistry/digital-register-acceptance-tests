@@ -1,3 +1,11 @@
+def webseal_login_check
+  if page.has_content?("Sign in with your Land Registry account")
+      fill_in '', with: $WEBSEAL_LOGIN
+      fill_in '', with: $WEBSEAL_PASSWORD
+      click_button('Sign In')
+  end
+end
+
 def check_title_search_page_is_displayed
   expect(page).to have_selector('h1', text: 'Search the land and property register')
 end
@@ -5,26 +13,31 @@ end
 def visit_title_register_page(title_number)
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}")
+  webseal_login_check
 end
 
 def visit_cookie_page
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
   visit("#{$DIGITAL_REGISTER_URL}/cookies")
+  webseal_login_check
 end
 
 def visit_landing_page
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
   visit("#{$DIGITAL_REGISTER_URL}/landing-page")
+  webseal_login_check
 end
 
 def visit_property_search_page
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
   visit("#{$DIGITAL_REGISTER_URL}/title-search")
+  webseal_login_check
 end
 
 def visit_title_confirmation_page(title_number)
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
   visit("#{$DIGITAL_REGISTER_URL}/confirm-selection/#{title_number}/PLYMOUTH?display_page_number=1")
+  webseal_login_check
 end
 
 def check_title_summary_page_is_displayed
