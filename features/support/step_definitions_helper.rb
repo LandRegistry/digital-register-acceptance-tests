@@ -6,14 +6,20 @@ def webseal_login_check
   end
 end
 
+def purchase_title_summary(title_number)
+  visit_title_confirmation_page(title_number)
+  pay_for_title_to_view_summary
+end
+
 def check_title_search_page_is_displayed
   expect(page).to have_selector('h1', text: 'Search the land and property register')
 end
 
 def visit_title_register_page(title_number)
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
-  page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}")
-  webseal_login_check
+  purchase_title_summary(title_number)
+  #page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  #page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}")
+  #webseal_login_check
 end
 
 def visit_cookie_page
