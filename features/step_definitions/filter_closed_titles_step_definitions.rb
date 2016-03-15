@@ -31,6 +31,7 @@ Given(/^the title information is updated$/) do
 end
 
 Then(/^I am able to view the updated information$/) do
+  visit_title_register_page(title_number)
   expect(content).to include(@title[:proprietors][0][:name])
 end
 
