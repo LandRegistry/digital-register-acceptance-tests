@@ -69,8 +69,8 @@ end
 
 def visit_title_register_pdf(title_number)
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  purchase_title_summary
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
-  webseal_login_check
 
   cookie = grab_cookies
 
