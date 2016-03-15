@@ -1,7 +1,7 @@
 def webseal_login_check
   if page.has_content?("Sign in with your Land Registry account")
-      fill_in '', with: $WEBSEAL_LOGIN
-      fill_in '', with: $WEBSEAL_PASSWORD
+      fill_in 'username', with: $WEBSEAL_LOGIN
+      fill_in 'password', with: $WEBSEAL_PASSWORD
       click_button('Sign In')
   end
 end
