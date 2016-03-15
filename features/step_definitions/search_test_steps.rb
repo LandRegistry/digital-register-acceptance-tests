@@ -100,7 +100,7 @@ Given(/^I don’t know the postcode$/) do
 end
 
 When(/^I click the by street address link$/) do
-  link = find_link('by title number')[:href]
+  link = find_link('find a property by street address, title number or using a map.')[:href]
   expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
 end
 
