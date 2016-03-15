@@ -1,4 +1,5 @@
 @US69
+@ignore
 Feature: Digital Register will not contain Closed Titles
 
   Scenario: Open Title is displayed in Digital Register
