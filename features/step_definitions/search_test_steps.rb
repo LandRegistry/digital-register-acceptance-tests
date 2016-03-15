@@ -1,14 +1,16 @@
 When(/^I click on the Caution against first registration link$/) do
-  find("summary", :text => "What's this?").click
+  link = find("[href^='#whats-caution-against-first-registration']")
+  link.click
+
+  @target_selector = link[:href]
 end
 
 Then(/^I see an explanation of what caution title means$/) do
-  expect(content).to include('This property hasn’t been registered yet. You can’t find out who owns it from this service.')
-end
+  find("strong.bold", :text => 'Caution against first registration')
 
-Then(/^the link in the explanation goes to the gov\.uk explanation page$/) do
-  link = find_link('More about cautions against first registration')[:href]
-  expect(link).to eq('https://www.gov.uk/government/publications/caution-against-first-registration/practice-guide-3-cautions-against-first-registration')
+  target = find(@target_selector)
+
+  expect(target).to have_content('This property hasn’t been registered yet. You can’t find out who owns it from this service.')
 end
 
 Then(/^the results are displayed in the order of the house numbers$/) do
@@ -60,7 +62,7 @@ Then(/^I will be able to click a link to get in touch$/) do
 end
 
 Then(/^I will be able to click a link to go to FaP$/) do
-  link = find('#help-sidebar a', :text => 'existing Land Registry service')[:href]
+  link = find('#supplementary-panel a', :text => 'Land Registry \'Find a Property\' service')[:href]
   expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
 end
 
@@ -81,7 +83,7 @@ end
 
 Then(/^I see the number of pages is (\d+)$/) do |expected_page_num|
   # These lines strip out the last number of the pagination number text.
-  page_text = page.find('#pagination').text
+  page_text = page.find('.next-page .pagination-label').text
   actual_page_num = page_text.split(' ').last.to_i
   expect(actual_page_num).to eq expected_page_num.to_i
 end
