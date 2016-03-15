@@ -17,7 +17,7 @@ Then(/^I can see an explanation of the freehold tenure$/) do
 end
 
 Then(/^I can see the property indicated on the map$/) do
-find("#map")
+  find("#map")
 end
 
 Given(/^I have a leasehold title$/) do
