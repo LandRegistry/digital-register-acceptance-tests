@@ -12,6 +12,7 @@ Acceptance Criteria
     When I view the title summary page
     Then I see the full address for the selected title
 
+@ignore
   Scenario: No property title available
     Given I do not have a title
     When I view the title summary page
