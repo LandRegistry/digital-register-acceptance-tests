@@ -12,6 +12,7 @@ When(/^I select to use the new service$/) do
  end
 
 Then(/^I am redirected to digital register view$/) do
+  webseal_login_check
   expect(page).to have_content("You can get information about registered property or land in England and Wales, even if you don’t own it.")
 end
 
