@@ -7,7 +7,7 @@ When(/^I am on the order confirmation page$/) do
 end
 
 Then(/^I can see an explanation of the freehold tenure$/) do
-  find("summary", :text => "Freehold").click
+  find("summary", :text => "What does this mean?").click
   expect(content).to include ("You own a freehold building and land outright. It is yours until you sell it or give it away.")
 end
 
@@ -20,6 +20,6 @@ Given(/^I have a leasehold title$/) do
 end
 
 Then(/^I can see an explanation of the leasehold tenure$/) do
-  find("summary", :text => "Leasehold").click
+  find("summary", :text => "What does this mean?").click
   expect(content).to include ("You only own a leasehold property for a fixed period of time.")
 end
