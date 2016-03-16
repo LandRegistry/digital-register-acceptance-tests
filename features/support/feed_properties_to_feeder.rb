@@ -52,7 +52,7 @@ def insert_caution_title
     house_alpha: 'A',
     street_name: 'Magical Avenue',
     address_string: '29A Magical Avenue, Narniaville, PL9 7FN',
-    lr_uprns: '9407140'
+    lr_uprns: '9407999'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
@@ -108,7 +108,7 @@ def insert_title_charity_non_private_individual_owner
     house_no: '23',
     house_alpha: 'A',
     address_string: '23A Murhill Lane, Plymouth, PL9 7FN',
-    lr_uprns: '9407140'
+    lr_uprns: '9427149'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
