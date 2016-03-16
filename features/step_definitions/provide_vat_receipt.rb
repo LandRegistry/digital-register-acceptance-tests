@@ -18,7 +18,7 @@ Then(/^it has the correct information$/) do
 end
 
 Then(/^I can print the title summary page$/) do
-  find('.button-print').visible?
+  find('.button[data-print]').visible?
 end
 
 Then(/^the VAT receipt is on the printed result$/) do

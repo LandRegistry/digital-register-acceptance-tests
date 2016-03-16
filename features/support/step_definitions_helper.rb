@@ -64,7 +64,7 @@ end
 
 def pay_for_title_to_view_summary
   check("right_to_cancel")
-  find(".button", :text => "Buy title summary").click
+  click_button("Buy title summary")
 end
 
 def current_page_number
