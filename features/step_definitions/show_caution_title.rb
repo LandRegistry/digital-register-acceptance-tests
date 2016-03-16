@@ -9,8 +9,7 @@ Then(/^I can see the caution title result$/) do
 end
 
 When(/^I view the caution title summary page$/) do
-  click_link(@title[:address_string])
-  pay_for_title_to_view_summary
+  visit_title_register_page(@title[:title_number])
 end
 
 Then(/^I can view the register details for the caution title$/) do
