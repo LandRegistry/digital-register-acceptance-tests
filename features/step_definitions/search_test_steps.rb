@@ -14,7 +14,7 @@ Then(/^I see an explanation of what caution title means$/) do
 end
 
 Then(/^the results are displayed in the order of the house numbers$/) do
-  address_strings = page.all('ol.search-results-listing > li').map(&:text)
+  address_strings = page.all('.teaser-register').map(&:text)
   house_numbers = address_strings.map do |address_string|
     address_string.split(' ')[0].to_i
   end
@@ -22,7 +22,7 @@ Then(/^the results are displayed in the order of the house numbers$/) do
 end
 
 Then(/^the results should be displayed in the order:$/) do |table|
-  displayed_addresses = page.all('ol.search-results-listing > li > h2').map(&:text)
+  displayed_addresses = page.all('.teaser-register > h2').map(&:text)
   address_strings = table.hashes.map do |address_hash|
     address_hash[:address_string]
   end
@@ -74,7 +74,7 @@ Then(/^I will be able to click a link to go to FaP$/) do
 end
 
 Then(/^I can see (\d+) addresses per page$/) do |address_no|
-  number_results = page.all('ol.search-results-listing > li').count
+  number_results = page.all('.teaser-register').count
   expect(number_results).to eq address_no.to_i
 end
 
