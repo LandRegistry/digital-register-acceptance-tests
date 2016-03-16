@@ -23,6 +23,8 @@ at_exit do
   sleep($ELASTICSEARCH_SLEEP.to_f)
   puts 'Creating 51 titles with postcode PL9 8TB'
   # TODO: delete the following line if there is no clear need for it - it's a side effect
+  insert_caution_title
+  insert_title_charity_private_individual_owner
   insert_multiple_titles(51)
 end
 
