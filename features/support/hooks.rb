@@ -13,13 +13,13 @@ end
 at_exit do
   puts 'End of Cucumber tests'
   puts 'Recreating tables and indexes'
-  unless $tables_created
+  #unless $tables_created
     clean_register_database
     delete_all_titles_from_elasticsearch # es-updater should recreate
     delete_elasticsearch_addressbase_data
     create_elasticsearch_addressbase_index
     create_elasticsearch_addressbase_mapping
-  end
+  #end
   sleep($ELASTICSEARCH_SLEEP.to_f)
   puts 'Creating 51 titles with postcode PL9 8TB'
   # TODO: delete the following line if there is no clear need for it - it's a side effect
