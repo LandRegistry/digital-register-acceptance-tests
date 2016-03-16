@@ -29,8 +29,11 @@ Then(/^the results should be displayed in the order:$/) do |table|
   expect(displayed_addresses).to eq address_strings
 end
 
-When(/^I click on the ‘Why not\?’ link$/) do
-  find('summary', text: 'Why not?').click
+When(/^I click on the ‘why not’ link$/) do
+  link = find("[href^='#no-title-information-found']")
+  link.click
+
+  @target = find(link[:href])
 end
 
 Then(/^a link to the FaP search page is displayed$/) do
@@ -39,7 +42,11 @@ Then(/^a link to the FaP search page is displayed$/) do
 end
 
 Then(/^I am given an explanation of why this may have occurred$/) do
-  expect(content).to include('The property isn’t registered yet. Registration has only been compulsory across England and Wales since the 1990s. If the property hasn’t changed hands since then it may not be registered.')
+  expect(@target).to have_content ("This service is new, so some titles aren’t available here yet")
+end
+
+Then(/^a link to the FaP search page is displayed$/) do
+  expect(@target).to have_selector ("[href='https://eservices.landregistry.gov.uk/wps/portal/Property_Search']")
 end
 
 Given(/^I am viewing the search results page$/) do
