@@ -31,8 +31,8 @@ When(/^I click on the ‘why not’ link$/) do
   find("summary", :text => "Why not?").click
 end
 
-When(/^I click on the ‘No title information found’ link$/) do
-  find("summary", :text => "No title information found").click
+When(/^I click on the ‘Why not\?’ link$/) do
+  find("summary", :text => "Why not?").click
 end
 
 

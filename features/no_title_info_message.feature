@@ -15,6 +15,6 @@ Confirm that the link in the explanation links to the FaP search page
 
 Scenario: Explanation for properties with no title information
   Given I have a property with no title information
-  When I click on the ‘No title information found’ link
+  When I click on the ‘Why not?’ link
   Then I am given an explanation of why this may have occurred
   And a link to the FaP search page is displayed
