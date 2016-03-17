@@ -125,7 +125,7 @@ def insert_title_charity_private_individual_owner
     house_alpha: 'A',
     street_name: 'Murhill Lane',
     address_string: '23A Murhill Lane, Plymouth, PL9 7FN',
-    lr_uprns: '9407140'
+    lr_uprns: '9407199'
   }
   wait_until_elasticsearch_updater_finished
   make_title_searchable
