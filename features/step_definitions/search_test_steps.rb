@@ -55,6 +55,10 @@ Then(/^I will be displayed a help message in the sidebar$/) do
   expect(find('#help-sidebar')).to have_content('Help finding the right property')
 end
 
+Then(/^I can see the Beta banner is displayed with the correct wording$/) do
+  expect(content).to include('This is a new service - your feedback will help us to improve it.')
+end
+
 Then(/^I will be able to click a link to get in touch$/) do
   link = find('#help-sidebar a', :text => 'let us know')[:href]
   expect(link).to eq('mailto:digital-register-feedback@digital.landregistry.gov.uk')
