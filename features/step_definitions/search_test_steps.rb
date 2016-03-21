@@ -31,11 +31,6 @@ When(/^I click on the ‘why not’ link$/) do
   find("summary", :text => "Why not?").click
 end
 
-When(/^I click on the ‘Why not\?’ link$/) do
-  find("summary", :text => "Why not?").click
-end
-
-
 Then(/^a link to the FaP search page is displayed$/) do
   link = find('.search-results-listing a', :text => "searching on the Land Registry ’Find a Property’ service")[:href]
   expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
@@ -98,6 +93,7 @@ end
 Given(/^I am on the property search page$/) do
   visit_property_search_page
  end
+
 
 Given(/^I don’t know the postcode$/) do
   find("summary", :text => "Don't know the postcode?").click

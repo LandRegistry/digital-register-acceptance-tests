@@ -2,6 +2,10 @@ When(/^I view the title summary page$/) do
   visit_title_register_page(@title[:title_number])
 end
 
+Then(/^I can see a prompt to provide feedback$/) do
+  expect(content).to include("What did you think of this service? Please give us your feedback (takes 30 seconds). This is a new service and your feedback will help us improve it.")
+end
+
 Then(/^I see the full address for the selected title$/) do
   expect(content).to include(@title[:postcode])
   expect(content).to include(@title[:town])
