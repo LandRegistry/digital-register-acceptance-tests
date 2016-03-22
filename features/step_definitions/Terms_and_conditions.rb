@@ -2,6 +2,10 @@ Then(/^I will be displayed the terms and conditions link in the footer$/) do
   expect(find('#footer')).to have_content('Terms and conditions')
 end
 
+Then(/^I will be displayed the terms and conditions link in the check box$/) do
+  expect(find('#right_to_cancel_group')).to have_content('Terms and Conditions')
+end
+
 When(/^I click the link to view them$/) do
   find_link('Terms and conditions').click
 end
