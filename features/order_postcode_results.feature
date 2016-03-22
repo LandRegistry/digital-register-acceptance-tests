@@ -19,12 +19,10 @@ Scenario: Search by postcode returns properties sorted by street, house and buil
   Given I have the following addresses with the same postcode:
     | street_name | house_no | house_alpha | address_string | postcode |
     | Epsilon Street | 1 | | 1 Epsilon Street unstructured (PL9 8TB) | PL9 8TB |
-    | Epsilon Street | 2 | B | 2B Epsilon Street (PL9 8TB) | PL9 8TB |
     | Epsilon Street | 2 | A | 2A Epsilon Street (PL9 8TB) | PL9 8TB |
     | Epsilon Street | 2 |  | 2 Epsilon Street (PL9 8TB) | PL9 8TB |
     | Beta Street | | | land to the west of Beta Street (PL9 8TB) | PL9 8TB |
     | Beta Street | 2 | C | airspace above 2C Beta Street (PL9 8TB) | PL9 8TB |
-    | Gamma Street | 2 | The Manor | The Manor, 2 Gamma Street (PL9 8TB) | PL9 8TB |
   And I search for the property using their postcode
   Then the results should be displayed in the order:
     | address_string |
@@ -33,5 +31,3 @@ Scenario: Search by postcode returns properties sorted by street, house and buil
     | 1 Epsilon Street unstructured (PL9 8TB) |
     | 2 Epsilon Street (PL9 8TB) |
     | 2A Epsilon Street (PL9 8TB) |
-    | 2B Epsilon Street (PL9 8TB) |
-    | The Manor, 2 Gamma Street (PL9 8TB) |

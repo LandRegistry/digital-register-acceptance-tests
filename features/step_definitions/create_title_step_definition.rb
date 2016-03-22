@@ -82,7 +82,7 @@ Given(/^I have searched and found a Title that I want to buy$/) do
 end
 
 Given(/^I have multiple addresses on the same street with different house numbers$/) do
-  @house_numbers = (1..10).to_a
+  @house_numbers = (1..5).to_a
   shuffled_numbers = @house_numbers.shuffle
   shuffled_numbers.each do |house_no|
     insert_title_with_address(
