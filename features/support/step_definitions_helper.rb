@@ -46,6 +46,12 @@ def visit_title_confirmation_page(title_number)
   webseal_login_check
 end
 
+def visit_terms_and_conditions_page
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "drv" }
+  visit("#{$DIGITAL_REGISTER_URL}/terms-and-conditions")
+  webseal_login_check
+end
+
 def check_title_summary_page_is_displayed
   expect(content).to include 'Summary of title'
 end
