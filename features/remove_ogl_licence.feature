@@ -11,8 +11,5 @@ Acceptance Criteria: All reference to OGL is removed from the footers
 
 Scenario: No reference to OGL in the footers
     Given I have a freehold title
-    And I search for the property using the postcode
-    When I am on the order confirmation page
-    Then I can see there is no reference to OGL shown in the footers
     When I view the title summary page
     Then I can see there is no reference to OGL shown in the footers
