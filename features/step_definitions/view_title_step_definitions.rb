@@ -3,7 +3,7 @@ When(/^I view the title summary page$/) do
 end
 
 Then(/^I can see there is no reference to OGL shown in the footers$/) do
-  expect(content).not_to have_content('Find a Property')
+  expect(content).not_to have_content('Open Government Licence')
 end
 
 Then(/^I can see a prompt to provide feedback$/) do
