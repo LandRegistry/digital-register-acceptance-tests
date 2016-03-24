@@ -14,7 +14,7 @@ bundle install
 
 if [ -z "$1" ]
  then
-   cucumber --tags ~@wip --tags ~@removed --tags ~@pdf-off --tags ~@private-indiv-off --tags ~@w3cvalidation
+   cucumber --tags ~@wip --tags ~@removed --tags ~@pdf-off --tags ~@private-indiv-off --tags ~@w3cvalidation --tags ~@ignore
 else
    cucumber $@
 fi
