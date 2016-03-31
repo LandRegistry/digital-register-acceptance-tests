@@ -14,5 +14,5 @@ end
 
 Then(/^I can view the register details for the caution title$/) do
   expect(content).to include "#{@title[:title_number]}"
-  expect(content).to include "Caution against first registration"
+  expect(content).to include "Cautioner"
 end

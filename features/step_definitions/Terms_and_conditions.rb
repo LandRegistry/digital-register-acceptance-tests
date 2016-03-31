@@ -1,13 +1,17 @@
 Then(/^I will be displayed the terms and conditions link in the footer$/) do
-  expect(find('#footer')).to have_content('Terms and conditions')
+  expect(find('#footer')).to have_content('Terms & conditions')
 end
 
 Then(/^I will be displayed the terms and conditions link in the check box$/) do
-  expect(find('#right_to_cancel_group')).to have_content('Terms and Conditions')
+  expect(find("[for='right_to_cancel']")).to have_content('Terms & conditions')
 end
 
-When(/^I click the link to view them$/) do
-  find_link('Terms and conditions').click
+When(/^I click the link in the footer to view them$/) do
+  find_link('Terms & conditions').click
+end
+
+When(/^I click the link in the form to view them$/) do
+  find("[for='right_to_cancel'] a", :text => 'Terms & conditions').click
 end
 
 Then(/^I am taken to the terms and conditions page$/) do
@@ -24,7 +28,7 @@ end
 
 Given(/^I go to the terms and conditions page$/) do
   visit_property_search_page
-  find_link('Terms and conditions').click
+  find_link('Terms & conditions').click
 end
 
 When(/^I click the back button$/) do

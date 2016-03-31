@@ -34,13 +34,3 @@ Then(/^I can see an explanation of the leasehold tenure$/) do
   target = find(link[:href])
   expect(target).to have_content ("You only own a leasehold property for a fixed period of time.")
 end
-
-Then(/^I can see an explanation of the caution title$/) do
-
-  link = find("[href^='#what-is-caution']")
-  link.click
-
-  target = find(link[:href])
-  expect(target).to have_content ("A caution against first registration protects an interest in land which hasn’t yet been registered with the Land Registry")
-
-end

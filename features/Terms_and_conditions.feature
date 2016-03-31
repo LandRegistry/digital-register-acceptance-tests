@@ -11,7 +11,7 @@ I can read the T&Cs and then carry on with the purchase
  Scenario: Terms and conditions exist
     Given I am viewing the search results page
     Then I will be displayed the terms and conditions link in the footer
-    When I click the link to view them
+    When I click the link in the footer to view them
     Then I am taken to the terms and conditions page
 
  Scenario: View terms and conditions
