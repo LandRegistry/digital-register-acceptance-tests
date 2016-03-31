@@ -14,7 +14,7 @@ Then(/^the results should be displayed in the order:$/) do |table|
   expect(displayed_addresses).to eq address_strings
 end
 
-When(/^I click on the Why not? link$/) do
+When(/^I click on the Why not link$/) do
   link = find("[href^='#no-title-information-found']")
   link.click
 
