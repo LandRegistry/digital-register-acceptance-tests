@@ -27,8 +27,8 @@ Then(/^the results should be displayed in the order:$/) do |table|
   expect(displayed_addresses).to eq address_strings
 end
 
-When(/^I click on the ‘why not’ link$/) do
-  find("summary", :text => "Why not?").click
+When(/^I click on the ‘Why not\?’ link$/) do
+  find('summary', text: 'Why not?').click
 end
 
 Then(/^a link to the FaP search page is displayed$/) do
