@@ -6,8 +6,8 @@ Then(/^I can see there is no reference to OGL shown in the footers$/) do
   expect(content).not_to have_content('Open Government Licence')
 end
 
-Then(/^I can see that "(.*?)" is shown in the header$/) do |service_name|
-  expect(find('#global-header')).to have_content('Search for property information')
+Then(/^I can see that 'Find property information' is shown in the header$/) do
+  expect(find('#global-header')).to have_content('Find property information')
 end
 
 When(/^I click on the link$/) do
