@@ -10,7 +10,7 @@ end
 
 # On actual title pages
 When(/^I expand the caution against first registration details$/) do
-  find("summary", :text => "More about cautions against first registration").click
+  find("summary", :text => "What does Caution mean?").click
 
   @target = page
 end
