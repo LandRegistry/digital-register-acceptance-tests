@@ -26,7 +26,7 @@ require 'capybara/poltergeist'
 Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(
       app,
-      :headers => { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' },
+      :headers => { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'psu' },
       inspector: true,
       timeout: 240,
       js_errors: false,
@@ -37,7 +37,7 @@ Capybara.register_driver :poltergeist do |app|
     )
 end
 
-page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'drv' }
+page.driver.headers = { 'User-Agent' => 'Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34', 'Referer' => '', 'iv-user' => 'tester_user', 'iv-groups' => 'psu'}
 
 `sh install_requirements.sh`
 
