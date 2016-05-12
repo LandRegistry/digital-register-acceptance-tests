@@ -2,6 +2,8 @@ def webseal_login_check
   if page.has_content?("Sign in with your Land Registry account")
     fill_in 'username', with: $WEBSEAL_LOGIN
     fill_in 'password', with: $WEBSEAL_PASSWORD
+    # tick the 'accept terms and conditions' box
+    check 'terms'
     click_button('Sign In')
     if page.has_content?("You are already logged in from another client")
         click_link('Terminate existing login')
@@ -23,31 +25,31 @@ def visit_title_register_page(title_number)
 end
 
 def visit_cookie_page
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   visit("#{$DIGITAL_REGISTER_URL}/cookies")
   webseal_login_check
 end
 
 def visit_landing_page
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   visit("#{$DIGITAL_REGISTER_URL}/landing-page")
   webseal_login_check
 end
 
 def visit_property_search_page
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   visit("#{$DIGITAL_REGISTER_URL}/title-search")
   webseal_login_check
 end
 
 def visit_title_confirmation_page(title_number)
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   visit("#{$DIGITAL_REGISTER_URL}/confirm-selection/#{title_number}/PLYMOUTH?display_page_number=1")
   webseal_login_check
 end
 
 def visit_terms_and_conditions_page
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   visit("#{$DIGITAL_REGISTER_URL}/terms-and-conditions")
   webseal_login_check
 end
@@ -71,7 +73,7 @@ def current_page_number
 end
 
 def visit_title_register_pdf(title_number)
-  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   purchase_title_summary(title_number)
   page.visit("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
 
@@ -96,7 +98,7 @@ def get_register_pdf(title_number, cookie)
   c = Curl::Easy.new("#{$DIGITAL_REGISTER_URL}/titles/#{title_number}.pdf")
   c.ssl_verify_peer = false
   c.cookies = cookie.join('; ')
-  c.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user" }
+  c.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
   c.perform
   c.body_str
 ensure
