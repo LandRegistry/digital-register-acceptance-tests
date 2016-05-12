@@ -1,18 +1,5 @@
-When(/^I click on the Caution against first registration link$/) do
-  find("summary", :text => "What's this?").click
-end
-
-Then(/^I see an explanation of what caution title means$/) do
-  expect(content).to include('This property hasn’t been registered yet. You can’t find out who owns it from this service.')
-end
-
-Then(/^the link in the explanation goes to the gov\.uk explanation page$/) do
-  link = find_link('More about cautions against first registration')[:href]
-  expect(link).to eq('https://www.gov.uk/government/publications/caution-against-first-registration/practice-guide-3-cautions-against-first-registration')
-end
-
 Then(/^the results are displayed in the order of the house numbers$/) do
-  address_strings = page.all('ol.search-results-listing > li').map(&:text)
+  address_strings = page.all('.teaser-register').map(&:text)
   house_numbers = address_strings.map do |address_string|
     address_string.split(' ')[0].to_i
   end
@@ -20,24 +7,26 @@ Then(/^the results are displayed in the order of the house numbers$/) do
 end
 
 Then(/^the results should be displayed in the order:$/) do |table|
-  displayed_addresses = page.all('ol.search-results-listing > li > h2').map(&:text)
+  displayed_addresses = page.all('.teaser-register > h2').map(&:text)
   address_strings = table.hashes.map do |address_hash|
     address_hash[:address_string]
   end
   expect(displayed_addresses).to eq address_strings
 end
 
-When(/^I click on the ‘Why not\?’ link$/) do
-  find('summary', text: 'Why not?').click
-end
+When(/^I click on the Why not link$/) do
+  link = find("[href^='#no-title-information-found']")
+  link.click
 
-Then(/^a link to the FaP search page is displayed$/) do
-  link = find('.search-results-listing a', :text => "searching on the Land Registry ’Find a Property’ service")[:href]
-  expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
+  @target = find(link[:href])
 end
 
 Then(/^I am given an explanation of why this may have occurred$/) do
-  expect(content).to include('The property isn’t registered yet. Registration has only been compulsory across England and Wales since the 1990s. If the property hasn’t changed hands since then it may not be registered.')
+  expect(@target).to have_content ("This service is new, so some titles aren’t available here yet")
+end
+
+Then(/^a link to the FaP search page is displayed$/) do
+  expect(@target).to have_selector ("[href='https://eservices.landregistry.gov.uk/wps/portal/Property_Search']")
 end
 
 Given(/^I am viewing the search results page$/) do
@@ -47,41 +36,47 @@ Given(/^I am viewing the search results page$/) do
 end
 
 Then(/^I will be displayed a help message in the sidebar$/) do
-  expect(find('#help-sidebar')).to have_content('Help finding the right property')
+  expect(find('.supplementary-panel')).to have_content('Help finding the right property')
 end
 
 Then(/^I can see the Beta banner is displayed with the correct wording$/) do
-  expect(content).to include('This is a new service - your feedback will help us to improve it.')
+  expect(content).to include('This is a new service – your feedback will help us to improve it.')
 end
 
 Then(/^I will be able to click a link to get in touch$/) do
-  link = find('#help-sidebar a', :text => 'let us know')[:href]
+  link = find('.supplementary-panel a', :text => 'let us know')[:href]
   expect(link).to eq('mailto:digital-register-feedback@digital.landregistry.gov.uk')
 end
 
 Then(/^I will be able to click a link to go to FaP$/) do
-  link = find('#help-sidebar a', :text => 'existing Land Registry service')[:href]
+  link = find('.supplementary-panel a', :text => 'Land Registry \'Find a Property\' service')[:href]
   expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
 end
 
 Then(/^I can see (\d+) addresses per page$/) do |address_no|
-  number_results = page.all('ol.search-results-listing > li').count
+  number_results = page.all('.teaser-register').count
   expect(number_results).to eq address_no.to_i
 end
 
 Then(/^I can go to the next page \(page (\d+)\)$/) do |expected_page_num|
   click_link('Next page')
-  # This grabs the current page number
+
+  page_text = page.find('.previous-page .pagination-label').text
+  current_page_number = page_text.split(' ').first.to_i + 1
+
   expect(current_page_number).to eq(expected_page_num.to_i)
 end
 
 Then(/^I see we are on page (\d+)$/) do |expected_page_num|
+  page_text = page.find('.next-page .pagination-label').text
+  current_page_number = page_text.split(' ').first.to_i - 1
+
   expect(current_page_number).to eq(expected_page_num.to_i)
 end
 
 Then(/^I see the number of pages is (\d+)$/) do |expected_page_num|
   # These lines strip out the last number of the pagination number text.
-  page_text = page.find('#pagination').text
+  page_text = page.find('.next-page .pagination-label').text
   actual_page_num = page_text.split(' ').last.to_i
   expect(actual_page_num).to eq expected_page_num.to_i
 end
@@ -100,7 +95,7 @@ Given(/^I don’t know the postcode$/) do
 end
 
 When(/^I click the by street address link$/) do
-  link = find_link('find a property by street address, title number or using a map.')[:href]
+  link = find_link('find a property by street address, title number, or using a map')[:href]
   expect(link).to eq('https://eservices.landregistry.gov.uk/wps/portal/Property_Search')
 end
 

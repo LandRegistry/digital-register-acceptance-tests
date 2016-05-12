@@ -48,4 +48,4 @@ Scenario: Select that Official Copies are needed
 Scenario: Make no selection
     Given I have gone to the digital register view service
     When I make no selection and Contiue
-    Then I am informed that I need to make an option
+    Then I am informed that I need to select an option

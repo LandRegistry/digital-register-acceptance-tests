@@ -12,12 +12,12 @@ Acceptance Criteria
   Scenario: Search results contain a caution title item
     Given I have a caution title
     When I search for the property using the postcode
-    And I click on the Caution against first registration link
+    And I click on the summary caution against first registration link
     Then I see an explanation of what caution title means
 
-  Scenario: Caution title summary contain a caution title definition
+  Scenario: Caution title order confirmation page contains a caution title definition
     Given I have a caution title
     When I search for the property using the postcode
-    And I view the caution title summary page
-    And I click on the Summary Caution against first registration link
+    And I am on the order confirmation page
+    And I expand the caution against first registration details
     Then I see an explanation of what caution title means

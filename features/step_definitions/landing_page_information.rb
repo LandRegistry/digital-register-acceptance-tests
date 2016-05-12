@@ -7,17 +7,17 @@ Then(/^I am provided information on what the service will provide$/) do
 end
 
 When(/^I select to use the new service$/) do
-  choose("eligibility-1")
+  choose("information", option: "title_summary")
   find_button('Continue').click
  end
 
 Then(/^I am redirected to digital register view$/) do
   webseal_login_check
-  expect(page).to have_content("You can get information about registered property or land in England and Wales, even if you don’t own it.")
+  expect(page).to have_content("You can get a summary of information about registered property or land in England and Wales, even if you don’t own it.")
 end
 
 When(/^I select that I need full title documents$/) do
-  choose("eligibility-2")
+  choose("information", option: "full_title_documents")
   find_button('Continue').click
 end
 
@@ -27,7 +27,7 @@ Then(/^I am redirected to the find a property service$/) do
 end
 
 When(/^I select that I need Official Copies$/) do
-  choose("eligibility-3")
+  choose("information", option: "official_copy")
   find_button('Continue').click
 end
 
@@ -55,6 +55,6 @@ When(/^I make no selection and Contiue$/) do
   find_button('Continue').click
 end
 
-Then(/^I am informed that I need to make an option$/) do
+Then(/^I am informed that I need to select an option$/) do
   expect(page).to have_content("Please choose an option")
 end

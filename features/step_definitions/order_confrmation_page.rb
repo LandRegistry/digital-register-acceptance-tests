@@ -12,12 +12,15 @@ end
 
 
 Then(/^I can see an explanation of the freehold tenure$/) do
-  find("summary", :text => "What does this mean?").click
-  expect(content).to include ("You own a freehold building and land outright. It is yours until you sell it or give it away.")
+  link = find("[href^='#what-is-tenure']")
+  link.click
+
+  target = find(link[:href])
+  expect(target).to have_content ("You own a freehold building and land outright. It is yours until you sell it or give it away.")
 end
 
 Then(/^I can see the property indicated on the map$/) do
-find("#map")
+  pending
 end
 
 Given(/^I have a leasehold title$/) do
@@ -25,6 +28,9 @@ Given(/^I have a leasehold title$/) do
 end
 
 Then(/^I can see an explanation of the leasehold tenure$/) do
-  find("summary", :text => "What does this mean?").click
-  expect(content).to include ("You only own a leasehold property for a fixed period of time.")
+  link = find("[href^='#what-is-tenure']")
+  link.click
+
+  target = find(link[:href])
+  expect(target).to have_content ("You only own a leasehold property for a fixed period of time.")
 end

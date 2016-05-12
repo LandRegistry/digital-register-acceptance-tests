@@ -52,7 +52,7 @@ end
 
 Then(/^I can see the price paid or stated$/) do
   latest_price_paid_stated = @title[:price_paid_stated]
-  expect(content).to include 'Price paid/stated'
+  expect(content).to include 'Price paid'
   expect(content).to include latest_price_paid_stated[:text].chomp('.')
 end
 

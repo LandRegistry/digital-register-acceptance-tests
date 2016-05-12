@@ -13,5 +13,6 @@ When(/^I view the caution title summary page$/) do
 end
 
 Then(/^I can view the register details for the caution title$/) do
-  expect(content).to include "Summary of caution title #{@title[:title_number]}"
+  expect(content).to include "#{@title[:title_number]}"
+  expect(content).to include "Cautioner"
 end

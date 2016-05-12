@@ -32,7 +32,7 @@ end
 
 def visit_landing_page
   page.driver.headers = { "User-Agent" => "Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.1 Safari/534.34", "Referer" => "", "iv-user" => "tester_user", "iv-groups" => "psu" }
-  visit("#{$DIGITAL_REGISTER_URL}/landing-page")
+  visit("#{$DIGITAL_REGISTER_URL}")
   webseal_login_check
 end
 
@@ -64,12 +64,7 @@ end
 
 def pay_for_title_to_view_summary
   check("right_to_cancel")
-  find(".button", :text => "Buy title summary").click
-end
-
-def current_page_number
-  page_text = page.find('#pagination').text
-  page_text.split(' ')[1].to_i
+  click_button("Buy title summary")
 end
 
 def visit_title_register_pdf(title_number)
