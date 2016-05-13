@@ -94,3 +94,7 @@ end
 Then(/^I am informed that I have to search using the postcode$/) do
   expect(page).to have_content("Enter a postcode")
 end
+
+When(/^I select a title$/) do
+  first('.teaser-register a').click
+end
