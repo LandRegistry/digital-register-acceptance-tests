@@ -21,11 +21,15 @@ at_exit do
     create_elasticsearch_addressbase_mapping
   #end
   sleep($ELASTICSEARCH_SLEEP.to_f)
-  puts 'Creating 5 titles with postcode PL9 8TB'
+  puts 'Creating titles with postcode PL9 8TB'
   # TODO: delete the following line if there is no clear need for it - it's a side effect
   insert_caution_title
   insert_title_charity_private_individual_owner
   insert_multiple_titles(5)
+  create_address_without_title
+  puts 'Creating titles with district City of London'
+  insert_title_with_district(district = "City of London")
+  print @title[:title_number]
 end
 
 After do |scenario|
