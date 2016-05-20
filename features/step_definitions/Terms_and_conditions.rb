@@ -27,14 +27,5 @@ Then(/^I am provided information on the terms and conditions$/) do
 end
 
 Given(/^I go to the terms and conditions page$/) do
-  visit_property_search_page
   find_link('Terms & conditions').click
-end
-
-When(/^I click the back button$/) do
-  find_link('Back').click
-end
-
-Then(/^I am returned to the page I was originally on$/) do
-  expect(content).to include("Search the land and property register")
 end

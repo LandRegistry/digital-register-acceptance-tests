@@ -31,3 +31,11 @@ Background:
   Scenario: Pay for and print VAT receipt
     And I can print the title summary page
     And the VAT receipt is on the printed result
+
+  Scenario: View VAT receipt after switching to Welsh and back to English again
+    When I have selected the Welsh translation
+    Then I can view the title VAT receipt on the Summary in Welsh
+    And it has the correct information in welsh
+    When I select the English translation
+    Then I can view the title VAT receipt on the Summary
+    And it has the correct information

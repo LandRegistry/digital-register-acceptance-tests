@@ -17,8 +17,3 @@ I can read the T&Cs and then carry on with the purchase
  Scenario: View terms and conditions
     Given I am on the terms and conditions page
     Then I am provided information on the terms and conditions
-
- Scenario: User can return from Terms and conditions to page they were on
-    Given I go to the terms and conditions page
-    When I click the back button
-    Then I am returned to the page I was originally on
