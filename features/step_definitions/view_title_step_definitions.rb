@@ -12,6 +12,9 @@ end
 
 Then(/^I can see a prompt to provide feedback$/) do
   expect(content).to include("What did you think of this service? Please give us your feedback (takes 30 seconds). This is a new service and your feedback will help us improve it.")
+
+  feedback_link = find_link('Please give us your feedback')
+  expect(feedback_link[:href]).to eq("#{$GOVUK_FEEDBACK_URL}")
 end
 
 Then(/^I see the full address for the selected title$/) do

@@ -41,11 +41,14 @@ end
 
 Then(/^I can see the Beta banner is displayed with the correct wording$/) do
   expect(content).to include('This is a new service – your feedback will help us to improve it.')
+
+  feedback_link = find('[class^="phase-banner-"] a', :text => 'feedback')
+  expect(feedback_link[:href]).to eq("#{$GOVUK_FEEDBACK_URL}")
 end
 
 Then(/^I will be able to click a link to get in touch$/) do
   link = find('.supplementary-panel a', :text => 'let us know')[:href]
-  expect(link).to eq('mailto:digital-register-feedback@digital.landregistry.gov.uk')
+  expect(link).to eq("#{$GOVUK_FEEDBACK_URL}")
 end
 
 Then(/^I will be able to click a link to go to FaP$/) do

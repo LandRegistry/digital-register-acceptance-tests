@@ -23,3 +23,5 @@ $INCOMING_QUEUE = ENV.fetch('INCOMING_QUEUE')
 $TEST_ENVIRONMENT_WEBSEAL = ENV.fetch('TEST_ENVIRONMENT_WEBSEAL', 'local')
 $WEBSEAL_LOGIN = ENV.fetch('WEBSEAL_LOGIN')
 $WEBSEAL_PASSWORD = ENV.fetch('WEBSEAL_PASSWORD')
+
+$GOVUK_FEEDBACK_URL = ENV.fetch('GOVUK_FEEDBACK_URL', 'https://www.gov.uk/done/search-property-information-land-registry')
