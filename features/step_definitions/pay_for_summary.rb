@@ -4,6 +4,7 @@ end
 
 When(/^I have selected to pay for the summary$/) do
   click_button("Buy title summary")
+  webseal_login_check
 end
 
 Then(/^I am prevented from going any further$/) do

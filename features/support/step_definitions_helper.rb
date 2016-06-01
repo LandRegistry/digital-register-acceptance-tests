@@ -65,6 +65,7 @@ end
 def pay_for_title_to_view_summary
   check("right_to_cancel")
   click_button("Buy title summary")
+  webseal_login_check
 end
 
 def visit_title_register_pdf(title_number)
